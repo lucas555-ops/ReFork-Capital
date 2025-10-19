@@ -1,1 +1,24 @@
 
+### 3. `.gitignore`
+```gitignore
+# Dependency directories
+node_modules/
+
+# Production builds
+/dist/
+/build/
+
+# Environment variables
+.env
+.env.local
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
