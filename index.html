@@ -1,0 +1,1040 @@
+<!doctype html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>ReFork Capital — Методы капитализации и умножения криптовалюты</title>
+    <!-- Preload критичных ресурсов -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Space+Grotesk&display=swap" as="style">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js" as="script">
+  <meta name="description" content="ReFork Capital — система капитализации и умножения криптовалюты через организацию сетевого трафика и рыночного внимания."/>
+  <meta name="keywords" content="ReFork Capital, crypto fund, meme tokens, investment, DeFi growth, crypto ROI, крипто инвестиции, memecoin, 100x, 1000x Solana, DEX" />
+  <meta name="robots" content="index, follow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+<meta name="theme-color" content="#0ea5e9">
+<meta property="og:url" content="https://ваш-сайт.com">
+<meta property="og:site_name" content="ReFork Capital">
+<meta name="twitter:title" content="ReFork Capital">
+<meta name="twitter:description" content="Методы капитализации и умножения криптовалюты">
+  
+    <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/ваш-username/ваш-repo/main/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://raw.githubusercontent.com/ваш-username/ваш-repo/main/apple-touch-icon.png">
+  
+  <!-- Open Graph / Twitter Preview -->
+  <meta property="og:type" content="website"/>
+
+  <!-- Effects libs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js" crossorigin="anonymous"></script>
+
+  <style>
+    :root{ --bg:#0b0e14; --muted:#9aa5b1; --accent:#6ee7b7; --accent-2:#22d3ee; }
+    html, body { background: var(--bg); color: #e5e7eb; font-family: 'Inter', system-ui; }
+    section, header, footer{position:relative; z-index:20}
+    h1,h2,h3,p,details,summary,button,a,input,textarea,select,form{position:relative; z-index:30}
+
+    .glow-card{position:relative;overflow:hidden;border-radius:1.25rem;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(106,230,255,.22);box-shadow:0 10px 28px rgba(0,0,0,.48)}
+    .glow-card::after{content:"";position:absolute;inset:-12px;z-index:-1;border-radius:calc(1.25rem + 12px);background:radial-gradient(420px 180px at 50% 0%,rgba(34,211,238,.18),transparent 60%);filter:blur(14px)}
+
+    .card-glow::before {content: "";position: absolute;inset: 0;border-radius: inherit;padding: 1px;background: linear-gradient(90deg,#14F195,#9945FF,#00C2FF,#14F195);background-size: 300% 300%;animation: glow-move 6s linear infinite;-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);-webkit-mask-composite: xor;mask-composite: exclude;pointer-events: none;z-index: 2;}
+    @keyframes glow-move {0% { background-position: 0% 50%; }100% { background-position: 200% 50%; }}
+
+    #vanta{opacity:1;filter:none;will-change:transform}
+    .bg-overlay{background:radial-gradient(800px 520px at 65% 15%, rgba(8,12,20,.55), transparent 60%),radial-gradient(900px 640px at 10% 60%, rgba(8,12,20,.45), transparent 60%),linear-gradient(180deg, rgba(5,8,15,.75), rgba(5,8,15,.95))}
+/* Mobile Optimization */
+@media (max-width: 768px) {
+  .grid-cols-5 { grid-template-columns: repeat(2, 1fr); }
+  .text-5xl { font-size: 2.5rem; }
+  .text-6xl { font-size: 3rem; }
+  .grid-cols-4 { grid-template-columns: repeat(2, 1fr); }
+  .gap-8 { gap: 1rem; }
+  .p-10 { padding: 1.5rem; }
+  .p-8 { padding: 1.5rem; }
+}  
+
+/* Стили для выпадающего списка */
+select {
+  background-color: #1a202c !important;
+  color: #f7fafc !important;
+}
+
+select option {
+  background-color: #1a202c !important;
+  color: #f7fafc !important;
+  padding: 12px;
+}
+.skeleton-loader {
+  background: linear-gradient(90deg, rgba(255,255,255,0.1) 25%, rgba(255,255,255,0.15) 50%, rgba(255,255,255,0.1) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+  border-radius: 4px;
+  color: transparent;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 8px 2px currentColor;
+}
+.glass {
+  background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04));
+  border: 1px solid rgba(255,255,255,.12);
+  backdrop-filter: blur(10px);
+}
+.line-spacing {
+  line-height: 1.6; /* Межстрочный интервал */
+  margin-bottom: 1rem; /* Отступ снизу */
+}
+
+.paragraph-spacing p {
+  margin-bottom: 1.5rem;
+}
+</style>
+</head>
+<body>
+  <div id="vanta" class="fixed inset-0 -z-0" aria-hidden="true"></div>
+  <div class="bg-overlay fixed inset-0 -z-5 pointer-events-none" aria-hidden="true"></div>
+
+<header class="sticky top-0 z-50 backdrop-blur bg-black/40 border-b border-white/10">
+  <div class="max-w-7xl mx-auto flex items-center justify-between h-16 px-4">
+    <a href="#" class="text-xl font-extrabold bg-gradient-to-r from-green-500 to-cyan-400 text-transparent bg-clip-text">ReFork Capital</a>
+    
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex gap-6 text-sm">
+      <a href="#process" class="hover:text-white transition-colors">Как работает</a>
+      <a href="#method" class="hover:text-white transition-colors">Методы</a>
+      <a href="#meme-mechanics" class="hover:text-white transition-colors">Мем-механика</a>
+      <a href="#packages" class="hover:text-white transition-colors">Инвестировать</a>
+      <a href="#team" class="hover:text-white transition-colors">Команда</a>
+    </nav>
+    
+    <!-- Mobile Menu Button -->
+    <button class="md:hidden text-white text-xl" id="mobile-menu-button" aria-label="Открыть меню">☰</button>
+    
+    <a href="#apply" class="bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-4 py-2 rounded-lg hover:scale-105 transition-transform">Присоединиться</a>
+  </div>
+  
+  <!-- Mobile Menu -->
+  <div class="md:hidden hidden bg-black/95 backdrop-blur-lg border-t border-white/10" id="mobile-menu">
+    <div class="flex flex-col py-4 px-4 space-y-4">
+      <a href="#process" class="hover:text-cyan-400 transition-colors py-2">Как работает</a>
+      <a href="#method" class="hover:text-cyan-400 transition-colors py-2">Методы</a>
+      <a href="#meme-mechanics" class="hover:text-cyan-400 transition-colors py-2">Мем-механика</a>
+      <a href="#packages" class="hover:text-cyan-400 transition-colors py-2">Инвестировать</a>
+      <a href="#team" class="hover:text-cyan-400 transition-colors py-2">Команда</a>
+      <a href="#apply" class="bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-4 py-2 rounded-lg text-center mt-2">Присоединиться</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO SECTION -->
+<section id="hero" class="min-h-screen flex items-center py-20">
+  <div class="max-w-7xl mx-auto px-4 w-full">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      
+      <!-- Left Column - Text Content -->
+      <div class="space-y-6">
+        
+        <!-- Three Glowing Badges -->
+        <div class="flex flex-wrap gap-3">
+          <span class="glass rounded-full px-4 py-2 inline-flex items-center gap-2 border border-yellow-400/50 shadow-[0_0_15px_rgba(250,204,21,0.4)]">
+            <span class="dot bg-yellow-400"></span>
+            <span class="text-sm font-medium">Внимание</span>
+          </span>
+          <span class="glass rounded-full px-4 py-2 inline-flex items-center gap-2 border border-cyan-400/50 shadow-[0_0_15px_rgba(34,211,238,0.4)]">
+            <span class="dot bg-cyan-400"></span>
+            <span class="text-sm font-medium">Ликвидность</span>
+          </span>
+          <span class="glass rounded-full px-4 py-2 inline-flex items-center gap-2 border border-green-400/50 shadow-[0_0_15px_rgba(74,222,128,0.4)]">
+            <span class="dot bg-green-400"></span>
+            <span class="text-sm font-medium">Прибыль</span>
+          </span>
+        </div>
+
+        <!-- Main Heading -->
+        <h1 class="text-5xl md:text-6xl font-black leading-tight">
+          <span class="bg-gradient-to-r from-green-400 via-cyan-400 to-purple-500 text-transparent bg-clip-text">
+            ReFork Capital
+          </span>
+        </h1>
+
+        <!-- Subheading -->
+        <h2 class="text-xl md:text-2xl text-gray-300 font-light leading-relaxed">
+          Методы капитализации<br>и умножения криптовалюты
+        </h2>
+
+        <!-- Description -->
+        <div class="space-y-3 text-gray-400">
+          <p class="text-lg leading-relaxed">
+            Система организации сетевого трафика и рыночного внимания<br>в ликвидность и фиксированную прибыль.
+          </p>
+          <p class="text-cyan-400 italic">
+            Превращаем рыночные циклы в финансовые результаты.
+          </p>
+        </div>
+
+        <!-- Stats Mini Cards -->
+<div class="flex gap-4 pt-2">
+  <div class="glow-card p-3 text-left min-w-0">
+    <div class="text-2xl font-bold text-cyan-400 leading-none skeleton-loader">100%+</div>
+    <div class="text-xs text-gray-400 mt-1">ROI в месяц</div>
+  </div>
+  <div class="glow-card p-3 text-left min-w-0">
+    <div class="text-2xl font-bold text-cyan-400 leading-none skeleton-loader">24/7</div>
+    <div class="text-xs text-gray-400 mt-1">Мониторинг</div>
+  </div>
+</div>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-3 pt-2">
+          <a href="#method" class="bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-8 py-4 rounded-lg text-center hover:scale-105 transition-transform">
+            Изучить Методы
+          </a>
+          <a href="#process" class="border border-cyan-400/50 text-cyan-400 font-bold px-8 py-4 rounded-lg text-center hover:bg-cyan-400/10 transition-colors">
+            Как Работает Система
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column - Image with Glow -->
+      <div class="relative">
+        <!-- Glow Effect Behind Image -->
+        <div class="absolute -inset-4 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-2xl blur-3xl opacity-50"></div>
+        
+        <!-- Image Container -->
+<div class="relative glow-card card-glow rounded-2xl overflow-hidden aspect-video bg-gradient-to-br from-gray-900 to-black border border-cyan-500/30">
+  <!-- Замените placeholder на реальную картинку с GitHub -->
+  <img src="https://raw.githubusercontent.com/ваш-username/ваш-repo/main/images/hero-chart.png" 
+       alt="График роста капитализации ReFork Capital"
+       loading="lazy"
+       class="w-full h-full object-cover">
+</div>
+
+        <!-- Floating Elements -->
+        <div class="absolute -bottom-6 -left-6 glow-card p-4 rounded-xl bg-black/80 backdrop-blur border border-cyan-400/30">
+          <div class="text-cyan-400 text-sm font-bold">AI Анализ</div>
+          <div class="text-gray-400 text-xs">Реальный-time данные</div>
+        </div>
+
+        <div class="absolute -top-6 -right-6 glow-card p-4 rounded-xl bg-black/80 backdrop-blur border border-purple-400/30">
+          <div class="text-purple-400 text-sm font-bold">SMM Трафик</div>
+          <div class="text-gray-400 text-xs">Вирусный охват</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW PROFITS GROW -->
+<section id="process" class="py-20 text-center">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-3xl font-extrabold mb-4 bg-gradient-to-r from-purple-500 to-cyan-400 text-transparent bg-clip-text">
+      Как это приносит прибыль
+    </h2>
+
+    <!-- Key Formula - Large and Prominent -->
+    <div class="mb-12">
+      <div class="text-4xl md:text-5xl font-black mb-6 flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
+        <span class="bg-gradient-to-r from-amber-500 to-orange-500 text-transparent bg-clip-text">ВНИМАНИЕ</span>
+        <span class="text-cyan-400 text-3xl">→</span>
+        <span class="bg-gradient-to-r from-blue-500 to-cyan-500 text-transparent bg-clip-text">СПРОС</span>
+        <span class="text-cyan-400 text-3xl">→</span>
+        <span class="bg-gradient-to-r from-green-400 to-emerald-500 text-transparent bg-clip-text">РОСТ ЦЕНЫ</span>
+      </div>
+      <p class="text-gray-300 text-xl max-w-3xl mx-auto">
+        Каждая фаза проекта даёт результат — активный рост ROI и стабильный оборот средств.
+      </p>
+    </div>
+
+    <!-- Process Steps -->
+    <div class="grid md:grid-cols-3 gap-8 text-left">
+      <div class="glow-card card-glow p-6 group hover:transform hover:scale-105 transition-all duration-300">
+        <div class="text-3xl mb-4 text-cyan-400">1</div>
+        <h3 class="text-xl font-bold mb-3 text-cyan-400 group-hover:text-white transition-colors">Запуск идеи</h3>
+        <p class="text-gray-300 leading-relaxed">
+          Создаём уникальный мемтокен, токеномику, визуал и ликвидность. 
+          Формируем ядро аудитории и закладываем фундамент для вирусного роста.
+        </p>
+      </div>
+      
+      <div class="glow-card card-glow p-6 group hover:transform hover:scale-105 transition-all duration-300">
+        <div class="text-3xl mb-4 text-cyan-400">2</div>
+        <h3 class="text-xl font-bold mb-3 text-cyan-400 group-hover:text-white transition-colors">Внимание и охват</h3>
+        <p class="text-gray-300 leading-relaxed">
+          AI-контент, постинг, мемы, вирусные видео. Формируется хайп и растёт 
+          узнаваемость токена через многослойную маркетинговую стратегию.
+        </p>
+      </div>
+      
+      <div class="glow-card card-glow p-6 group hover:transform hover:scale-105 transition-all duration-300">
+        <div class="text-3xl mb-4 text-cyan-400">3</div>
+        <h3 class="text-xl font-bold mb-3 text-cyan-400 group-hover:text-white transition-colors">ROI и масштаб</h3>
+        <p class="text-gray-300 leading-relaxed">
+          Спрос повышает цену, инвесторы фиксируют прибыль. Часть реинвестируется — 
+          ROI до 100% ежемесячно. Создаём устойчивую финансовую экосистему.
+        </p>
+      </div>
+    </div>
+
+    <!-- Additional Visual Element -->
+    <div class="mt-12 glow-card p-6 max-w-2xl mx-auto border border-cyan-500/30">
+      <p class="text-gray-300 text-lg italic text-center">
+        "Мы не просто следуем трендам — мы создаём их, превращая цифровое внимание в реальную прибыль"
+      </p>
+    </div>
+  </div>
+</section>
+
+  <!-- METHODS SECTION -->
+  <section id="method" class="py-20">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-extrabold mb-4 bg-gradient-to-r from-purple-500 to-cyan-400 text-transparent bg-clip-text">
+        Методы и системный подход
+      </h2>
+      <p class="text-gray-300 max-w-3xl mx-auto mb-10 text-lg">
+        Используем SMM, AI, FOMO и инструменты пролива трафика для создания вирусных циклов и капитализации внимания
+      </p>
+
+      <div class="flex flex-col md:flex-row items-center gap-8 mb-12">
+        <div class="w-full">
+          <div class="grid grid-cols-1 sm:grid-cols-5 gap-4 text-center">
+            <div class="glow-card card-glow p-4" data-tilt>
+              <div class="text-xl font-semibold mb-1 text-cyan-400">Анализ</div>
+              <div class="text-gray-400 text-sm">AI-скрининг токенов<br>Выявление нарративов</div>
+            </div>
+            <div class="glow-card card-glow p-4" data-tilt>
+              <div class="text-xl font-semibold mb-1 text-cyan-400">Позиция</div>
+              <div class="text-gray-400 text-sm">Стратегический вход<br>До FOMO-волны</div>
+            </div>
+            <div class="glow-card card-glow p-4" data-tilt>
+              <div class="text-xl font-semibold mb-1 text-cyan-400">Капитализация</div>
+              <div class="text-gray-400 text-sm">SMM-прогрев<br>Умножение стоимости</div>
+            </div>
+            <div class="glow-card card-glow p-4" data-tilt>
+              <div class="text-xl font-semibold mb-1 text-cyan-400">Ликвидность</div>
+              <div class="text-gray-400 text-sm">Управление потоками<br>Контроль волатильности</div>
+            </div>
+            <div class="glow-card card-glow p-4" data-tilt>
+              <div class="text-xl font-semibold mb-1 text-cyan-400">Прибыль</div>
+              <div class="text-gray-400 text-sm">Фиксация на пиках<br>Реинвестирование</div>
+            </div>
+          </div>
+
+          <div class="mt-8 p-6 glow-card card-glow rounded-xl">
+            <p class="text-gray-300 text-lg leading-relaxed">
+              Каждый метод протестирован и оптимизирован для работы в условиях высокой волатильности. 
+              Мы не просто инвестируем — мы создаем системы умножения капитала через управление вниманием.
+            </p>
+            <p class="mt-4 text-lg text-cyan-400"><strong>Это не трейдинг.</strong> Это <em>системная капитализация рыночных возможностей через SMM, AI и FOMO-механики</em>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+    <!-- TRANSFORMATION SYSTEM -->
+  <section id="transformation" class="py-20 bg-white/5">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-extrabold mb-4 bg-gradient-to-r from-purple-500 to-cyan-400 text-transparent bg-clip-text">
+        Система трансформации внимания
+      </h2>
+      <p class="text-gray-300 max-w-3xl mx-auto mb-10 text-lg">
+        Превращаем рыночное внимание в ликвидность, а ликвидность — в стабильную прибыль
+      </p>
+
+      <div class="grid md:grid-cols-4 gap-6 text-center">
+        <div class="glow-card card-glow p-6">
+          <div class="text-2xl mb-3">1</div>
+          <h3 class="text-lg font-bold text-cyan-400 mb-2">Внимание → Активность</h3>
+          <p class="text-sm text-gray-300">Трансформируем интерес сообщества в торговую активность и объемы</p>
+        </div>
+        
+        <div class="glow-card card-glow p-6">
+          <div class="text-2xl mb-3">2</div>
+          <h3 class="text-lg font-bold text-cyan-400 mb-2">Активность → Ликвидность</h3>
+          <p class="text-sm text-gray-300">Превращаем торговую активность в реальную ликвидность пулов</p>
+        </div>
+        
+        <div class="glow-card card-glow p-6">
+          <div class="text-2xl mb-3">3</div>
+          <h3 class="text-lg font-bold text-cyan-400 mb-2">Ликвидность → Капитализация</h3>
+          <p class="text-sm text-gray-300">Конвертируем ликвидность в рыночную капитализацию активов</p>
+        </div>
+        
+        <div class="glow-card card-glow p-6">
+          <div class="text-2xl mb-3">4</div>
+          <h3 class="text-lg font-bold text-cyan-400 mb-2">Капитализация → Прибыль</h3>
+          <p class="text-sm text-gray-300">Фиксируем прибыль через стратегическое управление капиталом</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ATTENTION ECONOMY -->
+  <section id="economy" class="py-20">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-extrabold mb-4 bg-gradient-to-r from-purple-500 to-cyan-400 text-transparent bg-clip-text">
+        Экономика внимания
+      </h2>
+      <p class="text-gray-300 max-w-3xl mx-auto mb-10 text-lg">
+        В современной криптоэкономике внимание — самый ценный актив. Мы создали систему, которая измеряет, трансформирует и капитализирует это внимание в реальные финансовые результаты.
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-8 text-center">
+        <div class="glow-card card-glow p-6">
+          <h3 class="text-xl font-bold text-cyan-400 mb-4">Измеряем внимание</h3>
+          <p class="text-sm text-gray-300">AI-аналитика соцсетей и поисковых трендов. Выявляем перспективные нарративы до массового хайпа.</p>
+        </div>
+        
+        <div class="glow-card card-glow p-6">
+          <h3 class="text-xl font-bold text-cyan-400 mb-4">Трансформируем в активность</h3>
+          <p class="text-sm text-gray-300">Создаем вирусный контент, управляем комьюнити и направляем внимание в торговые операции.</p>
+        </div>
+        
+        <div class="glow-card card-glow p-6">
+          <h3 class="text-xl font-bold text-cyan-400 mb-4">Капитализируем результат</h3>
+          <p class="text-sm text-gray-300">Стратегически выходим на пиках капитализации, фиксируя прибыль для инвесторов.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEME MARKET MECHANICS -->
+  <section id="meme-mechanics" class="py-20 bg-white/1">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl font-extrabold mb-4 bg-gradient-to-r from-purple-500 to-cyan-400 text-transparent bg-clip-text">
+          Механика мем-рынка
+        </h2>
+        <p class="text-gray-300 max-w-3xl mx-auto text-lg">
+          Мем-токен живёт по тем же законам, что и энергия: рождается, взлетает, сгорает — и может быть перезапущен
+        </p>
+      </div>
+
+      <!-- Lifecycle Timeline -->
+      <div class="mb-16">
+        <h3 class="text-2xl font-bold text-center mb-8 text-cyan-400">Цикл жизни мем-токена</h3>
+        <div class="relative">
+                  
+          <div class="grid grid-cols-2 md:grid-cols-5 gap-4 relative z-10">
+            <div class="glow-card card-glow p-4 text-center">
+              <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-purple-500/20 flex items-center justify-center">
+                <span class="text-xl">💡</span>
+              </div>
+              <h4 class="font-bold text-cyan-400 mb-1">Идея</h4>
+              <p class="text-xs text-gray-400">Искра мем-идеи</p>
+            </div>
+            
+            <div class="glow-card card-glow p-4 text-center">
+              <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-green-500/20 flex items-center justify-center">
+                <span class="text-xl">🚀</span>
+              </div>
+              <h4 class="font-bold text-cyan-400 mb-1">Хайп</h4>
+              <p class="text-xs text-gray-400">Вирусный рост</p>
+            </div>
+            
+            <div class="glow-card card-glow p-4 text-center">
+              <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-red-500/20 flex items-center justify-center">
+                <span class="text-xl">📉</span>
+              </div>
+              <h4 class="font-bold text-cyan-400 mb-1">Обвал</h4>
+              <p class="text-xs text-gray-400">Пик и слив</p>
+            </div>
+            
+            <div class="glow-card card-glow p-4 text-center">
+              <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-gray-500/20 flex items-center justify-center">
+                <span class="text-xl">💤</span>
+              </div>
+              <h4 class="font-bold text-cyan-400 mb-1">Забвение</h4>
+              <p class="text-xs text-gray-400">Остаточная память</p>
+            </div>
+            
+            <div class="glow-card card-glow p-4 text-center">
+              <div class="w-12 h-12 mx-auto mb-3 rounded-full bg-cyan-500/20 flex items-center justify-center">
+                <span class="text-xl">🔄</span>
+              </div>
+              <h4 class="font-bold text-cyan-400 mb-1">Возрождение</h4>
+              <p class="text-xs text-gray-400">ReFork — новый цикл</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Protocol & Logic Side by Side -->
+      <div class="grid md:grid-cols-2 gap-8 mb-12">
+        <!-- Protocol Mechanics -->
+        <div class="glow-card card-glow p-6">
+          <h3 class="text-xl font-bold text-cyan-400 mb-6 text-center">🔁 Механика протокола</h3>
+          <div class="space-y-6">
+            <div class="flex items-start">
+              <div class="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                <span class="text-green-400">1</span>
+              </div>
+              <div>
+                <h4 class="font-bold text-green-400 mb-2">Поиск</h4>
+                <p class="text-sm text-gray-300">Находим «забытые» мем-токены с сильным именем и историей (Cryptorank, CMC, on-chain)</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                <span class="text-green-400">2</span>
+              </div>
+              <div>
+                <h4 class="font-bold text-green-400 mb-2">Возрождение</h4>
+                <p class="text-sm text-gray-300">Создаём новую версию токена с иронией, стилем и ссылкой на оригинал</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                <span class="text-green-400">3</span>
+              </div>
+              <div>
+                <h4 class="font-bold text-green-400 mb-2">Разгон</h4>
+                <p class="text-sm text-gray-300">Через сеть X-аккаунтов запускается контент-волна: мемы, цитаты, визуалы</p>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center mr-4 mt-1 flex-shrink-0">
+                <span class="text-green-400">4</span>
+              </div>
+              <div>
+                <h4 class="font-bold text-green-400 mb-2">Хайп-цикл</h4>
+                <p class="text-sm text-gray-300">Возникает ликвидность, обсуждение — фиксируем прибыль и готовим следующую операцию</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ReFork Logic -->
+        <div class="glow-card card-glow p-6">
+          <h3 class="text-xl font-bold text-cyan-400 mb-6 text-center">💡 Логика ReFork</h3>
+          <p class="text-gray-300 mb-6">
+            Каждый мем — это фрагмент коллективной памяти. Даже когда токен «умирает», в сети остаются его фанаты, ссылки и энергия. 
+            Мы используем эти следы. Возрождая старый бренд, мы экономим на создании нового.
+          </p>
+          
+          <div class="space-y-4">
+            <div class="flex items-center p-3 rounded-lg bg-white/5">
+              <span class="text-green-400 text-xl mr-3">✓</span>
+              <span class="text-gray-300">Малые вложения → максимальный охват</span>
+            </div>
+            <div class="flex items-center p-3 rounded-lg bg-white/5">
+              <span class="text-green-400 text-xl mr-3">✓</span>
+              <span class="text-gray-300">Быстрый запуск → быстрая волна</span>
+            </div>
+            <div class="flex items-center p-3 rounded-lg bg-white/5">
+              <span class="text-green-400 text-xl mr-3">✓</span>
+              <span class="text-gray-300">Вирусность → эффект «ностальгического хайпа»</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Final Statement -->
+      <div class="glow-card card-glow p-8 text-center">
+        <p class="text-gray-300 text-xl leading-relaxed">
+          <strong class="text-cyan-400">⚙️ Это не просто запуск токена.</strong> Это воскрешение внимания и создание новых циклов капитализации 
+          из остаточного потенциала забытых мемов.
+        </p>
+      </div>
+    </div>
+  </section> 
+ 
+    <!-- CAPITAL FLOW -->
+  <section id="capital-flow" class="py-20 bg-white/5">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-extrabold mb-4 bg-gradient-to-r from-purple-500 to-cyan-400 text-transparent bg-clip-text">
+        Движение капитала
+      </h2>
+      <p class="text-gray-300 max-w-3xl mx-auto mb-10 text-lg">
+        Прозрачная система управления и умножения инвестиционного капитала
+      </p>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+        <div class="glow-card card-glow p-6 text-center">
+          <div class="text-3xl mb-3"></div>
+          <h3 class="text-lg font-bold text-cyan-400">Капитал</h3>
+          <p class="text-sm text-gray-300 mt-2">Инвестиционные средства для работы системы</p>
+        </div>
+        
+        <div class="glow-card card-glow p-6 text-center">
+          <div class="text-3xl mb-3"></div>
+          <h3 class="text-lg font-bold text-cyan-400">Трансформация</h3>
+          <p class="text-sm text-gray-300 mt-2">Превращение внимания в торговую активность</p>
+        </div>
+        
+        <div class="glow-card card-glow p-6 text-center">
+          <div class="text-3xl mb-3"></div>
+          <h3 class="text-lg font-bold text-cyan-400">Ликвидность</h3>
+          <p class="text-sm text-gray-300 mt-2">Создание и управление пулами ликвидности</p>
+        </div>
+        
+        <div class="glow-card card-glow p-6 text-center">
+          <div class="text-3xl mb-3"></div>
+          <h3 class="text-lg font-bold text-cyan-400">Прибыль</h3>
+          <p class="text-sm text-gray-300 mt-2">Фиксация умноженного капитала</p>
+        </div>
+      </div>
+
+      <div class="glow-card card-glow p-8 max-w-3xl mx-auto">
+        <p class="text-gray-300 text-lg leading-relaxed text-center">
+          Каждый этап увеличивает стоимость капитала через системную трансформацию внимания в ликвидность.
+          От инвестиций до прибыли — полный цикл капитализации под контролем профессиональной команды.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="packages" class="py-20">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-extrabold mb-4 bg-gradient-to-r from-purple-500 to-cyan-400 text-transparent bg-clip-text">Инвестиционные пакеты</h2>
+      <p class="text-gray-400 mb-10">Выберите уровень участия — от безопасного старта до закрытого круга ReFork Capital. Каждый пакет приносит прибыль, но вы решаете, насколько быстро и статусно войти.</p>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="glow-card card-glow p-6">
+          <h3 class="text-xl font-bold mb-2">Lite — для первого шага</h3>
+          <p class="text-3xl font-extrabold mb-4">$100</p>
+          <ul class="text-gray-300 text-sm space-y-2 mb-6">
+            <li>Прибыль к телу: до 50% в месяц</li>
+            <li>Установка и настройка системы безопасности</li>
+            <li>Еженедельные отчёты по ROI</li>
+            <li>Бонус в мем-токенах при реинвесте</li>
+          </ul>
+          <a href="#apply" class="bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-4 py-2 rounded-lg inline-block">Выбрать пакет</a>
+        </div>
+
+        <div class="glow-card card-glow p-6">
+          <h3 class="text-xl font-bold mb-2">Pro — для активных инвесторов</h3>
+          <p class="text-3xl font-extrabold mb-4">$300</p>
+          <ul class="text-gray-300 text-sm space-y-2 mb-6">
+            <li>Прибыль к телу: до 75% в месяц</li>
+            <li>Индивидуальный онбординг и стратегия</li>
+            <li>Доступ к закрытому портфелю активных токенов</li>
+            <li>Персональная аналитика и рекомендации</li>
+          </ul>
+          <a href="#apply" class="bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-4 py-2 rounded-lg inline-block">Выбрать пакет</a>
+        </div>
+
+        <div class="glow-card card-glow p-6">
+          <h3 class="text-xl font-bold mb-2">Prime — для VIP-инвесторов</h3>
+          <p class="text-3xl font-extrabold mb-4">$500</p>
+          <ul class="text-gray-300 text-sm space-y-2 mb-6">
+            <li>Прибыль к телу: до 100% в месяц</li>
+            <li>Доступ в закрытый клуб инвесторов</li>
+            <li>Премиум-подборка токенов и ранние входы</li>
+            <li>Личный контакт с Lucas M. и NFT-статус</li>
+          </ul>
+          <a href="#apply" class="bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-4 py-2 rounded-lg inline-block">Выбрать пакет</a>
+        </div>
+      </div>
+
+      <p class="text-xs text-gray-500 mt-6">Дисклеймер: не является инвестрекомендацией.</p>
+      <div class="mt-8">
+        <a href="#apply" class="bg-gradient-to-r from-purple-500 to-cyan-400 text-black font-bold px-6 py-3 rounded-lg inline-block">Перейти к форме заявки</a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- FUNDS DISTRIBUTION -->
+<section id="funds" class="py-20 text-center">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-3xl font-extrabold mb-6 bg-gradient-to-r from-purple-500 to-cyan-400 text-transparent bg-clip-text">
+      Куда идут средства
+    </h2>
+    <p class="text-gray-300 max-w-2xl mx-auto mb-10">
+      Каждый доллар работает. Средства распределяются между инструментами, маркетингом и развитием комьюнити — именно это обеспечивает рост токенов и прибыль инвестора.
+    </p>
+
+    <div class="grid md:grid-cols-3 gap-8 text-left">
+      <div class="glow-card p-6">
+        <h3 class="text-xl font-bold mb-2 text-cyan-400">Инструменты и софт — 40%</h3>
+        <p class="text-sm text-gray-300">Мультиаккаунты, прокси, аналитика, трекеры и инструменты A/B-тестов. Всё, что ускоряет масштабирование и трафик.</p>
+      </div>
+      <div class="glow-card p-6">
+        <h3 class="text-xl font-bold mb-2 text-cyan-400">Маркетинг и контент — 20%</h3>
+        <p class="text-sm text-gray-300">Создание мемов, видео, рекламных креативов, таргет и AI-контент. Поддержка постоянного пула для роста охвата.</p>
+      </div>
+      <div class="glow-card p-6">
+        <h3 class="text-xl font-bold mb-2 text-cyan-400">Рост активности — 40%</h3>
+        <p class="text-sm text-gray-300">Промо-кампании, рейды, розыгрыши и стимулирование участников. Ядро вирусности и органического роста.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="mechanics" class="py-20 text-center">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-3xl font-extrabold mb-8 bg-gradient-to-r from-purple-500 to-cyan-400 text-transparent bg-clip-text">
+      Механика заработка
+    </h2>
+    <div class="grid md:grid-cols-4 gap-8 text-left">
+      <div class="glow-card p-6">
+        <h3 class="text-lg font-bold text-cyan-400 mb-2">Отбор активов</h3>
+        <p class="text-sm text-gray-300">Анализируем нарративы и мем-токены с потенциалом 3–25x роста. Отбираем только ликвидные кейсы для входа.</p>
+      </div>
+      <div class="glow-card p-6">
+        <h3 class="text-lg font-bold text-cyan-400 mb-2">Стратегический вход</h3>
+        <p class="text-sm text-gray-300">Формируем нарратив, усиливаем внимание, заходим в актив на минимуме. Контролируем капитализацию и трафик.</p>
+      </div>
+      <div class="glow-card p-6">
+        <h3 class="text-lg font-bold text-cyan-400 mb-2">Запуск роста</h3>
+        <p class="text-sm text-gray-300">Запускаем маркетинг и активность комьюнити. Создаём волны внимания, повышаем спрос и цену.</p>
+      </div>
+      <div class="glow-card p-6">
+        <h3 class="text-lg font-bold text-cyan-400 mb-2">Выход с прибылью</h3>
+        <p class="text-sm text-gray-300">Фиксируем прибыль на пиках внимания, реинвестируем в новые возможности, распределяем доход инвесторам.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why" class="py-20 text-center bg-white/5">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-3xl font-extrabold mb-8 bg-gradient-to-r from-purple-500 to-cyan-400 text-transparent bg-clip-text">
+      Почему стратегия работает
+    </h2>
+    <p class="text-gray-300 max-w-3xl mx-auto mb-12">
+      Мы используем фундаментальный закон крипторынка: <span class="text-cyan-400 font-semibold">внимание — это валюта</span>.  
+      Запускаем новые токены, оживляем забытые проекты и создаём циклы капитализации на основе внимания и спроса.
+    </p>
+    <div class="grid md:grid-cols-3 gap-8 text-left">
+      <div class="glow-card p-6">
+        <h3 class="text-lg font-bold text-cyan-400 mb-2">Низкий вход</h3>
+        <p class="text-sm text-gray-300">Покупка на минимумах, ранние позиции до FOMO и трендов.</p>
+      </div>
+      <div class="glow-card p-6">
+        <h3 class="text-lg font-bold text-cyan-400 mb-2">Контроль рисков</h3>
+        <p class="text-sm text-gray-300">Диверсификация портфеля и контроль ликвидности через аналитические инструменты.</p>
+      </div>
+      <div class="glow-card p-6">
+        <h3 class="text-lg font-bold text-cyan-400 mb-2">Максимальная доходность</h3>
+        <p class="text-sm text-gray-300">Выходы на пиках внимания, фиксация прибыли и циклическое реинвестирование.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="forwho" class="py-20 text-center">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-3xl font-extrabold mb-8 bg-gradient-to-r from-purple-500 to-cyan-400 text-transparent bg-clip-text">
+      Для кого создан ReFork Capital
+    </h2>
+    <div class="grid md:grid-cols-3 gap-8 text-left">
+      <div class="glow-card p-6">
+        <h3 class="text-lg font-bold text-cyan-400 mb-2">Инвесторы</h3>
+        <p class="text-sm text-gray-300">Участвуют в закрытых раундах (от $1,000) и получают долю от прибыли операций.</p>
+      </div>
+      <div class="glow-card p-6">
+        <h3 class="text-lg font-bold text-cyan-400 mb-2">Стратегические партнёры</h3>
+        <p class="text-sm text-gray-300">Предоставляют экспертизу, доступ к комьюнити и участвуют в стратегических решениях.</p>
+      </div>
+      <div class="glow-card p-6">
+        <h3 class="text-lg font-bold text-cyan-400 mb-2">Аккредитивные лица</h3>
+        <p class="text-sm text-gray-300">Участвуют в пре-ICO и приватных раундах с повышенной доходностью и ранним доступом.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="round" class="py-24 relative overflow-hidden bg-gradient-to-br from-black-900/20 to-cyan-900/20">
+  <!-- Decorative Elements -->
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-10 left-10 w-32 h-32 bg-cyan-400 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-10 right-10 w-40 h-40 bg-purple-500 rounded-full blur-3xl"></div>
+  </div>
+  
+  <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+    <!-- Main Heading -->
+    <div class="mb-8">
+      <h2 class="text-5xl md:text-6xl font-black mb-6 bg-gradient-to-r from-purple-400 via-cyan-400 to-purple-400 text-transparent bg-clip-text bg-size-200 animate-gradient">
+        Станьте частью капитала
+      </h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-purple-500 to-cyan-400 mx-auto mb-6"></div>
+    </div>
+
+    <!-- Subheading -->
+    <p class="text-xl md:text-2xl text-gray-300 mb-12 leading-relaxed max-w-3xl mx-auto font-light">
+      Открываем <span class="text-cyan-400 font-semibold">эксклюзивный инвестиционный раунд</span> для стратегических партнёров. 
+      Присоединяйтесь к закрытому кругу инвесторов и получайте долю от системной прибыли.
+    </p>
+
+    <!-- Investment Details -->
+    <div class="glow-card card-glow p-10 mb-12 max-w-2xl mx-auto border border-cyan-500/30">
+      <div class="grid md:grid-cols-3 gap-8 text-center">
+        <div class="space-y-3">
+          <div class="text-4xl mb-2">🎯</div>
+          <h3 class="text-lg font-bold text-cyan-400">Цель раунда</h3>
+          <p class="text-2xl font-black text-white">10,000 USDT</p>
+          <p class="text-xs text-gray-400">Минимальный вход от $100</p>
+        </div>
+        
+        <div class="space-y-3">
+          <div class="text-4xl mb-2">💎</div>
+          <h3 class="text-lg font-bold text-cyan-400">Структура</h3>
+          <div class="text-sm text-gray-300 space-y-1">
+            <p>70% — операции</p>
+            <p>20% — маркетинг</p>
+            <p>10% — развитие</p>
+          </div>
+        </div>
+        
+        <div class="space-y-3">
+          <div class="text-4xl mb-2">📊</div>
+          <h3 class="text-lg font-bold text-cyan-400">Доходность</h3>
+          <p class="text-2xl font-black text-green-400">30-100%</p>
+          <p class="text-xs text-gray-400">в месяц</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="space-y-6">
+      <p class="text-lg text-gray-400 italic max-w-2xl mx-auto">
+        «Инвестируйте не просто в крипту — инвестируйте в систему, которая превращает внимание в капитал»
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a href="#apply" class="bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-black px-12 py-4 rounded-xl text-lg hover:scale-105 transition-transform duration-300 shadow-lg shadow-cyan-500/25">
+          Подать заявку
+        </a>
+        <a href="#packages" class="border border-cyan-400/50 text-cyan-400 font-bold px-8 py-4 rounded-xl hover:bg-cyan-400/10 transition-colors">
+          Выбрать пакет
+        </a>
+      </div>
+      
+      <p class="text-sm text-gray-500 mt-6">
+        Количество мест в раунде ограничено. Приоритет — ранние заявки.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+.bg-size-200 {
+  background-size: 200% 200%;
+}
+.animate-gradient {
+  animation: gradient-shift 3s ease infinite;
+}
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+@keyframes shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: calc(200px + 100%) 0; }
+}
+</style>
+
+
+<!-- TEAM SECTION -->
+<section id="team" class="py-20 text-center">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-3xl font-extrabold mb-6 bg-gradient-to-r from-purple-500 to-cyan-400 text-transparent bg-clip-text">
+      Команда ReFork Capital
+    </h2>
+    <p class="text-gray-300 max-w-3xl mx-auto mb-10">
+      Команда ReFork Capital — это сочетание маркетологов, разработчиков и AI-специалистов, которые умеют запускать, раскручивать и монетизировать крипто-модели. Мы превращаем идею в ROI.
+    </p>
+
+    <div class="grid md:grid-cols-3 gap-8 text-left">
+      <div class="glow-card p-6">
+        <h3 class="text-xl font-bold mb-2 text-cyan-400">Lucas M.</h3>
+        <p class="text-sm text-gray-300">Лидер проекта. Разработка стратегий, координация запусков, управление капиталом и коммуникации с инвесторами.</p>
+      </div>
+      <div class="glow-card p-6">
+        <h3 class="text-xl font-bold mb-2 text-cyan-400">Growth & Marketing</h3>
+        <p class="text-sm text-gray-300">Продвижение, контент, community-менеджмент, рейды и создание вирусного охвата.</p>
+      </div>
+      <div class="glow-card p-6">
+        <h3 class="text-xl font-bold mb-2 text-cyan-400">Tech & AI</h3>
+        <p class="text-sm text-gray-300">Технический аудит токенов, аналитика, AI-инструменты и автоматизация маркетинга.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- APPLY FORM -->
+  <section id="apply" class="py-20 text-center">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl font-extrabold mb-6 bg-gradient-to-r from-purple-500 to-cyan-400 text-transparent bg-clip-text">
+        Подать заявку на участие
+      </h2>
+      
+      <!-- Бесплатная консультация CTA -->
+      <div class="mb-12">
+        <div class="glow-card card-glow p-8 mb-8 max-w-2xl mx-auto">
+          <h3 class="text-2xl font-bold text-cyan-400 mb-4">Бесплатная консультация</h3>
+          <p class="text-gray-300 mb-6">
+            Не уверены в выборе пакета? Получите бесплатную консультацию 
+            и персональные рекомендации от нашего финансового эксперта.
+          </p>
+          <a href="#consult-form" 
+             class="bg-gradient-to-r from-purple-500 to-cyan-400 text-black font-bold px-8 py-3 rounded-lg inline-block hover:scale-105 transition-transform">
+            Получить консультацию
+          </a>
+        </div>
+      </div>
+
+      <p class="text-gray-300 max-w-2xl mx-auto mb-10">
+        Оставьте заявку — мы свяжемся с вами, чтобы обсудить детали участия и подобрать оптимальный пакет инвестирования.
+      </p>
+
+      <form action="https://formspree.io/f/your_form_id" method="POST"
+        class="p-8 text-left space-y-6 border border-white/10 rounded-2xl bg-white/5 shadow-[0_0_40px_rgba(0,255,255,0.08)]">
+
+        <div>
+          <label class="block text-sm text-gray-400 mb-1" for="name">Ваше имя *</label>
+          <input type="text" id="name" name="name" required
+            class="w-full bg-gray-900 border border-white/20 rounded-lg px-4 py-2 focus:border-cyan-400 focus:outline-none text-gray-100 placeholder-gray-500"
+            placeholder="Иван Иванов">
+        </div>
+
+        <div>
+          <label class="block text-sm text-gray-400 mb-1" for="telegram">Telegram *</label>
+          <input type="text" id="telegram" name="telegram" required
+            pattern="^@[A-Za-z0-9_]{5,32}$"
+            title="Пожалуйста, введите корректный логин Telegram в формате @username"
+            class="w-full bg-gray-900 border border-white/20 rounded-lg px-4 py-2 focus:border-cyan-400 focus:outline-none text-gray-100 placeholder-gray-500"
+            placeholder="@username">
+          <p class="text-xs text-gray-500 mt-1">Укажите ваш Telegram в формате @username</p>
+        </div>
+
+        <div>
+          <label class="block text-sm text-gray-400 mb-1" for="comment">Комментарий (опционально)</label>
+          <textarea id="comment" name="comment" rows="3"
+            class="w-full bg-gray-900 border border-white/20 rounded-lg px-4 py-2 focus:border-cyan-400 focus:outline-none text-gray-100 placeholder-gray-500 resize-none"
+            placeholder="Ваши вопросы или дополнительная информация"></textarea>
+        </div>
+
+        <div>
+          <label class="block text-sm text-gray-400 mb-1" for="package">Выберите пакет *</label>
+          <select id="package" name="package" required
+            class="w-full bg-gray-900 border border-white/20 rounded-lg px-4 py-2 text-gray-100 focus:border-cyan-400 focus:outline-none appearance-none cursor-pointer">
+            <option value="" disabled selected class="bg-gray-900 text-gray-400">Выберите пакет</option>
+            <option value="Lite" class="bg-gray-900 text-gray-100">Lite — $100</option>
+            <option value="Pro" class="bg-gray-900 text-gray-100">Pro — $300</option>
+            <option value="Prime" class="bg-gray-900 text-gray-100">Prime — $500</option>
+          </select>
+        </div>
+
+        <div class="text-center pt-4">
+          <button type="submit"
+            class="bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-8 py-3 rounded-lg hover:opacity-90 transition">
+            Отправить заявку
+          </button>
+        </div>
+
+        <p class="text-xs text-gray-500 text-center pt-4">
+          * Обязательные поля для заполнения
+        </p>
+        <p class="text-xs text-gray-500 text-center">
+          Ваши данные защищены. Отправка заявки не является финансовым обязательством.
+        </p>
+      </form>
+    </div>
+  </section>
+
+<footer class="py-10 text-center text-sm text-gray-500 border-t border-white/10">
+  <div class="space-y-1 mb-4">  <!-- Большие отступы -->
+    <p class="font-bold">ДИСКЛЕЙМЕР!</p>
+    <p>Мы никого не призываем инвестировать, мы лишь делимся своим опытом и знаниями, которые не гарантируют успех в инвестиционной деятельности.</p>
+    <p>Воспринимайте все слова, как информацию, которую нужно проанализировать, сделать выводы и поступить так, как вы считаете будет правильно.</p>
+  </div>
+  <p>© 2025 ReFork Capital. Все права защищены.</p>
+</footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Mobile Menu Toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', function() {
+        mobileMenu.classList.toggle('hidden');
+      });
+      
+      // Close mobile menu when clicking on links
+      const mobileLinks = mobileMenu.querySelectorAll('a');
+      mobileLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          mobileMenu.classList.add('hidden');
+        });
+      });
+    }
+    
+    // Smooth scroll for all anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Initialize Vanta and VanillaTilt after DOM is ready
+    window.addEventListener('load', function() {
+      // Vanta.js background
+      if (typeof VANTA !== 'undefined') {
+        VANTA.NET({ 
+          el: '#vanta', 
+          color: 0x18a4b9, 
+          backgroundColor: 0x05080f, 
+          points: 6.0, 
+          maxDistance: 16.0, 
+          spacing: 22.0, 
+          showDots: true, 
+          speed: .8, 
+          scale: 1.05, 
+          scaleMobile: 1.05 
+        });
+      }
+      
+      // VanillaTilt for cards
+      if (typeof VanillaTilt !== 'undefined') {
+        try { 
+          VanillaTilt.init(document.querySelectorAll('.glow-card:not(.no-tilt)'), {
+            max: 6,
+            speed: 500,
+            glare: true,
+            'max-glare': .12,
+            perspective: 900,
+            scale: 1.01
+          }); 
+        } catch(e) {
+          console.log('VanillaTilt error:', e);
+        }
+      }
+    });
+  });
+</script>
+  <!-- Structured Data for SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ReFork Capital",
+    "description": "Методы капитализации и умножения криптовалюты",
+    "url": "https://ваш-сайт.com",
+    "logo": "https://raw.githubusercontent.com/ваш-username/ваш-repo/main/logo.png"
+  }
+  </script>
+</body>
+</html>
