@@ -97,125 +97,6 @@ select option {
 .paragraph-spacing p {
   margin-bottom: 1.5rem;
 }
-    /* Стили для формы */
-.form-block {
-  max-width: 100%;
-  margin: 0 auto;
-  display: grid;
-  gap: 16px;
-  font-family: 'Inter', system-ui;
-}
-
-.form-block label {
-  color: #e5e7eb;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.form-block input, .form-block textarea, .form-block select {
-  width: 100%;
-  padding: 12px 16px;
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.2);
-  background: rgba(255,255,255,0.05);
-  color: #fff;
-  font-family: 'Inter', system-ui;
-  margin-top: 4px;
-  transition: all 0.3s ease;
-}
-
-.form-block input:focus, .form-block textarea:focus, .form-block select:focus {
-  outline: none;
-  border-color: #22d3ee;
-  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.1);
-}
-
-.form-block input::placeholder, .form-block textarea::placeholder {
-  color: #9ca3af;
-}
-
-.form-block button {
-  padding: 14px 24px;
-  border-radius: 12px;
-  border: none;
-  background: linear-gradient(90deg, #0ea5e9, #06b6d4);
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: 'Inter', system-ui;
-  margin-top: 8px;
-}
-
-.form-block button:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
-}
-
-.form-block button:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  transform: none;
-}
-
-.form-block .note {
-  font-size: 12px;
-  color: #6b7280;
-  text-align: center;
-  margin-top: 16px;
-}
-
-.success-toast {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: linear-gradient(90deg, #46c2ff, #8b5cf6);
-  color: white;
-  padding: 16px 24px;
-  border-radius: 12px;
-  box-shadow: 0 20px 25px rgba(0,0,0,0.25);
-  z-index: 9999;
-  animation: slideIn 0.3s ease;
-  font-weight: 500;
-  border: 1px solid rgba(255,255,255,0.1);
-}
-
-.error-toast {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background: linear-gradient(90deg, #ef4444, #dc2626);
-  color: white;
-  padding: 16px 24px;
-  border-radius: 12px;
-  box-shadow: 0 20px 25px rgba(0,0,0,0.25);
-  z-index: 9999;
-  animation: slideIn 0.3s ease;
-  font-weight: 500;
-  border: 1px solid rgba(255,255,255,0.1);
-}
-
-@keyframes slideIn {
-  from { transform: translateX(100%); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
-}
-
-/* Адаптивность для мобильных */
-@media (max-width: 768px) {
-  .form-block {
-    gap: 12px;
-  }
-  
-  .form-block input, .form-block textarea, .form-block select {
-    padding: 10px 14px;
-  }
-  
-  .success-toast, .error-toast {
-    left: 20px;
-    right: 20px;
-    text-align: center;
-  }
-}
 </style>
 </head>
 <body>
@@ -985,80 +866,85 @@ select option {
 </section>
 
   <!-- APPLY FORM -->
-<section id="apply" class="py-20 text-center">
-  <div class="max-w-4xl mx-auto px-4">
-    <h2 class="text-3xl font-extrabold mb-6 bg-gradient-to-r from-purple-500 to-cyan-400 text-transparent bg-clip-text">
-      Подать заявку на участие
-    </h2>
-    
-    <!-- Бесплатная консультация CTA -->
-    <div class="mb-12">
-      <div class="glow-card card-glow p-8 mb-8 max-w-2xl mx-auto">
-        <h3 class="text-2xl font-bold text-cyan-400 mb-4">Бесплатная консультация</h3>
-        <p class="text-gray-300 mb-6">
-          Не уверены в выборе пакета? Получите бесплатную консультацию 
-          и персональные рекомендации от нашего финансового эксперта.
-        </p>
-        <a href="#leadForm" 
-           class="bg-gradient-to-r from-purple-500 to-cyan-400 text-black font-bold px-8 py-3 rounded-lg inline-block hover:scale-105 transition-transform">
-          Получить консультацию
-        </a>
+  <section id="apply" class="py-20 text-center">
+    <div class="max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl font-extrabold mb-6 bg-gradient-to-r from-purple-500 to-cyan-400 text-transparent bg-clip-text">
+        Подать заявку на участие
+      </h2>
+      
+      <!-- Бесплатная консультация CTA -->
+      <div class="mb-12">
+        <div class="glow-card card-glow p-8 mb-8 max-w-2xl mx-auto">
+          <h3 class="text-2xl font-bold text-cyan-400 mb-4">Бесплатная консультация</h3>
+          <p class="text-gray-300 mb-6">
+            Не уверены в выборе пакета? Получите бесплатную консультацию 
+            и персональные рекомендации от нашего финансового эксперта.
+          </p>
+          <a href="#consult-form" 
+             class="bg-gradient-to-r from-purple-500 to-cyan-400 text-black font-bold px-8 py-3 rounded-lg inline-block hover:scale-105 transition-transform">
+            Получить консультацию
+          </a>
+        </div>
       </div>
-    </div>
 
-    <p class="text-gray-300 max-w-2xl mx-auto mb-10">
-      Оставьте заявку — мы свяжемся с вами, чтобы обсудить детали участия и подобрать оптимальный пакет инвестирования.
-    </p>
+      <p class="text-gray-300 max-w-2xl mx-auto mb-10">
+        Оставьте заявку — мы свяжемся с вами, чтобы обсудить детали участия и подобрать оптимальный пакет инвестирования.
+      </p>
 
-    <!-- УНИВЕРСАЛЬНАЯ ФОРМА С ОТПРАВКОЙ В TELEGRAM -->
-    <div class="glow-card card-glow p-8 rounded-2xl">
-      <form id="leadForm"
-            action="https://refork-form.ваш-логин.workers.dev"  <!-- ЗАМЕНИТЕ НА СВОЙ URL -->
-            method="POST"
-            class="form-block">
+      <form action="https://formspree.io/f/your_form_id" method="POST"
+        class="p-8 text-left space-y-6 border border-white/10 rounded-2xl bg-white/5 shadow-[0_0_40px_rgba(0,255,255,0.08)]">
 
-        <!-- Honeypot поле для защиты от спама -->
-        <input type="text" name="website" style="display:none" autocomplete="off" />
-        
-        <!-- Скрытые поля для дополнительной информации -->
-        <input type="hidden" name="lang" value="ru">
-        <input type="hidden" name="source" value="ReFork Capital">
+        <div>
+          <label class="block text-sm text-gray-400 mb-1" for="name">Ваше имя *</label>
+          <input type="text" id="name" name="name" required
+            class="w-full bg-gray-900 border border-white/20 rounded-lg px-4 py-2 focus:border-cyan-400 focus:outline-none text-gray-100 placeholder-gray-500"
+            placeholder="Иван Иванов">
+        </div>
 
-        <label>
-          Ваше имя *
-          <input type="text" name="name" placeholder="Иван Иванов" required>
-        </label>
+        <div>
+          <label class="block text-sm text-gray-400 mb-1" for="telegram">Telegram *</label>
+          <input type="text" id="telegram" name="telegram" required
+            pattern="^@[A-Za-z0-9_]{5,32}$"
+            title="Пожалуйста, введите корректный логин Telegram в формате @username"
+            class="w-full bg-gray-900 border border-white/20 rounded-lg px-4 py-2 focus:border-cyan-400 focus:outline-none text-gray-100 placeholder-gray-500"
+            placeholder="@username">
+          <p class="text-xs text-gray-500 mt-1">Укажите ваш Telegram в формате @username</p>
+        </div>
 
-        <label>
-          Email / Telegram *
-          <input type="text" name="contact" placeholder="email@domain.com или @username" required>
-        </label>
+        <div>
+          <label class="block text-sm text-gray-400 mb-1" for="comment">Комментарий (опционально)</label>
+          <textarea id="comment" name="comment" rows="3"
+            class="w-full bg-gray-900 border border-white/20 rounded-lg px-4 py-2 focus:border-cyan-400 focus:outline-none text-gray-100 placeholder-gray-500 resize-none"
+            placeholder="Ваши вопросы или дополнительная информация"></textarea>
+        </div>
 
-        <label>
-          Выберите пакет *
-          <select name="package" required>
-            <option value="" disabled selected>Выберите пакет инвестирования</option>
-            <option value="Lite — $100">Lite — $100</option>
-            <option value="Pro — $300">Pro — $300</option>
-            <option value="Prime — $500">Prime — $500</option>
-            <option value="Консультация">Только консультация</option>
+        <div>
+          <label class="block text-sm text-gray-400 mb-1" for="package">Выберите пакет *</label>
+          <select id="package" name="package" required
+            class="w-full bg-gray-900 border border-white/20 rounded-lg px-4 py-2 text-gray-100 focus:border-cyan-400 focus:outline-none appearance-none cursor-pointer">
+            <option value="" disabled selected class="bg-gray-900 text-gray-400">Выберите пакет</option>
+            <option value="Lite" class="bg-gray-900 text-gray-100">Lite — $100</option>
+            <option value="Pro" class="bg-gray-900 text-gray-100">Pro — $300</option>
+            <option value="Prime" class="bg-gray-900 text-gray-100">Prime — $500</option>
           </select>
-        </label>
+        </div>
 
-        <label>
-          Сообщение *
-          <textarea name="message" rows="4" placeholder="Расскажите о ваших целях инвестирования или задайте вопросы..." required></textarea>
-        </label>
+        <div class="text-center pt-4">
+          <button type="submit"
+            class="bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-8 py-3 rounded-lg hover:opacity-90 transition">
+            Отправить заявку
+          </button>
+        </div>
 
-        <button type="submit" id="leadSubmit">Отправить заявку</button>
-
-        <p class="note">
-          Мы свяжемся с вами в течение 24 часов. Отправка заявки не накладывает никаких обязательств.
+        <p class="text-xs text-gray-500 text-center pt-4">
+          * Обязательные поля для заполнения
+        </p>
+        <p class="text-xs text-gray-500 text-center">
+          Ваши данные защищены. Отправка заявки не является финансовым обязательством.
         </p>
       </form>
     </div>
-  </div>
-</section>
+  </section>
 
 <footer class="py-10 text-center text-sm text-gray-500 border-t border-white/10">
   <div class="space-y-1 mb-4">  <!-- Большие отступы -->
@@ -1150,63 +1036,5 @@ select option {
     "logo": "https://raw.githubusercontent.com/ваш-username/ваш-repo/main/logo.png"
   }
   </script>
-
-  <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("leadForm");
-  const btn = document.getElementById("leadSubmit");
-
-  if (!form) return;
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    btn.disabled = true;
-    const oldText = btn.textContent;
-    btn.textContent = "Отправка...";
-
-    try {
-      const data = new FormData(form);
-      const res = await fetch(form.action, { method: "POST", body: data });
-
-      if (res.ok) {
-        showToast("✅ Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.");
-        form.reset();
-      } else {
-        showError("❌ Ошибка отправки. Пожалуйста, попробуйте позже или свяжитесь с нами напрямую.");
-      }
-    } catch (err) {
-      showError("⚠️ Ошибка сети. Пожалуйста, проверьте соединение и попробуйте снова.");
-    } finally {
-      btn.disabled = false;
-      btn.textContent = oldText;
-    }
-  });
-
-  function showToast(msg) {
-    const el = document.createElement("div");
-    el.className = "success-toast";
-    el.textContent = msg;
-    document.body.appendChild(el);
-    setTimeout(() => {
-      el.style.transition = "opacity 0.3s";
-      el.style.opacity = "0";
-      setTimeout(() => el.remove(), 300);
-    }, 5000);
-  }
-
-  function showError(msg) {
-    const el = document.createElement("div");
-    el.className = "error-toast";
-    el.textContent = msg;
-    document.body.appendChild(el);
-    setTimeout(() => {
-      el.style.transition = "opacity 0.3s";
-      el.style.opacity = "0";
-      setTimeout(() => el.remove(), 300);
-    }, 5000);
-  }
-});
-</script>
-  
 </body>
 </html>
