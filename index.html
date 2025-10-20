@@ -912,11 +912,14 @@ select option {
   </div>
 
   <div>
-    <label class="block text-sm text-gray-400 mb-1" for="contact">Email / Telegram *</label>
-    <input type="text" id="contact" name="contact" required
-      class="w-full bg-gray-900 border border-white/20 rounded-lg px-4 py-2 focus:border-cyan-400 focus:outline-none text-gray-100 placeholder-gray-500"
-      placeholder="email@domain.com или @username">
-  </div>
+          <label class="block text-sm text-gray-400 mb-1" for="telegram">Telegram *</label>
+          <input type="text" id="telegram" name="telegram" required
+            pattern="^@[A-Za-z0-9_]{5,32}$"
+            title="Пожалуйста, введите корректный логин Telegram в формате @username"
+            class="w-full bg-gray-900 border border-white/20 rounded-lg px-4 py-2 focus:border-cyan-400 focus:outline-none text-gray-100 placeholder-gray-500"
+            placeholder="@username">
+          <p class="text-xs text-gray-500 mt-1">Укажите ваш Telegram в формате @username</p>
+        </div>
 
   <div>
     <label class="block text-sm text-gray-400 mb-1" for="package">Выберите пакет *</label>
