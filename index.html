@@ -891,60 +891,63 @@ select option {
         Оставьте заявку — мы свяжемся с вами, чтобы обсудить детали участия и подобрать оптимальный пакет инвестирования.
       </p>
 
-      <form action="https://formspree.io/f/your_form_id" method="POST"
-        class="p-8 text-left space-y-6 border border-white/10 rounded-2xl bg-white/5 shadow-[0_0_40px_rgba(0,255,255,0.08)]">
+      <form id="leadForm"
+      action="https://refork-form.<твой_логин>.workers.dev" 
+      method="POST"
+      class="p-8 text-left space-y-6 border border-white/10 rounded-2xl bg-white/5 shadow-[0_0_40px_rgba(0,255,255,0.08)]">
 
-        <div>
-          <label class="block text-sm text-gray-400 mb-1" for="name">Ваше имя *</label>
-          <input type="text" id="name" name="name" required
-            class="w-full bg-gray-900 border border-white/20 rounded-lg px-4 py-2 focus:border-cyan-400 focus:outline-none text-gray-100 placeholder-gray-500"
-            placeholder="Иван Иванов">
-        </div>
+  <!-- Honeypot защита -->
+  <input type="text" name="website" style="display:none" autocomplete="off" />
 
-        <div>
-          <label class="block text-sm text-gray-400 mb-1" for="telegram">Telegram *</label>
-          <input type="text" id="telegram" name="telegram" required
-            pattern="^@[A-Za-z0-9_]{5,32}$"
-            title="Пожалуйста, введите корректный логин Telegram в формате @username"
-            class="w-full bg-gray-900 border border-white/20 rounded-lg px-4 py-2 focus:border-cyan-400 focus:outline-none text-gray-100 placeholder-gray-500"
-            placeholder="@username">
-          <p class="text-xs text-gray-500 mt-1">Укажите ваш Telegram в формате @username</p>
-        </div>
+  <!-- Скрытые метаданные -->
+  <input type="hidden" name="lang" value="ru">
+  <input type="hidden" name="source" value="ReFork Capital">
 
-        <div>
-          <label class="block text-sm text-gray-400 mb-1" for="comment">Комментарий (опционально)</label>
-          <textarea id="comment" name="comment" rows="3"
-            class="w-full bg-gray-900 border border-white/20 rounded-lg px-4 py-2 focus:border-cyan-400 focus:outline-none text-gray-100 placeholder-gray-500 resize-none"
-            placeholder="Ваши вопросы или дополнительная информация"></textarea>
-        </div>
+  <div>
+    <label class="block text-sm text-gray-400 mb-1" for="name">Ваше имя *</label>
+    <input type="text" id="name" name="name" required
+      class="w-full bg-gray-900 border border-white/20 rounded-lg px-4 py-2 focus:border-cyan-400 focus:outline-none text-gray-100 placeholder-gray-500"
+      placeholder="Иван Иванов">
+  </div>
 
-        <div>
-          <label class="block text-sm text-gray-400 mb-1" for="package">Выберите пакет *</label>
-          <select id="package" name="package" required
-            class="w-full bg-gray-900 border border-white/20 rounded-lg px-4 py-2 text-gray-100 focus:border-cyan-400 focus:outline-none appearance-none cursor-pointer">
-            <option value="" disabled selected class="bg-gray-900 text-gray-400">Выберите пакет</option>
-            <option value="Lite" class="bg-gray-900 text-gray-100">Lite — $100</option>
-            <option value="Pro" class="bg-gray-900 text-gray-100">Pro — $300</option>
-            <option value="Prime" class="bg-gray-900 text-gray-100">Prime — $500</option>
-          </select>
-        </div>
+  <div>
+    <label class="block text-sm text-gray-400 mb-1" for="contact">Email / Telegram *</label>
+    <input type="text" id="contact" name="contact" required
+      class="w-full bg-gray-900 border border-white/20 rounded-lg px-4 py-2 focus:border-cyan-400 focus:outline-none text-gray-100 placeholder-gray-500"
+      placeholder="email@domain.com или @username">
+  </div>
 
-        <div class="text-center pt-4">
-          <button type="submit"
-            class="bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-8 py-3 rounded-lg hover:opacity-90 transition">
-            Отправить заявку
-          </button>
-        </div>
+  <div>
+    <label class="block text-sm text-gray-400 mb-1" for="package">Выберите пакет *</label>
+    <select id="package" name="package" required
+      class="w-full bg-gray-900 border border-white/20 rounded-lg px-4 py-2 text-gray-100 focus:border-cyan-400 focus:outline-none appearance-none cursor-pointer">
+      <option value="" disabled selected class="bg-gray-900 text-gray-400">Выберите пакет</option>
+      <option value="Lite — $100">Lite — $100</option>
+      <option value="Pro — $300">Pro — $300</option>
+      <option value="Prime — $500">Prime — $500</option>
+      <option value="Консультация">Только консультация</option>
+    </select>
+  </div>
 
-        <p class="text-xs text-gray-500 text-center pt-4">
-          * Обязательные поля для заполнения
-        </p>
-        <p class="text-xs text-gray-500 text-center">
-          Ваши данные защищены. Отправка заявки не является финансовым обязательством.
-        </p>
-      </form>
-    </div>
-  </section>
+  <div>
+    <label class="block text-sm text-gray-400 mb-1" for="message">Сообщение *</label>
+    <textarea id="message" name="message" rows="4" required
+      class="w-full bg-gray-900 border border-white/20 rounded-lg px-4 py-2 focus:border-cyan-400 focus:outline-none text-gray-100 placeholder-gray-500 resize-none"
+      placeholder="Расскажите о целях инвестирования или задайте вопросы..."></textarea>
+  </div>
+
+  <div class="text-center pt-4">
+    <button type="submit" id="leadSubmit"
+      class="bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-8 py-3 rounded-lg hover:opacity-90 transition">
+      Отправить заявку
+    </button>
+  </div>
+
+  <p class="text-xs text-gray-500 text-center pt-4">
+    Мы свяжемся с вами в течение 24 часов. Отправка заявки не накладывает никаких обязательств.
+  </p>
+</form>
+
 
 <footer class="py-10 text-center text-sm text-gray-500 border-t border-white/10">
   <div class="space-y-1 mb-4">  <!-- Большие отступы -->
@@ -1036,5 +1039,55 @@ select option {
     "logo": "https://raw.githubusercontent.com/ваш-username/ваш-repo/main/logo.png"
   }
   </script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("leadForm");
+  const btn = document.getElementById("leadSubmit");
+
+  if (!form) return;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    btn.disabled = true;
+    const oldText = btn.textContent;
+    btn.textContent = "Отправка...";
+
+    try {
+      const data = new FormData(form);
+      const res = await fetch(form.action, { method: "POST", body: data });
+
+      if (res.ok) {
+        showToast("✅ Заявка успешно отправлена!");
+        form.reset();
+      } else {
+        showError("❌ Ошибка отправки. Попробуйте позже.");
+      }
+    } catch {
+      showError("⚠️ Ошибка соединения. Проверьте интернет.");
+    } finally {
+      btn.disabled = false;
+      btn.textContent = oldText;
+    }
+  });
+
+  function showToast(msg) {
+    const el = document.createElement("div");
+    el.className = "success-toast";
+    el.textContent = msg;
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 4000);
+  }
+
+  function showError(msg) {
+    const el = document.createElement("div");
+    el.className = "error-toast";
+    el.textContent = msg;
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 4000);
+  }
+});
+</script>
+    
 </body>
 </html>
