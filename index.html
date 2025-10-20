@@ -898,6 +898,7 @@ select option {
 
   <!-- Honeypot защита -->
   <input type="text" name="website" style="display:none" autocomplete="off" />
+  <input type="hidden" name="_redirect" value="https://lucas555-ops.github.io/ReFork-Capital/thank-you.html">
 
   <!-- Скрытые метаданные -->
   <input type="hidden" name="lang" value="ru">
@@ -1058,13 +1059,20 @@ document.addEventListener("DOMContentLoaded", () => {
       const res = await fetch(form.action, { method: "POST", body: data });
 
       if (res.ok) {
-        showToast("✅ Заявка успешно отправлена!");
+        showToast("✅ Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.");
+        
+        // Редирект через 3 секунды
+        setTimeout(() => {
+          const redirectUrl = "https://lucas555-ops.github.io/ReFork-Capital/thank-you.html";
+          window.location.href = redirectUrl;
+        }, 3000);
+        
         form.reset();
       } else {
-        showError("❌ Ошибка отправки. Попробуйте позже.");
+        showError("❌ Ошибка отправки. Пожалуйста, попробуйте позже или свяжитесь с нами напрямую.");
       }
-    } catch {
-      showError("⚠️ Ошибка соединения. Проверьте интернет.");
+    } catch (err) {
+      showError("⚠️ Ошибка сети. Пожалуйста, проверьте соединение и попробуйте снова.");
     } finally {
       btn.disabled = false;
       btn.textContent = oldText;
@@ -1076,7 +1084,11 @@ document.addEventListener("DOMContentLoaded", () => {
     el.className = "success-toast";
     el.textContent = msg;
     document.body.appendChild(el);
-    setTimeout(() => el.remove(), 4000);
+    setTimeout(() => {
+      el.style.transition = "opacity 0.3s";
+      el.style.opacity = "0";
+      setTimeout(() => el.remove(), 300);
+    }, 2500); // Уменьшил время показа перед редиректом
   }
 
   function showError(msg) {
@@ -1084,7 +1096,11 @@ document.addEventListener("DOMContentLoaded", () => {
     el.className = "error-toast";
     el.textContent = msg;
     document.body.appendChild(el);
-    setTimeout(() => el.remove(), 4000);
+    setTimeout(() => {
+      el.style.transition = "opacity 0.3s";
+      el.style.opacity = "0";
+      setTimeout(() => el.remove(), 300);
+    }, 5000);
   }
 });
 </script>
