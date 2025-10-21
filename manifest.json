@@ -1,0 +1,31 @@
+<!-- НАЙТИ в <head> этот тег: -->
+<meta name="theme-color" content="#0ea5e9">
+
+<!-- И ДОБАВИТЬ ПОСЛЕ НЕГО: -->
+<link rel="manifest" href="/manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="https://raw.githubusercontent.com/ваш-username/ваш-repo/main/apple-touch-icon.png">
+
+<!-- И СОЗДАТЬ ФАЙЛ manifest.json в корне проекта: -->
+{
+  "name": "ReFork Capital",
+  "short_name": "ReFork",
+  "description": "Методы капитализации и умножения криптовалюты",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0b0e14",
+  "theme_color": "#0ea5e9",
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/ваш-username/ваш-repo/main/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://raw.githubusercontent.com/ваш-username/ваш-repo/main/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
