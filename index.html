@@ -207,8 +207,67 @@ html, body {
     font-size: 1.25rem;
   }
 }
+/* Стили для крестика закрытия */
+.exit-popup-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: #9ca3af;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
 
+.exit-popup-close:hover {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+  transform: scale(1.1);
+}
+
+.exit-popup-close:active {
+  transform: scale(0.95);
+}
+
+/* Делаем контент попапа relative для позиционирования крестика */
+.exit-popup-content {
+  position: relative;
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  padding: 40px 30px 30px;
+  border-radius: 20px;
+  max-width: 500px;
+  text-align: center;
+  border: 2px solid #22d3ee;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 640px) {
+  .exit-popup-content {
+    margin: 20px;
+    padding: 30px 20px 20px;
+  }
+  
+  .exit-popup-close {
+    top: 10px;
+    right: 10px;
+    width: 28px;
+    height: 28px;
+    font-size: 20px;
+  }
+}
   </style>
+
+	
 </head>
 <body>
   <!-- Loading Screen -->
@@ -1967,21 +2026,42 @@ summary::marker, summary::-webkit-details-marker {
       });
 
       function showExitPopup() {
-        const popup = document.createElement('div');
-        popup.className = 'exit-popup';
-        popup.innerHTML = `
-          <div class="exit-popup-content">
-            <h3 class="text-3xl font-bold mb-4 text-cyan-400">Подождите! 🎁</h3>
-            <p class="text-xl mb-6 text-gray-300">Получите бонус +10% к первому депозиту<br>при регистрации сегодня</p>
-            <div class="flex gap-4 justify-center">
-              <button onclick="window.location.href='#apply'" class="bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-6 py-3 rounded-lg">Забрать бонус</button>
-              <button onclick="this.closest('.exit-popup').remove()" class="border border-gray-500 text-gray-300 px-6 py-3 rounded-lg hover:bg-gray-800">Закрыть</button>
-            </div>
-          </div>
-        `;
-        document.body.appendChild(popup);
-      }
-
+  const popup = document.createElement('div');
+  popup.className = 'exit-popup';
+  popup.innerHTML = `
+    <div class="exit-popup-content">
+      <!-- Добавляем крестик закрытия -->
+      <button class="exit-popup-close" onclick="this.closest('.exit-popup').remove()" 
+              aria-label="Закрыть окно">
+        <span>×</span>
+      </button>
+      
+      <h3 class="text-3xl font-bold mb-4 text-cyan-400">Заберите подарок!</h3>
+      <p class="text-xl mb-6 text-gray-300">
+        Инструкция по настройке фильтров терминала GMGN для эффективной DEX торговли.
+      </p>
+      <div class="flex gap-4 justify-center">
+        <button onclick="window.open('https://gmgn.ai', '_blank'); this.closest('.exit-popup').remove();" 
+                class="bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-6 py-3 rounded-lg hover:scale-105 transition-transform">
+          GMGN
+        </button>
+        <button onclick="window.open('https://t.me/c/1892588438/4', '_blank'); this.closest('.exit-popup').remove();" 
+                class="border border-gray-500 text-gray-300 px-6 py-3 rounded-lg hover:bg-gray-800 hover:text-white transition-colors">
+          Инструкция
+        </button>
+      </div>
+    </div>
+  `;
+  
+  // Закрытие при клике на фон
+  popup.addEventListener('click', function(e) {
+    if (e.target === popup) {
+      popup.remove();
+    }
+  });
+  
+  document.body.appendChild(popup);
+}
       // Форма - улучшенная обработка
       const form = document.getElementById('leadForm');
       const btn = document.getElementById('leadSubmit');
