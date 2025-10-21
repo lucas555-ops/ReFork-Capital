@@ -157,6 +157,49 @@
     @supports (-webkit-touch-callout:none){
       .min-h-screen{min-height:-webkit-fill-available}
     }
+	
+	/* Мобильная версия: Задержка для появления каждого этапа */
+@keyframes delay-slide-up {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Применяем задержку для каждого этапа на мобильных устройствах */
+@media (max-width: 480px) {
+  .timeline-stage:nth-child(1) {
+    animation: delay-slide-up 0.5s ease-in-out 0.2s forwards;
+  }
+
+  .timeline-stage:nth-child(2) {
+    animation: delay-slide-up 0.5s ease-in-out 0.4s forwards;
+  }
+
+  .timeline-stage:nth-child(3) {
+    animation: delay-slide-up 0.5s ease-in-out 0.6s forwards;
+  }
+
+  .timeline-stage:nth-child(4) {
+    animation: delay-slide-up 0.5s ease-in-out 0.8s forwards;
+  }
+
+  .timeline-stage:nth-child(5) {
+    animation: delay-slide-up 0.5s ease-in-out 1s forwards;
+  }
+
+  /* Дополнительные стили для мобильных устройств */
+  .timeline-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+
+  .stage-icon-mobile {
+    width: 36px;
+    height: 36px;
+    font-size: 1.25rem;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -1627,12 +1670,9 @@
       <div class="glow-card p-8 max-w-2xl mx-auto border border-cyan-500/30">
         <h3 class="text-2xl font-bold text-cyan-400 mb-4">Остались вопросы?</h3>
         <p class="text-gray-300 mb-6">
-          Получите персональную консультацию и все ответы в течение 15 минут
+          Получите персональную консультацию и ответы на все вопросы за 15 минут
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="#apply" class="bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold px-6 py-3 rounded-lg hover:scale-105 transition-transform">
-            📝 Оставить заявку
-          </a>
           <a href="https://t.me/c/1892588438/4" 
              target="_blank"
              class="border border-cyan-400 text-cyan-400 font-bold px-6 py-3 rounded-lg hover:bg-cyan-400/10 transition-colors">
@@ -1664,29 +1704,11 @@ summary::marker, summary::-webkit-details-marker {
 
     <section id="apply" class="py-20 text-center">
       <div class="max-w-4xl mx-auto px-4">
-        <h2 class="text-3xl font-extrabold mb-6 bg-gradient-to-r from-purple-500 to-cyan-400 text-transparent bg-clip-text">
-          Подать заявку на участие
+        <h2 class="text-3xl font-extrabold mb-6 bg-gradient-to-r from-blue-500 to-blue-400 text-transparent bg-clip-text">
+          Уже определились?</p>Заполните форму ниже и оставьте заявку 
         </h2>
-        
-        <div class="mb-12">
-          <div class="glow-card card-glow p-8 mb-8 max-w-2xl mx-auto">
-            <h3 class="text-2xl font-bold text-cyan-400 mb-4">Бесплатная консультация</h3>
-            <p class="text-gray-300 mb-6">
-              Не уверены в выборе пакета? Получите бесплатную консультацию 
-              и персональные рекомендации от нашего финансового эксперта.
-            </p>
-            <a href="https://t.me/c/1892588438/4" 
-               target="_blank"
-               rel="noopener noreferrer"
-               class="bg-gradient-to-r from-purple-500 to-cyan-400 text-black font-bold px-6 py-3 rounded-lg text-center hover:scale-105 transition-transform flex items-center justify-center gap-2">
-              <span>📈</span>
-              <span>Получить консультацию в Telegram</span>
-            </a>
-          </div>
-        </div>
-
         <p class="text-gray-300 max-w-2xl mx-auto mb-10">
-          Оставьте заявку — мы свяжемся с вами, чтобы обсудить детали участия и подобрать оптимальный пакет инвестирования.
+          Мы свяжемся с вами в течение 1 часа для уточнения деталей и запуска процесса ReFork Capital.
         </p>
 
         <form id="leadForm"
@@ -1746,7 +1768,7 @@ summary::marker, summary::-webkit-details-marker {
           </div>
 
           <p class="text-xs text-gray-500 text-center pt-4">
-            Мы свяжемся с вами в течение 24 часов. Отправка заявки не накладывает никаких обязательств.
+            🔒 Конфиденциальность гарантирована. Отправка заявки не накладывает никаких обязательств.
           </p>
         </form>
       </div>
