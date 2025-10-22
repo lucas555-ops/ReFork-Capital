@@ -115,7 +115,7 @@ html, body {
   <meta property="og:url" content="https://lucas555-ops.github.io/ReFork-Capital/">
   <meta property="og:site_name" content="ReFork Capital">
   <meta property="og:title" content="ReFork Capital — Методы капитализации криптовалюты">
-  <meta property="og:description" content="Система капитализации и умножения криптовалюты. ROI до 100% в месяц.">
+  <meta property="og:description" content="Система капитализации и умножения криптовалюты. ROI до 80% в месяц.">
   <meta property="og:image" content="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -318,6 +318,10 @@ html, body {
     font-size: 20px;
   }
 }
+/* ✅ Повышаем контраст текста */
+.text-gray-400 { color: #d1d5db !important; }
+.text-gray-300 { color: #e5e7eb !important; }
+
   </style>
 
 	
@@ -384,61 +388,94 @@ html, body {
             <div class="flex flex-wrap gap-3">
               <span class="glass rounded-full px-4 py-2 inline-flex items-center gap-2 border border-yellow-400/50 shadow-[0_0_15px_rgba(250,204,21,0.4)]">
                 <span class="dot bg-yellow-400"></span>
-                <span class="text-sm font-medium">Внимание</span>
+                <span class="text-sm font-medium">Ликвидность</span>
               </span>
               <span class="glass rounded-full px-4 py-2 inline-flex items-center gap-2 border border-cyan-400/50 shadow-[0_0_15px_rgba(34,211,238,0.4)]">
                 <span class="dot bg-cyan-400"></span>
-                <span class="text-sm font-medium">Ликвидность</span>
+                <span class="text-sm font-medium">Прибыль</span>
               </span>
               <span class="glass rounded-full px-4 py-2 inline-flex items-center gap-2 border border-green-400/50 shadow-[0_0_15px_rgba(74,222,128,0.4)]">
                 <span class="dot bg-green-400"></span>
-                <span class="text-sm font-medium">Прибыль</span>
+                <span class="text-sm font-medium">Результат</span>
               </span>
             </div>
 
-            <h1 class="text-5xl md:text-6xl font-black leading-tight">
-              <span class="bg-gradient-to-r from-green-400 via-cyan-400 to-purple-500 text-transparent bg-clip-text">
-                ReFork Capital
-              </span>
-            </h1>
+           
 
-            <h2 class="text-xl md:text-2xl text-gray-300 font-light leading-relaxed">
-              Методы капитализации<br>и умножения криптовалюты
-            </h2>
+  <!-- Главный заголовок (единственный H1) -->
+  <h1 class="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
+    Превращаем <span class="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 text-transparent bg-clip-text">мемы</span>
+    в <span class="bg-gradient-to-r from-green-400 to-cyan-400 text-transparent bg-clip-text">доход</span>
+  </h1>
 
-            <div class="space-y-3 text-gray-400">
-              <p class="text-lg leading-relaxed">
-                Система организации сетевого трафика и рыночного внимания<br>в ликвидность и фиксированную прибыль.
-              </p>
-              <p class="text-cyan-400 italic">
-                Превращаем рыночные циклы в финансовые результаты.
-              </p>
-            </div>
+  <!-- Подзаголовок с ценностным предложением -->
+  
+  <h2 class="text-xl md:text-2xl text-gray-300 font-light leading-relaxed max-w-3xl">
+    Алгоритмы роста и система влияния на<br class="hidden md:block">
+    мем-токены для извлечения прибыли.
+  </h2>
 
-            <div class="flex gap-4 pt-2">
-              <div class="glow-card p-3 text-left min-w-0">
-                <div class="text-2xl font-bold text-cyan-400 leading-none">100%+</div>
-                <div class="text-xs text-gray-400 mt-1">ROI в месяц</div>
-              </div>
-              <div class="glow-card p-3 text-left min-w-0">
-                <div class="text-2xl font-bold text-cyan-400 leading-none">100X</div>
-                <div class="text-xs text-gray-400 mt-1">Next Pump</div>
-              </div>
-              <div class="glow-card p-3 text-left min-w-0">
-                <div class="text-2xl font-bold text-cyan-400 leading-none">24/7</div>
-                <div class="text-xs text-gray-400 mt-1">Мониторинг</div>
-              </div>
-            </div>
+  <!-- Ключевые преимущества -->
+  <div class="flex flex-wrap gap-3 text-sm">
+    <div class="flex items-center gap-2 text-gray-300">
+      <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+      </svg>
+      <span>AI-аналитика трендов</span>
+    </div>
+    <div class="flex items-center gap-2 text-gray-300">
+      <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+      </svg>
+      <span>SMM-капитализация</span>
+    </div>
+    <div class="flex items-center gap-2 text-gray-300">
+      <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+      </svg>
+      <span>Фиксация на пиках</span>
+    </div>
+  </div>
 
-            <div class="flex flex-col sm:flex-row gap-3 pt-2">
-              <a href="#method" class="bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-8 py-4 rounded-lg text-center hover:scale-105 transition-transform">
-                Изучить Методы
-              </a>
-              <a href="#process" class="border border-cyan-400/50 text-cyan-400 font-bold px-8 py-4 rounded-lg text-center hover:bg-cyan-400/10 transition-colors">
-                Как Работает Система
-              </a>
-            </div>
-          </div>
+  <!-- Метрики (более реалистичные) -->
+  <div class="flex gap-4 pt-2">
+    <div class="glow-card p-3 text-left min-w-0 flex-3">
+      <div class="text-2xl font-bold text-cyan-400 leading-none">30-80%</div>
+      <div class="text-xs text-gray-400 mt-1">Средний ROI за цикл*</div>
+    </div>
+    <div class="glow-card p-3 text-left min-w-0 flex-3">
+      <div class="text-2xl font-bold text-cyan-400 leading-none">14-21</div>
+      <div class="text-xs text-gray-400 mt-1">Дней на цикл</div>
+    </div>
+    <div class="glow-card p-3 text-left min-w-0 flex-3">
+      <div class="text-2xl font-bold text-cyan-400 leading-none">100Х</div>
+      <div class="text-xs text-gray-400 mt-1">Next Pump</div>
+    </div>
+  </div>
+  </p>
+  <p class="text-cyan-400 italic">
+  Ваша доля — в каждом движении рынка.
+  </p>
+
+
+  <!-- CTA кнопки -->
+  <div class="flex flex-col sm:flex-row gap-3 pt-4">
+    <a href="#packages" 
+       class="bg-gradient-to-r from-green-400 to-emerald-500 text-black font-bold px-8 py-4 rounded-lg text-center hover:scale-105 transition-transform shadow-lg shadow-green-500/25">
+      Выбрать пакет
+    </a>
+    <a href="#full-cycle" 
+       class="border border-cyan-400/50 text-cyan-400 font-bold px-8 py-4 rounded-lg text-center hover:bg-cyan-400/10 transition-colors">
+      Как это работает
+    </a>
+  </div>
+
+  <!-- Дисклеймер -->
+  <p class="text-xs text-gray-500 pt-2">
+    * Прошлые результаты не гарантируют будущей доходности. 
+    Криптовалюты — высокорисковые активы.
+  </p>
+</div>
 
           <div class="relative">
             <div class="absolute -inset-4 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-2xl blur-3xl opacity-50"></div>
@@ -471,57 +508,57 @@ html, body {
                     <div class="border-r border-gray-700/30"></div>
                   </div>
                 </div>
+				
                 
-                <svg class="w-full h-full" viewBox="0 0 400 120" preserveAspectRatio="none">
-                  <defs>
-                    <linearGradient id="chartGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.8"/>
-                      <stop offset="100%" stop-color="#22d3ee" stop-opacity="0.1"/>
-                    </linearGradient>
-                    <linearGradient id="profitGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                      <stop offset="0%" stop-color="#10b981" stop-opacity="0.6"/>
-                      <stop offset="100%" stop-color="#10b981" stop-opacity="0.1"/>
-                    </linearGradient>
-                    <linearGradient id="chartLineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stop-color="#22d3ee"/>
-                      <stop offset="50%" stop-color="#10b981"/>
-                      <stop offset="100%" stop-color="#8b5cf6"/>
-                    </linearGradient>
-                  </defs>
-                  
-                  <rect x="0" y="80" width="400" height="40" fill="url(#profitGradient)" class="opacity-0 profit-zone" style="animation-delay:1s"/>
-                  
-                  <path id="chartArea" d="M0,120 C50,100 100,130 150,110 C200,90 250,120 300,80 C350,40 400,60 400,60 L400,120 Z" 
-                        fill="url(#chartGradient)" class="chart-animation"/>
-                  
-                  <path id="chartLine" d="M0,120 C50,100 100,130 150,110 C200,90 250,120 300,80 C350,40 400,60 400,60" 
-                        stroke="url(#chartLineGradient)" stroke-width="3" fill="none" class="chart-animation"/>
-                  
-                  <g class="investment-points">
-                    <circle cx="100" cy="130" r="4" fill="#22d3ee" class="investment-dot">
-                      <title>Entry Point</title>
-                    </circle>
-                    <circle cx="250" cy="120" r="4" fill="#10b981" class="investment-dot">
-                      <title>Growth Phase</title>
-                    </circle>
-                    <circle cx="400" cy="60" r="4" fill="#8b5cf6" class="investment-dot">
-                      <title>Profit Peak</title>
-                    </circle>
-                  </g>
-                  
-                  <circle class="pulse-effect" cx="100" cy="130" r="2" fill="#22d3ee">
-                    <animate attributeName="r" values="2;5;2" dur="2s" begin="0s" repeatCount="indefinite"/>
-                    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" begin="0s" repeatCount="indefinite"/>
-                  </circle>
-                  <circle class="pulse-effect" cx="250" cy="120" r="2" fill="#10b981">
-                    <animate attributeName="r" values="2;5;2" dur="2s" begin="1s" repeatCount="indefinite"/>
-                    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" begin="1s" repeatCount="indefinite"/>
-                  </circle>
-                  <circle class="pulse-effect" cx="400" cy="60" r="2" fill="#8b5cf6">
-                    <animate attributeName="r" values="2;5;2" dur="2s" begin="2s" repeatCount="indefinite"/>
-                    <animate attributeName="opacity" values="0.5;1;0.5" dur="2s" begin="2s" repeatCount="indefinite"/>
-                  </circle>
-                </svg>
+                <!-- Пульс рынка -->
+<svg viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" class="w-full h-32">
+  <defs>
+    <linearGradient id="candleUp" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#064e3b"/>
+    </linearGradient>
+    <linearGradient id="candleDown" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ef4444"/>
+      <stop offset="100%" stop-color="#7f1d1d"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Свечи -->
+  <g id="candles" filter="url(#glow)">
+    <rect x="10" y="80" width="4" height="20" fill="url(#candleUp)">
+      <animate attributeName="y" values="80;50;80" dur="2s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="30" y="60" width="4" height="40" fill="url(#candleDown)">
+      <animate attributeName="y" values="60;90;60" dur="2.5s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="50" y="40" width="4" height="60" fill="url(#candleUp)">
+      <animate attributeName="y" values="40;70;40" dur="3s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="70" y="60" width="4" height="40" fill="url(#candleDown)">
+      <animate attributeName="y" values="60;80;60" dur="2.8s" repeatCount="indefinite"/>
+    </rect>
+    <rect x="90" y="30" width="4" height="70" fill="url(#candleUp)">
+      <animate attributeName="y" values="30;60;30" dur="2.2s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <!-- Пульсирующая линия -->
+  <polyline points="0,100 50,80 100,90 150,70 200,100 250,60 300,80 350,40 400,70"
+            fill="none"
+            stroke="#22d3ee"
+            stroke-width="2"
+            stroke-linecap="round">
+    <animate attributeName="stroke-dasharray" values="0,1000;1000,0" dur="3s" repeatCount="indefinite"/>
+  </polyline>
+</svg>
+
                 
                 <div class="absolute bottom-2 left-10 text-xs text-cyan-400 opacity-0 phase-label" style="animation-delay:0.5s">
                   ↓ Вход
@@ -756,67 +793,68 @@ html, body {
   </div>
 </section>
 
-    <!-- Metrics Grid -->
-    <div class="grid md:grid-cols-3 gap-8 mb-12">
-      <div class="glow-card p-8 text-center">
-        <div class="text-5xl font-black text-cyan-400 mb-2">$10K → $30K</div>
-        <h4 class="text-xl font-bold text-white mb-3">Средний цикл</h4>
-        <p class="text-gray-300">Типичное умножение капитала за 2-3 недели активного цикла</p>
-      </div>
-      
-      <div class="glow-card p-8 text-center border-2 border-green-400">
-        <div class="text-5xl font-black text-green-400 mb-2">200%+</div>
-        <h4 class="text-xl font-bold text-white mb-3">ROI на цикл</h4>
-        <p class="text-gray-300">При оптимальных условиях и правильной фиксации прибыли</p>
-      </div>
-      
-      <div class="glow-card p-8 text-center">
-        <div class="text-5xl font-black text-purple-400 mb-2">4-6</div>
-        <h4 class="text-xl font-bold text-white mb-3">Циклов/месяц</h4>
-        <p class="text-gray-300">Параллельная работа с несколькими проектами одновременно</p>
-      </div>
-    </div>
+<!-- Key Success -->
+<div class="text-center mb-16 max-w-4xl mx-auto px-4">
+  <h2 class="text-7xl font-bold text-cyan-400 mb-6">Ключ успеха</h2>
+  <p class="text-2xl text-gray-300 leading-tight">
+    Раннее обнаружение тренда через AI-мониторинг Twitter<br>
+    быстрый запуск мем-кампании и фиксация прибыли на пике FOMO-волны
+  </p>
+</div>
 
-    <!-- Case Study -->
-    <div class="glow-card card-glow p-8 border-l-4 border-cyan-400">
-      <h3 class="text-2xl font-bold text-cyan-400 mb-4">📖 Кейс: PEPE 2.0 Revival</h3>
-      <div class="grid md:grid-cols-2 gap-6">
-        <div>
-          <h4 class="font-bold text-white mb-3">Входные данные:</h4>
-          <ul class="space-y-2 text-gray-300">
-            <li>• Инвестиция: $5,000</li>
-            <li>• Старт цены: $0.000012</li>
-            <li>• Маркет кап: $50K</li>
-            <li>• Срок цикла: 18 дней</li>
-          </ul>
-        </div>
-        <div>
-          <h4 class="font-bold text-white mb-3">Результаты:</h4>
-          <ul class="space-y-2 text-gray-300">
-            <li>• Выход: $17,500</li>
-            <li>• Пиковая цена: $0.000048</li>
-            <li>• Пик МС: $780K (15.6x)</li>
-            <li>• <span class="text-green-400 font-bold">ROI: +250%</span></li>
-          </ul>
-        </div>
-      </div>
-      <div class="mt-6 p-4 bg-green-500/10 rounded-lg border border-green-500/30">
-        <p class="text-sm text-gray-300">
-          <span class="text-green-400 font-bold">Ключ успеха:</span> Раннее обнаружение тренда через AI-мониторинг Twitter, 
-          быстрый запуск мем-кампании и фиксация прибыли на пике FOMO-волны.
-        </p>
-      </div>
+<!-- Metrics Grid -->
+<div class="grid md:grid-cols-3 gap-8 mb-12 max-w-7xl mx-auto px-4">
+  <div class="glow-card p-6 text-center">
+    <div class="text-4xl font-black text-cyan-400 mb-2">$10K → $30K</div>
+    <h4 class="text-xl font-bold text-white mb-3">Средний цикл</h4>
+    <p class="text-gray-300">Типичное умножение капитала за 2-3 недели активного цикла</p>
+  </div>
+  
+  <div class="glow-card p-6 text-center border-2 border-green-400">
+    <div class="text-4xl font-black text-green-400 mb-2">200%+</div>
+    <h4 class="text-xl font-bold text-white mb-3">ROI на цикл</h4>
+    <p class="text-gray-300">При оптимальных условиях и правильной фиксации прибыли</p>
+  </div>
+  
+  <div class="glow-card p-6 text-center">
+    <div class="text-4xl font-black text-purple-400 mb-2">4-6</div>
+    <h4 class="text-xl font-bold text-white mb-3">Циклов/месяц</h4>
+    <p class="text-gray-300">Параллельная работа с несколькими проектами одновременно</p>
+  </div>
+</div>
+
+<!-- Case Study -->
+<div class="glow-card card-glow p-6 border-l-4 border-cyan-400 max-w-4xl mx-auto px-4">
+  <h3 class="text-2xl font-bold text-cyan-400 mb-4 text-center">📖 Кейс: PEPE 2.0 Revival</h3>
+  <div class="grid md:grid-cols-2 gap-6">
+    <div class="text-center">
+      <h4 class="font-bold text-white mb-3">Входные данные:</h4>
+      <ul class="space-y-2 text-gray-300">
+        <li>• Инвестиция: $5,000</li>
+        <li>• Старт цены: $0.000012</li>
+        <li>• Маркет кап: $50K</li>
+        <li>• Срок цикла: 18 дней</li>
+      </ul>
+    </div>
+    <div class="text-center">
+      <h4 class="font-bold text-white mb-3">Результаты:</h4>
+      <ul class="space-y-2 text-gray-300">
+        <li>• Выход: $17,500</li>
+        <li>• Пиковая цена: $0.000048</li>
+        <li>• Пик МС: $780K (15.6x)</li>
+        <li>• <span class="text-green-400 font-bold">ROI: +250%</span></li>
+      </ul>
     </div>
   </div>
-</section>
+</div>
 
 <!-- Исправленная секция Психология Мем-Экономики -->
-<section id="meme-psychology" aria-labelledby="meme-psychology-title" class="py-24 bg-gradient-to-b from-black to-purple-900/20">
+<section id="meme-psychology" aria-labelledby="meme-psychology-title" class="py-24 bg-gradient-to-b from-black/20 to-purple-900/20">
   <h2 id="meme-psychology-title" class="sr-only">Психология Мем-Экономики</h2>
   <div class="max-w-6xl mx-auto px-4">
     <div class="text-center mb-16">
       <h2 class="text-4xl md:text-5xl font-black mb-6">
-        <span class="bg-gradient-to-r from-purple-400 to-pink-400 text-transparent bg-clip-text">
+        <span class="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 text-transparent bg-clip-text">
           Психология Мем-Экономики
         </span>
       </h2>
@@ -1280,6 +1318,12 @@ html, body {
     font-size: 1.25rem;
   }
 }
+.glow-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 25px rgba(6,182,212,0.4);
+  transition: all 0.3s ease;
+}
+
 </style>
 
 <!-- Секрет ReFork Protocol - ИСПРАВЛЕНО -->
@@ -1564,7 +1608,7 @@ html, body {
       </div>
     </section>
 	
-	<section id="faq" class="py-24 bg-gradient-to-b from-black to-purple-900/20">
+<section id="faq" class="py-24 bg-gradient-to-b from-black to-purple-900/20">
   <div class="max-w-6xl mx-auto px-4">
     <div class="text-center mb-16">
       <h2 class="text-3xl md:text-4xl font-extrabold mb-4 bg-gradient-to-r from-purple-500 to-cyan-400 text-transparent bg-clip-text">
@@ -1785,25 +1829,6 @@ html, body {
       </details>
     </div>
 
-    <!-- CTA после FAQ -->
-    <div class="text-center mt-12">
-      <div class="glow-card p-8 max-w-2xl mx-auto border border-cyan-500/30">
-        <h3 class="text-2xl font-bold text-cyan-400 mb-4">Остались вопросы?</h3>
-        <p class="text-gray-300 mb-6">
-          Получите персональную консультацию и ответы на все вопросы за 15 минут
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="https://t.me/c/1892588438/4" 
-             target="_blank"
-             class="border border-cyan-400 text-cyan-400 font-bold px-6 py-3 rounded-lg hover:bg-cyan-400/10 transition-colors">
-            💬 Написать в Telegram
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <style>
 /* Анимации для аккордеона */
 details[open] summary ~ * {
@@ -1822,70 +1847,90 @@ summary::marker, summary::-webkit-details-marker {
 </style>
 
 
-    <section id="apply" class="py-20 text-center">
-      <div class="max-w-4xl mx-auto px-4">
-        <h2 class="text-3xl font-extrabold mb-6 bg-gradient-to-r from-blue-500 to-blue-400 text-transparent bg-clip-text">
-          Уже определились?</p>Заполните форму ниже и оставьте заявку 
-        </h2>
-        <p class="text-gray-300 max-w-2xl mx-auto mb-10">
-          Мы свяжемся с вами в течение 1 часа для уточнения деталей и запуска процесса ReFork Capital.
-        </p>
+<!-- CTA + Форма -->
+<section id="apply" class="py-24 text-center relative">
+  <div class="max-w-3xl mx-auto px-6">
 
-        <form id="leadForm"
-              action="https://refork-form.lucas9589716.workers.dev/" 
-              method="POST"
-              class="p-8 text-left space-y-6 border border-white/10 rounded-2xl bg-white/5 shadow-[0_0_40px_rgba(0,255,255,0.08)]">
+    <!-- 1️⃣ Первый call-to-action -->
+    <h2 class="text-4xl font-extrabold mb-4 bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 text-transparent bg-clip-text">
+      Готовы запустить свой цикл?
+    </h2>
+    <p class="text-gray-300 mb-8">
+      Получите персональную консультацию и ответы на все вопросы за 15 минут
+    </p>
 
-          <input type="text" name="website" style="display:none" autocomplete="off" tabindex="-1" />
-          <input type="hidden" name="lang" value="ru">
-          <input type="hidden" name="source" value="ReFork Capital">
+    <div class="mb-16">
+      <a href="https://t.me/c/1892588438/4" 
+         target="_blank"
+         class="inline-block bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-10 py-4 rounded-xl shadow-lg hover:scale-105 transition-all duration-300">
+        💬 Получить консультацию в Telegram
+      </a>
+    </div>
 
-          <div>
-            <label class="block text-sm text-gray-400 mb-1" for="name">Ваше имя *</label>
-            <input type="text" id="name" name="name" required
-                   minlength="2"
-                   maxlength="100"
-                   class="w-full bg-gray-900 border border-white/20 rounded-lg px-4 py-2 focus:border-cyan-400 focus:outline-none text-gray-100 placeholder-gray-500"
-                   placeholder="Иван Иванов">
-          </div>
+    <!-- 2️⃣ Второй call-to-action перед формой -->
+    <h3 class="text-2xl font-bold mb-3 text-cyan-400">
+      Или воспользуйтесь формой
+    </h3>
+    <p class="text-gray-400 mb-10">
+      Мы свяжемся с вами, чтобы уточнить детали и запустить процесс ReFork Capital.
+    </p>
 
-          <div>
-            <label class="block text-sm text-gray-400 mb-1" for="telegram">Telegram *</label>
-            <input type="text" id="telegram" name="telegram" required
-                   pattern="^@[A-Za-z0-9_]{5,32}$"
-                   title="Пожалуйста, введите корректный логин Telegram в формате @username"
-                   class="w-full bg-gray-900 border border-white/20 rounded-lg px-4 py-2 focus:border-cyan-400 focus:outline-none text-gray-100 placeholder-gray-500"
-                   placeholder="@username">
-            <p class="text-xs text-gray-500 mt-1">Укажите ваш Telegram в формате @username</p>
-          </div>
+    <!-- 3️⃣ Форма -->
+    <form id="leadForm"
+          action="https://refork-form.lucas9589716.workers.dev/"
+          method="POST"
+          class="p-8 text-left space-y-6 border border-white/10 rounded-2xl bg-white/5 shadow-[0_0_40px_rgba(0,255,255,0.08)] backdrop-blur-sm">
 
-          <div>
-            <label class="block text-sm text-gray-400 mb-1" for="package">Выберите пакет *</label>
-            <select id="package" name="package" required
-                    class="w-full bg-gray-900 border border-white/20 rounded-lg px-4 py-2 text-gray-100 focus:border-cyan-400 focus:outline-none appearance-none cursor-pointer">
-              <option value="" disabled selected class="bg-gray-900 text-gray-400">Выберите пакет</option>
-              <option value="Lite — $100">Lite — $100</option>
-              <option value="Pro — $300">Pro — $300</option>
-              <option value="Prime — $500">Prime — $500</option>
-              <option value="Консультация">Только консультация</option>
-            </select>
-          </div>
+      <input type="text" name="website" style="display:none" autocomplete="off" tabindex="-1" />
+      <input type="hidden" name="lang" value="ru">
+      <input type="hidden" name="source" value="ReFork Capital">
 
-          <div class="text-center pt-4">
-            <button type="submit" id="leadSubmit"
-                    class="bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-8 py-3 rounded-lg hover:opacity-90 transition inline-flex items-center justify-center">
-              <span class="button-text">Отправить заявку</span>
-              <span class="loading-spinner-btn hidden"></span>
-            </button>
-          </div>
-
-          <p class="text-xs text-gray-500 text-center pt-4">
-            🔒 Конфиденциальность гарантирована. Отправка заявки не накладывает никаких обязательств.
-          </p>
-        </form>
+      <div>
+        <label class="block text-sm text-gray-400 mb-1" for="name">Ваше имя *</label>
+        <input type="text" id="name" name="name" required
+               minlength="2" maxlength="100"
+               class="w-full bg-gray-900 border border-white/20 rounded-lg px-4 py-2 focus:border-cyan-400 focus:outline-none text-gray-100 placeholder-gray-500"
+               placeholder="Иван Иванов">
       </div>
-    </section>
-  </main>
+
+      <div>
+        <label class="block text-sm text-gray-400 mb-1" for="telegram">Telegram *</label>
+        <input type="text" id="telegram" name="telegram" required
+               pattern="^@[A-Za-z0-9_]{5,32}$"
+               title="Введите корректный логин Telegram в формате @username"
+               class="w-full bg-gray-900 border border-white/20 rounded-lg px-4 py-2 focus:border-cyan-400 focus:outline-none text-gray-100 placeholder-gray-500"
+               placeholder="@username">
+        <p class="text-xs text-gray-500 mt-1">Укажите ваш Telegram в формате @username</p>
+      </div>
+
+      <div>
+        <label class="block text-sm text-gray-400 mb-1" for="package">Выберите пакет *</label>
+        <select id="package" name="package" required
+                class="w-full bg-gray-900 border border-white/20 rounded-lg px-4 py-2 text-gray-100 focus:border-cyan-400 focus:outline-none cursor-pointer">
+          <option value="" disabled selected class="bg-gray-900 text-gray-400">Выберите пакет</option>
+          <option value="Lite — $100">Lite — $100</option>
+          <option value="Pro — $300">Pro — $300</option>
+          <option value="Prime — $500">Prime — $500</option>
+          <option value="Консультация">Только консультация</option>
+        </select>
+      </div>
+
+      <div class="text-center pt-4">
+        <button type="submit" id="leadSubmit"
+                class="bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-8 py-3 rounded-lg hover:opacity-90 transition inline-flex items-center justify-center">
+          <span class="button-text">Отправить заявку</span>
+          <span class="loading-spinner-btn hidden"></span>
+        </button>
+      </div>
+
+      <p class="text-xs text-gray-500 text-center pt-4">
+        🔒 Конфиденциальность гарантирована. Отправка заявки не накладывает обязательств.
+      </p>
+    </form>
+  </div>
+</section>
+
+
 
   <footer class="py-10 text-center text-sm text-gray-500 border-t border-white/10">
     <div class="space-y-1 mb-4">
@@ -1894,6 +1939,17 @@ summary::marker, summary::-webkit-details-marker {
       <p>Воспринимайте все слова, как информацию, которую нужно проанализировать, сделать выводы и поступить так, как вы считаете будет правильно.</p>
     </div>
     <p>© 2025 ReFork Capital. Все права защищены.</p>
+	
+	<!-- ✅ Sticky CTA для мобильных -->
+<div class="sticky bottom-4 left-4 right-4 z-50 md:hidden">
+  <a href="#apply" 
+     class="block bg-gradient-to-r from-green-400 to-cyan-400 text-black 
+            font-black text-lg py-4 rounded-2xl text-center shadow-2xl 
+            animate-pulse">
+    🚀 НАЧАТЬ ЗАРАБАТЫВАТЬ
+  </a>
+</div>
+	
   </footer>
 
 <!-- GA отключен -->
@@ -2093,78 +2149,94 @@ summary::marker, summary::-webkit-details-marker {
   localStorage.setItem('exitPopupShown', 'true');
   setTimeout(() => localStorage.removeItem('exitPopupShown'), 24 * 60 * 60 * 1000); // Reset after 24 hours
 }
-      // Форма - улучшенная обработка
-      const form = document.getElementById('leadForm');
-      const btn = document.getElementById('leadSubmit');
-      
-      if (form && btn) {
-        form.addEventListener("submit", async (e) => {
-          e.preventDefault();
-          
-          // Проверка rate limit
-          if (!ReForkUtils.formProtection.canSubmit()) {
-            const remaining = Math.ceil(ReForkUtils.formProtection.getRemainingTime() / 1000);
-            showError(`⏳ Подождите ${remaining} секунд перед повторной отправкой`);
-            return;
-          }
-          
-          const formData = new FormData(form);
-          
-          // Honeypot check
-          if (formData.get('website')) {
-            return;
-          }
-          
-          // Валидация
-          const validation = ReForkUtils.validateFormData(formData);
-          if (!validation.valid) {
-            const messages = {
-              telegram: '❌ Telegram должен начинаться с @ (например: @username)',
-              name: '❌ Имя должно содержать от 2 до 100 символов',
-              package: '❌ Пожалуйста, выберите пакет'
-            };
-            showError(messages[validation.field] || '❌ Проверьте правильность заполнения формы');
-            return;
-          }
-          
-          btn.disabled = true;
-          const buttonText = btn.querySelector('.button-text');
-          const spinner = btn.querySelector('.loading-spinner-btn');
-          buttonText.textContent = "Отправка...";
-          spinner.classList.remove('hidden');
+          // Форма - улучшенная обработка
+    const form = document.getElementById('leadForm');
+    const btn = document.getElementById('leadSubmit');
+    
+    if (form && btn) {
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        
+        // Проверка rate limit
+        if (!ReForkUtils.formProtection.canSubmit()) {
+          const remaining = Math.ceil(ReForkUtils.formProtection.getRemainingTime() / 1000);
+          showError(`⏳ Подождите ${remaining} секунд перед повторной отправкой`);
+          return;
+        }
+        
+        const formData = new FormData(form);
+        
+        // Honeypot check
+        if (formData.get('website')) {
+          return;
+        }
+        
+        // Валидация
+        const validation = ReForkUtils.validateFormData(formData);
+        if (!validation.valid) {
+          const messages = {
+            telegram: '❌ Telegram должен начинаться с @ (например: @username)',
+            name: '❌ Имя должно содержать от 2 до 100 символов',
+            package: '❌ Пожалуйста, выберите пакет'
+          };
+          showError(messages[validation.field] || '❌ Проверьте правильность заполнения формы');
+          return;
+        }
+        
+        btn.disabled = true;
+        const buttonText = btn.querySelector('.button-text');
+        const spinner = btn.querySelector('.loading-spinner-btn');
+        buttonText.textContent = "Отправка...";
+        spinner.classList.remove('hidden');
 
-          try {
-            const res = await fetch(form.action, { 
-              method: "POST", 
-              body: formData,
-              headers: {
-                'X-Requested-With': 'XMLHttpRequest'
-              },
-              mode: 'cors'
-            });
+        // ✅ ВСТАВЬТЕ СЮДА - Добавляем timeout для fetch
+        const controller = new AbortController();
+        const timeout = setTimeout(() => controller.abort(), 10000); // 10 секунд
 
-            if (res.ok) {
-              ReForkUtils.formProtection.recordSubmit();
-              showToast("✅ Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.");
-              
-              // Redirect через 2 секунды
-              setTimeout(() => {
-                window.location.href = "https://lucas555-ops.github.io/ReFork-Capital/thank-you.html";
-              }, 2000);
-              
-              form.reset();
-            } else {
-              const errorData = await res.text();
-              console.error('Server error:', errorData);
-              showError("❌ Ошибка отправки. Пожалуйста, попробуйте позже или свяжитесь с нами напрямую.");
-            }
-          } catch (err) {
-            console.error('Network error:', err);
-            showError("⚠️ Ошибка сети. Пожалуйста, проверьте соединение и попробуйте снова.");
-          } finally {
-            btn.disabled = false;
-            buttonText.textContent = "Отправить заявку";
-            spinner.classList.add('hidden');
+        try {
+          const res = await fetch(form.action, { 
+            method: "POST", 
+            body: formData,
+            headers: {
+              'X-Requested-With': 'XMLHttpRequest'
+            },
+            mode: 'cors',
+            signal: controller.signal // ✅ Добавляем signal для отмены
+          });
+
+          clearTimeout(timeout); // ✅ Очищаем таймаут если успешно
+
+          if (res.ok) {
+            ReForkUtils.formProtection.recordSubmit();
+            showToast("✅ Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.");
+            
+            // Redirect через 2 секунды
+            setTimeout(() => {
+              window.location.href = "https://lucas555-ops.github.io/ReFork-Capital/thank-you.html";
+            }, 2000);
+            
+            form.reset();
+          } else {
+            const errorData = await res.text();
+            console.error('Server error:', errorData);
+            showError("❌ Ошибка отправки. Пожалуйста, попробуйте позже или свяжитесь с нами напрямую.");
+          }
+        } catch (err) {
+          clearTimeout(timeout); // ✅ Очищаем таймаут в любом случае
+          
+          // ✅ Обработка разных типов ошибок
+          if (err.name === 'AbortError') {
+            showError("⏱️ Превышено время ожидания. Проверьте соединение и попробуйте снова.");
+          } else if (err.message.includes('NetworkError') || err.message.includes('Failed to fetch')) {
+            showError("⚠️ Ошибка сети. Проверьте интернет-соединение и попробуйте снова.");
+          } else {
+            console.error('Unknown error:', err);
+            showError("⚠️ Произошла ошибка. Пожалуйста, попробуйте позже или свяжитесь с нами в Telegram.");
+          }
+        } finally {
+          btn.disabled = false;
+          buttonText.textContent = "Отправить заявку";
+          spinner.classList.add('hidden');
           }
         });
       }
@@ -2194,67 +2266,145 @@ summary::marker, summary::-webkit-details-marker {
       }
     });
 
-    // === ОТЛОЖЕННАЯ ЗАГРУЗКА VANTA ===
-    function initVanta() {
-  if (window.innerWidth < 768) return; // Пропуск на мобильных
+// === ОПТИМИЗИРОВАННАЯ ЗАГРУЗКА VANTA ===
+function initVanta() {
+  // Расширенная проверка на мобильные устройства
+  const isMobile = window.innerWidth < 1024 || 
+                  /Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+                  ('ontouchstart' in window && window.innerWidth < 1200);
+  
   const vantaEl = document.getElementById('vanta');
   if (!vantaEl) {
     console.error('Vanta element not found');
     return;
   }
+
+  // На мобильных - сразу ставим градиент и выходим
+  if (isMobile) {
+    console.log('Mobile device detected, using gradient background');
+    vantaEl.style.background = 'linear-gradient(to bottom, #0b0e14, #05080f)';
+    vantaEl.style.opacity = '1';
+    return;
+  }
+
+  // На десктопе - используем IntersectionObserver для ленивой загрузки
   const observer = new IntersectionObserver((entries) => {
     if (entries[0].isIntersecting) {
+      console.log('Vanta element is visible, loading effects');
+      
       if (typeof THREE === 'undefined') {
         const threeScript = document.createElement('script');
         threeScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js';
         threeScript.async = true;
+        
         threeScript.onload = () => {
+          console.log('Three.js loaded, loading Vanta');
           const vantaScript = document.createElement('script');
           vantaScript.src = 'https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js';
           vantaScript.async = true;
+          
           vantaScript.onload = () => {
             if (typeof VANTA !== 'undefined') {
-              console.log('Initializing VANTA.NET');
-              VANTA.NET({
-                el: '#vanta',
-                color: 0x18a4b9,
-                backgroundColor: 0x05080f,
-                points: 6.0,
-                maxDistance: 16.0,
-                spacing: 22.0,
-                showDots: true,
-                speed: 0.8,
-                scale: 1.05,
-                scaleMobile: 1.05
-              });
+              console.log('VANTA loaded, initializing effect');
+              try {
+                VANTA.NET({
+                  el: '#vanta',
+                  color: 0x18a4b9,
+                  backgroundColor: 0x05080f,
+                  points: 6.0,
+                  maxDistance: 16.0,
+                  spacing: 22.0,
+                  showDots: true,
+                  speed: 0.8,
+                  scale: 1.05,
+                  scaleMobile: 1.05
+                });
+              } catch (error) {
+                console.error('VANTA initialization error:', error);
+                setFallbackBackground(vantaEl);
+              }
             } else {
               console.error('VANTA.NET not loaded');
+              setFallbackBackground(vantaEl);
             }
           };
+          
           vantaScript.onerror = () => {
             console.error('Failed to load VANTA.NET script');
-            vantaEl.style.background = 'linear-gradient(to bottom, #0b0e14, #05080f)'; // Fallback фон
+            setFallbackBackground(vantaEl);
           };
+          
           document.body.appendChild(vantaScript);
         };
+        
         threeScript.onerror = () => {
           console.error('Failed to load Three.js script');
-          vantaEl.style.background = 'linear-gradient(to bottom, #0b0e14, #05080f)'; // Fallback фон
+          setFallbackBackground(vantaEl);
         };
+        
         document.body.appendChild(threeScript);
+      } else {
+        // THREE уже загружен, сразу инициализируем Vanta
+        if (typeof VANTA !== 'undefined') {
+          VANTA.NET({
+            el: '#vanta',
+            color: 0x18a4b9,
+            backgroundColor: 0x05080f,
+            points: 6.0,
+            maxDistance: 16.0,
+            spacing: 22.0,
+            showDots: true,
+            speed: 0.8,
+            scale: 1.05,
+            scaleMobile: 1.05
+          });
+        }
       }
       observer.disconnect();
     }
+  }, {
+    threshold: 0.1, // Сработает когда 10% элемента видно
+    rootMargin: '50px' // Начнет загружать заранее
   });
+
   observer.observe(vantaEl);
 }
 
-    // Запустить Vanta через idle callback для лучшей производительности
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(initVanta);
-    } else {
-      setTimeout(initVanta, 2000);
+// Вспомогательная функция для фолбэка
+function setFallbackBackground(element) {
+  element.style.background = 'linear-gradient(to bottom, #0b0e14, #05080f)';
+  element.style.opacity = '1';
+}
+
+// Запустить Vanta через idle callback для лучшей производительности
+if ('requestIdleCallback' in window) {
+  requestIdleCallback(() => {
+    setTimeout(initVanta, 100); // Небольшая задержка для приоритета основного контента
+  });
+} else {
+  setTimeout(initVanta, 2000);
+}
+
+// Обработчик изменения размера окна (на случай ресайза)
+let resizeTimeout;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(() => {
+    const vantaEl = document.getElementById('vanta');
+    if (vantaEl) {
+      const isMobileNow = window.innerWidth < 1024;
+      const hasVantaBackground = !vantaEl.style.background || 
+                                vantaEl.style.background.includes('gradient');
+      
+      // Если перешли с десктопа на мобильный и есть Vanta эффект
+      if (isMobileNow && !hasVantaBackground) {
+        console.log('Switched to mobile, removing Vanta effect');
+        // Vanta автоматически очищается при скрытии элемента
+        vantaEl.style.background = 'linear-gradient(to bottom, #0b0e14, #05080f)';
+      }
     }
+  }, 250);
+});
   </script>
 
   <!-- Structured Data для SEO -->
@@ -2341,6 +2491,17 @@ summary::marker, summary::-webkit-details-marker {
   AOS.init();
 </script>
 
+<script>
+window.addEventListener('online', () => {
+  showToast('✅ Соединение восстановлено');
+});
+
+window.addEventListener('offline', () => {
+  showError('⚠️ Нет соединения. Проверьте интернет');
+});
+</script>
+
+
 <style>
 @media (max-width: 768px) {
   #full-cycle .grid-cols-5 {
@@ -2357,6 +2518,65 @@ summary::marker, summary::-webkit-details-marker {
   backface-visibility: hidden;
 }
 </style>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('animate');
+      observer.unobserve(entry.target);
+    }
+  });
+});
+document.querySelectorAll('section').forEach(section => observer.observe(section));
+</script>
+
+<!-- Chart.js + Custom Hero Graph -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const canvas = document.getElementById('memecoinChart');
+  if (!canvas) return;
+  
+  const ctx = canvas.getContext('2d');
+  const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+  gradient.addColorStop(0, 'rgba(6,182,212,0.4)');
+  gradient.addColorStop(1, 'rgba(6,182,212,0.0)');
+
+  const data = {
+    labels: ['Идея', 'Хайп', 'Обвал', 'Забвение', 'ReFork'],
+    datasets: [{
+      label: 'Цикл ReFork',
+      data: [0.3, 1.0, 0.35, 0.2, 1.2],
+      fill: true,
+      backgroundColor: gradient,
+      borderColor: '#22d3ee',
+      borderWidth: 2,
+      tension: 0.4,
+      pointRadius: 5,
+      pointBackgroundColor: '#67e8f9',
+      pointHoverRadius: 8,
+      shadowColor: '#22d3ee',
+      shadowBlur: 15,
+    }]
+  };
+
+  new Chart(ctx, {
+    type: 'line',
+    data,
+    options: {
+      plugins: { legend: { display: false } },
+      scales: { x: { display: false }, y: { display: false } },
+      animation: {
+        duration: 2500,
+        easing: 'easeOutQuart'
+      },
+      responsive: true,
+      maintainAspectRatio: false,
+    }
+  });
+});
+</script>
 
 
 </body>
