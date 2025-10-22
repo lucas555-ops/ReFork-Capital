@@ -185,6 +185,13 @@ html, body {
       .success-toast,.error-toast{left:20px;right:20px;text-align:center}
     }
 
+	  @media (max-width: 480px) {
+  .phase-label {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+}
+
     .chart-animation{stroke-dasharray:1000;stroke-dashoffset:1000;animation:drawChart 3.5s ease-in-out forwards}
     @keyframes drawChart{to{stroke-dashoffset:0}}
 
@@ -261,17 +268,15 @@ html, body {
     font-size: 1.25rem;
   }
 }
-/* Стили для крестика закрытия */
 .exit-popup-close {
   position: absolute;
-  top: 15px;
-  right: 15px;
-  width: 32px;
-  height: 32px;
-  border: none;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  color: #9ca3af;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
   font-size: 24px;
   font-weight: bold;
   cursor: pointer;
@@ -279,17 +284,11 @@ html, body {
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  z-index: 10;
 }
-
 .exit-popup-close:hover {
-  background: rgba(239, 68, 68, 0.2);
-  color: #ef4444;
+  background: rgba(239, 68, 68, 0.3);
+  color: #fff;
   transform: scale(1.1);
-}
-
-.exit-popup-close:active {
-  transform: scale(0.95);
 }
 
 /* Делаем контент попапа relative для позиционирования крестика */
@@ -2080,20 +2079,14 @@ summary::marker, summary::-webkit-details-marker {
       });
 
       function showExitPopup() {
+  if (localStorage.getItem('exitPopupShown') === 'true') return;
   const popup = document.createElement('div');
   popup.className = 'exit-popup';
   popup.innerHTML = `
     <div class="exit-popup-content">
-      <!-- Добавляем крестик закрытия -->
-      <button class="exit-popup-close" onclick="this.closest('.exit-popup').remove()" 
-              aria-label="Закрыть окно">
-        <span>×</span>
-      </button>
-      
+      <button class="exit-popup-close" aria-label="Закрыть окно"><span>×</span></button>
       <h3 class="text-3xl font-bold mb-4 text-cyan-400">Заберите подарок!</h3>
-      <p class="text-xl mb-6 text-gray-300">
-        Инструкция по настройке фильтров терминала GMGN для эффективной DEX торговли.
-      </p>
+      <p class="text-xl mb-6 text-gray-300">Инструкция по настройке фильтров GMGN для DEX торговли.</p>
       <div class="flex gap-4 justify-center">
         <button onclick="window.open('https://gmgn.ai', '_blank'); this.closest('.exit-popup').remove();" 
                 class="bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-6 py-3 rounded-lg hover:scale-105 transition-transform">
@@ -2106,15 +2099,12 @@ summary::marker, summary::-webkit-details-marker {
       </div>
     </div>
   `;
-  
-  // Закрытие при клике на фон
-  popup.addEventListener('click', function(e) {
-    if (e.target === popup) {
-      popup.remove();
-    }
+  popup.addEventListener('click', (e) => {
+    if (e.target === popup) popup.remove();
   });
-  
   document.body.appendChild(popup);
+  localStorage.setItem('exitPopupShown', 'true');
+  setTimeout(() => localStorage.removeItem('exitPopupShown'), 24 * 60 * 60 * 1000); // Reset after 24 hours
 }
       // Форма - улучшенная обработка
       const form = document.getElementById('leadForm');
@@ -2220,41 +2210,43 @@ summary::marker, summary::-webkit-details-marker {
 
     // === ОТЛОЖЕННАЯ ЗАГРУЗКА VANTA ===
     function initVanta() {
-      // Пропустить на мобильных устройствах для производительности
-      if (window.innerWidth < 768) return;
-      
-      // Загрузить Three.js если еще не загружен
+  if (window.innerWidth < 768) return; // Пропуск на мобильных
+  const vantaEl = document.getElementById('vanta');
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
       if (typeof THREE === 'undefined') {
         const threeScript = document.createElement('script');
         threeScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js';
-        threeScript.onload = () => loadVantaEffect();
+        threeScript.async = true;
+        threeScript.onload = () => {
+          const vantaScript = document.createElement('script');
+          vantaScript.src = 'https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js';
+          vantaScript.async = true;
+          vantaScript.onload = () => {
+            if (typeof VANTA !== 'undefined') {
+              VANTA.NET({
+                el: '#vanta',
+                color: 0x18a4b9,
+                backgroundColor: 0x05080f,
+                points: 6.0,
+                maxDistance: 16.0,
+                spacing: 22.0,
+                showDots: true,
+                speed: 0.8,
+                scale: 1.05,
+                scaleMobile: 1.05
+              });
+            }
+          };
+          document.body.appendChild(vantaScript);
+        };
         document.body.appendChild(threeScript);
-      } else {
-        loadVantaEffect();
       }
+      observer.disconnect();
     }
-
-    function loadVantaEffect() {
-      const vantaScript = document.createElement('script');
-      vantaScript.src = 'https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js';
-      vantaScript.onload = () => {
-        if (typeof VANTA !== 'undefined') {
-          VANTA.NET({ 
-            el: '#vanta', 
-            color: 0x18a4b9, 
-            backgroundColor: 0x05080f, 
-            points: 6.0, 
-            maxDistance: 16.0, 
-            spacing: 22.0, 
-            showDots: true, 
-            speed: .8, 
-            scale: 1.05, 
-            scaleMobile: 1.05 
-          });
-        }
-      };
-      document.body.appendChild(vantaScript);
-    }
+  });
+  observer.observe(vantaEl);
+}
 
     // Запустить Vanta через idle callback для лучшей производительности
     if ('requestIdleCallback' in window) {
