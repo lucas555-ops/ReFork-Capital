@@ -1408,6 +1408,27 @@ document.addEventListener("DOMContentLoaded", () => {
   border-radius: 1px;
 }
 
+<style>
+/* 🔧 Адаптивное отображение графика */
+@media (max-width: 768px) {
+  #memecoinChart {
+    height: 280px !important; /* увеличиваем высоту */
+    width: 200% !important;  /* растягиваем по ширине */
+    transform: translateX(-25%); /* центрируем, чтобы не срезался справа */
+  }
+
+  /* Уточняем контейнер */
+  .aspect-video {
+    aspect-ratio: auto;
+    height: auto;
+  }
+
+  /* Увеличиваем подписи под графиком */
+  .phase-label {
+    font-size: 0.8rem !important;
+  }
+}
+	
 </style>
 
 <!-- Секрет ReFork Protocol - ИСПРАВЛЕНО -->
