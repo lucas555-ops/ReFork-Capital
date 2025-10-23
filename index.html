@@ -731,10 +731,6 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     </section>
 	
-	<section id="full-cycle" aria-labelledby="full-cycle-title" class="py-24 relative overflow-hidden">
-  <h2 id="full-cycle-title" class="sr-only">От Хайпа к ROI: Полный цикл капитализации</h2>
-  <div class="absolute inset-0 bg-gradient-to-br from-purple-900/10 to-cyan-900/10"></div>
- 
   
 <section id="full-cycle" class="py-24 relative overflow-hidden">
   <div class="max-w-7xl mx-auto px-4 relative z-10">
@@ -989,6 +985,10 @@ document.addEventListener("DOMContentLoaded", () => {
         <!-- Central ReFork Stage -->
         <div class="orbit-stage central-stage">
           <div class="stage-orb stage-orb-5 pulse-glow">
+		  <div class="tooltip hidden absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1 rounded-md bg-cyan-500/90 text-white text-xs shadow-lg">
+  Новый цикл начинается 💥
+</div>
+
             <div class="stage-icon">🔁</div>
           </div>
           <div class="stage-info central-info">
@@ -1228,17 +1228,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* Animations */
 .pulse-glow {
-  animation: pulseGlow 2s ease-in-out infinite alternate;
+  animation: pulseGlow 2.2s ease-in-out infinite;
+}
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 10px rgba(6,182,212,0.3), 0 0 20px rgba(6,182,212,0.4); }
+  50% { box-shadow: 0 0 25px rgba(6,182,212,0.7), 0 0 35px rgba(6,182,212,0.6); }
+  100% { box-shadow: 0 0 10px rgba(6,182,212,0.3), 0 0 20px rgba(6,182,212,0.4); }
 }
 
-@keyframes pulseGlow {
-  from {
-    box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
-  }
-  to {
-    box-shadow: 0 0 30px rgba(6, 182, 212, 0.8), 0 0 40px rgba(6, 182, 212, 0.4);
-  }
-}
 
 /* Mobile Timeline */
 .vertical-timeline {
@@ -1441,6 +1438,34 @@ document.addEventListener("DOMContentLoaded", () => {
     font-size: 9px;
   }
 }
+
+.central-stage:hover .tooltip {
+  display: block;
+  animation: fadeIn 0.4s ease forwards;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -20px); }
+  to { opacity: 1; transform: translate(-50%, -30px); }
+}
+
+#partner-row-1 img, 
+.animate-scroll-banner-reverse img {
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 0px transparent);
+}
+#partner-row-1 img:hover, 
+.animate-scroll-banner-reverse img:hover {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 8px rgba(34,211,238,0.7));
+}
+
+@media (max-width: 768px) {
+  #reforkStrategyChart {
+    width: 200% !important;
+    transform: translateX(-25%);
+  }
+}
+
 </style>
 
 <!-- Секрет ReFork Protocol - ИСПРАВЛЕНО -->
