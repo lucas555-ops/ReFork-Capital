@@ -477,141 +477,162 @@ html, body {
   </p>
 </div>
 
-          <div class="relative">
-            <div class="absolute -inset-4 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-2xl blur-3xl opacity-50"></div>
-            
-            <div class="relative glow-card card-glow rounded-2xl overflow-hidden aspect-video bg-gradient-to-br from-gray-900 to-black border border-cyan-500/30 p-6">
-              
-              <div class="flex justify-between items-center mb-6">
-                <div class="text-cyan-400 font-bold">Capital Growth Analytics</div>
-                <div class="flex gap-2">
-                  <span class="text-xs px-2 py-1 bg-green-500/20 text-green-400 rounded">LIVE</span>
-                  <span class="text-xs px-2 py-1 bg-cyan-500/20 text-cyan-400 rounded">+247%</span>
-                  <span class="text-xs px-2 py-1 bg-purple-500/20 text-purple-400 rounded">AI POWERED</span>
-                </div>
-              </div>
-              
-              <div class="relative h-32 mb-4">
-                <div class="absolute inset-0 opacity-30">
-                  <div class="h-full flex flex-col justify-between">
-                    <div class="border-b border-gray-700/30"></div>
-                    <div class="border-b border-gray-700/30"></div>
-                    <div class="border-b border-gray-700/30"></div>
-                    <div class="border-b border-gray-700/30"></div>
-                    <div class="border-b border-gray-700/30"></div>
-                  </div>
-                  <div class="absolute inset-0 flex justify-between">
-                    <div class="border-r border-gray-700/30"></div>
-                    <div class="border-r border-gray-700/30"></div>
-                    <div class="border-r border-gray-700/30"></div>
-                    <div class="border-r border-gray-700/30"></div>
-                    <div class="border-r border-gray-700/30"></div>
-                  </div>
-                </div>
-				
-                
-                <!-- Пульс рынка -->
-<svg viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" class="w-full h-32">
-  <defs>
-    <linearGradient id="candleUp" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#10b981"/>
-      <stop offset="100%" stop-color="#064e3b"/>
-    </linearGradient>
-    <linearGradient id="candleDown" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#ef4444"/>
-      <stop offset="100%" stop-color="#7f1d1d"/>
-    </linearGradient>
-    <filter id="glow">
-      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
-      <feMerge>
-        <feMergeNode in="coloredBlur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
-    </filter>
-  </defs>
+<div class="relative">
+  <!-- Фоновое свечение -->
+  <div class="absolute -inset-4 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-2xl blur-3xl opacity-50"></div>
 
-  <!-- Свечи -->
-  <g id="candles" filter="url(#glow)">
-    <rect x="10" y="80" width="4" height="20" fill="url(#candleUp)">
-      <animate attributeName="y" values="80;50;80" dur="2s" repeatCount="indefinite"/>
-    </rect>
-    <rect x="30" y="60" width="4" height="40" fill="url(#candleDown)">
-      <animate attributeName="y" values="60;90;60" dur="2.5s" repeatCount="indefinite"/>
-    </rect>
-    <rect x="50" y="40" width="4" height="60" fill="url(#candleUp)">
-      <animate attributeName="y" values="40;70;40" dur="3s" repeatCount="indefinite"/>
-    </rect>
-    <rect x="70" y="60" width="4" height="40" fill="url(#candleDown)">
-      <animate attributeName="y" values="60;80;60" dur="2.8s" repeatCount="indefinite"/>
-    </rect>
-    <rect x="90" y="30" width="4" height="70" fill="url(#candleUp)">
-      <animate attributeName="y" values="30;60;30" dur="2.2s" repeatCount="indefinite"/>
-    </rect>
-  </g>
+  <!-- Основная карточка графика -->
+  <div class="relative glow-card card-glow rounded-2xl overflow-hidden aspect-video bg-gradient-to-br from-gray-900 to-black border border-cyan-500/30 p-6">
 
-  <!-- Пульсирующая линия -->
-  <polyline points="0,100 50,80 100,90 150,70 200,100 250,60 300,80 350,40 400,70"
-            fill="none"
-            stroke="#22d3ee"
-            stroke-width="2"
-            stroke-linecap="round">
-    <animate attributeName="stroke-dasharray" values="0,1000;1000,0" dur="3s" repeatCount="indefinite"/>
-  </polyline>
-</svg>
+    <!-- Верхняя панель -->
+    <div class="flex justify-between items-center mb-6">
+      <div class="text-cyan-400 font-bold">Capital Growth Analytics</div>
+      <div class="flex gap-2">
+        <span class="text-xs px-2 py-1 bg-green-500/20 text-green-400 rounded">LIVE</span>
+        <span class="text-xs px-2 py-1 bg-cyan-500/20 text-cyan-400 rounded">+247%</span>
+        <span class="text-xs px-2 py-1 bg-purple-500/20 text-purple-400 rounded">AI POWERED</span>
+      </div>
+    </div>
 
-                
-                <div class="absolute bottom-2 left-10 text-xs text-cyan-400 opacity-0 phase-label" style="animation-delay:0.5s">
-                  ↓ Вход
-                </div>
-                <div class="absolute top-10 left-1/3 text-xs text-green-400 opacity-0 phase-label" style="animation-delay:1.5s">
-                  → Рост
-                </div>
-                <div class="absolute top-2 right-10 text-xs text-purple-400 opacity-0 phase-label" style="animation-delay:2.5s">
-                  💰 Прибыль
-                </div>
-              </div>
-              
-              <div class="flex justify-between text-xs text-gray-500 mb-2">
-                <span class="text-cyan-400">Запуск</span>
-                <span>Неделя 1</span>
-                <span>Неделя 2</span>
-                <span>Неделя 3</span>
-                <span class="text-green-400">Текущий</span>
-              </div>
-              
-              <div class="grid grid-cols-4 gap-3 mt-4">
-                <div class="text-center">
-                  <div class="text-cyan-400 text-sm font-bold">+84%</div>
-                  <div class="text-gray-400 text-xs">1 неделя</div>
-                </div>
-                <div class="text-center">
-                  <div class="text-green-400 text-sm font-bold">+156%</div>
-                  <div class="text-gray-400 text-xs">2 недели</div>
-                </div>
-                <div class="text-center">
-                  <div class="text-purple-400 text-sm font-bold">+247%</div>
-                  <div class="text-gray-400 text-xs">3 недели</div>
-                </div>
-                <div class="text-center">
-                  <div class="text-yellow-400 text-sm font-bold">100Х</div>
-                  <div class="text-gray-400 text-xs">Потенциал</div>
-                </div>
-              </div>
-            </div>
+    <!-- График -->
+    <div class="relative h-40 mb-6">
+      <canvas id="memecoinChart" class="w-full h-full"></canvas>
+    </div>
 
-            <div class="absolute -bottom-6 -left-7 glow-card p-2 rounded-xl bg-black/80 backdrop-blur border border-cyan-300/30">
-              <div class="text-cyan-400 text-sm font-bold">AI Анализ</div>
-              <div class="text-gray-400 text-xs">Real-time данные</div>
-            </div>
+    <!-- Подписи под графиком -->
+    <div class="flex justify-between text-xs text-gray-500 mb-2">
+      <span class="text-cyan-400">Запуск</span>
+      <span>Неделя 1</span>
+      <span>Неделя 2</span>
+      <span>Неделя 3</span>
+      <span class="text-green-400">Текущий</span>
+    </div>
 
-            <div class="absolute -top-6 -right-7 glow-card p-2 rounded-xl bg-black/80 backdrop-blur border border-purple-400/20">
-              <div class="text-purple-400 text-sm font-bold">SMM Трафик</div>
-              <div class="text-gray-400 text-xs">Вирусный охват</div>
-            </div>
+    <!-- ROI-индикаторы -->
+    <div class="grid grid-cols-4 gap-3 mt-4">
+      <div class="text-center">
+        <div class="text-cyan-400 text-sm font-bold">+284%</div>
+        <div class="text-gray-400 text-xs">1 неделя</div>
+      </div>
+      <div class="text-center">
+        <div class="text-green-400 text-sm font-bold">+116%</div>
+        <div class="text-gray-400 text-xs">2 недели</div>
+      </div>
+      <div class="text-center">
+        <div class="text-purple-400 text-sm font-bold">+47%</div>
+        <div class="text-gray-400 text-xs">3 недели</div>
+      </div>
+      <div class="text-center">
+        <div class="text-yellow-400 text-sm font-bold">100Х</div>
+        <div class="text-gray-400 text-xs">Потенциал</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Вспомогательные боковые карточки -->
+  <div class="absolute -bottom-6 -left-7 glow-card p-2 rounded-xl bg-black/80 backdrop-blur border border-cyan-300/30">
+    <div class="text-cyan-400 text-sm font-bold">AI Анализ</div>
+    <div class="text-gray-400 text-xs">Real-time данные</div>
+  </div>
+
+  <div class="absolute -top-6 -right-7 glow-card p-2 rounded-xl bg-black/80 backdrop-blur border border-purple-400/20">
+    <div class="text-purple-400 text-sm font-bold">SMM Трафик</div>
+    <div class="text-gray-400 text-xs">Вирусный охват</div>
+  </div>
+</div>
+</section>
+
+<!-- Ecosystem Partners Section -->
+<section class="py-16 bg-gray-900">
+  <div class="container mx-auto px-4">
+    <!-- Section Header -->
+    <h2 class="max-w-[90%] text-center text-3xl font-bold text-white sm:text-4xl md:text-[2.5rem] lg:text-[3rem] mx-auto mb-12">
+      Our Ecosystem Partners
+    </h2>
+
+    <!-- First Scrolling Banner -->
+    <div class="relative flex w-full translate-x-0 overflow-hidden mb-8" 
+         style="mask: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);">
+      <div class="flex animate-scroll-banner" style="--scroll-banner-duration: 40s;">
+        <!-- Duplicate logos for continuous effect -->
+        <template id="partner-logos">
+          <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+            <img alt="Backpack" class="size-12 rounded-full md:size-[60px]" src="/assets/partners/backpack.png">
           </div>
+          <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+            <img alt="Base" class="size-12 rounded-full md:size-[60px]" src="/assets/partners/base.png">
+          </div>
+          <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+            <img alt="Birdeye" class="size-12 rounded-full md:size-[60px]" src="/assets/partners/birdeye.png">
+          </div>
+          <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+            <img alt="BNB" class="size-12 rounded-full md:size-[60px]" src="/assets/partners/bnb.png">
+          </div>
+          <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+            <img alt="Bonk" class="size-12 rounded-full md:size-[60px]" src="/assets/partners/bonk.png">
+          </div>
+          <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+            <img alt="Brave" class="size-12 rounded-full md:size-[60px]" src="/assets/partners/brave.png">
+          </div>
+        </template>
+        <div class="flex" id="partner-row-1"></div>
+      </div>
+    </div>
+
+    <!-- Second Scrolling Banner (Reverse Direction) -->
+    <div class="relative flex w-full translate-x-0 overflow-hidden" 
+         style="mask: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);">
+      <div class="flex animate-scroll-banner-reverse" style="--scroll-banner-duration: 35s;">
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="Solana" class="size-12 rounded-full md:size-[60px]" src="/assets/partners/solana.png">
+        </div>
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="Phantom" class="size-12 rounded-full md:size-[60px]" src="/assets/partners/phantom.png">
+        </div>
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="OKX" class="size-12 rounded-full md:size-[60px]" src="/assets/partners/okx.png">
+        </div>
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="Tensor" class="size-12 rounded-full md:size-[60px]" src="/assets/partners/tensor.png">
+        </div>
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="Magic Eden" class="size-12 rounded-full md:size-[60px]" src="/assets/partners/magiceden.png">
+        </div>
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="Wormhole" class="size-12 rounded-full md:size-[60px]" src="/assets/partners/wormhole.png">
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
+
+<style>
+@keyframes scroll-banner {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-100% / 2)); }
+}
+@keyframes scroll-banner-reverse {
+  0% { transform: translateX(calc(-100% / 2)); }
+  100% { transform: translateX(0); }
+}
+.animate-scroll-banner {
+  animation: scroll-banner var(--scroll-banner-duration, 40s) linear infinite;
+}
+.animate-scroll-banner-reverse {
+  animation: scroll-banner-reverse var(--scroll-banner-duration, 35s) linear infinite;
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const row1 = document.getElementById("partner-row-1");
+  const template = document.getElementById("partner-logos");
+  if (row1 && template) {
+    row1.innerHTML = template.innerHTML + template.innerHTML; // дублируем для бесконечного скролла
+  }
+});
+</script>
+
 
     <section id="process" class="py-20 text-center">
       <div class="max-w-6xl mx-auto px-4">
@@ -661,13 +682,22 @@ html, body {
           </div>
         </div>
 
-        <div class="mt-12 glow-card p-6 max-w-2xl mx-auto border border-cyan-500/30">
-          <p class="text-gray-300 text-lg italic text-center">
-            "Мы не просто следуем трендам — мы создаём их, превращая цифровое внимание в реальную прибыль"
-          </p>
-        </div>
-      </div>
+        <div class="mt-12 max-w-2xl mx-auto relative">
+  <!-- Верхняя градиентная полоса -->
+  <div class="absolute -top-px left-1/2 -translate-x-1/2 h-px w-4/5 bg-gradient-to-r from-transparent via-cyan-400/80 via-green-400/80 to-transparent rounded-full z-30"></div>
+  
+  <!-- Основной блок -->
+  <div class="bg-gray-900 p-6 rounded-2xl border-0">
+    <p class="text-gray-300 text-lg italic text-center">
+      "Мы не просто следуем трендам — мы создаём их, превращая цифровое внимание в реальную прибыль"
+    </p>
+  </div>
+  
+  <!-- Нижняя градиентная полоса -->
+  <div class="absolute -bottom-px left-1/2 -translate-x-1/2 h-px w-4/5 bg-gradient-to-r from-transparent via-cyan-400/80 via-green-400/80 to-transparent rounded-full z-30"></div>
+</div>
     </section>
+	
 
     <section id="method" class="py-20">
       <div class="max-w-6xl mx-auto px-4 text-center">
@@ -703,13 +733,22 @@ html, body {
               </div>
             </div>
 
-            <div class="mt-8 p-6 glow-card card-glow rounded-xl">
-              <p class="text-gray-300 text-lg leading-relaxed">
-                Каждый метод протестирован и оптимизирован для работы в условиях высокой волатильности. 
-                Мы не просто инвестируем — мы создаем системы умножения капитала через управление вниманием.
-              </p>
-              <p class="mt-4 text-lg text-cyan-400"><strong>Это не трейдинг.</strong> Это <em>системная капитализация рыночных возможностей через SMM, AI и FOMO-механики</em>.</p>
-            </div>
+            <div class="relative mt-8">
+  <!-- Верхняя градиентная полоса -->
+  <div class="absolute -top-0.5 left-1/2 -translate-x-1/2 h-0.5 w-4/5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent rounded-full shadow-lg shadow-cyan-400/20 z-30"></div>
+  
+  <!-- Основной блок -->
+  <div class="bg-gray-900 p-6 rounded-xl border-0">
+    <p class="text-gray-300 text-lg leading-relaxed">
+      Каждый метод протестирован и оптимизирован для работы в условиях высокой волатильности. 
+      Мы не просто инвестируем — мы создаем системы умножения капитала через управление вниманием.
+    </p>
+    <p class="mt-4 text-lg text-cyan-400"><strong>Это не трейдинг.</strong> Это <em>системная капитализация рыночных возможностей через SMM, AI и FOMO-механики</em>.</p>
+  </div>
+  
+  <!-- Нижняя градиентная полоса -->
+  <div class="absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-0.5 w-4/5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent rounded-full shadow-lg shadow-green-400/20 z-30"></div>
+</div>
           </div>
         </div>
       </div>
@@ -817,35 +856,44 @@ html, body {
   </div>
   
   <div class="glow-card p-6 text-center">
-    <div class="text-4xl font-black text-purple-400 mb-2">3-5</div>
+    <div class="text-4xl font-black text-purple-400 mb-2">4-6</div>
     <h4 class="text-xl font-bold text-white mb-3">Циклов/месяц</h4>
     <p class="text-gray-300">Параллельная работа с несколькими проектами одновременно</p>
   </div>
 </div>
 
 <!-- Case Study -->
-<div class="glow-card card-glow p-6 border-l-4 border-cyan-400 max-w-4xl mx-auto px-4">
-  <h3 class="text-2xl font-bold text-cyan-400 mb-4 text-center">📖 Кейс: PEPE 2.0 Revival</h3>
-  <div class="grid md:grid-cols-2 gap-6">
-    <div class="text-center">
-      <h4 class="font-bold text-white mb-3">Входные данные:</h4>
-      <ul class="space-y-2 text-gray-300">
-        <li>• Инвестиция: $5,000</li>
-        <li>• Старт цены: $0.000012</li>
-        <li>• Маркет кап: $50K</li>
-        <li>• Срок цикла: 18 дней</li>
-      </ul>
-    </div>
-    <div class="text-center">
-      <h4 class="font-bold text-white mb-3">Результаты:</h4>
-      <ul class="space-y-2 text-gray-300">
-        <li>• Выход: $17,500</li>
-        <li>• Пиковая цена: $0.000048</li>
-        <li>• Пик МС: $780K (15.6x)</li>
-        <li>• <span class="text-green-400 font-bold">ROI: +250%</span></li>
-      </ul>
+<div class="relative max-w-4xl mx-auto px-4">
+  <!-- Верхняя градиентная полоса -->
+  <div class="absolute -top-0.5 left-1/2 -translate-x-1/2 h-0.5 w-4/5 bg-gradient-to-r from-transparent via-green-400 to-transparent rounded-full shadow-lg shadow-cyan-400/20 z-30"></div>
+  
+  <!-- Основной блок кейса -->
+  <div class="bg-gray-900 p-6 rounded-2xl relative border-0">
+    <h3 class="text-2xl font-bold text-cyan-400 mb-4 text-center">📖 Кейс: PEPE 2.0 Revival</h3>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="text-center">
+        <h4 class="font-bold text-white mb-3">Входные данные:</h4>
+        <ul class="space-y-2 text-gray-300">
+          <li>• Инвестиция: $5,000</li>
+          <li>• Старт цены: $0.000012</li>
+          <li>• Маркет кап: $50K</li>
+          <li>• Срок цикла: 18 дней</li>
+        </ul>
+      </div>
+      <div class="text-center">
+        <h4 class="font-bold text-white mb-3">Результаты:</h4>
+        <ul class="space-y-2 text-gray-300">
+          <li>• Выход: $17,500</li>
+          <li>• Пиковая цена: $0.000048</li>
+          <li>• Пик МС: $780K (15.6x)</li>
+          <li>• <span class="text-green-400 font-bold">ROI: +250%</span></li>
+        </ul>
+      </div>
     </div>
   </div>
+  
+  <!-- Нижняя градиентная полоса -->
+  <div class="absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-0.5 w-4/5 bg-gradient-to-r from-transparent via-green-400 to-transparent rounded-full shadow-lg shadow-green-400/20 z-30"></div>
 </div>
 
 <!-- Исправленная секция Психология Мем-Экономики -->
@@ -1324,6 +1372,42 @@ html, body {
   transition: all 0.3s ease;
 }
 
+
+
+
+
+.custom-border-top {
+  position: relative;
+}
+
+.custom-border-top::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #22d3ee, transparent);
+  border-radius: 1px;
+}
+
+.custom-border-bottom {
+  position: relative;
+}
+
+.custom-border-bottom::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #10b981, transparent);
+  border-radius: 1px;
+}
+
 </style>
 
 <!-- Секрет ReFork Protocol - ИСПРАВЛЕНО -->
@@ -1418,86 +1502,109 @@ html, body {
 </section>
 
     <!-- Audience Cards -->
-    <div class="grid md:grid-cols-3 gap-8 mb-20">
-      <!-- Investor -->
-      <div class="glow-card card-glow p-8 hover:scale-105 transition-all duration-300 group relative" data-aos="fade-up" data-aos-delay="100">
-        <div class="text-5xl mb-6 text-center">💼</div>
-        <h3 class="text-2xl font-bold text-cyan-400 mb-4 text-center group-hover:text-white transition-colors">Инвестор</h3>
+<div class="grid md:grid-cols-3 gap-8 mb-20">
+  <!-- Investor -->
+  <div class="relative" data-aos="fade-up" data-aos-delay="100">
+    <!-- Верхняя градиентная линия -->
+    <div class="absolute -top-0.5 left-1/2 -translate-x-1/2 h-0.5 w-4/5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent rounded-full shadow-lg shadow-cyan-400/20 z-30"></div>
+    
+    <div class="glow-card p-8 hover:scale-105 transition-all duration-300 group relative bg-gray-900 border-0">
+      <div class="text-5xl mb-6 text-center">💼</div>
+      <h3 class="text-2xl font-bold text-cyan-400 mb-4 text-center group-hover:text-white transition-colors">Инвестор</h3>
 
-        <ul class="space-y-3 mb-6 text-gray-300 text-sm leading-relaxed">
-          <li class="flex gap-3"><span class="text-green-400">✓</span> Пассивный доход от криптовалют без активного трейдинга</li>
-          <li class="flex gap-3"><span class="text-green-400">✓</span> Готовы инвестировать от $100 до $500 в проверенную систему</li>
-          <li class="flex gap-3"><span class="text-green-400">✓</span> Хотите диверсифицировать портфель крипто активами</li>
+      <ul class="space-y-3 mb-6 text-gray-300 text-sm leading-relaxed">
+        <li class="flex gap-3"><span class="text-green-400">✓</span> Пассивный доход от криптовалют без активного трейдинга</li>
+        <li class="flex gap-3"><span class="text-green-400">✓</span> Готовы инвестировать от $100 до $500 в проверенную систему</li>
+        <li class="flex gap-3"><span class="text-green-400">✓</span> Хотите диверсифицировать портфель крипто активами</li>
+      </ul>
+
+      <div class="border-t border-white/10 pt-6 mt-6">
+        <h4 class="font-bold text-cyan-400 mb-3">Что вы получаете:</h4>
+        <ul class="space-y-2 text-gray-300 text-sm">
+          <li>• Доля от прибыли фонда (до 100% ROI/месяц)</li>
+          <li>• Ежемесячные отчеты с детальной аналитикой</li>
+          <li>• Доступ к закрытому чату инвесторов</li>
+          <li>• Возможность реинвестирования с бонусами</li>
         </ul>
-
-        <div class="border-t border-white/10 pt-6 mt-6">
-          <h4 class="font-bold text-cyan-400 mb-3">Что вы получаете:</h4>
-          <ul class="space-y-2 text-gray-300 text-sm">
-            <li>• Доля от прибыли фонда (до 100% ROI/месяц)</li>
-            <li>• Ежемесячные отчеты с детальной аналитикой</li>
-            <li>• Доступ к закрытому чату инвесторов</li>
-            <li>• Возможность реинвестирования с бонусами</li>
-          </ul>
-        </div>
-
-        <a href="#packages" class="block mt-8 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold py-3 px-6 rounded-xl text-center hover:scale-105 transition-transform shadow-lg shadow-cyan-500/25">
-          Выбрать пакет инвестиций
-        </a>
       </div>
 
-      <!-- Strategic Partner -->
-      <div class="glow-card card-glow p-8 hover:scale-105 transition-all duration-300 group relative border-2 border-purple-500/50 transform scale-105" data-aos="fade-up" data-aos-delay="200">
-
-        <div class="text-5xl mb-6 text-center">🤝</div>
-        <h3 class="text-2xl font-bold text-purple-400 mb-4 text-center group-hover:text-white transition-colors">Стратегический партнёр</h3>
-
-        <ul class="space-y-3 mb-6 text-gray-300 text-sm leading-relaxed">
-          <li class="flex gap-3"><span class="text-green-400">✓</span> Есть экспертиза в SMM, дизайне или крипто-аналитике</li>
-          <li class="flex gap-3"><span class="text-green-400">✓</span> Хотите активно участвовать в проектах + получать % от прибыли</li>
-          <li class="flex gap-3"><span class="text-green-400">✓</span> Готовы обменять навыки на долю в проектах</li>
-        </ul>
-
-        <div class="border-t border-white/10 pt-6 mt-6">
-          <h4 class="font-bold text-purple-400 mb-3">Что вы получаете:</h4>
-          <ul class="space-y-2 text-gray-300 text-sm">
-            <li>• Revenue share (5–15% от прибыли проекта)</li>
-            <li>• Ранний доступ к токенам до публичного листинга</li>
-            <li>• Совместное принятие стратегических решений</li>
-            <li>• Нетворкинг с топ-игроками криптоиндустрии</li>
-          </ul>
-        </div>
-
-        <a href="#apply" class="block mt-8 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold py-3 px-6 rounded-xl text-center hover:scale-105 transition-transform shadow-lg shadow-purple-500/25">
-          Стать стратегическим партнёром
-        </a>
-      </div>
-
-      <!-- VIP Investor -->
-      <div class="glow-card card-glow p-8 hover:scale-105 transition-all duration-300 group relative" data-aos="fade-up" data-aos-delay="300">
-        <div class="text-5xl mb-6 text-center">👑</div>
-        <h3 class="text-2xl font-bold text-yellow-400 mb-4 text-center group-hover:text-white transition-colors">VIP Инвестор</h3>
-
-        <ul class="space-y-3 mb-6 text-gray-300 text-sm leading-relaxed">
-          <li class="flex gap-3"><span class="text-green-400">✓</span> Готовы инвестировать от $5,000+ в перспективные проекты</li>
-          <li class="flex gap-3"><span class="text-green-400">✓</span> Хотите эксклюзивный доступ к pre-ICO и private rounds</li>
-          <li class="flex gap-3"><span class="text-green-400">✓</span> Ищете high-risk/high-reward возможности с потенциалом 100x</li>
-        </ul>
-
-        <div class="border-t border-white/10 pt-6 mt-6">
-          <h4 class="font-bold text-yellow-400 mb-3">Что вы получаете:</h4>
-          <ul class="space-y-2 text-gray-300 text-sm">
-            <li>• Приоритетный доступ к закрытым раундам инвестиций</li>
-            <li>• Персональный менеджер и еженедельные созвоны</li>
-            <li>• Custom deal flow под ваш риск-профиль</li>
-            <li>• Участие в governance и стратегических решениях</li>
-          </ul>
-        </div>
-
-        <a href="#apply" class="block mt-8 bg-gradient-to-r from-yellow-500 to-orange-600 text-black font-bold py-3 px-6 rounded-xl text-center hover:scale-105 transition-transform shadow-lg shadow-yellow-500/25">
-          Обсудить VIP-условия
-        </a>
-      </div>
+      <a href="#packages" class="block mt-8 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold py-3 px-6 rounded-xl text-center hover:scale-105 transition-transform shadow-lg shadow-cyan-500/25">
+        Выбрать пакет инвестиций
+      </a>
     </div>
+    
+    <!-- Нижняя градиентная линия -->
+    <div class="absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-0.5 w-4/5 bg-gradient-to-r from-transparent via-green-400 to-transparent rounded-full shadow-lg shadow-green-400/20 z-30"></div>
+  </div>
+
+  <!-- Strategic Partner -->
+  <div class="relative transform scale-105" data-aos="fade-up" data-aos-delay="200">
+    <!-- Верхняя градиентная линия -->
+    <div class="absolute -top-0.5 left-1/2 -translate-x-1/2 h-0.5 w-4/5 bg-gradient-to-r from-transparent via-purple-400 to-transparent rounded-full shadow-lg shadow-purple-400/20 z-30"></div>
+    
+    <div class="glow-card p-8 hover:scale-105 transition-all duration-300 group relative bg-gray-900 border-0 border-purple-500/50">
+      <div class="text-5xl mb-6 text-center">🤝</div>
+      <h3 class="text-2xl font-bold text-purple-400 mb-4 text-center group-hover:text-white transition-colors">Стратегический партнёр</h3>
+
+      <ul class="space-y-3 mb-6 text-gray-300 text-sm leading-relaxed">
+        <li class="flex gap-3"><span class="text-green-400">✓</span> Есть экспертиза в SMM, дизайне или крипто-аналитике</li>
+        <li class="flex gap-3"><span class="text-green-400">✓</span> Хотите активно участвовать в проектах + получать % от прибыли</li>
+        <li class="flex gap-3"><span class="text-green-400">✓</span> Готовы обменять навыки на долю в проектах</li>
+      </ul>
+
+      <div class="border-t border-white/10 pt-6 mt-6">
+        <h4 class="font-bold text-purple-400 mb-3">Что вы получаете:</h4>
+        <ul class="space-y-2 text-gray-300 text-sm">
+          <li>• Revenue share (5–15% от прибыли проекта)</li>
+          <li>• Ранний доступ к токенам до публичного листинга</li>
+          <li>• Совместное принятие стратегических решений</li>
+          <li>• Нетворкинг с топ-игроками криптоиндустрии</li>
+        </ul>
+      </div>
+
+      <a href="#apply" class="block mt-8 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold py-3 px-6 rounded-xl text-center hover:scale-105 transition-transform shadow-lg shadow-purple-500/25">
+        Стать стратегическим партнёром
+      </a>
+    </div>
+    
+    <!-- Нижняя градиентная линия -->
+    <div class="absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-0.5 w-4/5 bg-gradient-to-r from-transparent via-pink-400 to-transparent rounded-full shadow-lg shadow-pink-400/20 z-30"></div>
+  </div>
+
+  <!-- VIP Investor -->
+  <div class="relative" data-aos="fade-up" data-aos-delay="300">
+    <!-- Верхняя градиентная линия -->
+    <div class="absolute -top-0.5 left-1/2 -translate-x-1/2 h-0.5 w-4/5 bg-gradient-to-r from-transparent via-yellow-400 to-transparent rounded-full shadow-lg shadow-yellow-400/20 z-30"></div>
+    
+    <div class="glow-card p-8 hover:scale-105 transition-all duration-300 group relative bg-gray-900 border-0">
+      <div class="text-5xl mb-6 text-center">👑</div>
+      <h3 class="text-2xl font-bold text-yellow-400 mb-4 text-center group-hover:text-white transition-colors">VIP Инвестор</h3>
+
+      <ul class="space-y-3 mb-6 text-gray-300 text-sm leading-relaxed">
+        <li class="flex gap-3"><span class="text-green-400">✓</span> Готовы инвестировать от $5,000+ в перспективные проекты</li>
+        <li class="flex gap-3"><span class="text-green-400">✓</span> Хотите эксклюзивный доступ к pre-ICO и private rounds</li>
+        <li class="flex gap-3"><span class="text-green-400">✓</span> Ищете high-risk/high-reward возможности с потенциалом 100x</li>
+      </ul>
+
+      <div class="border-t border-white/10 pt-6 mt-6">
+        <h4 class="font-bold text-yellow-400 mb-3">Что вы получаете:</h4>
+        <ul class="space-y-2 text-gray-300 text-sm">
+          <li>• Приоритетный доступ к закрытым раундам инвестиций</li>
+          <li>• Персональный менеджер и еженедельные созвоны</li>
+          <li>• Custom deal flow под ваш риск-профиль</li>
+          <li>• Участие в governance и стратегических решениях</li>
+        </ul>
+      </div>
+
+      <a href="#apply" class="block mt-8 bg-gradient-to-r from-yellow-500 to-orange-600 text-black font-bold py-3 px-6 rounded-xl text-center hover:scale-105 transition-transform shadow-lg shadow-yellow-500/25">
+        Обсудить VIP-условия
+      </a>
+    </div>
+    
+    <!-- Нижняя градиентная линия -->
+    <div class="absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-0.5 w-4/5 bg-gradient-to-r from-transparent via-orange-400 to-transparent rounded-full shadow-lg shadow-orange-400/20 z-30"></div>
+  </div>
+</div>
 
     <!-- CTA Section -->
     <div class="text-center">
@@ -2531,52 +2638,165 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('section').forEach(section => observer.observe(section));
 </script>
 
-<!-- Chart.js + Custom Hero Graph -->
+<!-- Chart.js + ReFork Pulse + Flash + Tooltip -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-  const canvas = document.getElementById('memecoinChart');
+  const canvas = document.getElementById("memecoinChart");
   if (!canvas) return;
-  
-  const ctx = canvas.getContext('2d');
+
+  const ctx = canvas.getContext("2d");
   const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-  gradient.addColorStop(0, 'rgba(6,182,212,0.4)');
-  gradient.addColorStop(1, 'rgba(6,182,212,0.0)');
+  gradient.addColorStop(0, "rgba(34,211,238,0.35)");
+  gradient.addColorStop(1, "rgba(34,211,238,0)");
 
   const data = {
-    labels: ['Идея', 'Хайп', 'Обвал', 'Забвение', 'ReFork'],
-    datasets: [{
-      label: 'Цикл ReFork',
-      data: [0.3, 1.0, 0.35, 0.2, 1.2],
-      fill: true,
-      backgroundColor: gradient,
-      borderColor: '#22d3ee',
-      borderWidth: 2,
-      tension: 0.4,
-      pointRadius: 5,
-      pointBackgroundColor: '#67e8f9',
-      pointHoverRadius: 8,
-      shadowColor: '#22d3ee',
-      shadowBlur: 15,
-    }]
+    labels: ["💡 Идея", "🚀 Хайп", "📉 Обвал", "😶 Забвение", "🔁 ReFork"],
+    datasets: [
+      {
+        label: "Цикл ReFork",
+        data: [0.25, 1.05, 0.35, 0.22, 1.25],
+        fill: true,
+        backgroundColor: gradient,
+        borderColor: "#22d3ee",
+        borderWidth: 2.5,
+        tension: 0.45,
+        pointRadius: 5,
+        pointBackgroundColor: ["#0ea5e9", "#22d3ee", "#ef4444", "#6b7280", "#a78bfa"],
+        pointHoverRadius: 8,
+      },
+    ],
   };
 
-  new Chart(ctx, {
-    type: 'line',
+  let startTime = null;
+  let flashActive = true;
+  let pulseTime = 0;
+
+  const chart = new Chart(ctx, {
+    type: "line",
     data,
     options: {
-      plugins: { legend: { display: false } },
-      scales: { x: { display: false }, y: { display: false } },
-      animation: {
-        duration: 2500,
-        easing: 'easeOutQuart'
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          enabled: false,
+          external: customTooltip,
+        },
       },
+      scales: { x: { display: false }, y: { display: false } },
       responsive: true,
       maintainAspectRatio: false,
-    }
+      animation: { duration: 2000, easing: "easeOutQuart" },
+    },
+    plugins: [
+      {
+        id: "reforkPulse",
+        afterDraw(chart, args, opts) {
+          const { ctx, scales: { x, y } } = chart;
+          const lastIndex = data.labels.length - 1;
+          const lastX = x.getPixelForValue(lastIndex);
+          const lastY = y.getPixelForValue(data.datasets[0].data[lastIndex]);
+          const time = performance.now();
+
+          // --- 💓 Мягкая пульсация ---
+          pulseTime += 10.04;
+          const pulse = 4 + Math.sin(pulseTime) * 2; // сердцебиение
+
+          // Сияющее поле вокруг точки
+          const glow = ctx.createRadialGradient(lastX, lastY, 0, lastX, lastY, 35 + pulse);
+          glow.addColorStop(0, "rgba(167,139,250,0.35)");
+          glow.addColorStop(1, "rgba(167,139,250,0)");
+          ctx.beginPath();
+          ctx.arc(lastX, lastY, 20 + pulse, 0, Math.PI * 2);
+          ctx.fillStyle = glow;
+          ctx.fill();
+
+          // Центральная glowing-точка (сердце)
+          ctx.beginPath();
+          ctx.arc(lastX, lastY, 6 + pulse * 0.25, 0, Math.PI * 2);
+          ctx.fillStyle = "#00ff00";
+          ctx.shadowColor = "#00ff00";
+          ctx.shadowBlur = 15 + pulse;
+          ctx.fill();
+          ctx.shadowBlur = 0;
+
+          // --- 💥 Вспышка при запуске ---
+          if (flashActive) {
+            if (!startTime) startTime = performance.now();
+            const elapsed = (performance.now() - startTime) / 1000;
+            const flashAlpha = Math.max(0, 1 - elapsed * 1.8);
+            const flashRadius = 60 + elapsed * 90;
+
+            if (flashAlpha > 0.05) {
+              const flashGradient = ctx.createRadialGradient(lastX, lastY, 0, lastX, lastY, flashRadius);
+              flashGradient.addColorStop(0, `rgba(255,255,255,${flashAlpha * 0.9})`);
+              flashGradient.addColorStop(1, "rgba(255,255,255,0)");
+              ctx.beginPath();
+              ctx.arc(lastX, lastY, flashRadius, 0, Math.PI * 2);
+              ctx.fillStyle = flashGradient;
+              ctx.fill();
+            } else {
+              flashActive = false;
+            }
+          }
+
+          requestAnimationFrame(() => chart.draw());
+        },
+      },
+    ],
   });
+
+  // 💬 Tooltip для ReFork
+  function customTooltip(context) {
+    const tooltipModel = context.tooltip;
+    const tooltipEl = getOrCreateTooltip(canvas);
+
+    if (tooltipModel.opacity === 0) {
+      tooltipEl.style.opacity = 0;
+      return;
+    }
+
+    const dataIndex = tooltipModel.dataPoints?.[0]?.dataIndex;
+    if (dataIndex === 4) {
+      tooltipEl.innerHTML = `
+        <div style="
+          background: rgba(17,24,39,0.95);
+          border: 1px solid rgba(167,139,250,0.4);
+          color: #e0e7ff;
+          padding: 6px 10px;
+          border-radius: 8px;
+          font-size: 13px;
+          font-weight: 600;
+          box-shadow: 0 0 10px rgba(167,139,250,0.5);
+          backdrop-filter: blur(6px);
+        ">
+          🔁 Новый цикл начинается
+        </div>`;
+    } else {
+      tooltipEl.style.opacity = 0;
+      return;
+    }
+
+    const { offsetLeft: posX, offsetTop: posY } = canvas;
+    tooltipEl.style.opacity = 1;
+    tooltipEl.style.position = "absolute";
+    tooltipEl.style.left = posX + tooltipModel.caretX + "px";
+    tooltipEl.style.top = posY + tooltipModel.caretY - 30 + "px";
+    tooltipEl.style.pointerEvents = "none";
+  }
+
+  function getOrCreateTooltip(canvas) {
+    let tooltipEl = canvas.parentNode.querySelector(".chart-tooltip");
+    if (!tooltipEl) {
+      tooltipEl = document.createElement("div");
+      tooltipEl.classList.add("chart-tooltip");
+      canvas.parentNode.appendChild(tooltipEl);
+    }
+    return tooltipEl;
+  }
 });
 </script>
+
 
 
 </body>
