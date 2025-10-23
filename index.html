@@ -2620,23 +2620,15 @@ summary::marker, summary::-webkit-details-marker {
         const timeout = setTimeout(() => controller.abort(), 10000); // 10 секунд
 
         try {
-const vercelUrl = https://re-fork-capital-git-main-lucas-projects-246c37bd.vercel.app
-
-const jsonData = {
-  name: formData.get('name'),
-  telegram: formData.get('telegram'), 
-  package: formData.get('package')
-};
-
-const res = await fetch(`https://${vercelUrl}/api/telegram`, { 
-  method: "POST", 
-  body: JSON.stringify(jsonData),
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  mode: 'cors',
-  signal: controller.signal
-});
+          const res = await fetch(form.action, { 
+            method: "POST", 
+            body: formData,
+            headers: {
+              'X-Requested-With': 'XMLHttpRequest'
+            },
+            mode: 'cors',
+            signal: controller.signal // ✅ Добавляем signal для отмены
+          });
 
           clearTimeout(timeout); // ✅ Очищаем таймаут если успешно
 
