@@ -1,9 +1,16 @@
 {
   "version": 2,
+  "builds": [
+    {
+      "src": "api/telegram.js",
+      "use": "@vercel/node"
+    }
+  ],
   "routes": [
     {
       "src": "/api/telegram",
       "methods": ["POST", "OPTIONS"],
+      "dest": "/api/telegram.js",
       "headers": {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "POST, OPTIONS",
