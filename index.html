@@ -482,34 +482,36 @@ html, body {
   <div class="absolute -inset-4 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-2xl blur-3xl opacity-50"></div>
 
   <!-- Основная карточка графика -->
-  <div class="relative glow-card card-glow rounded-2xl overflow-hidden aspect-video bg-gradient-to-br from-gray-900 to-black border border-cyan-500/30 p-6">
+  <div class="relative glow-card card-glow rounded-2xl overflow-hidden bg-gradient-to-br from-gray-900 to-black border border-cyan-500/30 p-4 md:p-6">
 
     <!-- Верхняя панель -->
-    <div class="flex justify-between items-center mb-6">
-      <div class="text-cyan-400 font-bold text-lg">📈 ReFork vs Retail</div>
-      <div class="flex gap-2">
-        <span class="text-xs px-3 py-1 bg-red-500/20 text-red-400 rounded-full border border-red-500/30">❌ Типичный путь</span>
-        <span class="text-xs px-3 py-1 bg-green-500/20 text-green-400 rounded-full border border-green-500/30">✅ ReFork метод</span>
+    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4 md:mb-6 gap-2">
+      <div class="text-cyan-400 font-bold text-base md:text-lg">📈 ReFork Strategy vs Retail FOMO</div>
+      <div class="flex gap-2 justify-center md:justify-start">
+        <span class="text-xs px-2 py-1 bg-red-500/20 text-red-400 rounded-full border border-red-500/30">❌ Типичный путь</span>
+        <span class="text-xs px-2 py-1 bg-green-500/20 text-green-400 rounded-full border border-green-500/30">✅ ReFork метод</span>
       </div>
     </div>
 
-    <!-- Canvas для графика -->
-    <div class="relative h-64 mb-6">
-      <canvas id="reforkStrategyChart" class="w-full h-full"></canvas>
+    <!-- Canvas для графика с увеличенной шириной на мобильных -->
+    <div class="relative h-64 md:h-64 mb-4 md:mb-6 overflow-x-auto">
+      <div class="min-w-[600px] md:min-w-0 h-full">
+        <canvas id="reforkStrategyChart" class="w-full h-full"></canvas>
+      </div>
     </div>
 
     <!-- Легенда с метриками -->
-    <div class="grid grid-cols-3 gap-4 mt-6 pt-4 border-t border-white/10">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 mt-4 md:mt-6 pt-4 border-t border-white/10">
       <div class="text-center">
-        <div class="text-red-400 text-2xl font-black">-67%</div>
+        <div class="text-red-400 text-xl md:text-2xl font-black">-67%</div>
         <div class="text-gray-400 text-xs mt-1">Типичный ROI</div>
       </div>
       <div class="text-center">
-        <div class="text-green-400 text-2xl font-black">+284%</div>
+        <div class="text-green-400 text-xl md:text-2xl font-black">+284%</div>
         <div class="text-gray-400 text-xs mt-1">ReFork ROI</div>
       </div>
       <div class="text-center">
-        <div class="text-cyan-400 text-2xl font-black">14-21</div>
+        <div class="text-cyan-400 text-xl md:text-2xl font-black">14-21</div>
         <div class="text-gray-400 text-xs mt-1">Дней на цикл</div>
       </div>
     </div>
@@ -1385,13 +1387,58 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+/* Адаптация нового графика для мобильных */
 @media (max-width: 768px) {
   #reforkStrategyChart {
-    height: 220px !important;
+    min-width: 600px !important;
+    width: 200% !important;
   }
-  .grid-cols-3 {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
+  
+  .glow-card .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .glow-card .overflow-x-auto::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Увеличиваем отступы для лучшего скролла */
+  .glow-card {
+    padding: 1rem !important;
+  }
+}
+
+/* Индикатор скролла для мобильных */
+.glow-card .overflow-x-auto {
+  position: relative;
+}
+
+.glow-card .overflow-x-auto::after {
+  content: '← прокрутите →';
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  color: #22d3ee;
+  font-size: 10px;
+  opacity: 0.7;
+  animation: pulse-scroll 2s infinite;
+}
+
+@keyframes pulse-scroll {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+@media (max-width: 480px) {
+  #reforkStrategyChart {
+    min-width: 700px !important;
+  }
+  
+  .glow-card .overflow-x-auto::after {
+    content: '← прокрутите график →';
+    font-size: 9px;
   }
 }
 </style>
@@ -2633,6 +2680,28 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!canvas) return;
 
   const ctx = canvas.getContext("2d");
+  
+  // Определяем мобильное устройство
+  const isMobile = window.innerWidth < 768;
+  
+  // Настройки для мобильных и десктопа
+  const mobileConfig = {
+    pointRadius: [3, 6, 6, 4, 6, 6, 8],
+    pointBorderWidth: 1,
+    borderWidth: 2,
+    fontSize: 9,
+    annotationFontSize: 10
+  };
+  
+  const desktopConfig = {
+    pointRadius: [4, 8, 8, 6, 8, 8, 10],
+    pointBorderWidth: 2,
+    borderWidth: 3,
+    fontSize: 10,
+    annotationFontSize: 11
+  };
+  
+  const config = isMobile ? mobileConfig : desktopConfig;
 
   // Градиенты для зон
   const profitZone = ctx.createLinearGradient(0, 0, 0, canvas.height);
@@ -2645,45 +2714,45 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const data = {
     labels: [
-      "День 0\n💡 Launch",
-      "День 3\n🚀 FOMO",
-      "День 7\n📈 Peak",
-      "День 10\n📉 Crash",
-      "День 15\n😴 Dip",
-      "День 18\n🔄 ReFork",
-      "День 25\n💰 Exit"
+      "День 0\n💡",
+      "День 3\n🚀",
+      "День 7\n📈",
+      "День 10\n📉",
+      "День 15\n😴",
+      "День 18\n🔄",
+      "День 25\n💰"
     ],
     datasets: [
       {
-        label: "❌ Retail Investor",
+        label: "❌ Retail",
         data: [100, 450, 800, 320, 120, 180, 95],
         borderColor: "#ef4444",
         backgroundColor: lossZone,
-        borderWidth: 3,
+        borderWidth: config.borderWidth,
         tension: 0.4,
-        pointRadius: [4, 8, 8, 6, 4, 4, 6],
+        pointRadius: config.pointRadius,
         pointBackgroundColor: ["#6b7280", "#ef4444", "#dc2626", "#f87171", "#6b7280", "#6b7280", "#991b1b"],
         pointBorderColor: "#ffffff",
-        pointBorderWidth: 2,
+        pointBorderWidth: config.pointBorderWidth,
         fill: false
       },
       {
-        label: "✅ ReFork Strategy",
+        label: "✅ ReFork",
         data: [100, 180, 220, 150, 120, 320, 460],
         borderColor: "#22c55e",
         backgroundColor: profitZone,
-        borderWidth: 3,
+        borderWidth: config.borderWidth,
         tension: 0.4,
-        pointRadius: [4, 4, 4, 4, 8, 8, 10],
+        pointRadius: config.pointRadius,
         pointBackgroundColor: ["#6b7280", "#6b7280", "#6b7280", "#6b7280", "#22c55e", "#10b981", "#fbbf24"],
         pointBorderColor: "#ffffff",
-        pointBorderWidth: 2,
+        pointBorderWidth: config.pointBorderWidth,
         fill: true
       }
     ]
   };
 
-  const config = {
+  const chartConfig = {
     type: "line",
     data,
     options: {
@@ -2700,8 +2769,11 @@ document.addEventListener("DOMContentLoaded", () => {
           labels: {
             color: '#e5e7eb',
             usePointStyle: true,
-            padding: 15,
-            font: { size: 13, weight: 'bold' }
+            padding: isMobile ? 10 : 15,
+            font: { 
+              size: isMobile ? 11 : 13, 
+              weight: 'bold' 
+            }
           }
         },
         tooltip: {
@@ -2711,74 +2783,23 @@ document.addEventListener("DOMContentLoaded", () => {
           bodyColor: '#e5e7eb',
           borderColor: '#22d3ee',
           borderWidth: 1,
-          padding: 12,
+          padding: isMobile ? 8 : 12,
           displayColors: true,
+          bodyFont: {
+            size: isMobile ? 11 : 13
+          },
+          titleFont: {
+            size: isMobile ? 12 : 14
+          },
           callbacks: {
             label: function(context) {
               const value = context.parsed.y;
               const initial = 100;
               const roi = ((value - initial) / initial * 100).toFixed(0);
-              return `${context.dataset.label}: $${value} (${roi > 0 ? '+' : ''}${roi}%)`;
-            }
-          }
-        },
-        annotation: {
-          annotations: {
-            // Зона FOMO
-            fomoBox: {
-              type: 'box',
-              xMin: 1,
-              xMax: 2,
-              yMin: 0,
-              yMax: 900,
-              backgroundColor: 'rgba(251,191,36,0.05)',
-              borderColor: 'rgba(251,191,36,0.3)',
-              borderWidth: 1
-            },
-            // Зона ReFork
-            reforkBox: {
-              type: 'box',
-              xMin: 5,
-              xMax: 6,
-              yMin: 0,
-              yMax: 900,
-              backgroundColor: 'rgba(34,197,94,0.05)',
-              borderColor: 'rgba(34,197,94,0.3)',
-              borderWidth: 1
-            },
-            // Линия входа ReFork
-            reforkEntry: {
-              type: 'line',
-              yMin: 120,
-              yMax: 120,
-              borderColor: '#22c55e',
-              borderWidth: 2,
-              borderDash: [5, 5],
-              label: {
-                display: true,
-                content: '🎯 ReFork Entry Point',
-                position: 'start',
-                backgroundColor: 'rgba(34,197,94,0.2)',
-                color: '#22c55e',
-                font: { size: 11, weight: 'bold' }
-              }
-            },
-            // Линия покупки Retail
-            retailEntry: {
-              type: 'line',
-              yMin: 800,
-              yMax: 800,
-              borderColor: '#ef4444',
-              borderWidth: 2,
-              borderDash: [5, 5],
-              label: {
-                display: true,
-                content: '❌ Typical FOMO Buy',
-                position: 'end',
-                backgroundColor: 'rgba(239,68,68,0.2)',
-                color: '#ef4444',
-                font: { size: 11, weight: 'bold' }
-              }
+              const label = isMobile 
+                ? `${context.dataset.label === '✅ ReFork' ? 'ReFork' : 'Retail'}: $${value} (${roi > 0 ? '+' : ''}${roi}%)`
+                : `${context.dataset.label}: $${value} (${roi > 0 ? '+' : ''}${roi}%)`;
+              return label;
             }
           }
         }
@@ -2791,7 +2812,10 @@ document.addEventListener("DOMContentLoaded", () => {
           },
           ticks: { 
             color: '#9ca3af',
-            font: { size: 10 }
+            font: { 
+              size: isMobile ? 9 : 10 
+            },
+            maxRotation: 0
           }
         },
         y: {
@@ -2802,7 +2826,9 @@ document.addEventListener("DOMContentLoaded", () => {
           ticks: { 
             color: '#9ca3af',
             callback: value => `$${value}`,
-            font: { size: 11 }
+            font: { 
+              size: isMobile ? 9 : 11 
+            }
           },
           beginAtZero: true,
           max: 900
@@ -2827,8 +2853,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }]
   };
 
-  new Chart(ctx, config);
+  // Инициализация графика
+  new Chart(ctx, chartConfig);
+  
+  // Обработчик ресайза для перерисовки на мобильных
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+      if (window.innerWidth < 768) {
+        canvas.style.minWidth = '600px';
+      }
+    }, 250);
+  });
 });
+</script>
 </script>
 
 </body>
