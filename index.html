@@ -486,58 +486,33 @@ html, body {
 
     <!-- Верхняя панель -->
     <div class="flex justify-between items-center mb-6">
-      <div class="text-cyan-400 font-bold">Capital Growth Analytics</div>
+      <div class="text-cyan-400 font-bold text-lg">📈 ReFork vs Retail</div>
       <div class="flex gap-2">
-        <span class="text-xs px-2 py-1 bg-green-500/20 text-green-400 rounded">LIVE</span>
-        <span class="text-xs px-2 py-1 bg-cyan-500/20 text-cyan-400 rounded">+247%</span>
-        <span class="text-xs px-2 py-1 bg-purple-500/20 text-purple-400 rounded">AI POWERED</span>
+        <span class="text-xs px-3 py-1 bg-red-500/20 text-red-400 rounded-full border border-red-500/30">❌ Типичный путь</span>
+        <span class="text-xs px-3 py-1 bg-green-500/20 text-green-400 rounded-full border border-green-500/30">✅ ReFork метод</span>
       </div>
     </div>
 
-    <!-- График -->
-    <div class="relative h-40 mb-6">
-      <canvas id="memecoinChart" class="w-full h-full"></canvas>
+    <!-- Canvas для графика -->
+    <div class="relative h-64 mb-6">
+      <canvas id="reforkStrategyChart" class="w-full h-full"></canvas>
     </div>
 
-    <!-- Подписи под графиком -->
-    <div class="flex justify-between text-xs text-gray-500 mb-2">
-      <span class="text-cyan-400">Запуск</span>
-      <span>Неделя 1</span>
-      <span>Неделя 2</span>
-      <span>Неделя 3</span>
-      <span class="text-green-400">Текущий</span>
-    </div>
-
-    <!-- ROI-индикаторы -->
-    <div class="grid grid-cols-4 gap-3 mt-4">
+    <!-- Легенда с метриками -->
+    <div class="grid grid-cols-3 gap-4 mt-6 pt-4 border-t border-white/10">
       <div class="text-center">
-        <div class="text-cyan-400 text-sm font-bold">+284%</div>
-        <div class="text-gray-400 text-xs">1 неделя</div>
+        <div class="text-red-400 text-2xl font-black">-67%</div>
+        <div class="text-gray-400 text-xs mt-1">Типичный ROI</div>
       </div>
       <div class="text-center">
-        <div class="text-green-400 text-sm font-bold">+116%</div>
-        <div class="text-gray-400 text-xs">2 недели</div>
+        <div class="text-green-400 text-2xl font-black">+284%</div>
+        <div class="text-gray-400 text-xs mt-1">ReFork ROI</div>
       </div>
       <div class="text-center">
-        <div class="text-purple-400 text-sm font-bold">+47%</div>
-        <div class="text-gray-400 text-xs">3 недели</div>
-      </div>
-      <div class="text-center">
-        <div class="text-yellow-400 text-sm font-bold">100Х</div>
-        <div class="text-gray-400 text-xs">Потенциал</div>
+        <div class="text-cyan-400 text-2xl font-black">14-21</div>
+        <div class="text-gray-400 text-xs mt-1">Дней на цикл</div>
       </div>
     </div>
-  </div>
-
-  <!-- Вспомогательные боковые карточки -->
-  <div class="absolute -bottom-6 -left-7 glow-card p-2 rounded-xl bg-black/80 backdrop-blur border border-cyan-300/30">
-    <div class="text-cyan-400 text-sm font-bold">AI Анализ</div>
-    <div class="text-gray-400 text-xs">Real-time данные</div>
-  </div>
-
-  <div class="absolute -top-6 -right-7 glow-card p-2 rounded-xl bg-black/80 backdrop-blur border border-purple-400/20">
-    <div class="text-purple-400 text-sm font-bold">SMM Трафик</div>
-    <div class="text-gray-400 text-xs">Вирусный охват</div>
   </div>
 </div>
 </section>
@@ -1408,26 +1383,17 @@ document.addEventListener("DOMContentLoaded", () => {
   border-radius: 1px;
 }
 
-/* 🔧 Адаптивное отображение графика */
+
+
 @media (max-width: 768px) {
-  #memecoinChart {
-    height: 280px !important; /* увеличиваем высоту */
-    width: 200% !important;  /* растягиваем по ширине */
-    transform: translateX(-25%); /* центрируем, чтобы не срезался справа */
+  #reforkStrategyChart {
+    height: 220px !important;
   }
-
-  /* Уточняем контейнер */
-  .aspect-video {
-    aspect-ratio: auto;
-    height: auto;
-  }
-
-  /* Увеличиваем подписи под графиком */
-  .phase-label {
-    font-size: 0.8rem !important;
+  .grid-cols-3 {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
   }
 }
-	
 </style>
 
 <!-- Секрет ReFork Protocol - ИСПРАВЛЕНО -->
@@ -2658,166 +2624,212 @@ const observer = new IntersectionObserver((entries) => {
 document.querySelectorAll('section').forEach(section => observer.observe(section));
 </script>
 
-<!-- Chart.js + ReFork Pulse + Flash + Tooltip -->
+<!-- Chart.js + ReFork Strategy Chart -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2.2.1/dist/chartjs-plugin-annotation.min.js"></script>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-  const canvas = document.getElementById("memecoinChart");
+  const canvas = document.getElementById("reforkStrategyChart");
   if (!canvas) return;
 
   const ctx = canvas.getContext("2d");
-  const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-  gradient.addColorStop(0, "rgba(34,211,238,0.35)");
-  gradient.addColorStop(1, "rgba(34,211,238,0)");
+
+  // Градиенты для зон
+  const profitZone = ctx.createLinearGradient(0, 0, 0, canvas.height);
+  profitZone.addColorStop(0, "rgba(34,197,94,0.15)");
+  profitZone.addColorStop(1, "rgba(34,197,94,0)");
+
+  const lossZone = ctx.createLinearGradient(0, 0, 0, canvas.height);
+  lossZone.addColorStop(0, "rgba(239,68,68,0.15)");
+  lossZone.addColorStop(1, "rgba(239,68,68,0)");
 
   const data = {
-    labels: ["💡 Идея", "🚀 Хайп", "📉 Обвал", "😶 Забвение", "🔁 ReFork"],
+    labels: [
+      "День 0\n💡 Launch",
+      "День 3\n🚀 FOMO",
+      "День 7\n📈 Peak",
+      "День 10\n📉 Crash",
+      "День 15\n😴 Dip",
+      "День 18\n🔄 ReFork",
+      "День 25\n💰 Exit"
+    ],
     datasets: [
       {
-        label: "Цикл ReFork",
-        data: [0.25, 1.05, 0.35, 0.22, 1.25],
-        fill: true,
-        backgroundColor: gradient,
-        borderColor: "#22d3ee",
-        borderWidth: 2.5,
-        tension: 0.45,
-        pointRadius: 5,
-        pointBackgroundColor: ["#0ea5e9", "#22d3ee", "#ef4444", "#6b7280", "#a78bfa"],
-        pointHoverRadius: 8,
+        label: "❌ Retail Investor",
+        data: [100, 450, 800, 320, 120, 180, 95],
+        borderColor: "#ef4444",
+        backgroundColor: lossZone,
+        borderWidth: 3,
+        tension: 0.4,
+        pointRadius: [4, 8, 8, 6, 4, 4, 6],
+        pointBackgroundColor: ["#6b7280", "#ef4444", "#dc2626", "#f87171", "#6b7280", "#6b7280", "#991b1b"],
+        pointBorderColor: "#ffffff",
+        pointBorderWidth: 2,
+        fill: false
       },
-    ],
+      {
+        label: "✅ ReFork Strategy",
+        data: [100, 180, 220, 150, 120, 320, 460],
+        borderColor: "#22c55e",
+        backgroundColor: profitZone,
+        borderWidth: 3,
+        tension: 0.4,
+        pointRadius: [4, 4, 4, 4, 8, 8, 10],
+        pointBackgroundColor: ["#6b7280", "#6b7280", "#6b7280", "#6b7280", "#22c55e", "#10b981", "#fbbf24"],
+        pointBorderColor: "#ffffff",
+        pointBorderWidth: 2,
+        fill: true
+      }
+    ]
   };
 
-  let startTime = null;
-  let flashActive = true;
-  let pulseTime = 0;
-
-  const chart = new Chart(ctx, {
+  const config = {
     type: "line",
     data,
     options: {
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          enabled: false,
-          external: customTooltip,
-        },
-      },
-      scales: { x: { display: false }, y: { display: false } },
       responsive: true,
       maintainAspectRatio: false,
-      animation: { duration: 2000, easing: "easeOutQuart" },
-    },
-    plugins: [
-      {
-        id: "reforkPulse",
-        afterDraw(chart, args, opts) {
-          const { ctx, scales: { x, y } } = chart;
-          const lastIndex = data.labels.length - 1;
-          const lastX = x.getPixelForValue(lastIndex);
-          const lastY = y.getPixelForValue(data.datasets[0].data[lastIndex]);
-          const time = performance.now();
-
-          // --- 💓 Мягкая пульсация ---
-          pulseTime += 10.04;
-          const pulse = 4 + Math.sin(pulseTime) * 2; // сердцебиение
-
-          // Сияющее поле вокруг точки
-          const glow = ctx.createRadialGradient(lastX, lastY, 0, lastX, lastY, 35 + pulse);
-          glow.addColorStop(0, "rgba(167,139,250,0.35)");
-          glow.addColorStop(1, "rgba(167,139,250,0)");
-          ctx.beginPath();
-          ctx.arc(lastX, lastY, 20 + pulse, 0, Math.PI * 2);
-          ctx.fillStyle = glow;
-          ctx.fill();
-
-          // Центральная glowing-точка (сердце)
-          ctx.beginPath();
-          ctx.arc(lastX, lastY, 6 + pulse * 0.25, 0, Math.PI * 2);
-          ctx.fillStyle = "#00ff00";
-          ctx.shadowColor = "#00ff00";
-          ctx.shadowBlur = 15 + pulse;
-          ctx.fill();
-          ctx.shadowBlur = 0;
-
-          // --- 💥 Вспышка при запуске ---
-          if (flashActive) {
-            if (!startTime) startTime = performance.now();
-            const elapsed = (performance.now() - startTime) / 1000;
-            const flashAlpha = Math.max(0, 1 - elapsed * 1.8);
-            const flashRadius = 60 + elapsed * 90;
-
-            if (flashAlpha > 0.05) {
-              const flashGradient = ctx.createRadialGradient(lastX, lastY, 0, lastX, lastY, flashRadius);
-              flashGradient.addColorStop(0, `rgba(255,255,255,${flashAlpha * 0.9})`);
-              flashGradient.addColorStop(1, "rgba(255,255,255,0)");
-              ctx.beginPath();
-              ctx.arc(lastX, lastY, flashRadius, 0, Math.PI * 2);
-              ctx.fillStyle = flashGradient;
-              ctx.fill();
-            } else {
-              flashActive = false;
+      interaction: {
+        mode: 'index',
+        intersect: false
+      },
+      plugins: {
+        legend: {
+          display: true,
+          position: 'top',
+          labels: {
+            color: '#e5e7eb',
+            usePointStyle: true,
+            padding: 15,
+            font: { size: 13, weight: 'bold' }
+          }
+        },
+        tooltip: {
+          enabled: true,
+          backgroundColor: 'rgba(17,24,39,0.95)',
+          titleColor: '#22d3ee',
+          bodyColor: '#e5e7eb',
+          borderColor: '#22d3ee',
+          borderWidth: 1,
+          padding: 12,
+          displayColors: true,
+          callbacks: {
+            label: function(context) {
+              const value = context.parsed.y;
+              const initial = 100;
+              const roi = ((value - initial) / initial * 100).toFixed(0);
+              return `${context.dataset.label}: $${value} (${roi > 0 ? '+' : ''}${roi}%)`;
             }
           }
-
-          requestAnimationFrame(() => chart.draw());
         },
+        annotation: {
+          annotations: {
+            // Зона FOMO
+            fomoBox: {
+              type: 'box',
+              xMin: 1,
+              xMax: 2,
+              yMin: 0,
+              yMax: 900,
+              backgroundColor: 'rgba(251,191,36,0.05)',
+              borderColor: 'rgba(251,191,36,0.3)',
+              borderWidth: 1
+            },
+            // Зона ReFork
+            reforkBox: {
+              type: 'box',
+              xMin: 5,
+              xMax: 6,
+              yMin: 0,
+              yMax: 900,
+              backgroundColor: 'rgba(34,197,94,0.05)',
+              borderColor: 'rgba(34,197,94,0.3)',
+              borderWidth: 1
+            },
+            // Линия входа ReFork
+            reforkEntry: {
+              type: 'line',
+              yMin: 120,
+              yMax: 120,
+              borderColor: '#22c55e',
+              borderWidth: 2,
+              borderDash: [5, 5],
+              label: {
+                display: true,
+                content: '🎯 ReFork Entry Point',
+                position: 'start',
+                backgroundColor: 'rgba(34,197,94,0.2)',
+                color: '#22c55e',
+                font: { size: 11, weight: 'bold' }
+              }
+            },
+            // Линия покупки Retail
+            retailEntry: {
+              type: 'line',
+              yMin: 800,
+              yMax: 800,
+              borderColor: '#ef4444',
+              borderWidth: 2,
+              borderDash: [5, 5],
+              label: {
+                display: true,
+                content: '❌ Typical FOMO Buy',
+                position: 'end',
+                backgroundColor: 'rgba(239,68,68,0.2)',
+                color: '#ef4444',
+                font: { size: 11, weight: 'bold' }
+              }
+            }
+          }
+        }
       },
-    ],
-  });
+      scales: {
+        x: {
+          grid: { 
+            color: 'rgba(255,255,255,0.05)',
+            drawBorder: false
+          },
+          ticks: { 
+            color: '#9ca3af',
+            font: { size: 10 }
+          }
+        },
+        y: {
+          grid: { 
+            color: 'rgba(255,255,255,0.05)',
+            drawBorder: false
+          },
+          ticks: { 
+            color: '#9ca3af',
+            callback: value => `$${value}`,
+            font: { size: 11 }
+          },
+          beginAtZero: true,
+          max: 900
+        }
+      },
+      animation: {
+        duration: 2000,
+        easing: 'easeOutQuart'
+      }
+    },
+    plugins: [{
+      id: 'backgroundGradient',
+      beforeDraw: (chart) => {
+        const ctx = chart.ctx;
+        const chartArea = chart.chartArea;
+        const gradient = ctx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
+        gradient.addColorStop(0, 'rgba(6,182,212,0.03)');
+        gradient.addColorStop(1, 'rgba(139,92,246,0.03)');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(chartArea.left, chartArea.top, chartArea.right - chartArea.left, chartArea.bottom - chartArea.top);
+      }
+    }]
+  };
 
-  // 💬 Tooltip для ReFork
-  function customTooltip(context) {
-    const tooltipModel = context.tooltip;
-    const tooltipEl = getOrCreateTooltip(canvas);
-
-    if (tooltipModel.opacity === 0) {
-      tooltipEl.style.opacity = 0;
-      return;
-    }
-
-    const dataIndex = tooltipModel.dataPoints?.[0]?.dataIndex;
-    if (dataIndex === 4) {
-      tooltipEl.innerHTML = `
-        <div style="
-          background: rgba(17,24,39,0.95);
-          border: 1px solid rgba(167,139,250,0.4);
-          color: #e0e7ff;
-          padding: 6px 10px;
-          border-radius: 8px;
-          font-size: 13px;
-          font-weight: 600;
-          box-shadow: 0 0 10px rgba(167,139,250,0.5);
-          backdrop-filter: blur(6px);
-        ">
-          🔁 Новый цикл начинается
-        </div>`;
-    } else {
-      tooltipEl.style.opacity = 0;
-      return;
-    }
-
-    const { offsetLeft: posX, offsetTop: posY } = canvas;
-    tooltipEl.style.opacity = 1;
-    tooltipEl.style.position = "absolute";
-    tooltipEl.style.left = posX + tooltipModel.caretX + "px";
-    tooltipEl.style.top = posY + tooltipModel.caretY - 30 + "px";
-    tooltipEl.style.pointerEvents = "none";
-  }
-
-  function getOrCreateTooltip(canvas) {
-    let tooltipEl = canvas.parentNode.querySelector(".chart-tooltip");
-    if (!tooltipEl) {
-      tooltipEl = document.createElement("div");
-      tooltipEl.classList.add("chart-tooltip");
-      canvas.parentNode.appendChild(tooltipEl);
-    }
-    return tooltipEl;
-  }
+  new Chart(ctx, config);
 });
 </script>
-
-
 
 </body>
 </html>
