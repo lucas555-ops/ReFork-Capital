@@ -347,6 +347,152 @@ html, body {
 .text-gray-400 { color: #d1d5db !important; }
 .text-gray-300 { color: #e5e7eb !important; }
 
+/* Гарантируем, что fixed header работает правильно */
+header {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Плавная прокрутка для якорных ссылок */
+html {
+  scroll-padding-top: 80px;
+}
+
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 70px;
+  }
+}
+
+/* GMGN Promo Button */
+.social-proof.gmgn-promo {
+  animation: slideInUp 0.5s ease-out;
+}
+
+.gmgn-container {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  padding: 15px 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(34, 211, 238, 0.3);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  min-width: 120px;
+}
+
+.gmgn-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background: transparent;
+  border-radius: 10px;
+  text-decoration: none;
+  border: 1px solid transparent;
+  background: linear-gradient(135deg, #0ea5e9, #06d6a0, #14f195) border-box;
+  position: relative;
+  transition: all 0.3s ease;
+  min-width: 100px;
+}
+
+.gmgn-button::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  background: #000;
+  border-radius: 8px;
+  z-index: 1;
+}
+
+.gmgn-text {
+  font-size: 20px;
+  font-weight: 900;
+  color: white;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.gmgn-subtext {
+  font-size: 10px;
+  color: rgba(255,255,255,0.7);
+  margin: 0;
+  font-weight: 500;
+  text-align: center;
+}
+
+.gmgn-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(6, 214, 160, 0.3);
+}
+
+.gmgn-button:hover .gmgn-text {
+  color: #fff;
+}
+
+.gmgn-close {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.9);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.gmgn-close:hover {
+  background: rgba(239,68,68,0.9);
+  transform: scale(1.1);
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+  .gmgn-container {
+    padding: 12px 16px;
+    min-width: 100px;
+  }
+  
+  .gmgn-button {
+    padding: 8px 16px;
+    min-width: 80px;
+  }
+  
+  .gmgn-text {
+    font-size: 18px;
+  }
+  
+  .gmgn-subtext {
+    font-size: 9px;
+  }
+}
   </style>
 
 	
@@ -360,16 +506,21 @@ html, body {
   <div id="vanta" class="fixed inset-0 -z-0" aria-hidden="true"></div>
   <div class="bg-overlay fixed inset-0 -z-5 pointer-events-none" aria-hidden="true"></div>
 
-  <!-- Progress Bar -->
-  <div class="fixed top-0 left-0 w-0 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 z-50" id="progress-bar"></div>
+<!-- Progress Bar -->
+<div class="fixed top-0 left-0 w-0 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 z-50" id="progress-bar"></div>
 
-  <!-- Social Proof (Live Counter) -->
-  <div class="social-proof" id="socialProof" style="display:none">
-    <div class="counter" data-target="247">0</div>
-    <p class="text-xs text-gray-400 mt-1">активных инвесторов</p>
-  </div>
+<!-- GMGN Promo Button -->
+<div class="social-proof gmgn-promo" id="socialProof" style="display:none">
+  <a href="https://gmgn.ai/r/DEFI" target="_blank" class="gmgn-button">
+    <span class="gmgn-text">GMGN</span>
+  </a>
+  <p class="gmgn-subtext">подключайся к DeFi</p>
+  <button class="gmgn-close" aria-label="Закрыть">×</button>
+</div>
 
 <header class="sticky top-0 z-50 backdrop-blur bg-black/40 border-b border-white/10">
+
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-black/95 border-b border-white/10 md:relative md:bg-black/40">
   <div class="max-w-7xl mx-auto flex items-center justify-between h-16 px-4">
     <a href="#" class="text-xl font-extrabold bg-gradient-to-r from-green-500 to-cyan-400 text-transparent bg-clip-text">ReFork Capital</a>
     
@@ -383,14 +534,15 @@ html, body {
     
     <button class="md:hidden text-white text-xl" id="mobile-menu-button" aria-label="Открыть меню" aria-expanded="false">☰</button>
     
-    <a href="#apply" class="bg-gradient-to-b from-gray-100 to-gray-300 text-gray-900 font-bold border border-gray-400 rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 md:px-4 md:py-1 px-1 py-1 text-sm md:text-base relative overflow-hidden group">
+    <a href="#apply" class="bg-gradient-to-b from-gray-100 to-gray-300 text-gray-900 font-bold border border-gray-400 rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 md:px-4 md:py-1 px-3 py-1 text-sm md:text-base relative overflow-hidden group">
       <span class="relative z-10">Присоединиться</span> 
       <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-0 transition-all duration-1000"></div>
     </a>
   </div>
   
   <!-- Мобильное меню -->
-  <div class="md:hidden hidden bg-black/95 backdrop-blur-lg border-t border-white/10" id="mobile-menu">
+  <div class="md:hidden hidden bg-black/40 backdrop-blur-lg border-t border-white/10 fixed inset-0 z-50 pt-16" id="mobile-menu">
+  <div class="bg-gray-900/95 backdrop-blur-md rounded-lg mx-4 mt-4 p-6 border border-white/10">
     <div class="flex justify-end p-4">
       <button id="mobile-menu-close" aria-label="Закрыть меню" class="text-white text-xl">✕</button>
     </div>
@@ -404,6 +556,9 @@ html, body {
     </div>
   </div>
 </header>
+
+<!-- Добавляем отступ для контента, чтобы он не скрывался под fixed header -->
+<main class="pt-16 md:pt-0" role="main">
 
   <main role="main">
 <section id="hero" class="min-h-screen flex items-center py-10 md:py-20">
@@ -2695,7 +2850,7 @@ summary::marker, summary::-webkit-details-marker {
      class="block bg-gradient-to-r from-green-400 to-cyan-400 text-black 
             font-black text-lg py-4 rounded-2xl text-center shadow-2xl 
             animate-pulse">
-    🚀 НАЧАТЬ ЗАРАБАТЫВАТЬ
+    Подкючиться к ReFork Capital
   </a>
 </div>
 	
@@ -2838,28 +2993,70 @@ summary::marker, summary::-webkit-details-marker {
         document.getElementById('progress-bar').style.width = scrolled + '%';
       });
 
-      // Social Proof Counter (показать после загрузки)
-      setTimeout(() => {
-        const socialProof = document.getElementById('socialProof');
-        if (socialProof) {
-          socialProof.style.display = 'block';
-          
-          const counter = socialProof.querySelector('[data-target]');
-          const target = +counter.dataset.target;
-          let count = 0;
-          const increment = target / 50;
+// Умный GMGN Promo Button
+let gmgnShowCount = 0;
+const MAX_SHOWS = 3; // Максимум 3 показа за сессию
+const SHOW_DURATION = 8000; // 8 секунд показа
+const SHOW_INTERVAL = 30000; // 30 секунд между показами
 
-          const updateCounter = setInterval(() => {
-            count += increment;
-            if (count >= target) {
-              counter.textContent = target;
-              clearInterval(updateCounter);
-            } else {
-              counter.textContent = Math.ceil(count);
-            }
-          }, 30);
-        }
-      }, 2000);
+function showGMGNPromo() {
+  const socialProof = document.getElementById('socialProof');
+  if (!socialProof || gmgnShowCount >= MAX_SHOWS) return;
+
+  gmgnShowCount++;
+  
+  // Показываем кнопку
+  socialProof.style.display = 'block';
+  setTimeout(() => {
+    socialProof.style.opacity = '1';
+    socialProof.style.transform = 'translateY(0)';
+  }, 10);
+
+  // Скрываем через SHOW_DURATION
+  const hideTimer = setTimeout(() => {
+    hideGMGNPromo();
+    
+    // Планируем следующий показ, если не достигли максимума
+    if (gmgnShowCount < MAX_SHOWS) {
+      setTimeout(showGMGNPromo, SHOW_INTERVAL);
+    }
+  }, SHOW_DURATION);
+
+  // Обработчики закрытия
+  const closeBtn = socialProof.querySelector('.gmgn-close');
+  const gmgnButton = socialProof.querySelector('.gmgn-button');
+  
+  function closeHandler() {
+    clearTimeout(hideTimer);
+    hideGMGNPromo();
+    gmgnShowCount = MAX_SHOWS; // Больше не показываем
+  }
+  
+  closeBtn.addEventListener('click', closeHandler);
+  
+  // При клике на кнопку GMGN тоже считаем за взаимодействие
+  gmgnButton.addEventListener('click', () => {
+    clearTimeout(hideTimer);
+    // Даем время на переход по ссылке перед скрытием
+    setTimeout(() => {
+      gmgnShowCount = MAX_SHOWS;
+    }, 1000);
+  });
+}
+
+function hideGMGNPromo() {
+  const socialProof = document.getElementById('socialProof');
+  if (!socialProof) return;
+  
+  socialProof.style.opacity = '0';
+  socialProof.style.transform = 'translateY(20px)';
+  setTimeout(() => {
+    socialProof.style.display = 'none';
+  }, 500);
+}
+
+// Запускаем первый показ через 3 секунды
+setTimeout(showGMGNPromo, 3000);
 
 // Exit Intent Popup - Tokenized Stocks Offer
 let exitIntentShown = false;
