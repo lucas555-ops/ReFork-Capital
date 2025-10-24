@@ -475,48 +475,47 @@ html, body {
       </div>
 
       <!-- График - после всего контента на мобильных -->
-      <div class="relative order-2 lg:order-2 w-full mt-8 lg:mt-0">
-        <!-- Фоновое свечение -->
-        <div class="absolute -inset-4 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-2xl blur-3xl opacity-50"></div>
+<!-- Обновите блок с графиком в секции hero -->
+<div class="relative order-2 lg:order-2 w-full mt-8 lg:mt-0">
+  <!-- Фоновое свечение -->
+  <div class="absolute -inset-4 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-2xl blur-3xl opacity-50"></div>
 
-        <!-- Основная карточка графика -->
-        <div class="relative glow-card card-glow rounded-2xl overflow-hidden bg-gradient-to-br from-gray-900 to-black border border-cyan-500/30 p-4 md:p-6">
+  <!-- Основная карточка графика -->
+  <div class="relative glow-card card-glow rounded-2xl overflow-hidden bg-gradient-to-br from-gray-900 to-black border border-cyan-500/30 p-4 md:p-6">
 
-          <!-- Верхняя панель -->
-          <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4 md:mb-6 gap-2">
-            <div class="text-cyan-400 font-bold text-base md:text-lg text-center md:text-left">📈 ReFork Strategy vs Retail FOMO</div>
-            <div class="flex gap-2 justify-center md:justify-start">
-              <span class="text-xs px-2 py-1 bg-red-500/20 text-red-400 rounded-full border border-red-500/30">❌ Типичный путь</span>
-              <span class="text-xs px-2 py-1 bg-green-500/20 text-green-400 rounded-full border border-green-500/30">✅ ReFork метод</span>
-            </div>
-          </div>
+    <!-- Верхняя панель -->
+    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4 md:mb-6 gap-2">
+      <div class="text-cyan-400 font-bold text-base md:text-lg text-center md:text-left">📈 ReFork Strategy vs Retail FOMO</div>
+      <div class="flex gap-2 justify-center md:justify-start">
+        <span class="text-xs px-2 py-1 bg-red-500/20 text-red-400 rounded-full border border-red-500/30">❌ Типичный путь</span>
+        <span class="text-xs px-2 py-1 bg-green-500/20 text-green-400 rounded-full border border-green-500/30">✅ ReFork метод</span>
+      </div>
+    </div>
 
-          <!-- Canvas для графика -->
-          <div class="relative h-48 md:h-64 mb-4 md:mb-6 overflow-x-auto">
-            <div class="min-w-[500px] md:min-w-0 h-full">
-              <canvas id="reforkStrategyChart" class="w-full h-full"></canvas>
-            </div>
-          </div>
+    <!-- Canvas для графика -->
+    <div class="relative h-48 md:h-64 mb-4 md:mb-6 overflow-x-auto">
+      <div class="min-w-[650px] md:min-w-0 h-full">
+        <canvas id="reforkStrategyChart" class="w-full h-full"></canvas>
+      </div>
+    </div>
 
-          <!-- Легенда с метриками -->
-          <div class="grid grid-cols-3 gap-2 md:gap-4 mt-4 md:mt-6 pt-4 border-t border-white/10">
-            <div class="text-center">
-              <div class="text-red-400 text-lg md:text-2xl font-black">-67%</div>
-              <div class="text-gray-400 text-xs mt-1">Типичный ROI</div>
-            </div>
-            <div class="text-center">
-              <div class="text-green-400 text-lg md:text-2xl font-black">+284%</div>
-              <div class="text-gray-400 text-xs mt-1">ReFork ROI</div>
-            </div>
-            <div class="text-center">
-              <div class="text-cyan-400 text-lg md:text-2xl font-black">14-21</div>
-              <div class="text-gray-400 text-xs mt-1">Дней на цикл</div>
-            </div>
-          </div>
-        </div>
+    <!-- Легенда с метриками - ОБНОВЛЕНО ДЛЯ МОБИЛЬНЫХ -->
+    <div class="grid grid-cols-3 gap-1 md:gap-4 mt-4 md:mt-6 pt-4 border-t border-white/10">
+      <div class="text-center">
+        <div class="text-red-400 text-lg md:text-2xl font-black">-67%</div>
+        <div class="text-gray-400 text-xs mt-1">Типичный ROI</div>
+      </div>
+      <div class="text-center">
+        <div class="text-green-400 text-lg md:text-2xl font-black">+284%</div>
+        <div class="text-gray-400 text-xs mt-1">ReFork ROI</div>
+      </div>
+      <div class="text-center">
+        <div class="text-cyan-400 text-lg md:text-2xl font-black">14-21</div>
+        <div class="text-gray-400 text-xs mt-1">Дней на цикл</div>
       </div>
     </div>
   </div>
+</div>
 </section>
 
 <!-- Ecosystem Partners Section -->
@@ -1414,11 +1413,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-/* Адаптация нового графика для мобильных */
+/* Адаптация графика для мобильных */
 @media (max-width: 768px) {
   #reforkStrategyChart {
-    min-width: 600px !important;
-    width: 200% !important;
+    min-width: 650px !important;
+    width: 100% !important;
+    transform: none !important;
   }
   
   .glow-card .overflow-x-auto {
@@ -1430,6 +1430,23 @@ document.addEventListener("DOMContentLoaded", () => {
   .glow-card .overflow-x-auto::-webkit-scrollbar {
     display: none;
   }
+  
+  .glow-card {
+    padding: 1rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  #reforkStrategyChart {
+    min-width: 650px !important;
+    transform: none !important;
+  }
+  
+  .glow-card .overflow-x-auto::after {
+    content: '← прокрутите график →';
+    font-size: 9px;
+  }
+}
   
   /* Увеличиваем отступы для лучшего скролла */
   .glow-card {
@@ -1460,7 +1477,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 @media (max-width: 480px) {
   #reforkStrategyChart {
-    min-width: 700px !important;
+    min-width: 650px !important;
+    transform: none !important;
   }
   
   .glow-card .overflow-x-auto::after {
@@ -1491,8 +1509,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 @media (max-width: 768px) {
   #reforkStrategyChart {
-    width: 200% !important;
-    transform: translateX(-25%);
+    min-width: 650px !important;
+    width: 100% !important;
+    transform: none !important;
   }
 }
 
@@ -1725,6 +1744,26 @@ document.addEventListener("DOMContentLoaded", () => {
 .kinetic-word {
   filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
   will-change: transform, opacity;
+}
+
+/* Увеличиваем минимальную ширину для графика на мобильных */
+@media (max-width: 768px) {
+  .min-w-\[650px\] {
+    min-width: 650px !important;
+  }
+  
+  /* Уменьшаем отступы для легенды метрик */
+  .grid-cols-3.gap-1 .text-center {
+    padding: 0 2px;
+  }
+  
+  .grid-cols-3.gap-1 .text-lg {
+    font-size: 1rem !important;
+  }
+  
+  .grid-cols-3.gap-1 .text-xs {
+    font-size: 0.7rem !important;
+  }
 }
 
 </style>
@@ -3013,11 +3052,11 @@ function initializeChart() {
   
   const config = isMobile ? mobileConfig : desktopConfig;
 
-  // Упрощенные данные без градиентов (они могут вызывать проблемы)
+  // Упрощенные данные без градиентов
   const data = {
     labels: [
       "День 0\n💡",
-      "День 3\n🚀",
+      "День 3\n🚀", 
       "День 7\n📈",
       "День 10\n📉",
       "День 15\n😴",
@@ -3025,34 +3064,34 @@ function initializeChart() {
       "День 25\n💰"
     ],
     
-	datasets: [
-  {
-    label: "❌ Retail",
-    data: [100, 180, 320, 150, 80, 50, 33], // Retail заканчивает на -67%
-    borderColor: "#ef4444",
-    backgroundColor: "rgba(239, 68, 68, 0.1)",
-    borderWidth: config.borderWidth,
-    tension: 0.4,
-    pointRadius: config.pointRadius,
-    pointBackgroundColor: ["#6b7280", "#6b7280", "#ef4444", "#f87171", "#dc2626", "#991b1b", "#7f1d1d"],
-    pointBorderColor: "#ffffff",
-    pointBorderWidth: config.pointBorderWidth,
-    fill: false
-  },
-  {
-    label: "✅ ReFork", 
-    data: [100, 120, 180, 220, 280, 350, 384], // ReFork заканчивает на +284%
-    borderColor: "#22c55e",
-    backgroundColor: "rgba(34, 197, 94, 0.1)",
-    borderWidth: config.borderWidth,
-    tension: 0.4,
-    pointRadius: config.pointRadius,
-    pointBackgroundColor: ["#6b7280", "#6b7280", "#6b7280", "#22c55e", "#16a34a", "#10b981", "#fbbf24"],
-    pointBorderColor: "#ffffff",
-    pointBorderWidth: config.pointBorderWidth,
-    fill: true
-  }
-]
+    datasets: [
+      {
+        label: "❌ Retail",
+        data: [100, 180, 320, 150, 80, 50, 33],
+        borderColor: "#ef4444",
+        backgroundColor: "rgba(239, 68, 68, 0.1)",
+        borderWidth: config.borderWidth,
+        tension: 0.4,
+        pointRadius: config.pointRadius,
+        pointBackgroundColor: ["#6b7280", "#6b7280", "#ef4444", "#f87171", "#dc2626", "#991b1b", "#7f1d1d"],
+        pointBorderColor: "#ffffff",
+        pointBorderWidth: config.pointBorderWidth,
+        fill: false
+      },
+      {
+        label: "✅ ReFork", 
+        data: [100, 120, 180, 220, 280, 350, 384],
+        borderColor: "#22c55e",
+        backgroundColor: "rgba(34, 197, 94, 0.1)",
+        borderWidth: config.borderWidth,
+        tension: 0.4,
+        pointRadius: config.pointRadius,
+        pointBackgroundColor: ["#6b7280", "#6b7280", "#6b7280", "#22c55e", "#16a34a", "#10b981", "#fbbf24"],
+        pointBorderColor: "#ffffff",
+        pointBorderWidth: config.pointBorderWidth,
+        fill: true
+      }
+    ]
   };
 
   try {
@@ -3119,8 +3158,12 @@ function initializeChart() {
               font: { 
                 size: isMobile ? 9 : 10 
               },
-              maxRotation: 0
-            }
+              maxRotation: 0,
+              // Ключевое изменение: показываем все метки на мобильных
+              autoSkip: false
+            },
+            // Убедимся, что график начинается с начала
+            offset: true
           },
           y: {
             grid: { 
@@ -3135,7 +3178,7 @@ function initializeChart() {
               }
             },
             beginAtZero: true,
-            max: 900
+            max: 400 // Немного уменьшили максимальное значение для лучшего отображения
           }
         },
         animation: {
