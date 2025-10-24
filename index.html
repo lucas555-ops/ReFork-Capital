@@ -369,40 +369,41 @@ html, body {
     <p class="text-xs text-gray-400 mt-1">активных инвесторов</p>
   </div>
 
-  <header class="sticky top-0 z-50 backdrop-blur bg-black/40 border-b border-white/10">
-    <div class="max-w-7xl mx-auto flex items-center justify-between h-16 px-4">
-      <a href="#" class="text-xl font-extrabold bg-gradient-to-r from-green-500 to-cyan-400 text-transparent bg-clip-text">ReFork Capital</a>
-      
-      <nav class="hidden md:flex gap-6 text-sm" aria-label="Основная навигация">
-        <a href="#process" class="hover:text-white transition-colors">Как работает</a>
-        <a href="#method" class="hover:text-white transition-colors">Методы</a>
-        <a href="#meme-mechanics" class="hover:text-white transition-colors">Мем-механика</a>
-        <a href="#packages" class="hover:text-white transition-colors">Инвестировать</a>
-        <a href="#team" class="hover:text-white transition-colors">Команда</a>
-      </nav>
-      
-      <button class="md:hidden text-white text-xl" id="mobile-menu-button" aria-label="Открыть меню" aria-expanded="false">☰</button>
-      
-      <a href="#apply" class="bg-gradient-to-b from-gray-100 to-gray-300 text-gray-900 font-bold border border-gray-400 rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 md:px-4 md:py-1 px-1 py-1 text-sm md:text-base relative overflow-hidden group">
-    <span class="relative z-10">Присоединиться</span> 
-    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-0 transition-all duration-1000"></div>
-</a>
-
+<header class="sticky top-0 z-50 backdrop-blur bg-black/40 border-b border-white/10">
+  <div class="max-w-7xl mx-auto flex items-center justify-between h-16 px-4">
+    <a href="#" class="text-xl font-extrabold bg-gradient-to-r from-green-500 to-cyan-400 text-transparent bg-clip-text">ReFork Capital</a>
     
-    <div class="md:hidden hidden bg-black/95 backdrop-blur-lg border-t border-white/10" id="mobile-menu">
-      <div class="flex justify-end p-4">
-        <button id="mobile-menu-close" aria-label="Закрыть меню" class="text-white text-xl">✕</button>
-      </div>
-      <div class="flex flex-col py-4 px-4 space-y-4">
-        <a href="#process" class="hover:text-cyan-400 transition-colors py-2">Как работает</a>
-        <a href="#method" class="hover:text-cyan-400 transition-colors py-2">Методы</a>
-        <a href="#meme-mechanics" class="hover:text-cyan-400 transition-colors py-2">Мем-механика</a>
-        <a href="#packages" class="hover:text-cyan-400 transition-colors py-2">Инвестировать</a>
-        <a href="#team" class="hover:text-cyan-400 transition-colors py-2">Команда</a>
-        <a href="#apply" class="bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-4 py-2 rounded-lg text-center mt-2">Присоединиться</a>
-      </div>
+    <nav class="hidden md:flex gap-6 text-sm" aria-label="Основная навигация">
+      <a href="#process" class="hover:text-white transition-colors">Как работает</a>
+      <a href="#method" class="hover:text-white transition-colors">Методы</a>
+      <a href="#meme-mechanics" class="hover:text-white transition-colors">Мем-механика</a>
+      <a href="#packages" class="hover:text-white transition-colors">Инвестировать</a>
+      <a href="#team" class="hover:text-white transition-colors">Команда</a>
+    </nav>
+    
+    <button class="md:hidden text-white text-xl" id="mobile-menu-button" aria-label="Открыть меню" aria-expanded="false">☰</button>
+    
+    <a href="#apply" class="bg-gradient-to-b from-gray-100 to-gray-300 text-gray-900 font-bold border border-gray-400 rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 md:px-4 md:py-1 px-1 py-1 text-sm md:text-base relative overflow-hidden group">
+      <span class="relative z-10">Присоединиться</span> 
+      <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-0 transition-all duration-1000"></div>
+    </a>
+  </div>
+  
+  <!-- Мобильное меню -->
+  <div class="md:hidden hidden bg-black/95 backdrop-blur-lg border-t border-white/10" id="mobile-menu">
+    <div class="flex justify-end p-4">
+      <button id="mobile-menu-close" aria-label="Закрыть меню" class="text-white text-xl">✕</button>
     </div>
-  </header>
+    <div class="flex flex-col py-4 px-4 space-y-4">
+      <a href="#process" class="hover:text-cyan-400 transition-colors py-2">Как работает</a>
+      <a href="#method" class="hover:text-cyan-400 transition-colors py-2">Методы</a>
+      <a href="#meme-mechanics" class="hover:text-cyan-400 transition-colors py-2">Мем-механика</a>
+      <a href="#packages" class="hover:text-cyan-400 transition-colors py-2">Инвестировать</a>
+      <a href="#team" class="hover:text-cyan-400 transition-colors py-2">Команда</a>
+      <a href="#apply" class="bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-4 py-2 rounded-lg text-center mt-2">Присоединиться</a>
+    </div>
+  </div>
+</header>
 
   <main role="main">
 <section id="hero" class="min-h-screen flex items-center py-10 md:py-20">
@@ -3571,6 +3572,6 @@ window.addEventListener('resize', function() {
   }, 250);
 });
 </script>
-	  
+
 </body>
 </html>
