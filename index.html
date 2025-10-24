@@ -1960,6 +1960,7 @@ document.addEventListener("DOMContentLoaded", () => {
   </div>
 </section>
 
+
 <section id="target-audience" aria-labelledby="target-audience-title" class="py-24 relative overflow-hidden bg-gradient-to-br from-gray-900/60 via-gray-800/40 to-cyan-900/20">
   <h2 id="target-audience-title" class="sr-only">Найдите свой путь в ReFork Capital</h2>
   
@@ -2087,6 +2088,165 @@ document.addEventListener("DOMContentLoaded", () => {
     <div class="absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-0.5 w-4/5 bg-gradient-to-r from-transparent via-orange-400 to-transparent rounded-full shadow-lg shadow-orange-400/20 z-30"></div>
   </div>
 </div>
+
+<!-- Tokenized Stocks CTA Section -->
+<section id="tokenized-stocks-cta" class="py-24 relative overflow-hidden bg-gray-900 mb-16">
+
+  
+  <!-- Watermark как первый элемент -->
+  <div class="relative z-10 mb-8">
+    <div class="wm-text-main">xStocks</div>
+  </div>
+
+  <div class="max-w-4xl mx-auto px-4 text-center relative z-20">
+    
+    <!-- Главный заголовок -->
+    <h2 class="text-4xl md:text-5xl font-black mb-12 bg-gradient-to-r from-cyan-400 to-purple-400 text-transparent bg-clip-text">
+      DeFi встречает Уолл-стрит
+    </h2>
+
+    <!-- Основной контент -->
+    <div class="glow-card card-glow p-8 md:p-10 rounded-3xl backdrop-blur-sm bg-white/5 border border-white/10">
+      
+      <!-- Заголовок -->
+      <div class="mb-6">
+        <h4 class="text-lg md:text-xl text-cyan-400 font-semibold">
+          Традиционные активы в мире DeFi
+        </h4>
+      </div>
+
+      <!-- Описание -->
+      <p class="text-lg text-gray-300 leading-relaxed mb-8 max-w-2xl mx-auto">
+        Токенизированные акции — это мост между традиционными финансами и криптовалютой. 
+        Покупайте акции Apple, Tesla, Netflix и других компаний из S&P 500 через блокчейн 
+        с преимуществами DeFi: мгновенные расчеты, круглосуточная торговля и полная прозрачность.
+      </p>
+
+      <!-- Преимущества -->
+      <div class="grid md:grid-cols-3 gap-4 mb-8 max-w-2xl mx-auto">
+        <div class="glow-card p-4 rounded-xl bg-white/5 border border-white/5">
+          <div class="text-2xl mb-2">⚡</div>
+          <h5 class="font-bold text-white mb-1">Мгновенные сделки</h5>
+          <p class="text-sm text-gray-400">Торгуйте 24/7 без посредников</p>
+        </div>
+        <div class="glow-card p-4 rounded-xl bg-white/5 border border-white/5">
+          <div class="text-2xl mb-2">🔒</div>
+          <h5 class="font-bold text-white mb-1">Полное обеспечение</h5>
+          <p class="text-sm text-gray-400">Каждый токен backed реальной акцией</p>
+        </div>
+        <div class="glow-card p-4 rounded-xl bg-white/5 border border-white/5">
+          <div class="text-2xl mb-2">💎</div>
+          <h5 class="font-bold text-white mb-1">Доступ для всех</h5>
+          <p class="text-sm text-gray-400">Инвестируйте от $10 без границ</p>
+        </div>
+      </div>
+
+      <!-- CTA Кнопки -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a href="https://gmgn.ai/trend/DEFI?chain=sol&tab=xstocks" 
+           target="_blank"
+           class="btn-glow bg-gradient-to-r from-green-500 to-cyan-500 text-white font-bold px-8 py-4 rounded-xl hover:scale-105 transition-transform shadow-lg shadow-cyan-500/25 group flex items-center gap-2 relative overflow-hidden">
+          <span class="relative z-10">Купить акцию</span>
+          <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-all duration-1000"></div>
+        </a>
+        <a href="https://lucas555-ops.github.io/tokenized_stocks_etfs_hub/" 
+           target="_blank"
+           class="border border-cyan-400/50 text-cyan-400 font-bold px-6 py-4 rounded-xl hover:bg-cyan-400/10 transition-colors">
+          Как это работает?
+        </a>
+      </div>
+
+      <!-- Trust Badges -->
+      <div class="flex flex-wrap justify-center gap-6 mt-8 pt-8 border-t border-white/10">
+        <div class="flex items-center gap-2 text-gray-400">
+          <span class="text-green-400">🛡️</span>
+          <span class="text-sm">Швейцарское регулирование</span>
+        </div>
+        <div class="flex items-center gap-2 text-gray-400">
+          <span class="text-blue-400">📊</span>
+          <span class="text-sm">Акции S&P 500</span>
+        </div>
+        <div class="flex items-center gap-2 text-gray-400">
+          <span class="text-purple-400">🔍</span>
+          <span class="text-sm">Публичный аудит</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+/* Main Watermark Styles - теперь на переднем плане */
+.wm-text-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(4rem, 15vw, 12rem);
+  font-weight: 900;
+  letter-spacing: -0.035em;
+  background: linear-gradient(90deg, #14F195, #9945FF, #00C2FF, #14F195);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  user-select: none;
+  pointer-events: none;
+  text-shadow: 0 0 10px rgba(20,241,149,.12), 0 0 22px rgba(0,194,255,.10);
+  animation: wm-shine 9s linear infinite, wm-glow 4.5s ease-in-out infinite alternate;
+  margin-bottom: -2rem;
+  opacity: 0.8;
+}
+
+@keyframes wm-shine {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+@keyframes wm-glow {
+  from { 
+    text-shadow: 0 0 6px rgba(20,241,149,.10), 0 0 12px rgba(0,194,255,.10);
+  }
+  to { 
+    text-shadow: 0 0 18px rgba(20,241,149,.28), 0 0 34px rgba(0,194,255,.24);
+  }
+}
+
+/* Glow effect for the main button */
+.btn-glow {
+  position: relative;
+  animation: pulse-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 5px rgba(34, 197, 94, 0.4), 0 0 10px rgba(34, 197, 94, 0.3), 0 0 15px rgba(34, 197, 94, 0.2), 0 0 20px rgba(34, 197, 94, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.6), 0 0 20px rgba(34, 197, 94, 0.4), 0 0 30px rgba(34, 197, 94, 0.3), 0 0 40px rgba(34, 197, 94, 0.2);
+  }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  #tokenized-stocks-cta .grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .wm-text-main {
+    font-size: clamp(3rem, 12vw, 8rem);
+    margin-bottom: -1rem;
+    opacity: 0.7;
+  }
+}
+</style>
+
+<script>
+function scrollToFAQ() {
+  document.getElementById('faq').scrollIntoView({ behavior: 'smooth' });
+}
+</script>
 
     <!-- CTA Section -->
     <div class="text-center">
