@@ -215,9 +215,83 @@ html, body {
     .loading-spinner-btn{display:inline-block;width:20px;height:20px;border:3px solid rgba(255,255,255,.3);border-radius:50%;border-top-color:#22d3ee;animation:spin 1s linear infinite;margin-left:8px}
 
     /* Exit Intent Popup */
-    .exit-popup{position:fixed;inset:0;background:rgba(0,0,0,0.9);display:flex;align-items:center;justify-content:center;z-index:10000;animation:fadeIn 0.3s ease}
-    .exit-popup-content{background:linear-gradient(135deg,#1e293b,#0f172a);padding:40px;border-radius:20px;max-width:500px;text-align:center;border:2px solid #22d3ee}
-    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    .exit-popup {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      animation: fadeIn 0.3s ease;
+      backdrop-filter: blur(5px);
+    }
+
+    .exit-popup-content {
+      position: relative;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      padding: 40px 30px 30px;
+      border-radius: 20px;
+      max-width: 500px;
+      text-align: center;
+      border: 2px solid #22d3ee;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+      margin: 20px;
+    }
+
+    .exit-popup-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      border: none;
+    }
+
+    .exit-popup-close:hover {
+      background: rgba(239, 68, 68, 0.3);
+      color: #fff;
+      transform: scale(1.1);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Адаптивность для мобильных */
+    @media (max-width: 640px) {
+      .exit-popup-content {
+        margin: 20px;
+        padding: 30px 20px 20px;
+      }
+      
+      .exit-popup-close {
+        top: 10px;
+        right: 10px;
+        width: 28px;
+        height: 28px;
+        font-size: 20px;
+      }
+      
+      .exit-popup-content h3 {
+        font-size: 1.5rem;
+      }
+      
+      .exit-popup-content p {
+        font-size: 1rem;
+      }
+    }
 
     /* Social Proof Counter */
     .social-proof{position:fixed;bottom:20px;left:20px;background:rgba(0,0,0,0.8);backdrop-filter:blur(10px);padding:15px 20px;border-radius:12px;border:1px solid rgba(34,211,238,0.3);z-index:100}
@@ -268,56 +342,7 @@ html, body {
     font-size: 1.25rem;
   }
 }
-.exit-popup-close {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
-  color: #fff;
-  font-size: 24px;
-  font-weight: bold;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-}
-.exit-popup-close:hover {
-  background: rgba(239, 68, 68, 0.3);
-  color: #fff;
-  transform: scale(1.1);
-}
 
-/* Делаем контент попапа relative для позиционирования крестика */
-.exit-popup-content {
-  position: relative;
-  background: linear-gradient(135deg, #1e293b, #0f172a);
-  padding: 40px 30px 30px;
-  border-radius: 20px;
-  max-width: 500px;
-  text-align: center;
-  border: 2px solid #22d3ee;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-}
-
-/* Адаптивность для мобильных */
-@media (max-width: 640px) {
-  .exit-popup-content {
-    margin: 20px;
-    padding: 30px 20px 20px;
-  }
-  
-  .exit-popup-close {
-    top: 10px;
-    right: 10px;
-    width: 28px;
-    height: 28px;
-    font-size: 20px;
-  }
-}
 /* ✅ Повышаем контраст текста */
 .text-gray-400 { color: #d1d5db !important; }
 .text-gray-300 { color: #e5e7eb !important; }
@@ -917,7 +942,8 @@ document.addEventListener("DOMContentLoaded", () => {
 <div class="text-center mb-16 max-w-4xl mx-auto px-4">
   <h2 class="text-7xl font-bold text-cyan-400 mb-6">Ключ успеха</h2>
   <p class="text-2xl text-gray-300 leading-tight">
-    Методика раннего обнаружения тренда, через AI-мониторинг Twitter и DEX аналитику, быстрый запуск мем-кампании и фиксация прибыли на пике FOMO-волны.
+    Раннее обнаружение тренда через AI-мониторинг Twitter<br>
+    быстрый запуск мем-кампании и фиксация прибыли на пике FOMO-волны
   </p>
 </div>
 
@@ -2674,43 +2700,117 @@ summary::marker, summary::-webkit-details-marker {
         }
       }, 2000);
 
-      // Exit Intent Popup
-      let exitIntentShown = false;
-      document.addEventListener('mouseout', (e) => {
-        if (!exitIntentShown && e.clientY < 0 && e.relatedTarget === null) {
-          showExitPopup();
-          exitIntentShown = true;
-        }
-      });
+// Exit Intent Popup - Tokenized Stocks Offer
+let exitIntentShown = false;
+let exitIntentTimer;
 
-      function showExitPopup() {
+function initExitIntent() {
+  // Отслеживание ухода с сайта
+  document.addEventListener('mouseleave', (e) => {
+    if (e.clientY < 0 && !exitIntentShown) {
+      showExitPopup();
+    }
+  });
+
+  // Дополнительный триггер - движение к верхнему краю
+  document.addEventListener('mousemove', (e) => {
+    if (e.clientY < 50 && !exitIntentShown) {
+      clearTimeout(exitIntentTimer);
+      exitIntentTimer = setTimeout(() => {
+        showExitPopup();
+      }, 1000);
+    }
+  });
+}
+
+function showExitPopup() {
   if (localStorage.getItem('exitPopupShown') === 'true') return;
+  
   const popup = document.createElement('div');
   popup.className = 'exit-popup';
   popup.innerHTML = `
     <div class="exit-popup-content">
-      <button class="exit-popup-close" aria-label="Закрыть окно"><span>×</span></button>
-      <h3 class="text-3xl font-bold mb-4 text-cyan-400">Заберите подарок!</h3>
-      <p class="text-xl mb-6 text-gray-300">Инструкция по настройке фильтров GMGN для DEX торговли.</p>
-      <div class="flex gap-4 justify-center">
-        <button onclick="window.open('https://gmgn.ai', '_blank'); this.closest('.exit-popup').remove();" 
-                class="bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-6 py-3 rounded-lg hover:scale-105 transition-transform">
-          GMGN
+      <button class="exit-popup-close" aria-label="Закрыть окно">×</button>
+      
+      <!-- Иконка -->
+      <div class="text-4xl mb-4">📈</div>
+      
+      <h3 class="text-2xl md:text-3xl font-bold mb-3 text-cyan-400">Инвестируйте уверенно!</h3>
+      <p class="text-lg md:text-xl mb-4 text-gray-300">
+        Покупайте крипто-акции Apple, Tesla, Netflix<br class="hidden md:block">
+        через токенизированные активы
+      </p>
+      
+      <div class="bg-gradient-to-r from-cyan-500/10 to-purple-500/10 p-4 rounded-lg mb-6 border border-cyan-500/20">
+        <p class="text-sm text-cyan-300 mb-2">🎯 Наша классическая умеренная стратегия</p>
+        <p class="text-xs text-gray-400">Идеально для консервативных инвесторов</p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <button id="exitPopupInvest" class="bg-gradient-to-r from-green-500 to-cyan-500 text-white font-bold px-6 py-3 rounded-lg hover:scale-105 transition-transform shadow-lg shadow-cyan-500/25">
+          🚀 Перейти к инвестициям
         </button>
-        <button onclick="window.open('https://t.me/c/1892588438/4', '_blank'); this.closest('.exit-popup').remove();" 
-                class="border border-gray-500 text-gray-300 px-6 py-3 rounded-lg hover:bg-gray-800 hover:text-white transition-colors">
-          Инструкция
+        <button class="exit-popup-close border border-gray-500 text-gray-300 px-6 py-3 rounded-lg hover:bg-gray-800 hover:text-white transition-colors">
+          Закрыть
         </button>
       </div>
+      
+      <p class="text-xs text-gray-500 mt-4">
+        Низкие комиссии • Высокая ликвидность • Регулярные дивиденды
+      </p>
     </div>
   `;
-  popup.addEventListener('click', (e) => {
-    if (e.target === popup) popup.remove();
+
+  // Обработчик для кнопки инвестирования
+  popup.querySelector('#exitPopupInvest').addEventListener('click', () => {
+    window.open('https://lucas555-ops.github.io/tokenized_stocks_etfs_hub/', '_blank');
+    popup.remove();
+    localStorage.setItem('exitPopupShown', 'true');
   });
+
+  // Обработчик для кнопки закрытия
+  const closeButtons = popup.querySelectorAll('.exit-popup-close');
+  closeButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      popup.remove();
+      localStorage.setItem('exitPopupShown', 'true');
+    });
+  });
+
+  // Закрытие по клику на фон
+  popup.addEventListener('click', (e) => {
+    if (e.target === popup) {
+      popup.remove();
+      localStorage.setItem('exitPopupShown', 'true');
+    }
+  });
+
+  // Закрытие по Escape
+  const handleEscape = (e) => {
+    if (e.key === 'Escape') {
+      popup.remove();
+      document.removeEventListener('keydown', handleEscape);
+      localStorage.setItem('exitPopupShown', 'true');
+    }
+  };
+  document.addEventListener('keydown', handleEscape);
+
   document.body.appendChild(popup);
-  localStorage.setItem('exitPopupShown', 'true');
-  setTimeout(() => localStorage.removeItem('exitPopupShown'), 24 * 60 * 60 * 1000); // Reset after 24 hours
+  exitIntentShown = true;
+  
+  // Автоматическое закрытие через 24 часа
+  setTimeout(() => {
+    localStorage.removeItem('exitPopupShown');
+  }, 24 * 60 * 60 * 1000);
 }
+
+// Инициализация при загрузке страницы
+document.addEventListener('DOMContentLoaded', function() {
+  // Ждем немного перед инициализацией exit intent
+  setTimeout(initExitIntent, 3000);
+});
+
+
      // Форма - улучшенная обработка для Vercel
 // Форма - финальная версия для Vercel
 const form = document.getElementById('leadForm');
