@@ -2575,6 +2575,7 @@ summary::marker, summary::-webkit-details-marker {
   setTimeout(() => localStorage.removeItem('exitPopupShown'), 24 * 60 * 60 * 1000); // Reset after 24 hours
 }
      // Форма - улучшенная обработка для Vercel
+// Форма - финальная версия для Vercel
 const form = document.getElementById('leadForm');
 const btn = document.getElementById('leadSubmit');
 
@@ -2614,14 +2615,13 @@ if (form && btn) {
     buttonText.textContent = "Отправка...";
     spinner.classList.remove('hidden');
 
-    const VERCEL_URL = 'https://re-fork-capital.vercel.app/'; 
-    const API_ENDPOINT = `https://${VERCEL_URL}/api/telegram`;
+    // ✅ VERCEL ENDPOINT
+    const API_URL = 'https://re-fork-capital.vercel.app/api/telegram';
     
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 10000); // 10 секунд
+    const timeout = setTimeout(() => controller.abort(), 10000);
 
     try {
-      // Подготавливаем данные для Vercel
       const jsonData = {
         name: formData.get('name'),
         telegram: formData.get('telegram'),
@@ -2630,7 +2630,9 @@ if (form && btn) {
         source: 'ReFork Capital'
       };
 
-      const res = await fetch(API_ENDPOINT, { 
+      console.log('📤 Отправка данных в Vercel:', jsonData);
+
+      const res = await fetch(API_URL, { 
         method: "POST", 
         body: JSON.stringify(jsonData),
         headers: {
@@ -2644,6 +2646,7 @@ if (form && btn) {
       clearTimeout(timeout);
 
       const responseData = await res.json();
+      console.log('📥 Ответ от Vercel:', responseData);
 
       if (res.ok && responseData.success) {
         ReForkUtils.formProtection.recordSubmit();
@@ -2656,23 +2659,27 @@ if (form && btn) {
         
         form.reset();
       } else {
-        // Ошибка от Vercel функции
         const errorMsg = responseData.error || 'Неизвестная ошибка сервера';
         console.error('Vercel API error:', errorMsg);
-        showError(`❌ Ошибка отправки: ${errorMsg}`);
+        
+        // Показываем пользователю понятное сообщение
+        if (errorMsg.includes('BOT_TOKEN') || errorMsg.includes('CHAT_ID')) {
+          showError("❌ Сервер не настроен. Свяжитесь с нами в Telegram.");
+        } else if (errorMsg.includes('Telegram')) {
+          showError("❌ Ошибка отправки в Telegram. Попробуйте позже.");
+        } else {
+          showError(`❌ Ошибка отправки: ${errorMsg}`);
+        }
       }
     } catch (err) {
       clearTimeout(timeout);
+      console.error('Ошибка при отправке:', err);
       
-      // Обработка разных типов ошибок
       if (err.name === 'AbortError') {
         showError("⏱️ Превышено время ожидания. Проверьте соединение и попробуйте снова.");
       } else if (err.name === 'TypeError' && err.message.includes('fetch')) {
         showError("⚠️ Ошибка сети. Проверьте интернет-соединение и попробуйте снова.");
-      } else if (err.name === 'SyntaxError') {
-        showError("⚠️ Ошибка обработки ответа. Свяжитесь с нами в Telegram.");
       } else {
-        console.error('Unknown error:', err);
         showError("⚠️ Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже или свяжитесь с нами в Telegram.");
       }
     } finally {
