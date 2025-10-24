@@ -518,7 +518,7 @@ html, body {
 </div>
 </section>
 
-<!-- Ecosystem Partners Section -->
+    <!-- Ecosystem Partners Section -->
 <section class="py-16 bg-gray-900">
   <div class="container mx-auto px-4">
     <!-- Section Header -->
@@ -646,6 +646,7 @@ html, body {
 </section>
 
 <style>
+/* Анимации для бесконечной прокрутки (НЕ УДАЛЯТЬ!) */
 @keyframes scroll-banner {
   0% { transform: translateX(0); }
   100% { transform: translateX(calc(-100% / 2)); }
@@ -660,6 +661,33 @@ html, body {
 .animate-scroll-banner-reverse {
   animation: scroll-banner-reverse var(--scroll-banner-duration, 35s) linear infinite;
 }
+
+/* Новые стили для логотипов (добавляем к существующим) */
+.partner-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 8px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.partner-logo:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+  border-color: rgba(34, 211, 238, 0.3);
+}
+
+@media (max-width: 768px) {
+  .partner-logo {
+    width: 50px;
+    height: 50px;
+    padding: 6px;
+  }
+}
 </style>
 
 <script>
@@ -668,14 +696,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const row1 = document.getElementById("partner-row-1");
   const template1 = document.getElementById("partner-logos-1");
   if (row1 && template1) {
-    row1.innerHTML = template1.innerHTML + template1.innerHTML; // дублируем для бесконечного скролла
+    row1.innerHTML = template1.innerHTML + template1.innerHTML;
   }
 
   // Second banner - 16 analytics & AI logos
   const row2 = document.getElementById("partner-row-2");
   const template2 = document.getElementById("partner-logos-2");
   if (row2 && template2) {
-    row2.innerHTML = template2.innerHTML + template2.innerHTML; // дублируем для бесконечного скролла
+    row2.innerHTML = template2.innerHTML + template2.innerHTML;
   }
 });
 </script>
