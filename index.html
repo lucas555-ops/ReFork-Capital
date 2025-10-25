@@ -604,7 +604,16 @@ html {
 <!-- Добавляем отступ для контента, чтобы он не скрывался под fixed header -->
 <main class="pt-16 md:pt-0" role="main">
 
-<section id="hero" class="min-h-screen flex items-center py-10 md:py-20">
+<section id="hero" class="relative overflow-hidden min-h-screen flex items-center py-10 md:py-20 bg-black">
+  <!-- Background image with parallax -->
+  <div 
+    id="hero-bg" 
+    class="absolute inset-0 -z-10 bg-[url('/assets/bg/crypto-grid.webp')] bg-cover bg-center opacity-60 transition-transform duration-700"
+  ></div>
+
+  <!-- Dark gradient overlay -->
+  <div class="absolute inset-0 -z-10 bg-gradient-to-b from-black/20 via-black/60 to-black"></div>
+
   <div class="max-w-7xl mx-auto px-4 w-full">
     <div class="flex flex-col lg:grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
       
@@ -715,12 +724,13 @@ html {
       </div>
     </div>
 
-    <!-- Canvas для графика -->
-    <div class="relative h-48 md:h-64 mb-4 md:mb-6 overflow-x-auto">
-      <div class="min-w-[650px] md:min-w-0 h-full">
-        <canvas id="reforkStrategyChart" class="w-full h-full"></canvas>
-      </div>
-    </div>
+<!-- Canvas для графика -->
+<div class="relative h-48 md:h-64 mb-4 md:mb-6 overflow-x-auto">
+  <div class="min-w-[650px] md:min-w-0 h-full">
+    <canvas id="reforkStrategyChart" class="w-full h-full" aria-label="График сравнения доходности ReFork (до +284%) против розничных инвесторов" role="img"></canvas>
+    <div id="chartTooltip" style="display: none;"></div>
+  </div>
+</div>
 	
 	<div id="chartTooltip" class="absolute text-xs bg-black/80 text-cyan-300 px-2 py-1 rounded hidden shadow-lg border border-cyan-400/30">
 ReFork ROI: +284%
@@ -2147,7 +2157,7 @@ opacity: 1;
       </div>
     </div>
 
-        <!-- Real Examples - ИСПРАВЛЕНО -->
+    <!-- Real Examples - ИСПРАВЛЕНО -->
     <div class="grid md:grid-cols-2 gap-8 mb-8">
       <div class="glow-card p-6">
         <div class="flex items-center gap-3 mb-4">
@@ -3327,7 +3337,7 @@ if (form && btn) {
 
       if (res.ok && responseData.success) {
         ReForkUtils.formProtection.recordSubmit();
-        showToast("✅ Сигнал получен! Заявка принята.");
+        showToast("✅ Спасибо за ваш интерес к услугам ReFork Capital. Мы свяжемся с вами в ближайшее время и ответим на все ваши вопросы.");
         
         // Redirect через 2 секунды
         setTimeout(() => {
@@ -4041,22 +4051,31 @@ window.addEventListener('resize', function() {
 });
 
 
-const canvas = document.getElementById('reforkStrategyChart');
-const tooltip = document.getElementById('chartTooltip');
+
+
 canvas.addEventListener('mousemove', e => {
-const rect = canvas.getBoundingClientRect();
-const x = e.clientX - rect.left;
-const y = e.clientY - rect.top;
-if (x > rect.width * 0.6 && x < rect.width * 0.7 && y < rect.height * 0.4) {
-tooltip.style.left = `${x + 20}px`;
-tooltip.style.top = `${y}px`;
-tooltip.style.display = 'block';
-} else {
-tooltip.style.display = 'none';
-}
+  const rect = canvas.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+  const chart = Chart.getChart('reforkStrategyChart');
+  if (chart) {
+    const activePoints = chart.getElementsAtEventForMode(e, 'nearest', { intersect: true }, true);
+    if (activePoints.length) {
+      const point = activePoints[0];
+      const dataset = chart.data.datasets[point.datasetIndex];
+      const value = dataset.data[point.index];
+      const initial = 100;
+      const roi = ((value - initial) / initial * 100).toFixed(0);
+      const label = dataset.label === '✅ ReFork' ? 'ReFork' : 'Retail';
+      tooltip.innerHTML = `${label}: $${value} (${roi > 0 ? '+' : ''}${roi}%)`;
+      tooltip.style.left = `${x + 20}px`;
+      tooltip.style.top = `${y}px`;
+      tooltip.style.display = 'block';
+    } else {
+      tooltip.style.display = 'none';
+    }
+  }
 });
-
-
 
 </script>
 
