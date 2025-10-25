@@ -1,7 +1,3 @@
-я обновил токен бота
-
-а у меня во так щас
-
 module.exports = async function handler(req, res) {
   // Включаем CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -93,3 +89,4 @@ module.exports = async function handler(req, res) {
     });
   }
 };
+
