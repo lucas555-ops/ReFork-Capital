@@ -70,9 +70,9 @@ module.exports = async function handler(req, res) {
 
     if (telegramResponse.ok) {
       res.status(200).json({ 
-        success: true,
-        message: 'Заявка успешно отправлена!'
-      });
+  success: true,
+  message: '✅ Сигнал получен! Заявка принята. Свяжемся с вами в Telegram в ближайшее время для консультации'
+});
     } else {
       console.error('Ошибка Telegram API:', telegramData);
       res.status(500).json({ 
@@ -89,4 +89,5 @@ module.exports = async function handler(req, res) {
     });
   }
 };
+
 
