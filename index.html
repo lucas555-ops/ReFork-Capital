@@ -404,76 +404,48 @@ html {
 }
 
 /* GMGN Promo Button */
-.social-proof.gmgn-promo {
+.social-proof {
   animation: slideInUp 0.5s ease-out;
 }
 
 .gmgn-container {
-  background: rgba(0, 0, 0, 0.8);
-  backdrop-filter: blur(10px);
-  padding: 15px 20px;
-  border-radius: 12px;
-  border: 1px solid rgba(34, 211, 238, 0.3);
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
+  padding: 15px 20px;
+  background: transparent;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: linear-gradient(#0b0e14, #0b0e14) padding-box, linear-gradient(135deg, #8b5cf6, #06d6a0, #14f195) border-box;
+  position: relative;
+  text-decoration: none;
+  transition: all 0.3s ease;
   min-width: 120px;
 }
 
-.gmgn-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 20px;
-  background: transparent;
-  border-radius: 10px;
-  text-decoration: none;
-  border: 1px solid transparent;
-  background: linear-gradient(135deg, #0ea5e9, #06d6a0, #14f195) border-box;
-  position: relative;
-  transition: all 0.3s ease;
-  min-width: 100px;
-}
-
-.gmgn-button::before {
-  content: '';
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  right: 2px;
-  bottom: 2px;
-  background: #000;
-  border-radius: 8px;
-  z-index: 1;
+.gmgn-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(6, 214, 160, 0.3);
 }
 
 .gmgn-text {
   font-size: 20px;
   font-weight: 900;
-  color: white;
+  background: linear-gradient(335deg, #8b5cf6, #14f195);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
   letter-spacing: 1px;
-  position: relative;
-  z-index: 2;
   text-shadow: 0 1px 2px rgba(0,0,0,0.5);
 }
 
 .gmgn-subtext {
   font-size: 10px;
-  color: rgba(255,255,255,0.7);
+  color: rgba(255,255,255,0.8);
   margin: 0;
   font-weight: 500;
   text-align: center;
-}
-
-.gmgn-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(6, 214, 160, 0.3);
-}
-
-.gmgn-button:hover .gmgn-text {
-  color: #fff;
 }
 
 .gmgn-close {
@@ -494,6 +466,7 @@ html {
   justify-content: center;
   transition: all 0.3s ease;
   z-index: 10;
+  pointer-events: auto;
 }
 
 .gmgn-close:hover {
@@ -518,16 +491,9 @@ html {
     padding: 12px 16px;
     min-width: 100px;
   }
-  
-  .gmgn-button {
-    padding: 8px 16px;
-    min-width: 80px;
-  }
-  
   .gmgn-text {
     font-size: 18px;
   }
-  
   .gmgn-subtext {
     font-size: 9px;
   }
@@ -559,7 +525,7 @@ html {
   <a href="https://gmgn.ai/r/DEFI" target="_blank" class="gmgn-button">
     <span class="gmgn-text">GMGN</span>
   </a>
-  <p class="gmgn-subtext">подключайся к DeFi</p>
+  <p class="gmgn-subtext">Терминал DeFi</p>
   <button class="gmgn-close" aria-label="Закрыть">×</button>
 </div>
 
@@ -700,7 +666,7 @@ html {
         </div>
 
         <!-- Дисклеймер -->
-        <p class="text-xs text-gray-500 pt-2 text-center lg:text-left">
+        <p class="text-xs text-gray-400 pt-2 text-center lg:text-left">
           * Прошлые результаты не гарантируют будущей доходности. 
           Криптовалюты — высокорисковые активы.
         </p>
