@@ -1,14 +1,29 @@
 <!doctype html>
 <html lang="ru" class="scroll-smooth">
+
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/chart.js" as="script">
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" as="style">
+
 <head>
 <link rel="sitemap" type="application/xml" href="/ReFork-Capital/sitemap.xml">
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
-  <title>ReFork Capital — Методы капитализации и умножения криптовалюты</title>
+  <title>ReFork Capital: DeFi-стратегия для мем-токенов, до 80%+ за цикл</title></title>
 
   <!-- Подключение AOS -->
 <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+<!-- Preload critical images -->
+<link rel="preload" href="path/to/hero-image.jpg" as="image">
+<!-- Preconnect to external domains -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<!-- GA отключен -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){console.log('GA:', arguments);}
+</script>
 
 <script type="application/ld+json">
 {
@@ -34,6 +49,7 @@
   ]
 }
 </script>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -62,6 +78,10 @@
   ]
 }
 </script>	
+
+<script>
+document.querySelectorAll('img').forEach(img => img.setAttribute('loading', 'lazy'));
+</script>
 	
   <!-- Critical CSS inline -->
   <style>
@@ -92,7 +112,7 @@ html, body {
   <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
   
   <!-- Meta Tags -->
-  <meta name="description" content="ReFork Capital — система капитализации и умножения криптовалюты через организацию сетевого трафика и рыночного внимания. ROI до 100% в месяц."/>
+  <meta name="description" content="ReFork Capital: Кастомная DeFi-стратегия для мем-токенов. ROI до 80%+ за цикл через AI-аналитику и SMM-капитализацию. Только для своих!"/>
   <meta name="keywords" content="ReFork Capital, crypto fund, meme tokens, investment, DeFi growth, crypto ROI, крипто инвестиции, memecoin, 100x, Solana, DEX" />
   <meta name="robots" content="index, follow" />
   <meta name="author" content="ReFork Capital">
@@ -114,17 +134,25 @@ html, body {
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://lucas555-ops.github.io/ReFork-Capital/">
   <meta property="og:site_name" content="ReFork Capital">
-  <meta property="og:title" content="ReFork Capital — Методы капитализации криптовалюты">
-  <meta property="og:description" content="Система капитализации и умножения криптовалюты. ROI до 80% в месяц.">
+  <meta property="og:title" content="ReFork Capital — Кастомная DeFi-стратегия для мем-токенов">
+  <meta property="og:description" content="ROI до 80%+ за цикл через AI-аналитику и SMM-капитализацию. Только для своих!">
   <meta property="og:image" content="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="ReFork Capital — Методы капитализации криптовалюты">
-  <meta name="twitter:description" content="Методы капитализации и умножения криптовалюты">
+  <meta name="twitter:title" content="ReFork Capital: DeFi-стратегия для мем-токенов">
+  <meta name="twitter:description" content="ROI до 80%+ за цикл. AI-аналитика + SMM-капитализация. Только для своих!">
   <meta name="twitter:image" content="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/og-image.jpg">
+  
+  <!-- Для лучшего SEO -->
+  <meta name="theme-color" content="#06b6d4">
+  <meta name="msapplication-TileColor" content="#06b6d4">
+
+  <!-- Для соцсетей -->
+  <meta property="og:site_name" content="ReFork Capital">
+  <meta property="og:locale" content="ru_RU">
   
   <!-- Fonts (async load) -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
@@ -155,6 +183,16 @@ html, body {
       .p-8{padding:1.5rem}
       .glow-card:hover{transform:none !important}
     }
+	
+	.timeline-stage {
+padding: 1rem !important;
+}
+.timeline-stage .text-2xl {
+font-size: 1.25rem;
+}
+.timeline-stage .text-sm {
+font-size: 0.85rem;
+}
 
     select{background-color:#1a202c !important;color:#f7fafc !important}
     select option{background-color:#1a202c !important;color:#f7fafc !important;padding:12px}
@@ -493,6 +531,9 @@ html {
     font-size: 9px;
   }
 }
+
+
+
   </style>
 
 	
@@ -518,7 +559,6 @@ html {
   <button class="gmgn-close" aria-label="Закрыть">×</button>
 </div>
 
-<header class="sticky top-0 z-50 backdrop-blur bg-black/40 border-b border-white/10">
 
 <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-black/95 border-b border-white/10 md:relative md:bg-black/40">
   <div class="max-w-7xl mx-auto flex items-center justify-between h-16 px-4">
@@ -560,7 +600,6 @@ html {
 <!-- Добавляем отступ для контента, чтобы он не скрывался под fixed header -->
 <main class="pt-16 md:pt-0" role="main">
 
-  <main role="main">
 <section id="hero" class="min-h-screen flex items-center py-10 md:py-20">
   <div class="max-w-7xl mx-auto px-4 w-full">
     <div class="flex flex-col lg:grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
@@ -589,10 +628,9 @@ html {
         </h1>
 
         <!-- Подзаголовок -->
-        <h2 class="text-lg md:text-xl lg:text-2xl text-gray-300 font-light leading-relaxed text-center lg:text-left">
-          Алгоритмы роста и система влияния на<br class="hidden lg:block">
-          мем-токены для извлечения прибыли.
-        </h2>
+        <h2 class="text-lg md:text-xl lg:text-2xl text-gray-200 font-medium leading-relaxed text-center lg:text-left">
+  Кастомная DeFi-стратегия для мем-токенов, до 80%+ за цикл! Только для своих.
+</h2>
 
         <!-- Ключевые преимущества -->
         <div class="flex flex-wrap gap-3 text-sm justify-center lg:justify-start">
@@ -679,6 +717,10 @@ html {
         <canvas id="reforkStrategyChart" class="w-full h-full"></canvas>
       </div>
     </div>
+	
+	<div id="chartTooltip" class="absolute text-xs bg-black/80 text-cyan-300 px-2 py-1 rounded hidden shadow-lg border border-cyan-400/30">
+ReFork ROI: +284%
+</div>
 
     <!-- Легенда с метриками - ОБНОВЛЕНО ДЛЯ МОБИЛЬНЫХ -->
     <div class="grid grid-cols-3 gap-1 md:gap-4 mt-4 md:mt-6 pt-4 border-t border-white/10">
@@ -1520,9 +1562,12 @@ document.addEventListener("DOMContentLoaded", () => {
   animation: pulseGlow 2.2s ease-in-out infinite;
 }
 @keyframes pulseGlow {
-  0% { box-shadow: 0 0 10px rgba(6,182,212,0.3), 0 0 20px rgba(6,182,212,0.4); }
-  50% { box-shadow: 0 0 25px rgba(6,182,212,0.7), 0 0 35px rgba(6,182,212,0.6); }
-  100% { box-shadow: 0 0 10px rgba(6,182,212,0.3), 0 0 20px rgba(6,182,212,0.4); }
+  0% { transform: scale(1); filter: drop-shadow(0 0 4px rgba(56,189,248,0.6)); }
+  50% { transform: scale(1.2); filter: drop-shadow(0 0 12px rgba(56,189,248,0.9)); }
+  100% { transform: scale(1); filter: drop-shadow(0 0 4px rgba(56,189,248,0.6)); }
+}
+.refork-point.pulse-active {
+  animation: pulseGlow 2s ease-in-out infinite;
 }
 
 
@@ -2045,6 +2090,30 @@ document.addEventListener("DOMContentLoaded", () => {
     font-size: 0.7rem !important;
   }
 }
+
+.phase-label {
+position: relative;
+text-shadow: 0 0 12px rgba(20, 241, 149, 0.5);
+transition: all 0.3s ease;
+}
+.phase-label::after {
+content: '';
+position: absolute;
+left: 50%;
+top: 100%;
+transform: translateX(-50%);
+width: 40%;
+height: 2px;
+background: linear-gradient(90deg, #14F195, #00C2FF);
+border-radius: 2px;
+opacity: 0;
+transition: opacity 0.3s ease;
+}
+.timeline-stage:hover .phase-label::after {
+opacity: 1;
+}
+
+
 
 </style>
 
@@ -2856,11 +2925,7 @@ summary::marker, summary::-webkit-details-marker {
 	
   </footer>
 
-<!-- GA отключен -->
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){console.log('GA:', arguments);}
-</script>
+
 
   <!-- НОВОЕ: Critical Utilities -->
   <script>
@@ -3768,6 +3833,25 @@ window.addEventListener('resize', function() {
     }
   }, 250);
 });
+
+
+const canvas = document.getElementById('reforkStrategyChart');
+const tooltip = document.getElementById('chartTooltip');
+canvas.addEventListener('mousemove', e => {
+const rect = canvas.getBoundingClientRect();
+const x = e.clientX - rect.left;
+const y = e.clientY - rect.top;
+if (x > rect.width * 0.6 && x < rect.width * 0.7 && y < rect.height * 0.4) {
+tooltip.style.left = `${x + 20}px`;
+tooltip.style.top = `${y}px`;
+tooltip.style.display = 'block';
+} else {
+tooltip.style.display = 'none';
+}
+});
+
+
+
 </script>
 
 </body>
