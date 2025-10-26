@@ -83,7 +83,7 @@ document.querySelectorAll('img').forEach(img => img.setAttribute('loading', 'laz
 </script>
 	
   <!-- Critical CSS inline -->
-  <style>
+<style>
     :root{--bg:#0b0e14;--muted:#9aa5b1;--accent:#6ee7b7;--accent-2:#22d3ee}
     *{
   box-sizing: border-box;
@@ -98,7 +98,7 @@ html, body {
     .loading{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:9999}
     .loading-spinner{width:50px;height:50px;border:4px solid rgba(34,211,238,.3);border-top-color:#22d3ee;border-radius:50%;animation:spin 1s linear infinite}
     @keyframes spin{to{transform:rotate(360deg)}}
-  </style>
+</style>
   
   <!-- Preconnect & DNS Prefetch -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -161,7 +161,7 @@ html, body {
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <style>
+<style>
     section, header, footer{position:relative;z-index:20}
     h1,h2,h3,p,details,summary,button,a,input,textarea,select,form{position:relative;z-index:30}
 
@@ -499,9 +499,60 @@ html {
   }
 }
 
+/* ---------- Background & Parallax (без изображения) ---------- */
+#traffic-engine > .-z-10::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 20%, rgba(34,211,238,0.06), transparent 70%),
+              linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
+  opacity: 0.25;
+  transform: translateY(0);
+  transition: transform 0.4s ease-out;
+  will-change: transform;
+}
+
+#traffic-engine > .-z-10::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 100%, rgba(34,211,238,0.05), transparent 80%);
+  pointer-events: none;
+}
+
+/* ---------- Card Glow & Animation ---------- */
+.traffic-card {
+  backdrop-filter: blur(6px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.traffic-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  border-color: rgba(34,211,238,0.2);
+  box-shadow: 0 0 20px rgba(34,211,238,0.1);
+}
+
+/* ---------- Reveal Animation ---------- */
+#traffic-engine [data-aos="fade-up"] {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+#traffic-engine [data-aos="fade-up"].aos-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Mobile Adaptation ---------- */
+@media (max-width: 640px) {
+  .traffic-card { padding: 16px; }
+  #traffic-engine { padding-top: 4rem; padding-bottom: 4rem; }
+  #traffic-engine > .-z-10::before { opacity: 0.15; }
+}
+
+}
 
 
-  </style>
+</style>
 
 <!-- Prefetch для Vanta (только на десктопе) -->
 <link rel="prefetch" href="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js" media="(min-width: 1024px)">
@@ -628,7 +679,7 @@ html {
         <!-- Метрики -->
         <div class="flex gap-4 pt-2 justify-center lg:justify-start">
           <div class="glow-card p-3 text-left min-w-0 flex-1">
-            <div class="text-lg md:text-xl font-bold text-cyan-400 leading-none">30-80%</div>
+            <div class="text-lg md:text-xl font-bold text-cyan-400 leading-none">20-80%</div>
             <div class="text-xs text-gray-400 mt-1">~ROI за цикл*</div>
           </div>
           <div class="glow-card p-3 text-left min-w-0 flex-1">
@@ -712,6 +763,65 @@ ReFork ROI: +284%
   </div>
 </div>
 </section>
+
+<!-- ⚡️ Traffic Engine (без фонового изображения, с 6 карточками) -->
+<section id="traffic-engine" aria-labelledby="traffic-engine-title" class="relative py-20 overflow-hidden">
+  <!-- Parallax background (без фоновой картинки, только мягкий tech-glow) -->
+  <div class="absolute inset-0 pointer-events-none -z-10" aria-hidden="true"></div>
+
+  <div class="max-w-6xl mx-auto px-4 text-center relative z-10">
+    <!-- Header -->
+    <div class="mb-12" id="traffic-engine-title" data-aos="fade-up">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+        ⚡️ Traffic Engine: как мы создаём движение рынка
+      </h2>
+      <p class="text-gray-400 max-w-3xl mx-auto">
+        Мы не покупаем внимание — мы его вызываем. Система ReFork Capital объединяет
+        <span class="text-cyan-400 font-medium">AI-аналитику</span>, мем-триггеры и поведенческую динамику трейдеров.
+      </p>
+    </div>
+
+    <!-- Cards grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <article class="traffic-card p-6 rounded-2xl border border-cyan-500/10 bg-gradient-to-br from-gray-900/40 to-black/30 shadow-lg" data-aos="fade-up">
+        <h3 class="text-lg font-semibold text-cyan-400 mb-2">Социальный импульс</h3>
+        <p class="text-gray-300 text-sm leading-snug">Координированные X-рейды, коммент-волны и мем-сетапы — каждый пост усиливает FOMO.</p>
+      </article>
+
+      <article class="traffic-card p-6 rounded-2xl border border-cyan-500/10 bg-gradient-to-br from-gray-900/40 to-black/30 shadow-lg" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="text-lg font-semibold text-cyan-400 mb-2">Traffic-Boost Matrix</h3>
+        <p class="text-gray-300 text-sm leading-snug">GoLogin-сети, Telegram-боты и микро-инфлюенсеры — поток туда, где живёт цена.</p>
+      </article>
+
+      <article class="traffic-card p-6 rounded-2xl border border-cyan-500/10 bg-gradient-to-br from-gray-900/40 to-black/30 shadow-lg" data-aos="fade-up" data-aos-delay="200">
+        <h3 class="text-lg font-semibold text-cyan-400 mb-2">Smart-Feeds & Tracking</h3>
+        <p class="text-gray-300 text-sm leading-snug">AI-фильтры ловят зарождающиеся тренды в X и Telegram и направляют ликвидность.</p>
+      </article>
+
+      <article class="traffic-card p-6 rounded-2xl border border-cyan-500/10 bg-gradient-to-br from-gray-900/40 to-black/30 shadow-lg" data-aos="fade-up" data-aos-delay="300">
+        <h3 class="text-lg font-semibold text-cyan-400 mb-2">Виральные мем-кампании</h3>
+        <p class="text-gray-300 text-sm leading-snug">Мемы под токеномику: триггеры запускают рост, комьюнити становится медиа-ресурсом.</p>
+      </article>
+
+      <article class="traffic-card p-6 rounded-2xl border border-cyan-500/10 bg-gradient-to-br from-gray-900/40 to-black/30 shadow-lg" data-aos="fade-up" data-aos-delay="400">
+        <h3 class="text-lg font-semibold text-cyan-400 mb-2">Аналитика и оптимизация</h3>
+        <p class="text-gray-300 text-sm leading-snug">Трафик управляется как торговая позиция — входы, пики и фиксация прибыли.</p>
+      </article>
+
+      <!-- 🔹 Новая шестая карточка -->
+      <article class="traffic-card p-6 rounded-2xl border border-cyan-500/10 bg-gradient-to-br from-gray-900/40 to-black/30 shadow-lg" data-aos="fade-up" data-aos-delay="500">
+        <h3 class="text-lg font-semibold text-cyan-400 mb-2">Cycle Control System</h3>
+        <p class="text-gray-300 text-sm leading-snug">AI-модуль управляет фазами рынка: отслеживает импульс, фиксирует рост и запускает новый цикл.</p>
+      </article>
+    </div>
+
+    <!-- Quote -->
+    <div class="mt-12 text-gray-400 italic max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="600">
+      “Мы не гоним трафик — мы накачиваем давление. Когда люди чувствуют движение — рынок дышит.”
+    </div>
+  </div>
+</section>
+
 
     <!-- Ecosystem Partners Section -->
 <section class="py-16 bg-gray-900">
@@ -1132,7 +1242,7 @@ document.addEventListener("DOMContentLoaded", () => {
   </div>
   
   <div class="glow-card p-6 text-center">
-    <div class="text-4xl font-black text-purple-400 mb-2">4-6</div>
+    <div class="text-4xl font-black text-purple-400 mb-2">1-3</div>
     <h4 class="text-xl font-bold text-white mb-3">Циклов/месяц</h4>
     <p class="text-gray-300">Параллельная работа с несколькими проектами одновременно</p>
   </div>
@@ -2201,7 +2311,7 @@ opacity: 1;
       <div class="border-t border-white/10 pt-6 mt-6">
         <h4 class="font-bold text-cyan-400 mb-3">Что вы получаете:</h4>
         <ul class="space-y-2 text-gray-300 text-sm">
-          <li>• Доля от прибыли фонда (до 80% ROI/месяц)</li>
+          <li>• Доля от прибыли фонда (до 80% ROI/цикл)</li>
           <li>• Ежемесячные отчеты с детальной аналитикой</li>
           <li>• Доступ к закрытому чату инвесторов</li>
           <li>• Возможность реинвестирования с бонусами</li>
@@ -2488,10 +2598,10 @@ function scrollToFAQ() {
 
         <div class="grid md:grid-cols-3 gap-8">
           <div class="glow-card card-glow p-6">
-            <h3 class="text-xl font-bold mb-2">Lite — для первого шага</h3>
+            <h3 class="text-xl font-bold mb-2">Lite </p> для первого шага</h3>
             <p class="text-3xl font-extrabold mb-4">$100</p>
             <ul class="text-gray-300 text-sm space-y-2 mb-6">
-              <li>Прибыль к телу: до 50% в месяц</li>
+              <li>Прибыль к телу: <strong>20-50% за успешный цикл</strong></li>
               <li>Установка и настройка системы безопасности</li>
               <li>Еженедельные отчёты по ROI</li>
               <li>Бонус в мем-токенах при реинвесте</li>
@@ -2500,10 +2610,10 @@ function scrollToFAQ() {
           </div>
 
           <div class="glow-card card-glow p-6">
-            <h3 class="text-xl font-bold mb-2">Pro — для активных инвесторов</h3>
+            <h3 class="text-xl font-bold mb-2">Pro </p> для активных инвесторов</h3>
             <p class="text-3xl font-extrabold mb-4">$300</p>
             <ul class="text-gray-300 text-sm space-y-2 mb-6">
-              <li>Прибыль к телу: до 75% в месяц</li>
+              <li>Прибыль к телу: <strong>25-60% за успешный цикл</strong></li>
               <li>Индивидуальный онбординг и стратегия</li>
               <li>Доступ к закрытому портфелю активных токенов</li>
               <li>Персональная аналитика и рекомендации</li>
@@ -2512,10 +2622,10 @@ function scrollToFAQ() {
           </div>
 
           <div class="glow-card card-glow p-6">
-            <h3 class="text-xl font-bold mb-2">Prime — для VIP-инвесторов</h3>
+            <h3 class="text-xl font-bold mb-2">Prime </p> для крипто-инвесторов</h3>
             <p class="text-3xl font-extrabold mb-4">$500</p>
             <ul class="text-gray-300 text-sm space-y-2 mb-6">
-              <li>Прибыль к телу: до 80% в месяц</li>
+              <li>Прибыль к телу: <strong>30-80% за успешный цикл</strong></li>
               <li>Доступ в закрытый клуб инвесторов</li>
               <li>Премиум-подборка токенов и ранние входы</li>
               <li>Личный контакт с Lucas M. и NFT-статус</li>
@@ -2524,7 +2634,7 @@ function scrollToFAQ() {
           </div>
         </div>
 
-        <p class="text-xs text-gray-500 mt-6">Дисклеймер: не является инвестрекомендацией.</p>
+        <p class="text-xs text-yellow-500 mt-9">Дисклеймер: не является инвестрекомендацией. 40% циклов могут быть убыточными</p>
       </div>
     </section>
 
@@ -2553,6 +2663,80 @@ function scrollToFAQ() {
         </div>
       </div>
     </section>
+	
+	<!-- Перед FAQ -->
+<section id="real-risks" class="py-24 bg-gradient-to-b from-black to-red-900/20">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-4 bg-gradient-to-r from-red-500 to-orange-400 text-transparent bg-clip-text">
+        ⚠️ Реальные Риски (Читать Обязательно)
+      </h2>
+      <p class="text-gray-300 text-lg max-w-2xl mx-auto">
+        Криптоинвестиции — это высокорисковые активы. Вы можете потерять все свои деньги.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="glow-card card-glow p-6 border border-red-500/30">
+        <h3 class="text-xl font-bold text-red-400 mb-4">🔴 Риски для Капитала</h3>
+        <ul class="space-y-3 text-gray-300">
+          <li class="flex items-start gap-3">
+            <span class="text-red-400 mt-1">•</span>
+            <span><strong>Полная потеря капитала</strong>: 40% наших циклов убыточны или breakeven</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-red-400 mt-1">•</span>
+            <span><strong>Волатильность</strong>: Мемкоины могут упасть на 90% за несколько часов</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-red-400 mt-1">•</span>
+            <span><strong>Rug pulls</strong>: Даже с аудитом есть риск скама разработчиков</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-red-400 mt-1">•</span>
+            <span><strong>Ликвидность</strong>: Не всегда можно выйти по нужной цене</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="glow-card card-glow p-6 border border-orange-500/30">
+        <h3 class="text-xl font-bold text-orange-400 mb-4">🟡 Системные Риски</h3>
+        <ul class="space-y-3 text-gray-300">
+          <li class="flex items-start gap-3">
+            <span class="text-orange-400 mt-1">•</span>
+            <span><strong>Регуляторный риск</strong>: Крипта может быть запрещена в вашей юрисдикции</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-orange-400 mt-1">•</span>
+            <span><strong>Технические риски</strong>: Взломы бирж, сбои блокчейна, ошибки контрактов</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-orange-400 mt-1">•</span>
+            <span><strong>Рыночные риски</strong>: Обвал всего крипторынка (как в 2018, 2022)</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-orange-400 mt-1">•</span>
+            <span><strong>Операционные риски</strong>: Ошибки исполнения, задержки ордеров</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 text-center">
+      <div class="bg-red-500/10 border border-red-500/30 rounded-2xl p-6 max-w-4xl mx-auto">
+        <h4 class="text-xl font-bold text-red-400 mb-4">💡 Важно Понимать</h4>
+        <p class="text-gray-300 mb-4">
+          <strong>Мы не гарантируем доходность.</strong> Исторические результаты не гарантируют будущих.
+          Криптоинвестиции — это высокорисковые активы, и вы можете потерять все свои деньги.
+        </p>
+        <p class="text-gray-300">
+          <strong>Инвестируйте ТОЛЬКО ту сумму, которую готовы потерять на 100%.</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+	
 	
 <section id="faq" class="py-24 bg-gradient-to-b from-black to-purple-900/20">
   <div class="max-w-6xl mx-auto px-4">
@@ -4036,6 +4220,58 @@ canvas.addEventListener('mousemove', e => {
 });
 
 </script>
+
+<script>
+(function() {
+  const parallaxContainer = document.querySelector('#traffic-engine > .-z-10');
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth < 768;
+
+  // Parallax: small translate on scroll — only for desktops (and if element exists)
+  if (parallaxContainer && !prefersReduced && !isMobile) {
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    function onScroll() {
+      lastScrollY = window.scrollY;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const rect = parallaxContainer.parentElement.getBoundingClientRect();
+          // factor: how much to move (small, subtle)
+          const factor = 0.12;
+          const offset = -rect.top * factor;
+          parallaxContainer.style.transform = `translateY(${offset}px)`;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+    // initialize
+    window.addEventListener('scroll', onScroll, { passive: true });
+    // initial set
+    onScroll();
+  } else if (parallaxContainer) {
+    // mobile/fallback: keep static but ensure correct opacity
+    parallaxContainer.style.transform = 'translateY(0)';
+  }
+
+  // Simple AOS-like reveal (only for elements inside #traffic-engine with data-aos="fade-up")
+  const aosElems = document.querySelectorAll('#traffic-engine [data-aos="fade-up"]');
+  if (aosElems.length) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('aos-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.18 });
+    aosElems.forEach(el => io.observe(el));
+  }
+})();
+</script>
+
+
 
 </body>
 </html>
