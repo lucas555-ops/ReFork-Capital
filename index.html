@@ -637,7 +637,7 @@ html {
         <div class="flex flex-wrap gap-3 justify-center lg:justify-start">
           <span class="glass rounded-full px-4 py-2 inline-flex items-center gap-2 border border-yellow-400/50 shadow-[0_0_15px_rgba(250,204,21,0.4)]">
             <span class="dot bg-yellow-400"></span>
-            <span class="text-sm font-medium">СИГНАЛ</span>
+            <span class="text-sm font-medium"> СИГНАЛ</span>
           </span>
           <span class="glass rounded-full px-4 py-2 inline-flex items-center gap-2 border border-cyan-400/50 shadow-[0_0_15px_rgba(34,211,238,0.4)]">
             <span class="dot bg-cyan-400"></span>
@@ -1658,569 +1658,10 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
     </div>
 
-    <!-- Enhanced Meme Token Cycle Visualization -->
-<div class="glow-card card-glow p-6 md:p-8 mb-12">
-  <h3 class="text-2xl font-bold text-center text-cyan-400 mb-8">🔄 Цикл мем-токена: Орбитальная система ReFork</h3>
-  
-  <div class="relative">
-    <!-- Desktop: Orbital System -->
-    <div class="hidden md:block">
-      <!-- Central Orbit Container -->
-      <div class="relative h-96 flex items-center justify-center">
-        
-        <!-- Circular Orbit Paths -->
-        <div class="absolute orbit-path orbit-path-1"></div>
-        <div class="absolute orbit-path orbit-path-2"></div>
-        <div class="absolute orbit-path orbit-path-3"></div>
-        
-        <!-- Stages positioned in orbit with animation -->
-        <div class="orbit-stage orbit-1">
-          <div class="stage-orb stage-orb-1">
-            <div class="stage-icon">💡</div>
-          </div>
-          <div class="stage-info">
-            <p class="stage-title">Идея</p>
-            <p class="stage-duration">День 0</p>
-          </div>
-        </div>
-        
-        <div class="orbit-stage orbit-2">
-          <div class="stage-orb stage-orb-2">
-            <div class="stage-icon">🚀</div>
-          </div>
-          <div class="stage-info">
-            <p class="stage-title">Хайп</p>
-            <p class="stage-duration">1-7 дней</p>
-          </div>
-        </div>
-        
-        <div class="orbit-stage orbit-3">
-          <div class="stage-orb stage-orb-3">
-            <div class="stage-icon">📉</div>
-          </div>
-          <div class="stage-info">
-            <p class="stage-title">Обвал</p>
-            <p class="stage-duration">7-14 дней</p>
-          </div>
-        </div>
-        
-        <div class="orbit-stage orbit-4">
-          <div class="stage-orb stage-orb-4">
-            <div class="stage-icon">💤</div>
-          </div>
-          <div class="stage-info">
-            <p class="stage-title">Забвение</p>
-            <p class="stage-duration">14+ дней</p>
-          </div>
-        </div>
-        
-        <!-- Central ReFork Stage -->
-        <div class="orbit-stage central-stage">
-          <div class="stage-orb stage-orb-5 pulse-glow">
-		  <div class="tooltip hidden absolute -top-10 left-1/2 -translate-x-1/2 px-3 py-1 rounded-md bg-cyan-500/90 text-white text-xs shadow-lg">
-  Новый цикл начинается 💥
-</div>
 
-            <div class="stage-icon">🔁</div>
-          </div>
-          <div class="stage-info central-info">
-            <p class="stage-title text-cyan-300">ReFork</p>
-            <p class="stage-duration text-cyan-200">Новый цикл!</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Mobile: Vertical Timeline (остается без изменений) -->
-    <div class="md:hidden">
-      <div class="vertical-timeline">
-        <div class="timeline-stage">
-          <div class="timeline-marker marker-1"></div>
-          <div class="timeline-content">
-            <div class="stage-icon-mobile">💡</div>
-            <div>
-              <p class="stage-title-mobile">Идея</p>
-              <p class="stage-duration-mobile">День 0</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="timeline-stage">
-          <div class="timeline-marker marker-2"></div>
-          <div class="timeline-content">
-            <div class="stage-icon-mobile">🚀</div>
-            <div>
-              <p class="stage-title-mobile">Хайп</p>
-              <p class="stage-duration-mobile">1-7 дней</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="timeline-stage">
-          <div class="timeline-marker marker-3"></div>
-          <div class="timeline-content">
-            <div class="stage-icon-mobile">📉</div>
-            <div>
-              <p class="stage-title-mobile">Обвал</p>
-              <p class="stage-duration-mobile">7-14 дней</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="timeline-stage">
-          <div class="timeline-marker marker-4"></div>
-          <div class="timeline-content">
-            <div class="stage-icon-mobile">💤</div>
-            <div>
-              <p class="stage-title-mobile">Забвение</p>
-              <p class="stage-duration-mobile">14+ дней</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="timeline-stage active-stage">
-          <div class="timeline-marker marker-5 pulse"></div>
-          <div class="timeline-content">
-            <div class="stage-icon-mobile">🔁</div>
-            <div>
-              <p class="stage-title-mobile text-cyan-300">ReFork</p>
-              <p class="stage-duration-mobile text-cyan-200">Новый цикл!</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 <style>
-/* Circular Orbit Paths */
-.orbit-path {
-  border: 1px solid rgba(139, 92, 246, 0.2);
-  border-radius: 50%;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 
-.orbit-path-1 {
-  width: 300px;
-  height: 300px;
-}
-
-.orbit-path-2 {
-  width: 400px;
-  height: 400px;
-}
-
-.orbit-path-3 {
-  width: 500px;
-  height: 500px;
-  border-color: rgba(6, 182, 212, 0.15);
-}
-
-.orbit-stage {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: all 0.3s ease;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.orbit-stage:hover {
-  transform: translate(-50%, -50%) scale(1.1);
-  z-index: 10;
-}
-
-/* Orbital animations */
-.orbit-1 {
-  animation: orbitAnimation1 20s linear infinite;
-}
-
-.orbit-2 {
-  animation: orbitAnimation2 25s linear infinite;
-}
-
-.orbit-3 {
-  animation: orbitAnimation3 30s linear infinite;
-}
-
-.orbit-4 {
-  animation: orbitAnimation4 35s linear infinite;
-}
-
-@keyframes orbitAnimation1 {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg) translateX(150px) rotate(0deg);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(360deg) translateX(150px) rotate(-360deg);
-  }
-}
-
-@keyframes orbitAnimation2 {
-  0% {
-    transform: translate(-50%, -50%) rotate(90deg) translateX(200px) rotate(-90deg);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(450deg) translateX(200px) rotate(-450deg);
-  }
-}
-
-@keyframes orbitAnimation3 {
-  0% {
-    transform: translate(-50%, -50%) rotate(180deg) translateX(250px) rotate(-180deg);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(540deg) translateX(250px) rotate(-540deg);
-  }
-}
-
-@keyframes orbitAnimation4 {
-  0% {
-    transform: translate(-50%, -50%) rotate(270deg) translateX(200px) rotate(-270deg);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(630deg) translateX(200px) rotate(-630deg);
-  }
-}
-
-.stage-orb {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  margin-bottom: 8px;
-  border: 3px solid;
-  position: relative;
-  transition: all 0.3s ease;
-}
-
-.stage-orb-1 { 
-  background: linear-gradient(135deg, #8b5cf6, #a855f7);
-  border-color: #c4b5fd;
-}
-.stage-orb-2 { 
-  background: linear-gradient(135deg, #10b981, #34d399);
-  border-color: #a7f3d0;
-}
-.stage-orb-3 { 
-  background: linear-gradient(135deg, #ef4444, #f97316);
-  border-color: #fdba74;
-}
-.stage-orb-4 { 
-  background: linear-gradient(135deg, #6b7280, #9ca3af);
-  border-color: #d1d5db;
-}
-.stage-orb-5 { 
-  background: linear-gradient(135deg, #06b6d4, #0ea5e9);
-  border-color: #7dd3fc;
-  width: 90px;
-  height: 90px;
-}
-
-.central-stage {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation: none !important;
-}
-
-.stage-info {
-  background: rgba(15, 23, 42, 0.8);
-  padding: 8px 12px;
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.1);
-  backdrop-filter: blur(10px);
-  text-align: center;
-  min-width: 80px;
-}
-
-.stage-title {
-  font-weight: bold;
-  font-size: 0.875rem;
-  margin-bottom: 2px;
-}
-
-.stage-duration {
-  font-size: 0.75rem;
-  color: #9ca3af;
-}
-
-.central-info {
-  background: rgba(6, 182, 212, 0.1);
-  border-color: rgba(6, 182, 212, 0.3);
-}
-
-/* Animations */
-.pulse-glow {
-  animation: pulseGlow 2.2s ease-in-out infinite;
-}
-@keyframes pulseGlow {
-  0% { transform: scale(1); filter: drop-shadow(0 0 4px rgba(56,189,248,0.6)); }
-  50% { transform: scale(1.2); filter: drop-shadow(0 0 12px rgba(56,189,248,0.9)); }
-  100% { transform: scale(1); filter: drop-shadow(0 0 4px rgba(56,189,248,0.6)); }
-}
-.refork-point.pulse-active {
-  animation: pulseGlow 2s ease-in-out infinite;
-}
-
-
-/* Mobile Timeline */
-.vertical-timeline {
-  position: relative;
-  padding-left: 30px;
-}
-
-.vertical-timeline::before {
-  content: '';
-  position: absolute;
-  left: 15px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(to bottom, #8b5cf6, #10b981, #ef4444, #6b7280, #06b6d4);
-}
-
-.timeline-stage {
-  position: relative;
-  margin-bottom: 2rem;
-  display: flex;
-  align-items: flex-start;
-}
-
-.timeline-marker {
-  position: absolute;
-  left: -30px;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: 3px solid;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-}
-
-.marker-1 { background: #8b5cf6; border-color: #c4b5fd; }
-.marker-2 { background: #10b981; border-color: #a7f3d0; }
-.marker-3 { background: #ef4444; border-color: #fdba74; }
-.marker-4 { background: #6b7280; border-color: #d1d5db; }
-.marker-5 { 
-  background: #06b6d4; 
-  border-color: #7dd3fc;
-  animation: pulse 2s infinite;
-}
-
-.timeline-content {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: rgba(15, 23, 42, 0.6);
-  padding: 12px 16px;
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.1);
-  flex: 1;
-}
-
-.stage-icon-mobile {
-  font-size: 1.5rem;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.1);
-}
-
-.stage-title-mobile {
-  font-weight: bold;
-  margin-bottom: 2px;
-}
-
-.stage-duration-mobile {
-  font-size: 0.75rem;
-  color: #9ca3af;
-}
-
-.active-stage .timeline-content {
-  background: rgba(6, 182, 212, 0.1);
-  border-color: rgba(6, 182, 212, 0.3);
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
-}
-
-/* Responsive adjustments */
-@media (max-width: 480px) {
-  .timeline-content {
-    flex-direction: column;
-    text-align: center;
-    gap: 8px;
-  }
-  
-  .stage-icon-mobile {
-    width: 36px;
-    height: 36px;
-    font-size: 1.25rem;
-  }
-}
-.glow-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 25px rgba(6,182,212,0.4);
-  transition: all 0.3s ease;
-}
-
-/* Трехцветные градиенты */
-.three-color-gradient-1 {
-  background: linear-gradient(90deg, #3b82f6 0%, #10b981 50%, #3b82f6 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.three-color-gradient-2 {
-  background: linear-gradient(90deg, #8b5cf6 0%, #06d6a0 50%, #118ab2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.three-color-gradient-3 {
-  background: linear-gradient(90deg, #06b6d4 0%, #10b981 50%, #0ea5e9 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-
-
-.custom-border-top {
-  position: relative;
-}
-
-.custom-border-top::before {
-  content: '';
-  position: absolute;
-  top: -1px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #22d3ee, transparent);
-  border-radius: 1px;
-}
-
-.custom-border-bottom {
-  position: relative;
-}
-
-.custom-border-bottom::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #10b981, transparent);
-  border-radius: 1px;
-}
-
-
-
-/* Адаптация графика для мобильных */
-@media (max-width: 768px) {
-  #reforkStrategyChart {
-    min-width: 650px !important;
-    width: 100% !important;
-    transform: none !important;
-  }
-  
-  .glow-card .overflow-x-auto {
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-  
-  .glow-card .overflow-x-auto::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .glow-card {
-    padding: 1rem !important;
-  }
-}
-
-@media (max-width: 480px) {
-  #reforkStrategyChart {
-    min-width: 650px !important;
-    transform: none !important;
-  }
-  
-  .glow-card .overflow-x-auto::after {
-    content: '← прокрутите график →';
-    font-size: 9px;
-  }
-}
-  
-  /* Увеличиваем отступы для лучшего скролла */
-  .glow-card {
-    padding: 1rem !important;
-  }
-}
-
-/* Индикатор скролла для мобильных */
-.glow-card .overflow-x-auto {
-  position: relative;
-}
-
-.glow-card .overflow-x-auto::after {
-  content: '← прокрутите →';
-  position: absolute;
-  bottom: 5px;
-  right: 10px;
-  color: #22d3ee;
-  font-size: 10px;
-  opacity: 0.7;
-  animation: pulse-scroll 2s infinite;
-}
-
-@keyframes pulse-scroll {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.8; }
-}
-
-@media (max-width: 480px) {
-  #reforkStrategyChart {
-    min-width: 650px !important;
-    transform: none !important;
-  }
-  
-  .glow-card .overflow-x-auto::after {
-    content: '← прокрутите график →';
-    font-size: 9px;
-  }
-}
-
-.central-stage:hover .tooltip {
-  display: block;
-  animation: fadeIn 0.4s ease forwards;
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: translate(-50%, -20px); }
-  to { opacity: 1; transform: translate(-50%, -30px); }
-}
 
 #partner-row-1 img, 
 .animate-scroll-banner-reverse img {
@@ -2599,6 +2040,1121 @@ opacity: 1;
   </div>
 </section>
 
+<!-- НОВАЯ СЕКЦИЯ: ВОЛНА ЦИКЛОВ REFORK -->
+<section id="meme-cycle-wave" class="py-24 relative overflow-hidden bg-gradient-to-b from-black/20 to-purple-900/20">
+  <div class="max-w-7xl mx-auto px-4">
+    
+    <!-- Заголовок секции -->
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-black mb-6">
+        <span class="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 text-transparent bg-clip-text">
+          Волна Циклов ReFork
+        </span>
+      </h2>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+        От забвения к возрождению: как мы превращаем -90% в +900% потенциал роста
+      </p>
+    </div>
+
+    <!-- Десктоп версия (скрыта на мобильных) -->
+    <div class="hidden md:block">
+      
+      <!-- Основная волна графика -->
+      <div class="wave-desktop-container relative h-96 mb-16">
+        
+        <!-- Фоновая сетка -->
+        <div class="absolute inset-0 opacity-10" style="
+          background-image: 
+            linear-gradient(rgba(34,211,238,0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(34,211,238,0.1) 1px, transparent 1px);
+          background-size: 40px 40px;
+        "></div>
+        
+        <!-- Контейнер волны -->
+        <div class="absolute inset-0">
+          
+          <!-- SVG волна -->
+          <svg class="w-full h-full" viewBox="0 0 1200 300" preserveAspectRatio="none">
+            <!-- Основная волна -->
+            <path id="desktop-wave" d="M0,150 C200,50 300,250 500,150 C700,50 800,250 1000,150 C1100,100 1150,200 1200,150" 
+                  stroke="url(#desktopWaveGradient)" stroke-width="4" fill="none"
+                  class="desktop-wave-path"/>
+            
+            <!-- Градиент для десктоп волны -->
+            <defs>
+              <linearGradient id="desktopWaveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#8b5cf6" />
+                <stop offset="20%" stop-color="#10b981" />
+                <stop offset="45%" stop-color="#ef4444" />
+                <stop offset="65%" stop-color="#6b7280" />
+                <stop offset="85%" stop-color="#06b6d4" />
+                <stop offset="100%" stop-color="#0ea5e9" />
+              </linearGradient>
+            </defs>
+          </svg>
+          
+          <!-- Точки этапов -->
+      <div class="desktop-point point-1" data-stage="1">
+        <div class="desktop-pulse"></div>
+        <div class="desktop-label">
+          <span class="desktop-emoji">💡</span>
+          <span class="desktop-title">Тест</span>
+          <span class="desktop-badge">День 0-2</span>
+        </div>
+      </div>
+      
+      <div class="desktop-point point-2" data-stage="2">
+        <div class="desktop-pulse"></div>
+        <div class="desktop-label">
+          <span class="desktop-emoji">🚀</span>
+          <span class="desktop-title">Наращивание</span>
+          <span class="desktop-badge">2-7 дней</span>
+        </div>
+      </div>
+      
+      <div class="desktop-point point-3" data-stage="3">
+        <div class="desktop-pulse"></div>
+        <div class="desktop-label">
+          <span class="desktop-emoji">📈</span>
+          <span class="desktop-title">Фиксация</span>
+          <span class="desktop-badge">7-10 дней</span>
+        </div>
+      </div>
+      
+      <div class="desktop-point point-4" data-stage="4">
+        <div class="desktop-pulse"></div>
+        <div class="desktop-label">
+          <span class="desktop-emoji">📉</span>
+          <span class="desktop-title">Коррекция</span>
+          <span class="desktop-badge">10-14 дней</span>
+        </div>
+      </div>
+      
+      <!-- ReFork точка - ВЫДЕЛЕННАЯ -->
+      <div class="desktop-point refork-desktop-point active" data-stage="5">
+        <div class="desktop-pulse"></div>
+        <div class="desktop-label">
+          <span class="desktop-emoji">🔁</span>
+          <span class="desktop-title">ReFork Рестарт</span>
+          <span class="desktop-badge">НОВЫЙ ЦИКЛ!</span>
+        </div>
+        <div class="refork-desktop-glow"></div>
+      </div>
+      
+      <!-- Линия входа ReFork -->
+      <div class="desktop-entry-line">
+        <div class="entry-arrow">↓</div>
+        <div class="entry-text">Стратегический вход ReFork</div>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- Карточки для десктопа -->
+  <div class="desktop-cards-grid grid grid-cols-5 gap-6 mb-12">
+    
+    <div class="desktop-stage-card" data-stage="1">
+      <div class="desktop-card-inner">
+        <div class="desktop-card-header">
+          <div class="desktop-card-emoji">💡</div>
+          <h3 class="desktop-card-title">Тест & Валидация</h3>
+        </div>
+        <div class="desktop-card-body">
+          <p>Малый вход для проверки нарратива</p>
+          <div class="desktop-card-metrics">
+            <div class="desktop-metric">
+              <span class="metric-label">Тестовая позиция:</span>
+              <span class="metric-value">$100</span>
+            </div>
+            <div class="desktop-metric">
+              <span class="metric-label">Старт цены:</span>
+              <span class="metric-value">$0.00001</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="desktop-stage-card" data-stage="2">
+      <div class="desktop-card-inner">
+        <div class="desktop-card-header">
+          <div class="desktop-card-emoji">🚀</div>
+          <h3 class="desktop-card-title">Докупаем & PUMP</h3>
+        </div>
+        <div class="desktop-card-body">
+          <p>Усиление SMM при подтверждении сигнала</p>
+          <div class="desktop-card-metrics">
+            <div class="desktop-metric positive">
+              <span class="metric-label">Рост:</span>
+              <span class="metric-value">+250%</span>
+            </div>
+            <div class="desktop-metric">
+              <span class="metric-label">Позиция:</span>
+              <span class="metric-value">$500</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="desktop-stage-card" data-stage="3">
+      <div class="desktop-card-inner">
+        <div class="desktop-card-header">
+          <div class="desktop-card-emoji">📈</div>
+          <h3 class="desktop-card-title">Фиксация & Анализ</h3>
+        </div>
+        <div class="desktop-card-body">
+          <p>Частичный выход на пике интереса</p>
+          <div class="desktop-card-metrics">
+            <div class="desktop-metric positive">
+              <span class="metric-label">Фиксация:</span>
+              <span class="metric-value">50% позиции</span>
+            </div>
+            <div class="desktop-metric">
+              <span class="metric-label">Прибыль:</span>
+              <span class="metric-value">+225%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="desktop-stage-card" data-stage="4">
+      <div class="desktop-card-inner">
+        <div class="desktop-card-header">
+          <div class="desktop-card-emoji">📉</div>
+          <h3 class="desktop-card-title">Коррекция & Накопление</h3>
+        </div>
+        <div class="desktop-card-body">
+          <p>Докупаем на просадке для рестарта</p>
+          <div class="desktop-card-metrics">
+            <div class="desktop-metric negative">
+              <span class="metric-label">Просадка:</span>
+              <span class="metric-value">-60%</span>
+            </div>
+            <div class="desktop-metric">
+              <span class="metric-label">Докупка:</span>
+              <span class="metric-value">+40%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ReFork карточка - ВЫДЕЛЕННАЯ -->
+    <div class="desktop-stage-card refork-desktop-card active" data-stage="5">
+      <div class="desktop-card-inner">
+        <div class="desktop-card-header">
+          <div class="desktop-card-emoji">🔁</div>
+          <h3 class="desktop-card-title">ReFork Рестарт</h3>
+        </div>
+        <div class="desktop-card-body">
+          <p><strong>Запуск нового цикла с усиленным капиталом</strong></p>
+          <div class="desktop-card-metrics">
+            <div class="desktop-metric positive">
+              <span class="metric-label">Цель ROI:</span>
+              <span class="metric-value">+300%</span>
+            </div>
+            <div class="desktop-metric">
+              <span class="metric-label">Цикл:</span>
+              <span class="metric-value">14-21 день</span>
+            </div>
+          </div>
+          <div class="desktop-card-actions">
+            <button class="desktop-action-btn" onclick="scrollToApply()">
+              💎 Войти в следующий цикл
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- Мобильная версия (скрыта на десктопе) -->
+<div class="md:hidden">
+  
+  <!-- Мобильная волна -->
+  <div class="wave-mobile-container relative h-64 mb-8">
+    
+    <!-- Фоновая сетка -->
+    <div class="absolute inset-0 opacity-20" style="
+      background-image: 
+        linear-gradient(rgba(34,211,238,0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(34,211,238,0.1) 1px, transparent 1px);
+      background-size: 20px 20px;
+    "></div>
+    
+    <!-- Контейнер мобильной волны -->
+    <div class="absolute bottom-0 left-0 right-0 h-48">
+      
+      <!-- SVG мобильной волны -->
+      <svg class="w-full h-full" viewBox="0 0 400 120" preserveAspectRatio="none">
+        <path id="mobile-wave" d="M0,60 C80,10 120,110 200,60 C280,10 320,110 400,60" 
+              stroke="url(#mobileWaveGradient)" stroke-width="3" fill="none"
+              class="mobile-wave-path"/>
+        
+        <defs>
+          <linearGradient id="mobileWaveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#8b5cf6" />
+            <stop offset="25%" stop-color="#10b981" />
+            <stop offset="50%" stop-color="#ef4444" />
+            <stop offset="75%" stop-color="#6b7280" />
+            <stop offset="100%" stop-color="#06b6d4" />
+          </linearGradient>
+        </defs>
+      </svg>
+      
+      <!-- Точки на мобильной волне -->
+      <div class="mobile-point point-1" data-stage="1">
+        <div class="mobile-pulse"></div>
+        <div class="mobile-label">💡 Тест</div>
+      </div>
+      
+      <div class="mobile-point point-2" data-stage="2">
+        <div class="mobile-pulse"></div>
+        <div class="mobile-label">🚀 Наращивание</div>
+      </div>
+      
+      <div class="mobile-point point-3" data-stage="3">
+        <div class="mobile-pulse"></div>
+        <div class="mobile-label">📈 Фиксация</div>
+      </div>
+      
+      <div class="mobile-point point-4" data-stage="4">
+        <div class="mobile-pulse"></div>
+        <div class="mobile-label">📉 Коррекция</div>
+      </div>
+      
+      <!-- ReFork точка - ВЫДЕЛЕННАЯ -->
+      <div class="mobile-point refork-mobile-point active" data-stage="5">
+        <div class="mobile-pulse"></div>
+        <div class="mobile-label">🔁 ReFork</div>
+        <div class="refork-mobile-glow"></div>
+      </div>
+      
+      <!-- Курсор входа для мобильных -->
+      <div class="mobile-entry-cursor">
+        <div class="mobile-cursor-line"></div>
+        <div class="mobile-cursor-text">🚀 Вход ReFork</div>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- Карточки для мобильных -->
+  <div class="mobile-cards-stack space-y-4">
+    
+    <div class="mobile-stage-card" data-stage="1">
+      <div class="mobile-card-header">
+        <span class="mobile-card-emoji">💡</span>
+        <span class="mobile-card-title">Тест & Валидация</span>
+        <span class="mobile-card-badge">День 0-2</span>
+      </div>
+      <div class="mobile-card-body">
+        <p>Малый вход для проверки нарратива</p>
+        <div class="mobile-card-metrics">
+          <span class="mobile-metric">💰 Тест: $100</span>
+          <span class="mobile-metric">🎯 Старт цены: $0.00001</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-stage-card" data-stage="2">
+      <div class="mobile-card-header">
+        <span class="mobile-card-emoji">🚀</span>
+        <span class="mobile-card-title">Докупаем & PUMP</span>
+        <span class="mobile-card-badge">2-7 дней</span>
+      </div>
+      <div class="mobile-card-body">
+        <p>Усиление SMM при подтверждении сигнала</p>
+        <div class="mobile-card-metrics">
+          <span class="mobile-metric positive">📈 Рост: +250%</span>
+          <span class="mobile-metric">💎 Позиция: $500</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-stage-card" data-stage="3">
+      <div class="mobile-card-header">
+        <span class="mobile-card-emoji">📈</span>
+        <span class="mobile-card-title">Фиксация & Анализ</span>
+        <span class="mobile-card-badge">7-10 дней</span>
+      </div>
+      <div class="mobile-card-body">
+        <p>Частичный выход на пике интереса</p>
+        <div class="mobile-card-metrics">
+          <span class="mobile-metric positive">💵 Фиксация: 50%</span>
+          <span class="mobile-metric">🎯 Прибыль: +225%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-stage-card" data-stage="4">
+      <div class="mobile-card-header">
+        <span class="mobile-card-emoji">📉</span>
+        <span class="mobile-card-title">Коррекция & Накопление</span>
+        <span class="mobile-card-badge">10-14 дней</span>
+      </div>
+      <div class="mobile-card-body">
+        <p>Докупаем на просадке для рестарта</p>
+        <div class="mobile-card-metrics">
+          <span class="mobile-metric negative">📉 Просадка: -60%</span>
+          <span class="mobile-metric">🔄 Докупка: +40%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ReFork карточка - ВЫДЕЛЕННАЯ -->
+    <div class="mobile-stage-card refork-mobile-card active" data-stage="5">
+      <div class="mobile-card-header">
+        <span class="mobile-card-emoji">🔁</span>
+        <span class="mobile-card-title">ReFork Рестарт</span>
+        <span class="mobile-card-badge">НОВЫЙ ЦИКЛ!</span>
+      </div>
+      <div class="mobile-card-body">
+        <p><strong>Запуск нового цикла с усиленным капиталом</strong></p>
+        <div class="mobile-card-metrics">
+          <span class="mobile-metric positive">🚀 Цель ROI: +300%</span>
+          <span class="mobile-metric">⏱ Цикл: 14-21 день</span>
+        </div>
+        <div class="mobile-card-actions">
+          <button class="mobile-action-btn" onclick="scrollToApply()">
+            💎 Войти в следующий цикл
+          </button>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- Ключевой инсайт (общий для всех устройств) -->
+<div class="key-insight mt-12 p-6 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-2xl border border-cyan-500/20 text-center">
+  <h4 class="text-xl font-bold text-cyan-400 mb-3">💡 Стратегия ReFork Capital</h4>
+  <p class="text-gray-300 mb-4">
+    Мы не просто покупаем на дне — мы <strong>системно тестируем, усиливаем и перезапускаем</strong> проекты.<br> 
+    Малый вход → Валидация нарратива → Наращивание позиции → Частичная фиксация → Рестарт с усиленным капиталом.
+  </p>
+  <div class="grid md:grid-cols-3 gap-4 max-w-2xl mx-auto">
+    <div class="flex items-center gap-2 justify-center">
+      <span class="text-green-400 text-xl">✓</span>
+      <span class="text-sm text-gray-300">Минимальный риск при тестировании</span>
+    </div>
+    <div class="flex items-center gap-2 justify-center">
+      <span class="text-green-400 text-xl">✓</span>
+      <span class="text-sm text-gray-300">Поэтапное наращивание позиции</span>
+    </div>
+    <div class="flex items-center gap-2 justify-center">
+      <span class="text-green-400 text-xl">✓</span>
+      <span class="text-sm text-gray-300">Реинвестирование прибыли</span>
+    </div>
+  </div>
+</div>
+
+  </div>
+</section>
+
+<style>
+/* === ОБЩИЕ СТИЛИ ДЛЯ ВОЛНЫ === */
+
+/* Анимация рисования волны */
+.desktop-wave-path {
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: drawDesktopWave 4s ease-in-out forwards;
+}
+
+.mobile-wave-path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawMobileWave 3s ease-in-out forwards;
+}
+
+@keyframes drawDesktopWave {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes drawMobileWave {
+  to { stroke-dashoffset: 0; }
+}
+
+/* === ДЕСКТОП ВЕРСИЯ === */
+
+/* Контейнер десктоп волны */
+.wave-desktop-container {
+  overflow: hidden;
+}
+
+/* Точки на десктоп волне */
+.desktop-point {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* Позиции точек на десктоп волне */
+.desktop-point.point-1 { top: 50%; left: 10%; }
+.desktop-point.point-2 { top: 20%; left: 25%; }
+.desktop-point.point-3 { top: 80%; left: 45%; }
+.desktop-point.point-4 { top: 60%; left: 65%; }
+.desktop-point.refork-desktop-point { top: 30%; left: 85%; }
+
+/* Пульсация точек */
+.desktop-pulse {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.desktop-pulse::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  opacity: 0;
+  animation: desktopPulse 2s ease-in-out infinite;
+}
+
+.refork-desktop-point .desktop-pulse::after {
+  animation: reforkDesktopPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes desktopPulse {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.4); opacity: 0.3; }
+}
+
+@keyframes reforkDesktopPulse {
+  0%, 100% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.7); }
+  50% { transform: scale(1.8); opacity: 0.8; box-shadow: 0 0 0 15px rgba(6, 182, 212, 0); }
+}
+
+/* Цвета точек десктоп */
+.point-1 .desktop-pulse { background: #8b5cf6; }
+.point-2 .desktop-pulse { background: #10b981; }
+.point-3 .desktop-pulse { background: #ef4444; }
+.point-4 .desktop-pulse { background: #6b7280; }
+.refork-desktop-point .desktop-pulse { background: #06b6d4; }
+
+/* Подсветка ReFork точки */
+.refork-desktop-glow {
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.4), transparent 70%);
+  z-index: -1;
+}
+
+/* Лейблы точек */
+.desktop-label {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  text-align: center;
+  background: rgba(15, 23, 42, 0.9);
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  min-width: 100px;
+}
+
+.desktop-emoji {
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.desktop-title {
+  font-weight: bold;
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.desktop-badge {
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.refork-desktop-point .desktop-badge {
+  background: linear-gradient(135deg, #06b6d4, #0ea5e9);
+  color: white;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+/* Линия входа ReFork */
+.desktop-entry-line {
+  position: absolute;
+  top: 30%;
+  left: 85%;
+  transform: translateX(-50%);
+  z-index: 5;
+  text-align: center;
+}
+
+.entry-arrow {
+  font-size: 2rem;
+  color: #06b6d4;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.entry-text {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #06b6d4;
+  margin-top: 8px;
+  background: rgba(6, 182, 212, 0.1);
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Карточки десктоп */
+.desktop-cards-grid {
+  perspective: 1000px;
+}
+
+.desktop-stage-card {
+  transition: all 0.3s ease;
+  opacity: 0.7;
+  transform: translateY(10px) scale(0.95);
+}
+
+.desktop-stage-card.active,
+.desktop-stage-card:hover {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.desktop-card-inner {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 20px;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.desktop-stage-card.active .desktop-card-inner,
+.desktop-stage-card:hover .desktop-card-inner {
+  border-color: rgba(6, 182, 212, 0.5);
+  background: rgba(6, 182, 212, 0.1);
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.2);
+}
+
+.desktop-card-header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.desktop-card-emoji {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+
+.desktop-card-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #e5e7eb;
+}
+
+.desktop-card-body {
+  text-align: center;
+}
+
+.desktop-card-body p {
+  font-size: 0.9rem;
+  color: #d1d5db;
+  margin-bottom: 12px;
+}
+
+.desktop-card-metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.desktop-metric {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.desktop-metric.positive {
+  background: rgba(34, 197, 94, 0.2);
+  color: #22c55e;
+}
+
+.desktop-metric.negative {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+.metric-label {
+  font-weight: 500;
+}
+
+.metric-value {
+  font-weight: bold;
+}
+
+/* ReFork десктоп карточка */
+.refork-desktop-card .desktop-card-inner {
+  border-width: 2px;
+  background: rgba(6, 182, 212, 0.15);
+}
+
+.desktop-card-actions {
+  margin-top: 16px;
+}
+
+.desktop-action-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #06b6d4, #0ea5e9);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.desktop-action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(6, 182, 212, 0.4);
+}
+
+/* === МОБИЛЬНАЯ ВЕРСИЯ === */
+
+/* Контейнер мобильной волны */
+.wave-mobile-container {
+  overflow: hidden;
+}
+
+/* Точки на мобильной волне */
+.mobile-point {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+/* Позиции точек на мобильной волне */
+.mobile-point.point-1 { top: 50%; left: 10%; }
+.mobile-point.point-2 { top: 20%; left: 30%; }
+.mobile-point.point-3 { top: 80%; left: 50%; }
+.mobile-point.point-4 { top: 60%; left: 70%; }
+.mobile-point.refork-mobile-point { top: 30%; left: 90%; }
+
+/* Пульсация мобильных точек */
+.mobile-pulse {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  position: relative;
+}
+
+.mobile-pulse::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  opacity: 0;
+  animation: mobilePulse 2s ease-in-out infinite;
+}
+
+.refork-mobile-point .mobile-pulse::after {
+  animation: reforkMobilePulse 1.5s ease-in-out infinite;
+}
+
+@keyframes mobilePulse {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.3); opacity: 0.3; }
+}
+
+@keyframes reforkMobilePulse {
+  0%, 100% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.7); }
+  50% { transform: scale(1.5); opacity: 0.8; box-shadow: 0 0 0 10px rgba(6, 182, 212, 0); }
+}
+
+/* Цвета мобильных точек */
+.point-1 .mobile-pulse { background: #8b5cf6; }
+.point-2 .mobile-pulse { background: #10b981; }
+.point-3 .mobile-pulse { background: #ef4444; }
+.point-4 .mobile-pulse { background: #6b7280; }
+.refork-mobile-point .mobile-pulse { background: #06b6d4; }
+
+/* Подсветка ReFork мобильной точки */
+.refork-mobile-glow {
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.3), transparent 70%);
+  z-index: -1;
+}
+
+/* Лейблы мобильных точек */
+.mobile-label {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 11px;
+  font-weight: bold;
+  opacity: 0.8;
+}
+
+/* Курсор входа для мобильных */
+.mobile-entry-cursor {
+  position: absolute;
+  top: 30%;
+  left: 85%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.mobile-cursor-line {
+  width: 2px;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, #06b6d4, transparent);
+  margin: 0 auto;
+}
+
+.mobile-cursor-text {
+  font-size: 0.7rem;
+  white-space: nowrap;
+  background: rgba(6, 182, 212, 0.9);
+  padding: 4px 8px;
+  border-radius: 6px;
+  margin-top: 4px;
+  font-weight: bold;
+}
+
+/* Мобильные карточки */
+.mobile-stage-card {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 16px;
+  transition: all 0.3s ease;
+  opacity: 0.7;
+  transform: scale(0.95);
+}
+
+.mobile-stage-card.active {
+  opacity: 1;
+  transform: scale(1);
+  border-color: rgba(6, 182, 212, 0.5);
+  background: rgba(6, 182, 212, 0.1);
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.2);
+}
+
+.mobile-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.mobile-card-emoji {
+  font-size: 1.2rem;
+}
+
+.mobile-card-title {
+  font-weight: bold;
+  flex: 1;
+}
+
+.mobile-card-badge {
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.refork-mobile-card .mobile-card-badge {
+  background: linear-gradient(135deg, #06b6d4, #0ea5e9);
+  color: white;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.mobile-card-body {
+  font-size: 0.9rem;
+}
+
+.mobile-card-body p {
+  margin-bottom: 8px;
+}
+
+.mobile-card-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.mobile-metric {
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.mobile-metric.positive {
+  background: rgba(34, 197, 94, 0.2);
+  color: #22c55e;
+}
+
+.mobile-metric.negative {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+/* ReFork мобильная карточка */
+.refork-mobile-card .mobile-card-body p {
+  font-weight: bold;
+}
+
+.mobile-card-actions {
+  margin-top: 12px;
+}
+
+.mobile-action-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #06b6d4, #0ea5e9);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+/* Анимации появления карточек */
+.mobile-stage-card {
+  animation: mobileSlideInUp 0.6s ease-out forwards;
+}
+
+.mobile-stage-card:nth-child(1) { animation-delay: 0.1s; }
+.mobile-stage-card:nth-child(2) { animation-delay: 0.2s; }
+.mobile-stage-card:nth-child(3) { animation-delay: 0.3s; }
+.mobile-stage-card:nth-child(4) { animation-delay: 0.4s; }
+.mobile-stage-card:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes mobileSlideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 5px rgba(6, 182, 212, 0.5); }
+  to { box-shadow: 0 0 15px rgba(6, 182, 212, 0.8); }
+}
+
+/* Общие анимации для точек при скролле */
+.desktop-point, .mobile-point {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.5);
+  transition: all 0.5s ease;
+}
+
+.desktop-point.active, .mobile-point.active {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+</style>
+
+<script>
+// === ИНТЕРАКТИВНОСТЬ ДЛЯ ВОЛНЫ ЦИКЛОВ ===
+
+function initWaveCycle() {
+  // Инициализация десктоп версии
+  initDesktopWave();
+  
+  // Инициализация мобильной версии
+  initMobileWave();
+}
+
+function initDesktopWave() {
+  const desktopPoints = document.querySelectorAll('.desktop-point');
+  const desktopCards = document.querySelectorAll('.desktop-stage-card');
+  
+  if (desktopPoints.length === 0) return;
+  
+  // Активация при скролле
+  const desktopObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Запускаем анимации точек
+        desktopPoints.forEach((point, index) => {
+          setTimeout(() => {
+            point.classList.add('active');
+          }, index * 400);
+        });
+        
+        // Активируем ReFork карточку
+        setTimeout(() => {
+          const reforkCard = document.querySelector('.refork-desktop-card');
+          if (reforkCard) reforkCard.classList.add('active');
+        }, 2000);
+      }
+    });
+  }, { threshold: 0.2 });
+  
+  const desktopContainer = document.querySelector('.wave-desktop-container');
+  if (desktopContainer) desktopObserver.observe(desktopContainer);
+  
+  // Интерактивность: ховер по точкам
+  desktopPoints.forEach(point => {
+    point.addEventListener('mouseenter', function() {
+      const stage = this.getAttribute('data-stage');
+      
+      // Убираем активность у всех карточек
+      desktopCards.forEach(card => card.classList.remove('active'));
+      
+      // Активируем выбранную
+      const targetCard = document.querySelector(`.desktop-stage-card[data-stage="${stage}"]`);
+      if (targetCard) {
+        targetCard.classList.add('active');
+      }
+    });
+  });
+  
+  // Автоматическая ротация этапов для десктопа
+  let desktopStage = 1;
+  const desktopAutoRotate = setInterval(() => {
+    const desktopWave = document.querySelector('.wave-desktop-container');
+    if (desktopWave && desktopWave.getBoundingClientRect().top < window.innerHeight * 0.8) {
+      desktopCards.forEach(card => card.classList.remove('active'));
+      
+      const currentCard = document.querySelector(`.desktop-stage-card[data-stage="${desktopStage}"]`);
+      if (currentCard) {
+        currentCard.classList.add('active');
+      }
+      
+      desktopStage = desktopStage >= 5 ? 1 : desktopStage + 1;
+    }
+  }, 4000);
+}
+
+function initMobileWave() {
+  const mobilePoints = document.querySelectorAll('.mobile-point');
+  const mobileCards = document.querySelectorAll('.mobile-stage-card');
+  
+  if (mobilePoints.length === 0) return;
+  
+  // Активация при скролле
+  const mobileObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Запускаем анимации точек
+        mobilePoints.forEach((point, index) => {
+          setTimeout(() => {
+            point.classList.add('active');
+          }, index * 300);
+        });
+        
+        // Активируем ReFork карточку
+        setTimeout(() => {
+          const reforkCard = document.querySelector('.refork-mobile-card');
+          if (reforkCard) reforkCard.classList.add('active');
+        }, 1500);
+      }
+    });
+  }, { threshold: 0.3 });
+  
+  const mobileContainer = document.querySelector('.wave-mobile-container');
+  if (mobileContainer) mobileObserver.observe(mobileContainer);
+  
+  // Интерактивность: клик по точкам
+  mobilePoints.forEach(point => {
+    point.addEventListener('click', function() {
+      const stage = this.getAttribute('data-stage');
+      
+      // Убираем активность у всех
+      mobileCards.forEach(card => card.classList.remove('active'));
+      mobilePoints.forEach(p => p.classList.remove('highlight'));
+      
+      // Активируем выбранную
+      const targetCard = document.querySelector(`.mobile-stage-card[data-stage="${stage}"]`);
+      if (targetCard) {
+        targetCard.classList.add('active');
+        this.classList.add('highlight');
+        
+        // Плавная прокрутка к карточке
+        targetCard.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'center' 
+        });
+      }
+    });
+  });
+  
+  // Автоматическая ротация этапов для мобильных
+  let mobileStage = 1;
+  const mobileAutoRotate = setInterval(() => {
+    const mobileWave = document.querySelector('.wave-mobile-container');
+    if (mobileWave && mobileWave.getBoundingClientRect().top < window.innerHeight * 0.8) {
+      mobilePoints.forEach(p => p.classList.remove('highlight'));
+      mobileCards.forEach(card => card.classList.remove('active'));
+      
+      const currentPoint = document.querySelector(`.mobile-point[data-stage="${mobileStage}"]`);
+      const currentCard = document.querySelector(`.mobile-stage-card[data-stage="${mobileStage}"]`);
+      
+      if (currentPoint && currentCard) {
+        currentPoint.classList.add('highlight');
+        currentCard.classList.add('active');
+      }
+      
+      mobileStage = mobileStage >= 5 ? 1 : mobileStage + 1;
+    }
+  }, 3000);
+}
+
+// Инициализация после загрузки DOM
+document.addEventListener('DOMContentLoaded', function() {
+  initWaveCycle();
+});
+
+// Функция для кнопки CTA
+function scrollToApply() {
+  const applySection = document.getElementById('apply');
+  if (applySection) {
+    applySection.scrollIntoView({ 
+      behavior: 'smooth' 
+    });
+  }
+}
+</script>
 
 <section id="target-audience" aria-labelledby="target-audience-title" class="py-24 relative overflow-hidden bg-gradient-to-br from-gray-900/60 via-gray-800/40 to-cyan-900/20">
   <h2 id="target-audience-title" class="sr-only">Найдите свой путь в ReFork Capital</h2>
