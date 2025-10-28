@@ -651,8 +651,8 @@ html {
 
         <!-- Главный заголовок -->
         <h1 class="text-3xl md:text-4xl lg:text-7xl font-black leading-tight text-center lg:text-left">
-          Превращаем <span class="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 text-transparent bg-clip-text">мемы</span>
-          в <span class="bg-gradient-to-r from-green-400 to-cyan-400 text-transparent bg-clip-text">доход</span>
+          Viral <span class="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 text-transparent bg-clip-text">из</span>
+          Profit <span class="bg-gradient-to-r from-green-400 to-cyan-400 text-transparent bg-clip-text">Engine</span>
         </h1>
 
         <!-- Подзаголовок -->
@@ -802,8 +802,7 @@ ReFork ROI: +284%
 </div>
 
    <blockquote class="text-xl text-cyan-400 italic mb-10 mt-12 max-w-2xl mx-auto leading-relaxed" style="text-shadow: 0 0 10px rgba(34,211,238,0.4);">
-   </p> Мы не гоним трафик — мы накачиваем давление (FOMO). Когда трейдеры чувствуют движение — рынок дышит.</p>
-   </blockquote>
+   </p>Входим в начале а также в забытые мем-токены, подключаем SMM, фиксируем прибыль на пике FOMO. Вы получаете долю от ROI цикла.В   </blockquote>
 
       <!-- Key Points -->
       <div class="flex flex-wrap justify-center gap-6 text-sm text-yellow-400">
@@ -852,6 +851,240 @@ ReFork ROI: +284%
       </div>
     </div>
 
+<!-- Простой слайдер сделок -->
+<section class="simple-gallery py-16">
+  <div class="max-w-4xl mx-auto px-4">
+    
+    <!-- Минималистичный заголовок -->
+    <div class="text-center mb-12">
+      <h3 class="text-2xl font-semibold text-gray-300 mb-2">Наши сделки</h3>
+      <p class="text-gray-400 text-sm">Стратегия ReFork в действии</p>
+    </div>
+
+    <!-- Слайдер -->
+    <div class="gallery">
+      <ul class="cards">
+  <li><img src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/images/deal1.png" alt="Deal 1" /></li>
+  <li><img src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/images/deal2.png" alt="Deal 2" /></li>
+  <li><img src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/images/deal3.png" alt="Deal 3" /></li>
+  <li><img src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/images/deal4.png" alt="Deal 4" /></li>
+  <li><img src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/images/deal5.png" alt="Deal 5" /></li>
+  <li><img src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/images/deal6.png" alt="Deal 6" /></li>
+  <li><img src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/images/deal7.png" alt="Deal 7" /></li>
+      </ul>
+      <div class="actions">
+        <button class="prev">‹</button>
+        <button class="next">›</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.simple-gallery {
+  background: transparent;
+}
+
+.gallery {
+  position: relative;
+  width: 100%;
+  height: 550px; /* Уменьшил высоту контейнера для ПК */
+  overflow: hidden;
+}
+
+.cards {
+  position: absolute;
+  width: 500px; /* Уменьшил ширину для ПК */
+  height: 465px; /* Уменьшил высоту для ПК (сохраняя пропорции) */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cards li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 500px; /* Уменьшил ширину для ПК */
+  height: 465px; /* Уменьшил высоту для ПК */
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.cards li img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.actions {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1rem;
+}
+
+button {
+  display: inline-block;
+  outline: none;
+  background: rgba(6, 182, 212, 0.2);
+  border: solid 2px rgba(6, 182, 212, 0.5);
+  color: #06b6d4;
+  text-decoration: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: rgba(6, 182, 212, 0.3);
+  transform: scale(1.1);
+}
+
+/* Планшет */
+@media (max-width: 1024px) {
+  .gallery {
+    height: 500px;
+  }
+  
+  .cards {
+    width: 400px;
+    height: 372px; /* Сохраняем пропорции */
+  }
+  
+  .cards li {
+    width: 400px;
+    height: 372px;
+  }
+}
+
+/* Мобильные */
+@media (max-width: 768px) {
+  .gallery {
+    height: 450px;
+  }
+  
+  .cards {
+    width: 320px;
+    height: 298px; /* Сохраняем пропорции */
+  }
+  
+  .cards li {
+    width: 320px;
+    height: 298px;
+  }
+  
+  button {
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery {
+    height: 400px;
+  }
+  
+  .cards {
+    width: 280px;
+    height: 260px; /* Сохраняем пропорции */
+  }
+  
+  .cards li {
+    width: 280px;
+    height: 260px;
+  }
+}
+</style>
+
+<!-- Почему это работает -->
+<div class="text-center mb-20" data-aos="fade-up" data-aos-delay="250">
+  <h3 class="text-3xl font-bold mb-10 bg-gradient-to-r from-cyan-400 to-purple-400 text-transparent bg-clip-text">
+    Почему это работает
+  </h3>
+
+<!-- Микро-соцдоказательство -->
+<div class="text-center mb-20" data-aos="fade-up" data-aos-delay="300">
+  <span class="inline-block px-8 py-4 rounded-full bg-black/20 border border-cyan-500/20 backdrop-blur-sm text-gray-300 text-sm shadow-[0_0_25px_rgba(34,211,238,0.2)]">
+    <span class="text-teal-400 font-semibold">Стратегия</span>
+	<span class="glass rounded-full px-4 py-2 inline-flex items-center gap-2 border border-yellow-400/50 shadow-[0_0_15px_rgba(250,204,21,0.4)]">
+    <span class="text-green-400 font-semibold">Аналитика</span>
+	<span class="glass rounded-full px-4 py-2 inline-flex items-center gap-2 border border-green-400/50 shadow-[0_0_15px_rgba(74,222,128,0.4)]">
+    <span class="text-yellow-400 font-semibold">Дисциплина</span>
+  </div>
+</div>
+
+  <div class="grid md:grid-cols-4 gap-6">
+    <!-- 1 -->
+    <div class="glow-card p-6 rounded-2xl bg-black/30 border border-cyan-500/20 backdrop-blur-sm hover:border-cyan-400/40 transition-all duration-300">
+      <div class="text-2xl mb-3">💡</div>
+      <h4 class="text-cyan-400 font-semibold mb-2">Синергия трафика и ликвидности</h4>
+      <p class="text-gray-300 text-sm leading-relaxed">
+        Мы соединяем SMM, трейдинг и комьюнити-механики, создавая управляемый поток внимания и ликвидности.
+      </p>
+    </div>
+
+    <!-- 2 -->
+    <div class="glow-card p-6 rounded-2xl bg-black/30 border border-cyan-500/20 backdrop-blur-sm hover:border-cyan-400/40 transition-all duration-300">
+      <div class="text-2xl mb-3">🧠</div>
+      <h4 class="text-cyan-400 font-semibold mb-2">AI-аналитика поведения</h4>
+      <p class="text-gray-300 text-sm leading-relaxed">
+        Внутренние модели отслеживают FOMO-триггеры и активность трейдеров в X и Telegram, фиксируя идеальные моменты для роста.
+      </p>
+    </div>
+
+    <!-- 3 -->
+    <div class="glow-card p-6 rounded-2xl bg-black/30 border border-cyan-500/20 backdrop-blur-sm hover:border-cyan-400/40 transition-all duration-300">
+      <div class="text-2xl mb-3">⚙️</div>
+      <h4 class="text-cyan-400 font-semibold mb-2">Автоматизированные циклы</h4>
+      <p class="text-gray-300 text-sm leading-relaxed">
+        Каждый цикл проходит по чёткой схеме: запуск → памп → пик → фиксация прибыли. Никакой импровизации — только системные шаги.
+      </p>
+    </div>
+
+    <!-- 4 -->
+    <div class="glow-card p-6 rounded-2xl bg-black/30 border border-cyan-500/20 backdrop-blur-sm hover:border-cyan-400/40 transition-all duration-300 ">
+      <div class="text-2xl mb-3">🚀</div>
+      <h4 class="text-cyan-400 font-semibold mb-2">Социальная вирусность</h4>
+      <p class="text-gray-300 text-sm leading-relaxed">
+        Мем-триггеры, координированные рейды и вирусные цепочки усиливают охваты и формируют органический спрос на токен.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Добавьте этот div для отступа -->
+<div class="h-4 md:h-16"></div>
+
+<!-- Disclaimer -->
+<div class="text-center text-xs text-gray-500 max-w-2xl mx-auto mb-16" data-aos="fade-up" data-aos-delay="350" >
+  <p/>
+    ⚠️ <span class="text-gray-400">ReFork Capital — не инвестиционный фонд.</span><br>
+    Все операции проводятся внутри закрытых циклов, без публичного привлечения капитала.
+  </p>
+</div>
+
+<!-- Декоративный разделитель -->
+<div class="flex justify-center my-8 md:my-12">
+  <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
+</div>
+
+
     <!-- CTA -->
     <div class="text-center" data-aos="fade-up" data-aos-delay="300">
       <div class="glow-card p-10 max-w-2xl mx-auto border border-cyan-500/30 rounded-2xl bg-black/40 backdrop-blur-sm relative overflow-hidden">
@@ -879,7 +1112,7 @@ ReFork ROI: +284%
         </div>
 
         <a href="#apply" class="bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-8 py-4 rounded-xl hover:scale-105 transition-transform inline-block shadow-lg shadow-cyan-400/30 relative overflow-hidden group">
-          <span class="relative z-10">💬 Получить приглашение в клуб</span>
+          <span class="relative z-10">💬 Забронировать место</span>
           <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-all duration-1000"></div>
         </a>
       </div>
@@ -918,6 +1151,72 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const cards = gsap.utils.toArray('.cards li');
+  const spacing = 0.15;
+  let currentIndex = 0;
+
+  // Инициализация позиций
+  gsap.set(cards, {
+    xPercent: 400,
+    opacity: 0,
+    scale: 0
+  });
+
+  // Функция для обновления позиций
+  function updatePositions() {
+    cards.forEach((card, index) => {
+      const position = index - currentIndex;
+      
+      gsap.to(card, {
+        xPercent: position * 100,
+        opacity: Math.max(0, 1 - Math.abs(position) * 0.3),
+        scale: Math.max(0.6, 1 - Math.abs(position) * 0.2),
+        zIndex: 100 - Math.abs(position),
+        duration: 0.8,
+        ease: "power2.out"
+      });
+    });
+  }
+
+  // Инициализация
+  updatePositions();
+
+  // Кнопка "вперед"
+  document.querySelector('.next').addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % cards.length;
+    updatePositions();
+  });
+
+  // Кнопка "назад"
+  document.querySelector('.prev').addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+    updatePositions();
+  });
+
+  // Автопрокрутка (опционально)
+  let autoSlide = setInterval(() => {
+    currentIndex = (currentIndex + 1) % cards.length;
+    updatePositions();
+  }, 3000);
+
+  // Остановка автопрокрутки при наведении
+  const gallery = document.querySelector('.gallery');
+  gallery.addEventListener('mouseenter', () => {
+    clearInterval(autoSlide);
+  });
+
+  gallery.addEventListener('mouseleave', () => {
+    autoSlide = setInterval(() => {
+      currentIndex = (currentIndex + 1) % cards.length;
+      updatePositions();
+    }, 3000);
+  });
+});
+</script>
 
 <!-- ⚡️ Traffic Engine (без фонового изображения, с 6 карточками) -->
 <section id="traffic-engine" aria-labelledby="traffic-engine-title" class="relative py-20 overflow-hidden">
@@ -1398,7 +1697,7 @@ document.addEventListener("DOMContentLoaded", () => {
   <!-- Основной блок -->
   <div class="bg-gray-900 p-6 rounded-2xl border-0">
     <p class="text-gray-300 text-lg italic text-center">
-      "Мы не просто следуем трендам — мы создаём их, превращая цифровое внимание в реальную прибыль"
+      "Мы находим забытые мем-токены, запускаем вирусные кампании и фиксируем прибыль на пике хайпа"
     </p>
   </div>
   
@@ -1662,6 +1961,236 @@ document.addEventListener("DOMContentLoaded", () => {
 
 <style>
 
+/* Mobile Timeline */
+.vertical-timeline {
+  position: relative;
+  padding-left: 30px;
+}
+
+.vertical-timeline::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, #8b5cf6, #10b981, #ef4444, #6b7280, #06b6d4);
+}
+
+.timeline-stage {
+  position: relative;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: flex-start;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: -30px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 3px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.marker-1 { background: #8b5cf6; border-color: #c4b5fd; }
+.marker-2 { background: #10b981; border-color: #a7f3d0; }
+.marker-3 { background: #ef4444; border-color: #fdba74; }
+.marker-4 { background: #6b7280; border-color: #d1d5db; }
+.marker-5 { 
+  background: #06b6d4; 
+  border-color: #7dd3fc;
+  animation: pulse 2s infinite;
+}
+
+.timeline-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(15, 23, 42, 0.6);
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+  flex: 1;
+}
+
+.stage-icon-mobile {
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+}
+
+.stage-title-mobile {
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.stage-duration-mobile {
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+.active-stage .timeline-content {
+  background: rgba(6, 182, 212, 0.1);
+  border-color: rgba(6, 182, 212, 0.3);
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .timeline-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+  
+  .stage-icon-mobile {
+    width: 36px;
+    height: 36px;
+    font-size: 1.25rem;
+  }
+}
+.glow-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 25px rgba(6,182,212,0.4);
+  transition: all 0.3s ease;
+}
+
+/* Трехцветные градиенты */
+.three-color-gradient-1 {
+  background: linear-gradient(90deg, #3b82f6 0%, #10b981 50%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.three-color-gradient-2 {
+  background: linear-gradient(90deg, #8b5cf6 0%, #06d6a0 50%, #118ab2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.three-color-gradient-3 {
+  background: linear-gradient(90deg, #06b6d4 0%, #10b981 50%, #0ea5e9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+
+
+.custom-border-top {
+  position: relative;
+}
+
+.custom-border-top::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #22d3ee, transparent);
+  border-radius: 1px;
+}
+
+.custom-border-bottom {
+  position: relative;
+}
+
+.custom-border-bottom::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #10b981, transparent);
+  border-radius: 1px;
+}
+
+
+
+/* Адаптация нового графика для мобильных */
+@media (max-width: 768px) {
+  #reforkStrategyChart {
+    min-width: 600px !important;
+    width: 200% !important;
+  }
+  
+  .glow-card .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .glow-card .overflow-x-auto::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Увеличиваем отступы для лучшего скролла */
+  .glow-card {
+    padding: 1rem !important;
+  }
+}
+
+/* Индикатор скролла для мобильных */
+.glow-card .overflow-x-auto {
+  position: relative;
+}
+
+.glow-card .overflow-x-auto::after {
+  content: '← прокрутите →';
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  color: #22d3ee;
+  font-size: 10px;
+  opacity: 0.7;
+  animation: pulse-scroll 2s infinite;
+}
+
+@keyframes pulse-scroll {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+@media (max-width: 480px) {
+  #reforkStrategyChart {
+    min-width: 700px !important;
+  }
+  
+  .glow-card .overflow-x-auto::after {
+    content: '← прокрутите график →';
+    font-size: 9px;
+  }
+}
+
+.central-stage:hover .tooltip {
+  display: block;
+  animation: fadeIn 0.4s ease forwards;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -20px); }
+  to { opacity: 1; transform: translate(-50%, -30px); }
+}
 
 #partner-row-1 img, 
 .animate-scroll-banner-reverse img {
@@ -3410,7 +3939,7 @@ function scrollToFAQ() {
               <li>Еженедельные отчёты по ROI</li>
               <li>Бонус Акции Apple на блокчейне</li>
             </ul>
-            <a href="#apply" class="bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-4 py-2 rounded-lg inline-block">Сделать Взнос</a>
+            <a href="#apply" class="bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-4 py-2 rounded-lg inline-block">Войти в цикл</a>
           </div>
 
           <div class="glow-card card-glow p-6">
@@ -3434,11 +3963,11 @@ function scrollToFAQ() {
               <li>Премиум-подборка токенов и ранние входы</li>
               <li>Бонус Акции NVIDIA на блокчейне</li>
             </ul>
-            <a href="#apply" class="bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-4 py-2 rounded-lg inline-block">Сделать Взнос</a>
+            <a href="#apply" class="bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-4 py-2 rounded-lg inline-block">Приоритетный вход</a>
           </div>
         </div>
 
-        <p class="text-xs text-yellow-500 mt-9">Дисклеймер: не является инвестрекомендацией. 40% циклов могут быть убыточными</p>
+        <p class="text-xs text-yellow-500 mt-9">Дисклеймер: не является инвестрекомендацией. Прибыльность: 6 из 10 циклов. Средний убыток: -23%. Средняя прибыль: +195%</p>
       </div>
     </section>
 
