@@ -4,6 +4,9 @@
 <link rel="preload" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" as="style">
 
 <head>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 <link rel="sitemap" type="application/xml" href="/ReFork-Capital/sitemap.xml">
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
@@ -139,7 +142,7 @@ html, body {
   <meta property="og:type" content="reforkcapital.online"/>
   <meta property="og:url" content="https://reforkcapital.online/">
 <meta property="og:title" content="ReFork Capital — Пассивные инвестиции в мем-токены до 80% ROI">
-<meta property="og:description" content="Закрытый пул, управляемые циклы роста. AI-аналитика, вирусный маркетинг и фиксация прибыли на пике FOMO. Осталось 12 мест">
+<meta property="og:description" content="Закрытый пул частных инвесторов, Управление циклами и ROI через AI и SMM, вирусный маркетинг и фиксация прибыли на пике FOMO.">
   <meta property="og:image" content="https://reforkcapital.online/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -654,7 +657,7 @@ html {
         <!-- Главный заголовок -->
         <h1 class="text-3xl md:text-4xl lg:text-6xl font-black leading-tight text-center lg:text-left">
           Пассивный <span class="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 text-transparent bg-clip-text">доход</span>
-          от <span class="bg-gradient-to-r from-green-400 to-cyan-400 text-transparent bg-clip-text">мем-токенов</span>
+          на <span class="bg-gradient-to-r from-green-400 to-cyan-400 text-transparent bg-clip-text">мем-токенах</span>
         </h1>
 
         <!-- Подзаголовок -->
@@ -749,7 +752,7 @@ html {
   </div>
 </div>
 	
-	<div id="chartTooltip" class="absolute text-xs bg-black/80 text-cyan-300 px-2 py-1 rounded hidden shadow-lg border border-cyan-400/30">
+	<div id="chartTooltip2" class="absolute text-xs bg-black/80 text-cyan-300 px-2 py-1 rounded hidden shadow-lg border border-cyan-400/30">
 ReFork ROI: +284%
 </div>
 
@@ -774,11 +777,12 @@ ReFork ROI: +284%
 
 
 <!-- Closed Pool Section -->
-<section id="closed-pool" class="py-24 relative overflow-hidden"></section>
+<section id="closed-pool" class="py-24 relative overflow-hidden">
+<div class="max-w-6xl mx-auto px-4 relative"></div>
   <!-- subtle background aura -->
   <div class="absolute inset-0 opacity-10 bg-gradient-to-br from-cyan-500/10 to-purple-800/10 blur-3xl"></div>
 
-  <div class="max-w-6xl mx-auto px-4 relative"></div>
+  
     
     <!-- Header -->
     <div class="text-center mb-16" data-aos="fade-up">
@@ -830,7 +834,6 @@ ReFork ROI: +284%
   <div class="inline-flex items-center gap-3 px-6 py-3 mb-8 rounded-full border border-cyan-500/30 bg-black/30 backdrop-blur-sm shadow-[0_0_20px_rgba(6,182,212,0.15)]">
     <span class="text-cyan-400 text-lg font-semibold">Пул текущего цикла:</span>
     <span class="text-white font-bold text-lg">$7,000</span>
-
 </div>
 
 
@@ -838,7 +841,7 @@ ReFork ROI: +284%
     <div class="grid md:grid-cols-3 gap-8 mb-16" data-aos="fade-up" data-aos-delay="150">
       <!-- 1 -->
       <div class="glow-card p-6 text-center border border-cyan-500/20 rounded-2xl bg-black/30 backdrop-blur-sm hover:border-cyan-400/40 transition-all duration-300">
-        <div class="text-4xl mb-3">💰</div>
+        <i class="fas fa-chart-line text-green-400"></i>
         <h4 class="text-xl font-bold text-cyan-400 mb-2">Формирование цикла</h4>
         <p class="text-gray-300 text-sm leading-relaxed">
           Участники формируют общий пул запуска цикла. Капитал ограничен для поддержания управляемости и высокой эффективности.
@@ -847,7 +850,7 @@ ReFork ROI: +284%
 
       <!-- 2 -->
       <div class="glow-card p-6 text-center border border-cyan-500/20 rounded-2xl bg-black/30 backdrop-blur-sm hover:border-cyan-400/40 transition-all duration-300">
-        <div class="text-4xl mb-3">⚙️</div>
+        <i class="fas fa-cogs text-blue-400"></i>
         <h4 class="text-xl font-bold text-cyan-400 mb-2">Операция ReFork</h4>
         <p class="text-gray-300 text-sm leading-relaxed">
           ReFork управляет всем процессом: токен, маркетинг, трафик, памп и фиксация. Инвесторы получают пассивную прибыль — без участия в операциях.
@@ -856,7 +859,7 @@ ReFork ROI: +284%
 
       <!-- 3 -->
       <div class="glow-card p-6 text-center border border-cyan-500/20 rounded-2xl bg-black/30 backdrop-blur-sm hover:border-cyan-400/40 transition-all duration-300">
-        <div class="text-4xl mb-3">📈</div>
+        <i class="fas fa-chart-line text-purple-400"></i>
         <h4 class="text-xl font-bold text-cyan-400 mb-2">Фиксация и результат</h4>
         <p class="text-gray-300 text-sm leading-relaxed">
           По завершении цикла прибыль распределяется между участниками после вычета операционных расходов и бюджета продвижения.
@@ -899,7 +902,7 @@ ReFork ROI: +284%
 </div>
 
 <!-- Типы циклов ReFork Capital -->
-<section id="cycle-types" class="py-20 relative overflow-hidden"></section>
+<section id="cycle-types" class="py-20 relative overflow-hidden">
   <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-purple-500/5 to-transparent blur-3xl"></div>
 
   <div class="max-w-6xl mx-auto px-4 relative">
@@ -1952,67 +1955,65 @@ button:hover {
       </p>
     </div>
 
-    <!-- Визуальный Flow Chart -->
-    <div class="relative mb-16">
-      <div class="grid md:grid-cols-5 gap-6 relative z-10">
-        <!-- Stage 1 -->
-        <div class="glow-card card-glow p-6 text-center group hover:scale-105 transition-all" data-aos="fade-up" data-aos-delay="100">
-          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center text-3xl">
-            👁️
-          </div>
-          <h3 class="text-xl font-bold text-yellow-400 mb-2">Внимание</h3>
-          <p class="text-sm text-gray-300 mb-3">AI-мониторинг трендов и нарративов</p>
-          <div class="text-2xl font-black text-yellow-400">0-24h</div>
-          <p class="text-xs text-gray-500 mt-1">Поиск сигналов</p>
-        </div>
-
-        <!-- Stage 2 -->
-        <div class="glow-card card-glow p-6 text-center group hover:scale-105 transition-all" data-aos="fade-up" data-aos-delay="200">
-          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-3xl">
-            📊
-          </div>
-          <h3 class="text-xl font-bold text-cyan-400 mb-2">Активность</h3>
-          <p class="text-sm text-gray-300 mb-3">SMM-кампании и вирусный контент</p>
-          <div class="text-2xl font-black text-cyan-400">1-3 дня</div>
-          <p class="text-xs text-gray-500 mt-1">Разгон охвата</p>
-        </div>
-
-        <!-- Stage 3 -->
-        <div class="glow-card card-glow p-6 text-center group hover:scale-105 transition-all" data-aos="fade-up" data-aos-delay="300">
-          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center text-3xl">
-            💧
-          </div>
-          <h3 class="text-xl font-bold text-purple-400 mb-2">Ликвидность</h3>
-          <p class="text-sm text-gray-300 mb-3">Рост торговых объемов</p>
-          <div class="text-2xl font-black text-purple-400">3-7 дней</div>
-          <p class="text-xs text-gray-500 mt-1">Пик активности</p>
-        </div>
-
-        <!-- Stage 4 -->
-        <div class="glow-card card-glow p-6 text-center group hover:scale-105 transition-all" data-aos="fade-up" data-aos-delay="400">
-          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center text-3xl">
-            📈
-          </div>
-          <h3 class="text-xl font-bold text-green-400 mb-2">Капитализация</h3>
-          <p class="text-sm text-gray-300 mb-3">Рост рыночной стоимости</p>
-          <div class="text-2xl font-black text-green-400">7-14 дней</div>
-          <p class="text-xs text-gray-500 mt-1">Price discovery</p>
-        </div>
-
-        <!-- Stage 5 -->
-        <div class="glow-card card-glow p-6 text-center group hover:scale-105 transition-all border-2 border-green-400" data-aos="fade-up" data-aos-delay="500">
-          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-green-400 to-teal-500 flex items-center justify-center text-3xl">
-            💰
-          </div>
-          <h3 class="text-xl font-bold text-green-400 mb-2">ROI</h3>
-          <p class="text-sm text-gray-300 mb-3">Фиксация прибыли</p>
-          <div class="text-2xl font-black text-green-400">14-21 день</div>
-          <p class="text-xs text-gray-500 mt-1">Exit & Reinvest</p>
-        </div>
+<!-- Визуальный Flow Chart -->
+<div class="relative mb-16">
+  <div class="grid md:grid-cols-5 gap-6 relative z-10">
+    <!-- Stage 1 -->
+    <div class="glow-card card-glow p-6 text-center group hover:scale-105 transition-all" data-aos="fade-up" data-aos-delay="100">
+      <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center text-white">
+        <i class="fas fa-search text-2xl"></i>
       </div>
+      <h3 class="text-xl font-bold text-yellow-400 mb-2">Внимание</h3>
+      <p class="text-sm text-gray-300 mb-3">AI-мониторинг трендов и нарративов</p>
+      <div class="text-2xl font-black text-yellow-400">0-24h</div>
+      <p class="text-xs text-gray-500 mt-1">Поиск сигналов</p>
+    </div>
+
+    <!-- Stage 2 -->
+    <div class="glow-card card-glow p-6 text-center group hover:scale-105 transition-all" data-aos="fade-up" data-aos-delay="200">
+      <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-white">
+        <i class="fas fa-chart-bar text-2xl"></i>
+      </div>
+      <h3 class="text-xl font-bold text-cyan-400 mb-2">Активность</h3>
+      <p class="text-sm text-gray-300 mb-3">SMM-кампании и вирусный контент</p>
+      <div class="text-2xl font-black text-cyan-400">1-3 дня</div>
+      <p class="text-xs text-gray-500 mt-1">Разгон охвата</p>
+    </div>
+
+    <!-- Stage 3 -->
+    <div class="glow-card card-glow p-6 text-center group hover:scale-105 transition-all" data-aos="fade-up" data-aos-delay="300">
+      <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center text-white">
+        <i class="fas fa-water text-2xl"></i>
+      </div>
+      <h3 class="text-xl font-bold text-purple-400 mb-2">Ликвидность</h3>
+      <p class="text-sm text-gray-300 mb-3">Рост торговых объемов</p>
+      <div class="text-2xl font-black text-purple-400">3-7 дней</div>
+      <p class="text-xs text-gray-500 mt-1">Пик активности</p>
+    </div>
+
+    <!-- Stage 4 -->
+    <div class="glow-card card-glow p-6 text-center group hover:scale-105 transition-all" data-aos="fade-up" data-aos-delay="400">
+      <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center text-white">
+        <i class="fas fa-chart-line text-2xl"></i>
+      </div>
+      <h3 class="text-xl font-bold text-green-400 mb-2">Капитализация</h3>
+      <p class="text-sm text-gray-300 mb-3">Рост рыночной стоимости</p>
+      <div class="text-2xl font-black text-green-400">7-14 дней</div>
+      <p class="text-xs text-gray-500 mt-1">Price discovery</p>
+    </div>
+
+    <!-- Stage 5 -->
+    <div class="glow-card card-glow p-6 text-center group hover:scale-105 transition-all border-2 border-green-400" data-aos="fade-up" data-aos-delay="500">
+      <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-green-400 to-teal-500 flex items-center justify-center text-white">
+        <i class="fas fa-money-bill-wave text-2xl"></i>
+      </div>
+      <h3 class="text-xl font-bold text-green-400 mb-2">ROI</h3>
+      <p class="text-sm text-gray-300 mb-3">Фиксация прибыли</p>
+      <div class="text-2xl font-black text-green-400">14-21 день</div>
+      <p class="text-xs text-gray-500 mt-1">Exit & Reinvest</p>
     </div>
   </div>
-</section>
+</div>
 
 <!-- Key Success -->
 <div class="text-center mb-16 max-w-4xl mx-auto px-4">
@@ -4351,7 +4352,7 @@ function scrollToFAQ() {
         <div class="text-xs text-gray-400">Накопление</div>
       </div>
       <div class="p-2 bg-blue-500/10 rounded-lg">
-        <div class="text-lg">🚀</div>
+        <i class="fas fa-rocket text-orange-400"></i>
         <div class="text-xs text-blue-400 font-bold">День 5-12</div>
         <div class="text-xs text-gray-400">SMM-Разогрев</div>
       </div>
@@ -4570,6 +4571,8 @@ function scrollToFAQ() {
         </div>
       </details>
     </div>
+	</div>
+</section>
 
 <style>
 /* Анимации для аккордеона */
@@ -4696,8 +4699,7 @@ summary::marker, summary::-webkit-details-marker {
     </div>
     <p>© 2025 ReFork Capital. Все права защищены.</p>
 </div>
-	
-  </footer>
+</footer>
 
 
 
@@ -5660,6 +5662,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-
+</main>
 </body>
 </html>
