@@ -1,130 +1,5618 @@
-// /api/telegram.js
-module.exports = async function handler(req, res) {
-  // ===== CORS WHITELIST =====
-  const allowedOrigins = [
-    'https://lucas555-ops.github.io',
-    'https://reforkcapital.online',
-    'http://localhost:3000'
-  ];
+<!doctype html>
+<html lang="ru" class="scroll-smooth">
+
+<link rel="preload" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" as="style">
+
+<head>
+<link rel="sitemap" type="application/xml" href="/ReFork-Capital/sitemap.xml">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>ReFork Capital: DeFi-стратегия для мем-токенов, до 80%+ за цикл</title>
+
+  <!-- Подключение AOS -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+<!-- Preload critical images -->
+<link rel="preload" href="path/to/hero-image.jpg" as="image">
+<!-- Preconnect to external domains -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<!-- GA отключен -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){console.log('GA:', arguments);}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Это инвестиционная рекомендация?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Нет. Мы делимся опытом и методами, но не даём финансовых советов. Все риски на стороне инвестора."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Как я получаю прибыль?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Прибыль формируется за счёт роста стоимости токенов через SMM-кампании и фиксацию на пике FOMO. Выплаты ежемесячно."
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "ReFork Capital Investment Packages",
+  "description": "Инвестиционные уровни для капитализации криптовалют: Lite ($300), Pro ($700), Prime ($1200).",
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Lite Package",
+      "price": 300,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Offer",
+      "name": "Pro Package",
+      "price": 700,
+      "priceCurrency": "USD"
+    },
+    {
+      "@type": "Offer",
+      "name": "Prime Package",
+      "price": 1200,
+      "priceCurrency": "USD"
+    }
+  ]
+}
+</script>	
+
+<script>
+document.querySelectorAll('img').forEach(img => img.setAttribute('loading', 'lazy'));
+</script>
+	
+  <!-- Critical CSS inline -->
+<style>
+    :root{--bg:#0b0e14;--muted:#9aa5b1;--accent:#6ee7b7;--accent-2:#22d3ee}
+    *{
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+    html,body{background:var(--bg);color:#e5e7eb;font-family:system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+    .loading{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:9999}
+    .loading-spinner{width:50px;height:50px;border:4px solid rgba(34,211,238,.3);border-top-color:#22d3ee;border-radius:50%;animation:spin 1s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+</style>
   
-  const origin = req.headers.origin;
+  <!-- Preconnect & DNS Prefetch -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://re-fork-capital.vercel.app">
+<link rel="dns-prefetch" href="https://re-fork-capital.vercel.app">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
   
-  // Проверяем origin и устанавливаем соответствующий заголовок
-  if (allowedOrigins.includes(origin)) {
-    res.setHeader('Access-Control-Allow-Origin', origin);
-  } else {
-    console.log('🚫 Blocked origin:', origin);
-    return res.status(403).json({ 
-      success: false, 
-      error: 'Origin not allowed' 
+  <!-- Preload Critical Resources -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style">
+  <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
+  
+  <!-- Meta Tags -->
+  <meta name="description" content="ReFork Capital: Кастомная DeFi-стратегия для мем-токенов.Пассивный ROI до 80%+ за цикл через AI-аналитику и SMM-капитализацию. Только для своих!"/>
+  <meta name="keywords" content="ReFork Capital, crypto fund, meme tokens, investment, DeFi growth, crypto ROI, крипто инвестиции, memecoin, 100x, Solana, DEX" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="ReFork Capital">
+  <meta name="language" content="Russian">
+  
+  <!-- ИСПРАВЛЕНО: Canonical URL -->
+  <link rel="canonical" href="https://lucas555-ops.github.io/ReFork-Capital/">
+  
+  <!-- Theme & PWA -->
+<meta name="theme-color" content="#0ea5e9">
+<link rel="manifest" href="/manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/apple-touch-icon.png">
+  
+  <!-- ИСПРАВЛЕНО: Open Graph с реальными изображениями -->
+  <meta property="og:type" content="reforkcapital.online"/>
+  <meta property="og:url" content="https://reforkcapital.online/">
+<meta property="og:title" content="ReFork Capital — Пассивные инвестиции в мем-токены до 80% ROI">
+<meta property="og:description" content="Закрытый пул, управляемые циклы роста. AI-аналитика, вирусный маркетинг и фиксация прибыли на пике FOMO. Осталось 12 мест">
+  <meta property="og:image" content="https://reforkcapital.online/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Пассивные инвестиции в мем-токены до 80% ROI">
+<meta name="twitter:description" content="Все операции выполняет команда ReFork: от инициации роста токена и фиксации прибыли на пике FOMO до распределения вашей доли по завершении цикла.">
+  <meta name="twitter:image" content="https://reforkcapital.online/og-image.jpg">
+  
+  <!-- Для лучшего SEO -->
+  <meta name="theme-color" content="#06b6d4">
+  <meta name="msapplication-TileColor" content="#06b6d4">
+
+  <!-- Для соцсетей -->
+  <meta property="og:site_name" content="ReFork Capital">
+  <meta property="og:locale" content="ru_RU">
+  
+  <!-- Fonts (async load) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+    section, header, footer{position:relative;z-index:20}
+    h1,h2,h3,p,details,summary,button,a,input,textarea,select,form{position:relative;z-index:30}
+
+    .glow-card{position:relative;overflow:hidden;border-radius:1.25rem;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(106,230,255,.22);box-shadow:0 10px 28px rgba(0,0,0,.48);transform:translateZ(0);backface-visibility:hidden}
+    .glow-card::after{content:"";position:absolute;inset:-12px;z-index:-1;border-radius:calc(1.25rem + 12px);background:radial-gradient(420px 180px at 50% 0%,rgba(34,211,238,.18),transparent 60%);filter:blur(14px)}
+
+    .card-glow::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(90deg,#14F195,#9945FF,#00C2FF,#14F195);background-size:300% 300%;animation:glow-move 6s linear infinite;-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;z-index:2}
+    @keyframes glow-move{0%{background-position:0% 50%}100%{background-position:200% 50%}}
+
+    #vanta{opacity:1;filter:none;will-change:transform}
+    .bg-overlay{background:radial-gradient(800px 520px at 65% 15%,rgba(8,12,20,.55),transparent 60%),radial-gradient(900px 640px at 10% 60%,rgba(8,12,20,.45),transparent 60%),linear-gradient(180deg,rgba(5,8,15,.75),rgba(5,8,15,.95))}
+
+    @media (max-width:768px){
+      .grid-cols-5{grid-template-columns:repeat(2,1fr)}
+      .text-5xl{font-size:2.5rem}
+      .text-6xl{font-size:3rem}
+      .grid-cols-4{grid-template-columns:repeat(2,1fr)}
+      .gap-8{gap:1rem}
+      .p-10{padding:1.5rem}
+      .p-8{padding:1.5rem}
+      .glow-card:hover{transform:none !important}
+    }
+	
+	.timeline-stage {
+padding: 1rem !important;
+}
+.timeline-stage .text-2xl {
+font-size: 1.25rem;
+}
+.timeline-stage .text-sm {
+font-size: 0.85rem;
+}
+
+    select{background-color:#1a202c !important;color:#f7fafc !important}
+    select option{background-color:#1a202c !important;color:#f7fafc !important;padding:12px}
+
+    .dot{width:8px;height:8px;border-radius:50%;display:inline-block;box-shadow:0 0 8px 2px currentColor}
+    .glass{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(10px)}
+
+    html{scroll-behavior:smooth}
+    body{-webkit-overflow-scrolling:touch;overflow-scrolling:touch;-webkit-text-size-adjust:100%}
+
+    .form-block{max-width:100%;margin:0 auto;display:grid;gap:16px;font-family:'Inter',system-ui}
+    .form-block label{color:#e5e7eb;font-size:14px;font-weight:500}
+    .form-block input,.form-block textarea,.form-block select{width:100%;padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.05);color:#fff;font-family:'Inter',system-ui;margin-top:4px;transition:all 0.3s ease}
+    .form-block input:focus,.form-block textarea:focus,.form-block select:focus{outline:none;border-color:#22d3ee;box-shadow:0 0 0 3px rgba(34,211,238,0.1)}
+    .form-block input::placeholder,.form-block textarea::placeholder{color:#9ca3af}
+    .form-block button{padding:14px 24px;border-radius:12px;border:none;background:linear-gradient(90deg,#0ea5e9,#06b6d4);color:white;font-weight:600;cursor:pointer;transition:all 0.3s ease;font-family:'Inter',system-ui;margin-top:8px}
+    .form-block button:hover{opacity:0.9;transform:translateY(-1px)}
+    .form-block button:disabled{opacity:0.6;cursor:not-allowed;transform:none}
+
+    .success-toast,.error-toast{position:fixed;top:20px;right:20px;color:white;padding:16px 24px;border-radius:12px;box-shadow:0 20px 25px rgba(0,0,0,0.25);z-index:9999;animation:slideIn 0.3s ease;font-weight:500;border:1px solid rgba(255,255,255,0.1)}
+    .success-toast{background:linear-gradient(90deg,#46c2ff,#8b5cf6)}
+    .error-toast{background:linear-gradient(90deg,#ef4444,#dc2626)}
+    @keyframes slideIn{from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}
+
+    @media (max-width:768px){
+      .form-block{gap:12px}
+      .form-block input,.form-block textarea,.form-block select{padding:10px 14px}
+      .success-toast,.error-toast{left:20px;right:20px;text-align:center}
+    }
+
+	  @media (max-width: 480px) {
+  .phase-label {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+}
+
+    .chart-animation{stroke-dasharray:1000;stroke-dashoffset:1000;animation:drawChart 3.5s ease-in-out forwards}
+    @keyframes drawChart{to{stroke-dashoffset:0}}
+
+    .profit-zone{animation:fadeInZone 2s ease-in-out forwards}
+    @keyframes fadeInZone{to{opacity:1}}
+
+    .phase-label{animation:fadeInUp 0.8s ease-out forwards}
+    @keyframes fadeInUp{to{opacity:1;transform:translateY(-5px)}}
+
+    @media (max-width:768px){
+      .phase-label{font-size:10px}
+      .chart-animation{animation-duration:2.5s}
+    }
+
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+    .bg-size-200{background-size:200% 200%}
+    .animate-gradient{animation:gradient-shift 3s ease infinite}
+    @keyframes gradient-shift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+
+    .loading-spinner-btn{display:inline-block;width:20px;height:20px;border:3px solid rgba(255,255,255,.3);border-radius:50%;border-top-color:#22d3ee;animation:spin 1s linear infinite;margin-left:8px}
+
+    /* Exit Intent Popup */
+    .exit-popup {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      animation: fadeIn 0.3s ease;
+      backdrop-filter: blur(5px);
+    }
+
+    .exit-popup-content {
+      position: relative;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      padding: 40px 30px 30px;
+      border-radius: 20px;
+      max-width: 500px;
+      text-align: center;
+      border: 2px solid #22d3ee;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+      margin: 20px;
+    }
+
+    .exit-popup-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      border: none;
+    }
+
+    .exit-popup-close:hover {
+      background: rgba(239, 68, 68, 0.3);
+      color: #fff;
+      transform: scale(1.1);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Адаптивность для мобильных */
+    @media (max-width: 640px) {
+      .exit-popup-content {
+        margin: 20px;
+        padding: 30px 20px 20px;
+      }
+      
+      .exit-popup-close {
+        top: 10px;
+        right: 10px;
+        width: 28px;
+        height: 28px;
+        font-size: 20px;
+      }
+      
+      .exit-popup-content h3 {
+        font-size: 1.5rem;
+      }
+      
+      .exit-popup-content p {
+        font-size: 1rem;
+      }
+    }
+
+    /* Social Proof Counter */
+    .social-proof{position:fixed;bottom:20px;left:20px;background:rgba(0,0,0,0.8);backdrop-filter:blur(10px);padding:15px 20px;border-radius:12px;border:1px solid rgba(34,211,238,0.3);z-index:100}
+    .social-proof .counter{font-size:28px;font-weight:bold;color:#22d3ee}
+
+    @supports (-webkit-touch-callout:none){
+      .min-h-screen{min-height:-webkit-fill-available}
+    }
+	
+	/* Мобильная версия: Задержка для появления каждого этапа */
+@keyframes delay-slide-up {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Применяем задержку для каждого этапа на мобильных устройствах */
+@media (max-width: 480px) {
+  .timeline-stage:nth-child(1) {
+    animation: delay-slide-up 0.5s ease-in-out 0.2s forwards;
+  }
+
+  .timeline-stage:nth-child(2) {
+    animation: delay-slide-up 0.5s ease-in-out 0.4s forwards;
+  }
+
+  .timeline-stage:nth-child(3) {
+    animation: delay-slide-up 0.5s ease-in-out 0.6s forwards;
+  }
+
+  .timeline-stage:nth-child(4) {
+    animation: delay-slide-up 0.5s ease-in-out 0.8s forwards;
+  }
+
+  .timeline-stage:nth-child(5) {
+    animation: delay-slide-up 0.5s ease-in-out 1s forwards;
+  }
+
+  /* Дополнительные стили для мобильных устройств */
+  .timeline-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+
+  .stage-icon-mobile {
+    width: 36px;
+    height: 36px;
+    font-size: 1.25rem;
+  }
+}
+
+/* ✅ Повышаем контраст текста */
+.text-gray-400 { color: #d1d5db !important; }
+.text-gray-300 { color: #e5e7eb !important; }
+
+/* Гарантируем, что fixed header работает правильно */
+header {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Плавная прокрутка для якорных ссылок */
+html {
+  scroll-padding-top: 80px;
+}
+
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 70px;
+  }
+}
+
+/* GMGN Promo Button */
+.social-proof {
+  animation: slideInUp 0.5s ease-out;
+}
+
+.gmgn-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 15px 20px;
+  background: transparent;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: linear-gradient(#0b0e14, #0b0e14) padding-box, linear-gradient(135deg, #8b5cf6, #06d6a0, #14f195) border-box;
+  position: relative;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  min-width: 120px;
+}
+
+.gmgn-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(6, 214, 160, 0.3);
+}
+
+.gmgn-text {
+  font-size: 20px;
+  font-weight: 900;
+  background: linear-gradient(335deg, #8b5cf6, #14f195);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.gmgn-subtext {
+  font-size: 10px;
+  color: rgba(255,255,255,0.8);
+  margin: 0;
+  font-weight: 500;
+  text-align: center;
+}
+
+.gmgn-close {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.9);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.gmgn-close:hover {
+  background: rgba(239,68,68,0.9);
+  transform: scale(1.1);
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+  .gmgn-container {
+    padding: 12px 16px;
+    min-width: 100px;
+  }
+  .gmgn-text {
+    font-size: 18px;
+  }
+  .gmgn-subtext {
+    font-size: 9px;
+  }
+}
+
+/* ---------- Background & Parallax (без изображения) ---------- */
+#traffic-engine > .-z-10::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 20%, rgba(34,211,238,0.06), transparent 70%),
+              linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.6));
+  opacity: 0.25;
+  transform: translateY(0);
+  transition: transform 0.4s ease-out;
+  will-change: transform;
+}
+
+#traffic-engine > .-z-10::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 100%, rgba(34,211,238,0.05), transparent 80%);
+  pointer-events: none;
+}
+
+/* ---------- Card Glow & Animation ---------- */
+.traffic-card {
+  backdrop-filter: blur(6px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.traffic-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  border-color: rgba(34,211,238,0.2);
+  box-shadow: 0 0 20px rgba(34,211,238,0.1);
+}
+
+/* ---------- Reveal Animation ---------- */
+#traffic-engine [data-aos="fade-up"] {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+#traffic-engine [data-aos="fade-up"].aos-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Mobile Adaptation ---------- */
+@media (max-width: 640px) {
+  .traffic-card { padding: 16px; }
+  #traffic-engine { padding-top: 4rem; padding-bottom: 4rem; }
+  #traffic-engine > .-z-10::before { opacity: 0.15; }
+}
+
+}
+
+
+</style>
+
+	
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div id="loadingScreen" class="loading">
+    <div class="loading-spinner"></div>
+  </div>
+
+  <div class="bg-overlay fixed inset-0 -z-5 pointer-events-none" aria-hidden="true"></div>
+
+<!-- Progress Bar -->
+<div class="fixed top-0 left-0 w-0 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 z-50" id="progress-bar"></div>
+
+<!-- GMGN Promo Button -->
+<div class="social-proof gmgn-promo" id="socialProof" style="display:none">
+  <a href="https://gmgn.ai/r/DEFI" target="_blank" class="gmgn-button">
+    <span class="gmgn-text">GMGN</span>
+  </a>
+  <p class="gmgn-subtext">Терминал DeFi</p>
+  <button class="gmgn-close" aria-label="Закрыть">×</button>
+</div>
+
+
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-black/95 border-b border-white/10 md:relative md:bg-black/40">
+  <div class="max-w-7xl mx-auto flex items-center justify-between h-16 px-4">
+    <a href="#" class="text-xl font-extrabold bg-gradient-to-r from-green-500 to-cyan-400 text-transparent bg-clip-text">ReFork Capital</a>
+    
+    <nav class="hidden md:flex gap-6 text-sm" aria-label="Основная навигация">
+      <a href="#process" class="hover:text-white transition-colors">Как работает</a>
+      <a href="#method" class="hover:text-white transition-colors">Методы</a>
+      <a href="#meme-mechanics" class="hover:text-white transition-colors">Мем-механика</a>
+      <a href="#packages" class="hover:text-white transition-colors">Инвестировать</a>
+      <a href="#team" class="hover:text-white transition-colors">Команда</a>
+    </nav>
+    
+    <button class="md:hidden text-white text-xl" id="mobile-menu-button" aria-label="Открыть меню" aria-expanded="false">☰</button>
+    
+    <a href="#apply" class="bg-gradient-to-b from-gray-100 to-gray-300 text-gray-900 font-bold border border-gray-400 rounded-lg shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 md:px-4 md:py-1 px-3 py-1 text-sm md:text-base relative overflow-hidden group">
+      <span class="relative z-10">Написать</span> 
+      <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-0 transition-all duration-1000"></div>
+    </a>
+  </div>
+  
+  <!-- Мобильное меню -->
+  <div class="md:hidden hidden bg-black/40 backdrop-blur-lg border-t border-white/10 fixed inset-0 z-50 pt-16" id="mobile-menu">
+  <div class="bg-gray-900/95 backdrop-blur-md rounded-lg mx-4 mt-4 p-6 border border-white/10">
+    <div class="flex justify-end p-4">
+      <button id="mobile-menu-close" aria-label="Закрыть меню" class="text-white text-xl">✕</button>
+    </div>
+    <div class="flex flex-col py-4 px-4 space-y-4">
+      <a href="#process" class="hover:text-cyan-400 transition-colors py-2">Как работает</a>
+      <a href="#method" class="hover:text-cyan-400 transition-colors py-2">Методы</a>
+      <a href="#meme-mechanics" class="hover:text-cyan-400 transition-colors py-2">Мем-механика</a>
+      <a href="#packages" class="hover:text-cyan-400 transition-colors py-2">Инвестировать</a>
+      <a href="#team" class="hover:text-cyan-400 transition-colors py-2">Команда</a>
+      <a href="#apply" class="bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-4 py-2 rounded-lg text-center mt-2">Написать</a>
+    </div>
+  </div>
+</header>
+
+<!-- Добавляем отступ для контента, чтобы он не скрывался под fixed header -->
+<main class="pt-16 md:pt-0" role="main">
+
+  <main role="main">
+<section id="hero" class="min-h-screen flex items-center py-10 md:py-20">
+  <!-- Quartz Background Animation -->
+  <div class="quartz-bg">
+    <div class="quartz-bg__gradient"></div>
+    <div class="quartz-shape quartz-shape--1"></div>
+    <div class="quartz-shape quartz-shape--2"></div>
+    <div class="quartz-shape quartz-shape--3"></div>
+    <div class="quartz-shape quartz-shape--4"></div>
+    <div class="quartz-shape quartz-shape--5"></div>
+    <div class="quartz-particles"></div>
+  </div>
+  <div class="max-w-7xl mx-auto px-4 w-full">
+    <div class="flex flex-col lg:grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
+      
+      <!-- Текстовая часть - всегда первая на мобильных -->
+      <div class="space-y-6 order-1 w-full">
+        <div class="flex flex-wrap gap-3 justify-center lg:justify-start">
+          <span class="glass rounded-full px-4 py-2 inline-flex items-center gap-2 border border-yellow-400/50 shadow-[0_0_15px_rgba(250,204,21,0.4)]">
+            <span class="dot bg-yellow-400"></span>
+            <span class="text-sm font-medium"> СИГНАЛ</span>
+          </span>
+          <span class="glass rounded-full px-4 py-2 inline-flex items-center gap-2 border border-cyan-400/50 shadow-[0_0_15px_rgba(34,211,238,0.4)]">
+            <span class="dot bg-cyan-400"></span>
+            <span class="text-sm font-medium">FOMO</span>
+          </span>
+          <span class="glass rounded-full px-4 py-2 inline-flex items-center gap-2 border border-green-400/50 shadow-[0_0_15px_rgba(74,222,128,0.4)]">
+            <span class="dot bg-green-400"></span>
+            <span class="text-sm font-medium">PROFIT</span>
+          </span>
+        </div>
+
+        <!-- Главный заголовок -->
+        <h1 class="text-3xl md:text-4xl lg:text-6xl font-black leading-tight text-center lg:text-left">
+          Пассивный <span class="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 text-transparent bg-clip-text">доход</span>
+          от <span class="bg-gradient-to-r from-green-400 to-cyan-400 text-transparent bg-clip-text">мем-токенов</span>
+        </h1>
+
+        <!-- Подзаголовок -->
+        <h2 class="text-lg md:text-xl lg:text-1xl text-gray-200 font-medium leading-relaxed text-center lg:text-left">
+  Кастомная памп стратегия управления циклами роста мем-токенов, пассивный ROI до 80%+ за цикл! Вход по квоте.
+</h2>
+
+        <!-- Ключевые преимущества -->
+        <div class="flex flex-wrap gap-3 text-sm justify-center lg:justify-start">
+          <div class="flex items-center gap-2 text-gray-300">
+            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            <span>AI-аналитика трендов</span>
+          </div>
+          <div class="flex items-center gap-2 text-gray-300">
+            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            <span>SMM-капитализация</span>
+          </div>
+          <div class="flex items-center gap-2 text-gray-300">
+            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            <span>Фиксация на пиках</span>
+          </div>
+        </div>
+
+        <!-- Метрики -->
+        <div class="flex gap-4 pt-2 justify-center lg:justify-start">
+          <div class="glow-card p-3 text-left min-w-0 flex-1">
+            <div class="text-lg md:text-xl font-bold text-cyan-400 leading-none">20-80%</div>
+            <div class="text-xs text-gray-400 mt-1">~ROI за цикл*</div>
+          </div>
+          <div class="glow-card p-3 text-left min-w-0 flex-1">
+            <div class="text-lg md:text-xl font-bold text-cyan-400 leading-none">14-21</div>
+            <div class="text-xs text-gray-400 mt-1">Дней на цикл</div>
+          </div>
+          <div class="glow-card p-3 text-left min-w-0 flex-1">
+            <div class="text-lg md:text-xl font-bold text-cyan-400 leading-none">100Х</div>
+            <div class="text-xs text-gray-400 mt-1">Next Pump</div>
+          </div>
+        </div>
+
+        <p class="text-cyan-400 italic text-center lg:text-left">
+         ЗАКРЫТЫЙ ОГРАНИЧЕННЫЙ НАБОР
+        </p>
+
+        <!-- CTA кнопки -->
+        <div class="flex flex-col sm:flex-row gap-3 pt-4 justify-center lg:justify-start">
+          <a href="#packages" 
+             class="bg-gradient-to-r from-green-400 to-emerald-500 text-black font-bold px-6 py-3 md:px-8 md:py-4 rounded-lg text-center hover:scale-105 transition-transform shadow-lg shadow-green-500/25">
+            Выбрать участие 
+          </a>
+          <a href="#full-cycle" 
+             class="border border-cyan-400/50 text-cyan-400 font-bold px-6 py-3 md:px-8 md:py-4 rounded-lg text-center hover:bg-cyan-400/10 transition-colors">
+            Как это работает
+          </a>
+        </div>
+
+        <!-- Дисклеймер -->
+        <p class="text-xs text-gray-400 pt-2 text-center lg:text-left">
+          * Прошлые результаты не гарантируют будущей доходности. 
+          Криптовалюты — высокорисковые активы.
+        </p>
+      </div>
+
+      <!-- График - после всего контента на мобильных -->
+<!-- Обновите блок с графиком в секции hero -->
+<div class="relative order-2 lg:order-2 w-full mt-8 lg:mt-0">
+  <!-- Фоновое свечение -->
+  <div class="absolute -inset-4 bg-gradient-to-r from-cyan-500/20 to-purple-500/20 rounded-2xl blur-3xl opacity-50"></div>
+
+  <!-- Основная карточка графика -->
+  <div class="relative glow-card card-glow rounded-2xl overflow-hidden bg-gradient-to-br from-gray-900 to-black border border-cyan-500/30 p-4 md:p-6">
+
+    <!-- Верхняя панель -->
+    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4 md:mb-6 gap-2">
+      <div class="text-cyan-400 font-bold text-base md:text-lg text-center md:text-left">📈 ReFork Strategy vs Retail FOMO</div>
+      <div class="flex gap-2 justify-center md:justify-start">
+        <span class="text-xs px-2 py-1 bg-red-500/20 text-red-400 rounded-full border border-red-500/30">❌ Типичный путь</span>
+        <span class="text-xs px-2 py-1 bg-green-500/20 text-green-400 rounded-full border border-green-500/30">✅ ReFork метод</span>
+      </div>
+    </div>
+
+<!-- Canvas для графика -->
+<div class="relative h-48 md:h-64 mb-4 md:mb-6 overflow-x-auto">
+  <div class="min-w-[650px] md:min-w-0 h-full">
+    <canvas id="reforkStrategyChart" class="w-full h-full" aria-label="График сравнения доходности ReFork (до +284%) против розничных инвесторов" role="img"></canvas>
+    <div id="chartTooltip" style="display: none;"></div>
+  </div>
+</div>
+	
+	<div id="chartTooltip" class="absolute text-xs bg-black/80 text-cyan-300 px-2 py-1 rounded hidden shadow-lg border border-cyan-400/30">
+ReFork ROI: +284%
+</div>
+
+    <!-- Легенда с метриками - ОБНОВЛЕНО ДЛЯ МОБИЛЬНЫХ -->
+    <div class="grid grid-cols-3 gap-1 md:gap-4 mt-4 md:mt-6 pt-4 border-t border-white/10">
+      <div class="text-center">
+        <div class="text-red-400 text-lg md:text-2xl font-black">-67%</div>
+        <div class="text-gray-400 text-xs mt-1">Типичный ROI</div>
+      </div>
+      <div class="text-center">
+        <div class="text-green-400 text-lg md:text-2xl font-black">+284%</div>
+        <div class="text-gray-400 text-xs mt-1">ReFork ROI</div>
+      </div>
+      <div class="text-center">
+        <div class="text-cyan-400 text-lg md:text-2xl font-black">14-21</div>
+        <div class="text-gray-400 text-xs mt-1">Дней на цикл</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<!-- Closed Pool Section -->
+<section id="closed-pool" class="py-24 relative overflow-hidden">
+  <!-- subtle background aura -->
+  <div class="absolute inset-0 opacity-10 bg-gradient-to-br from-cyan-500/10 to-purple-800/10 blur-3xl"></div>
+
+  <div class="max-w-6xl mx-auto px-4 relative">
+    
+    <!-- Header -->
+    <div class="text-center mb-16" data-aos="fade-up">
+      <h2 class="text-4xl md:text-5xl font-black mb-6 bg-gradient-to-r from-cyan-400 to-purple-400 text-transparent bg-clip-text"
+          style="text-shadow: 0 0 15px rgba(34,211,238,0.3);">
+        Закрытый Пул Циклов
+      </h2>
+	  
+  <div class="mt-12 max-w-2xl mx-auto relative">
+  <!-- Верхняя градиентная полоса -->
+  <div class="absolute -top-px left-1/2 -translate-x-1/2 h-px w-4/5 bg-gradient-to-r from-transparent via-cyan-400/80 via-green-400/80 to-transparent rounded-full z-30"></div>
+  
+  <!-- Основной блок -->
+  <div class="bg-gray-900 p-6 rounded-2xl border-0">
+    <p class="text-gray-300 text-lg italic text-center">
+      Участники пула не торгуют и не управляют вручную — все операции проводятся командой ReFork. Вы получаете долю от цикла.
+    </p>
+  </div>
+  
+  
+  <!-- Нижняя градиентная полоса -->
+  <div class="absolute -bottom-px left-1/2 -translate-x-1/2 h-px w-4/5 bg-gradient-to-r from-transparent via-cyan-400/80 via-green-400/80 to-transparent rounded-full z-30"></div>
+</div>
+
+   <blockquote class="text-xl text-cyan-400 italic mb-10 mt-12 max-w-2xl mx-auto leading-relaxed" style="text-shadow: 0 0 10px rgba(34,211,238,0.4);">
+   </p>Запускаем вирусные триггеры, создаем социальную активность и накачиваем давление на движение цены, генерируя ROI для закрытого пула партнеров.</blockquote>
+
+
+
+      <!-- Key Points -->
+      <div class="flex flex-wrap justify-center gap-6 text-sm text-yellow-400">
+        <div class="flex items-center gap-2">
+          <span class="text-green-400">✓</span>
+          <span>Ограниченное количество участников</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-green-400">✓</span>
+          <span>Общий капитал на один цикл</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-green-400">✓</span>
+          <span>Прибыль распределяется после фиксации цикла</span>
+        </div>
+      </div>
+    </div>
+	
+	<!-- Информация о размере пула -->
+<div class="mt-10 text-center" data-aos="fade-up" data-aos-delay="100">
+  <div class="inline-flex items-center gap-3 px-6 py-3 mb-8 rounded-full border border-cyan-500/30 bg-black/30 backdrop-blur-sm shadow-[0_0_20px_rgba(6,182,212,0.15)]">
+    <span class="text-cyan-400 text-lg font-semibold">Пул текущего цикла:</span>
+    <span class="text-white font-bold text-lg">$7,000</span>
+
+</div>
+
+
+    <!-- Cards -->
+    <div class="grid md:grid-cols-3 gap-8 mb-16" data-aos="fade-up" data-aos-delay="150">
+      <!-- 1 -->
+      <div class="glow-card p-6 text-center border border-cyan-500/20 rounded-2xl bg-black/30 backdrop-blur-sm hover:border-cyan-400/40 transition-all duration-300">
+        <div class="text-4xl mb-3">💰</div>
+        <h4 class="text-xl font-bold text-cyan-400 mb-2">Формирование цикла</h4>
+        <p class="text-gray-300 text-sm leading-relaxed">
+          Участники формируют общий пул запуска цикла. Капитал ограничен для поддержания управляемости и высокой эффективности.
+        </p>
+      </div>
+
+      <!-- 2 -->
+      <div class="glow-card p-6 text-center border border-cyan-500/20 rounded-2xl bg-black/30 backdrop-blur-sm hover:border-cyan-400/40 transition-all duration-300">
+        <div class="text-4xl mb-3">⚙️</div>
+        <h4 class="text-xl font-bold text-cyan-400 mb-2">Операция ReFork</h4>
+        <p class="text-gray-300 text-sm leading-relaxed">
+          ReFork управляет всем процессом: токен, маркетинг, трафик, памп и фиксация. Инвесторы получают пассивную прибыль — без участия в операциях.
+        </p>
+      </div>
+
+      <!-- 3 -->
+      <div class="glow-card p-6 text-center border border-cyan-500/20 rounded-2xl bg-black/30 backdrop-blur-sm hover:border-cyan-400/40 transition-all duration-300">
+        <div class="text-4xl mb-3">📈</div>
+        <h4 class="text-xl font-bold text-cyan-400 mb-2">Фиксация и результат</h4>
+        <p class="text-gray-300 text-sm leading-relaxed">
+          По завершении цикла прибыль распределяется между участниками после вычета операционных расходов и бюджета продвижения.
+        </p>
+      </div>
+    </div>
+	
+	<!-- Структура пула -->
+<div class="mt-20" data-aos="fade-up" data-aos-delay="200">
+  <div class="glow-card p-8 md:p-10 border border-cyan-500/30 rounded-2xl bg-black/40 backdrop-blur-sm max-w-3xl mx-auto text-center shadow-[0_0_30px_rgba(34,211,238,0.15)]">
+    <h3 class="text-2xl font-bold text-cyan-400 mb-6">Архитектура Пула $7K</h3>
+    <p class="text-gray-300 mb-6 text-sm leading-relaxed">
+      $7K это оптимальный объём для цикла: управляемый, гибкий и достаточный для полного покрытия всей операционной системы ReFork Capital.
+    </p>
+
+    <div class="grid sm:grid-cols-2 gap-4 text-left mb-6">
+      <div class="bg-black/30 border border-cyan-500/20 rounded-xl p-4 hover:border-cyan-400/40 transition-all duration-300">
+        <div class="text-teal-400 font-semibold mb-1">$2K</div>
+        <div class="text-gray-300 text-sm">Маркетинг: Twitter, Telegram, дизайн, мемы, контент, спам-трафик</div>
+      </div>
+      <div class="bg-black/30 border border-cyan-500/20 rounded-xl p-4 hover:border-cyan-400/40 transition-all duration-300">
+        <div class="text-teal-400 font-semibold mb-1">$1K</div>
+        <div class="text-gray-300 text-sm">Прогрев, памп и ликвидность на старте, давление на рост цены</div>
+      </div>
+      <div class="bg-black/30 border border-cyan-500/20 rounded-xl p-4 hover:border-cyan-400/40 transition-all duration-300">
+        <div class="text-teal-400 font-semibold mb-1">$1K</div>
+        <div class="text-gray-300 text-sm">Технические ресурсы:слфт, сервер, прокси, аккаунты Х, ТГ, премиум подписки и т.п.</div>
+      </div>
+      <div class="bg-black/30 border border-cyan-500/20 rounded-xl p-4 hover:border-cyan-400/40 transition-all duration-300">
+        <div class="text-teal-400 font-semibold mb-1">$3K</div>
+        <div class="text-gray-300 text-sm">Резерв и оборотный потенциал для усиления давления активности</div>
+      </div>
+    </div>
+
+    <p class="text-gray-400 text-sm italic">
+      Полный контроль над каждым этапом цикла..<br>
+      Такая структура даёт максимальный ROI и управляемость процесса.
+    </p>
+  </div>
+</div>
+
+<!-- Типы циклов ReFork Capital -->
+<section id="cycle-types" class="py-20 relative overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-purple-500/5 to-transparent blur-3xl"></div>
+
+  <div class="max-w-6xl mx-auto px-4 relative">
+    <div class="text-center mb-12" data-aos="fade-up">
+      <h2 class="text-4xl md:text-5xl font-black mb-4 bg-gradient-to-r from-cyan-400 to-purple-400 text-transparent bg-clip-text">
+        Типы циклов ReFork Capital
+      </h2>
+      <p class="text-gray-400 text-base max-w-2xl mx-auto">
+        Каждый цикл — это самостоятельная система с управляемым пулом, капиталом и стратегией роста.  
+        Набор открыт только на один тип цикла за раз.
+      </p>
+    </div>
+
+    <!-- Карточки циклов -->
+    <div class="grid md:grid-cols-3 gap-8" data-aos="fade-up" data-aos-delay="150">
+
+      <!-- LITE -->
+      <div class="relative group glow-card p-8 rounded-2xl bg-black/40 backdrop-blur-sm border border-cyan-500/20 hover:border-teal-400/50 transition-all duration-300 hover:scale-[1.03]">
+        <div class="absolute inset-0 bg-gradient-to-br from-teal-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 blur-2xl"></div>
+        <div class="text-3xl mb-3">⚡</div>
+        <h3 class="text-xl font-bold text-teal-400 mb-2">Lite Cycle</h3>
+        <p class="text-gray-300 text-sm leading-relaxed mb-4">
+          Начальный уровень. Простая структура, чёткая динамика, минимальные риски.<br>  
+          ROI <span class="text-teal-300 font-semibold">40–70%</span>. Без перегрузки, стандартный стек продвижения.
+        </p>
+        <div class="text-sm text-gray-400 space-y-1">
+          <p><span class="text-gray-500">Пул:</span> $5,000</p>
+          <p><span class="text-gray-500">Средний вход:</span> $200–$500</p>
+          <p><span class="text-gray-500">Участников:</span> до 15 чел</p>
+        </div>
+      </div>
+
+      <!-- CORE -->
+      <div class="relative group glow-card p-8 rounded-2xl bg-black/40 backdrop-blur-sm border border-cyan-500/30 hover:border-cyan-400/70 transition-all duration-300 hover:scale-[1.03] shadow-[0_0_20px_rgba(34,211,238,0.15)]">
+        <div class="absolute inset-0 bg-gradient-to-br from-cyan-400/10 via-purple-400/10 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 blur-2xl"></div>
+        <div class="text-3xl mb-3">🚀</div>
+        <h3 class="text-xl font-bold text-cyan-400 mb-2">Core Cycle</h3>
+        <p class="text-gray-300 text-sm leading-relaxed mb-4">
+          Оптимальный цикл. Баланс стабильности, роста и эффективности.<br>
+          ROI <span class="text-cyan-300 font-semibold">60–100%</span>. Повышенный рост и стабильная прибыль.
+        </p>
+        <div class="text-sm text-gray-400 space-y-1">
+          <p><span class="text-gray-500">Пул:</span> $7,000–$10,000</p>
+          <p><span class="text-gray-500">Средний вход:</span> $300–$700</p>
+          <p><span class="text-gray-500">Участников:</span> 15–20 чел</p>
+        </div>
+        <div class="absolute top-3 right-3 bg-cyan-500/20 text-yellow-400 text-xs px-3 py-1 rounded-full font-semibold tracking-wide">
+          Активен
+        </div>
+      </div>
+
+      <!-- FULL -->
+      <div class="relative group glow-card p-8 rounded-2xl bg-black/40 backdrop-blur-sm border border-purple-500/30 hover:border-purple-400/70 transition-all duration-300 hover:scale-[1.03]">
+        <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 blur-2xl"></div>
+        <div class="text-3xl mb-3">🌌</div>
+        <h3 class="text-xl font-bold text-purple-400 mb-2">Full Cycle</h3>
+        <p class="text-gray-300 text-sm leading-relaxed mb-4">
+          Продвинутый цикл с агрессивным ростом и максимальным охватом.<br>
+          ROI <span class="text-purple-300 font-semibold">100%+</span>. Для масштабных кампаний и крупных участников.
+        </p>
+        <div class="text-sm text-gray-400 space-y-1">
+          <p><span class="text-gray-500">Пул:</span> $15,000+</p>
+          <p><span class="text-gray-500">Средний вход:</span> $500–$1,000</p>
+          <p><span class="text-gray-500">Участников:</span> до 25 чел</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="text-center mt-10 t"ext-sm text-gray-400 italic" data-aos="fade-up" data-aos-delay="300">
+      Тукущий цикл - <span class="text-cyan-400 font-semibold">Core Cycle</span> - базовый пул $7000.<br>
+      Следующий уровень активируется только после завершения текущего цикла.
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- Почему это работает -->
+<div class="text-center mb-20" data-aos="fade-up" data-aos-delay="150">
+  <h3 class="text-5xl font-bold mb-10 bg-gradient-to-r from-cyan-400 to-purple-400 text-transparent bg-clip-text">
+    Почему это работает
+  </h3>
+
+
+
+
+
+  <div class="grid md:grid-cols-4 gap-6">
+    <!-- 1 -->
+    <div class="glow-card p-6 rounded-2xl bg-black/30 border border-cyan-500/20 backdrop-blur-sm hover:border-cyan-400/40 transition-all duration-300">
+      <div class="text-2xl mb-3">💡</div>
+      <h4 class="text-cyan-400 font-semibold mb-2">Синергия трафика и ликвидности</h4>
+      <p class="text-gray-300 text-sm leading-relaxed">
+        Мы соединяем SMM, трейдинг и комьюнити-механики, создавая управляемый поток внимания и ликвидности.
+      </p>
+    </div>
+
+    <!-- 2 -->
+    <div class="glow-card p-6 rounded-2xl bg-black/30 border border-cyan-500/20 backdrop-blur-sm hover:border-cyan-400/40 transition-all duration-300">
+      <div class="text-2xl mb-3">🧠</div>
+      <h4 class="text-cyan-400 font-semibold mb-2">AI-аналитика поведения</h4>
+      <p class="text-gray-300 text-sm leading-relaxed">
+        Внутренние модели отслеживают FOMO-триггеры и активность трейдеров в X и Telegram, фиксируя идеальные моменты для роста.
+      </p>
+    </div>
+
+    <!-- 3 -->
+    <div class="glow-card p-6 rounded-2xl bg-black/30 border border-cyan-500/20 backdrop-blur-sm hover:border-cyan-400/40 transition-all duration-300">
+      <div class="text-2xl mb-3">⚙️</div>
+      <h4 class="text-cyan-400 font-semibold mb-2">Автоматизированные циклы</h4>
+      <p class="text-gray-300 text-sm leading-relaxed">
+        Каждый цикл проходит по чёткой схеме: запуск → памп → пик → фиксация прибыли. Никакой импровизации — только системные шаги.
+      </p>
+    </div>
+
+    <!-- 4 -->
+    <div class="glow-card p-6 rounded-2xl bg-black/30 border border-cyan-500/20 backdrop-blur-sm hover:border-cyan-400/40 transition-all duration-300 ">
+      <div class="text-2xl mb-3">🚀</div>
+      <h4 class="text-cyan-400 font-semibold mb-2">Социальная вирусность</h4>
+      <p class="text-gray-300 text-sm leading-relaxed">
+        Мем-триггеры, координированные рейды и вирусные цепочки усиливают охваты и формируют органический спрос на токен.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Добавьте этот div для отступа -->
+<div class="h-4 md:h-16"></div>
+
+<!-- Disclaimer -->
+<div class="text-center text-xs text-gray-500 max-w-2xl mx-auto mb-16" data-aos="fade-up" data-aos-delay="350" >
+  <p/>
+    ⚠️ <span class="text-gray-300">ReFork Capital — не инвестиционная компания.</span><br>
+    Все операции проводятся и управляются вручную внутри закрытого пула.
+  </p>
+</div>
+
+
+
+<!-- Декоративный разделитель -->
+<div class="flex justify-center my-8 md:my-12">
+  <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
+</div>
+
+
+    <!-- CTA -->
+    <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+      <div class="glow-card p-10 max-w-2xl mx-auto border border-cyan-500/30 rounded-2xl bg-black/80 backdrop-blur-sm relative overflow-hidden">
+        
+        <!-- 🔒 Status bar -->
+        <div class="inline-block px-6 py-3 mb-6 rounded-full bg-black/40 border border-cyan-500/20 backdrop-blur-sm text-cyan-400 text-sm font-medium shadow-[0_0_20px_rgba(34,211,238,0.2)] animate-pulse-slow">
+          💰 Пул открыт<span class="text-teal-400 font-bold"></span> | Всего <span class="text-teal-400 font-bold">20 мест</span>
+        </div>
+
+        <h3 class="text-2xl font-bold text-cyan-400 mb-3">Хотите войти в следующий цикл ReFork?</h3>
+        <p class="text-gray-300 mb-6 text-sm max-w-md mx-auto">
+          Приём новых участников открыт.<br>
+          Только реальные партнёры.
+        </p>
+
+        <!-- Прогресс-бар -->
+        <div class="mb-6 max-w-md mx-auto">
+          <div class="flex justify-between text-xs text-gray-400 mb-2">
+            <span>Пул заполнен на 25%</span>
+            <span>5/20 участников</span>
+          </div>
+          <div class="w-full bg-gray-700 rounded-full h-2 overflow-hidden">
+            <div id="pool-progress" class="bg-gradient-to-r from-cyan-400 to-purple-400 h-2 rounded-full shadow-[0_0_20px_rgba(34,211,238,0.5)] transition-all duration-[2000ms]" style="width: 0%"></div>
+          </div>
+        </div>
+
+            <!-- Кнопка с добавленным отступом снизу -->
+    <a href="#apply" class="bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-8 py-4 rounded-xl hover:scale-105 transition-transform inline-block shadow-lg shadow-cyan-400/30 relative overflow-hidden group mb-8">
+      <span class="relative z-10">💬 Забронировать место</span>
+      <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-all duration-1000"></div>
+    </a>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- === Styles & Animations === -->
+<style>
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+.animate-pulse-slow { animation: pulse-slow 3s ease-in-out infinite; }
+
+/* Optional slight glow hover for CTA text */
+.group:hover .relative.z-10 {
+  text-shadow: 0 0 15px rgba(255,255,255,0.4);
+}
+</style>
+
+<!-- === Scroll-triggered progress animation === -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const progressBar = document.getElementById("pool-progress");
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        progressBar.style.width = "25%";
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.5 });
+  observer.observe(progressBar);
+});
+</script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const cards = gsap.utils.toArray('.cards li');
+  const spacing = 0.15;
+  let currentIndex = 0;
+
+  // Инициализация позиций
+  gsap.set(cards, {
+    xPercent: 400,
+    opacity: 0,
+    scale: 0
+  });
+
+  // Функция для обновления позиций
+  function updatePositions() {
+    cards.forEach((card, index) => {
+      const position = index - currentIndex;
+      
+      gsap.to(card, {
+        xPercent: position * 100,
+        opacity: Math.max(0, 1 - Math.abs(position) * 0.3),
+        scale: Math.max(0.6, 1 - Math.abs(position) * 0.2),
+        zIndex: 100 - Math.abs(position),
+        duration: 0.8,
+        ease: "power2.out"
+      });
     });
   }
-  
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept');
-  res.setHeader('Access-Control-Max-Age', '86400');
 
-  // Обрабатываем OPTIONS запросы для CORS
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
+  // Инициализация
+  updatePositions();
+
+  // Кнопка "вперед"
+  document.querySelector('.next').addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % cards.length;
+    updatePositions();
+  });
+
+  // Кнопка "назад"
+  document.querySelector('.prev').addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+    updatePositions();
+  });
+
+  // Автопрокрутка (опционально)
+  let autoSlide = setInterval(() => {
+    currentIndex = (currentIndex + 1) % cards.length;
+    updatePositions();
+  }, 3000);
+
+  // Остановка автопрокрутки при наведении
+  const gallery = document.querySelector('.gallery');
+  gallery.addEventListener('mouseenter', () => {
+    clearInterval(autoSlide);
+  });
+
+  gallery.addEventListener('mouseleave', () => {
+    autoSlide = setInterval(() => {
+      currentIndex = (currentIndex + 1) % cards.length;
+      updatePositions();
+    }, 3000);
+  });
+});
+</script>
+
+<!-- ⚡️ Traffic Engine (без фонового изображения, с 6 карточками) -->
+<section id="traffic-engine" aria-labelledby="traffic-engine-title" class="relative py-20 overflow-hidden">
+  <!-- Parallax background (без фоновой картинки, только мягкий tech-glow) -->
+  <div class="absolute inset-0 pointer-events-none -z-10" aria-hidden="true"></div>
+
+  <div class="max-w-6xl mx-auto px-4 text-center relative z-10">
+    <!-- Header -->
+    <div class="mb-12" id="traffic-engine-title" data-aos="fade-up">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+        ⚡️ Traffic Engine</p>создаём движение рынка
+      </h2>
+      <p class="text-gray-400 max-w-3xl mx-auto">
+        Система ReFork Capital объединяет
+        <span class="text-cyan-400 font-medium">AI-аналитику</span>, мем-триггеры и поведенческую динамику трейдеров.
+      </p>
+    </div>
+
+    <!-- Cards grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <article class="traffic-card p-6 rounded-2xl border border-cyan-500/10 bg-gradient-to-br from-gray-900/40 to-black/30 shadow-lg" data-aos="fade-up">
+        <h3 class="text-lg font-semibold text-cyan-400 mb-2">Социальный импульс</h3>
+        <p class="text-gray-300 text-sm leading-snug">Координированные X-рейды, коммент-волны и мем-сетапы — каждый пост усиливает FOMO.</p>
+      </article>
+
+      <article class="traffic-card p-6 rounded-2xl border border-cyan-500/10 bg-gradient-to-br from-gray-900/40 to-black/30 shadow-lg" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="text-lg font-semibold text-cyan-400 mb-2">Traffic-Boost Matrix</h3>
+        <p class="text-gray-300 text-sm leading-snug">GoLogin-сети, Telegram-боты и микро-инфлюенсеры — поток туда, где живёт цена.</p>
+      </article>
+
+      <article class="traffic-card p-6 rounded-2xl border border-cyan-500/10 bg-gradient-to-br from-gray-900/40 to-black/30 shadow-lg" data-aos="fade-up" data-aos-delay="200">
+        <h3 class="text-lg font-semibold text-cyan-400 mb-2">Smart-Feeds & Tracking</h3>
+        <p class="text-gray-300 text-sm leading-snug">AI-фильтры ловят зарождающиеся тренды в X и Telegram и направляют ликвидность.</p>
+      </article>
+
+      <article class="traffic-card p-6 rounded-2xl border border-cyan-500/10 bg-gradient-to-br from-gray-900/40 to-black/30 shadow-lg" data-aos="fade-up" data-aos-delay="300">
+        <h3 class="text-lg font-semibold text-cyan-400 mb-2">Виральные мем-кампании</h3>
+        <p class="text-gray-300 text-sm leading-snug">Мемы под токеномику: триггеры запускают рост, комьюнити становится медиа-ресурсом.</p>
+      </article>
+
+      <article class="traffic-card p-6 rounded-2xl border border-cyan-500/10 bg-gradient-to-br from-gray-900/40 to-black/30 shadow-lg" data-aos="fade-up" data-aos-delay="400">
+        <h3 class="text-lg font-semibold text-cyan-400 mb-2">Аналитика и оптимизация</h3>
+        <p class="text-gray-300 text-sm leading-snug">Трафик управляется как торговая позиция — входы, пики и фиксация прибыли.</p>
+      </article>
+
+      <!-- 🔹 Новая шестая карточка -->
+      <article class="traffic-card p-6 rounded-2xl border border-cyan-500/10 bg-gradient-to-br from-gray-900/40 to-black/30 shadow-lg" data-aos="fade-up" data-aos-delay="500">
+        <h3 class="text-lg font-semibold text-cyan-400 mb-2">Cycle Control System</h3>
+        <p class="text-gray-300 text-sm leading-snug">AI-модуль управляет фазами рынка: отслеживает импульс, фиксирует рост и запускает новый цикл.</p>
+      </article>
+    </div>
+
+    <!-- Quote -->
+    <div class="mt-12 bg-gradient-to-r from-green-400 to-yellow-200 text-transparent bg-clip-text italic max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="600">
+      “Мы не покупаем внимание — мы его вызываем.”
+    </div>
+  </div>
+</section>
+
+
+
+    <!-- Ecosystem Partners Section -->
+<section class="py-16 bg-gray-900">
+  <div class="container mx-auto px-4">
+    <!-- Section Header -->
+    <h2 class="max-w-[90%] text-center text-3xl font-bold text-white sm:text-4xl md:text-[2.5rem] lg:text-[3rem] mx-auto mb-12">
+      Our Ecosystem Partners
+    </h2>
+
+    <!-- First Scrolling Banner - Infrastructure (16 logos) -->
+<div class="relative flex w-full translate-x-0 overflow-hidden mb-8" 
+     style="mask: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);">
+  <div class="flex animate-scroll-banner" style="--scroll-banner-duration: 40s;">
+    <template id="partner-logos-1">
+      <!-- 16 Infrastructure logos -->
+      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+        <img alt="Solana" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/solana.png">
+      </div>
+      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+        <img alt="Ethereum" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/ethereum.png">
+      </div>
+      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+        <img alt="BNB" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/bnb.png">
+      </div>
+      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+        <img alt="Tron" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/tron.png">
+      </div>
+      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+        <img alt="Uniswap" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/uniswap.png">
+      </div>
+      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+        <img alt="PancakeSwap" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/pancakeswap.png">
+      </div>
+      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+        <img alt="MetaMask" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/metamask.png">
+      </div>
+      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+        <img alt="Trust Wallet" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/trustwallet.png">
+      </div>
+      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+        <img alt="Phantom" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/phantom.png">
+      </div>
+      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+        <img alt="Debank.com" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/debank.png">
+      </div>
+      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+        <img alt="Dune" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/dune.png">
+      </div>
+      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+        <img alt="Jupiter" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/jupiter.png">
+      </div>
+      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+        <img alt="Raydium" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/raydium.png">
+      </div>
+      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+        <img alt="xStocks" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/xstocks.png">
+      </div>
+      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+        <img alt="hawkfi.ag" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/hawkfi.png">
+      </div>
+      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+        <img alt="autosnipe.ai" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/autosnipe.png">
+      </div>
+    </template>
+    <div class="flex" id="partner-row-1"></div>
+  </div>
+</div>
+
+<!-- Second Scrolling Banner - Analytics & AI (16 logos) -->
+<div class="relative flex w-full translate-x-0 overflow-hidden" 
+     style="mask: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);">
+  <div class="flex animate-scroll-banner-reverse" style="--scroll-banner-duration: 35s;">
+    <template id="partner-logos-2">
+      <!-- 16 Analytics & AI logos -->
+      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+        <img alt="DexScreener" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/dexscreener.png">
+      </div>
+      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+        <img alt="GMGN" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/gmgn.png">
+      </div>
+      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+        <img alt="Pump.fun" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/pumpfun.png">
+      </div>
+      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+        <img alt="DexTools" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/dextools.png">
+      </div>
+      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+        <img alt="Birdeye" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/birdeye.png">
+      </div>
+      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+        <img alt="SpyDefi" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/spydefi.png">
+      </div>
+      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+        <img alt="Rewarble.com" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/rewarble.png">
+      </div>
+      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+        <img alt="Tweethunter" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/tweethunter.png">
+      </div>
+      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+        <img alt="Gologin" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/gologin.png">
+      </div>
+      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+        <img alt="Proxy-seller" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/proxyseller.png">
+      </div>
+      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+        <img alt="Cryptorank" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/cryptorank.png">
+      </div>
+      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+        <img alt="OpenAI" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/openai.png">
+      </div>
+      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+        <img alt="Grock" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/grock.png">
+      </div>
+      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+        <img alt="RogerAi" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/rogerai.png">
+      </div>
+      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+        <img alt="BEStchange" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/bestchange.png">
+      </div>
+      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+        <img alt="CoinGecko" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/coingecko.png">
+      </div>
+    </template>
+    <div class="flex" id="partner-row-2"></div>
+  </div>
+</div>
+</section>
+
+<style>
+
+/* Quartz Background Styles */
+.quartz-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  background: 
+    radial-gradient(ellipse at 20% 20%, rgba(56, 189, 248, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(11, 14, 20, 0.95) 0%, rgba(5, 8, 15, 1) 100%);
+}
+
+.quartz-bg__gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(56, 189, 248, 0.1) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.1) 0%, transparent 40%),
+    radial-gradient(circle at 40% 50%, rgba(20, 184, 166, 0.08) 0%, transparent 40%);
+  animation: gradientPulse 8s ease-in-out infinite;
+}
+
+@keyframes gradientPulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+/* Анимированные формы */
+.quartz-shape {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(45deg, rgba(56, 189, 248, 0.1), rgba(139, 92, 246, 0.1));
+  filter: blur(40px);
+  animation: float 20s infinite linear;
+}
+
+.quartz-shape--1 {
+  width: 300px;
+  height: 300px;
+  top: 10%;
+  left: 10%;
+  animation-duration: 25s;
+  background: linear-gradient(45deg, rgba(56, 189, 248, 0.15), rgba(139, 92, 246, 0.1));
+}
+
+.quartz-shape--2 {
+  width: 400px;
+  height: 400px;
+  top: 60%;
+  left: 70%;
+  animation-duration: 30s;
+  animation-delay: -5s;
+  background: linear-gradient(45deg, rgba(139, 92, 246, 0.1), rgba(20, 184, 166, 0.15));
+}
+
+.quartz-shape--3 {
+  width: 250px;
+  height: 250px;
+  top: 30%;
+  left: 80%;
+  animation-duration: 20s;
+  animation-delay: -10s;
+  background: linear-gradient(45deg, rgba(20, 184, 166, 0.1), rgba(56, 189, 248, 0.15));
+}
+
+.quartz-shape--4 {
+  width: 350px;
+  height: 350px;
+  top: 70%;
+  left: 20%;
+  animation-duration: 35s;
+  animation-delay: -15s;
+  background: linear-gradient(45deg, rgba(56, 189, 248, 0.1), rgba(139, 92, 246, 0.15));
+}
+
+.quartz-shape--5 {
+  width: 200px;
+  height: 200px;
+  top: 20%;
+  left: 50%;
+  animation-duration: 18s;
+  animation-delay: -7s;
+  background: linear-gradient(45deg, rgba(139, 92, 246, 0.1), rgba(20, 184, 166, 0.1));
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translate(50px, 30px) rotate(90deg) scale(1.1);
+  }
+  50% {
+    transform: translate(0, 60px) rotate(180deg) scale(1.2);
+  }
+  75% {
+    transform: translate(-50px, 30px) rotate(270deg) scale(1.1);
+  }
+  100% {
+    transform: translate(0, 0) rotate(360deg) scale(1);
+  }
+}
+
+/* Эффект частиц */
+.quartz-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, rgba(56, 189, 248, 0.3), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(139, 92, 246, 0.3), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(56, 189, 248, 0.4), transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(139, 92, 246, 0.3), transparent),
+    radial-gradient(2px 2px at 160px 30px, rgba(20, 184, 166, 0.3), transparent);
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  animation: particlesMove 100s linear infinite;
+  opacity: 0.3;
+}
+
+@keyframes particlesMove {
+  from { transform: translateY(0); }
+  to { transform: translateY(-200px); }
+}
+
+/* Гарантируем, что hero секция имеет relative positioning */
+#hero {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Убедимся, что контент поверх фона */
+#hero > *:not(.quartz-bg) {
+  position: relative;
+  z-index: 10;
+}
+
+.quartz-bg,
+.quartz-shape,
+.quartz-particles {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Отключение анимаций для пользователей с prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .quartz-bg__gradient,
+  .quartz-shape,
+  .quartz-particles {
+    animation: none !important;
+  }
+}
+
+/* Анимации для бесконечной прокрутки (НЕ УДАЛЯТЬ!) */
+@keyframes scroll-banner {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-100% / 2)); }
+}
+@keyframes scroll-banner-reverse {
+  0% { transform: translateX(calc(-100% / 2)); }
+  100% { transform: translateX(0); }
+}
+.animate-scroll-banner {
+  animation: scroll-banner var(--scroll-banner-duration, 40s) linear infinite;
+}
+.animate-scroll-banner-reverse {
+  animation: scroll-banner-reverse var(--scroll-banner-duration, 35s) linear infinite;
+}
+
+/* Новые стили для логотипов (добавляем к существующим) */
+.partner-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 8px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.partner-logo:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+  border-color: rgba(34, 211, 238, 0.3);
+}
+
+@media (max-width: 768px) {
+  .partner-logo {
+    width: 50px;
+    height: 50px;
+    padding: 6px;
+  }
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // First banner - 16 infrastructure logos
+  const row1 = document.getElementById("partner-row-1");
+  const template1 = document.getElementById("partner-logos-1");
+  if (row1 && template1) {
+    row1.innerHTML = template1.innerHTML + template1.innerHTML;
   }
 
-  // Разрешаем только POST
-  if (req.method !== 'POST') {
-    return res.status(405).json({ 
-      success: false, 
-      error: 'Method not allowed' 
+  // Second banner - 16 analytics & AI logos
+  const row2 = document.getElementById("partner-row-2");
+  const template2 = document.getElementById("partner-logos-2");
+  if (row2 && template2) {
+    row2.innerHTML = template2.innerHTML + template2.innerHTML;
+  }
+});
+</script>
+
+	<!-- Ядро ReFork -->
+<section id="refork-core" class="py-24 relative overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-purple-500/5 to-transparent blur-3xl"></div>
+
+  <div class="max-w-5xl mx-auto px-6 text-center relative" data-aos="fade-up">
+    <h2 class="text-3xl md:text-4xl font-black mb-12 bg-gradient-to-r from-cyan-400 via-teal-400 to-purple-400 text-transparent bg-clip-text">
+      Ядро ReFork Capital
+    </h2>
+	<p class="text-gray-300 text-xl mb-8 max-w-3xl mx-auto">
+    3 ключевых принципа успеха системы.
+  </p>
+
+    <!-- Циклическая структура -->
+    <div class="relative flex flex-col md:flex-row items-center justify-center gap-10 md:gap-20">
+
+      <!-- Connecting circle line -->
+      <div class="hidden md:block absolute w-[70%] h-[1.5px] bg-gradient-to-r from-gray-300/20 via-gray-200/30 to-gray-300/20 rounded-full top-1/2 left-1/2 -translate-x-1/2 z-0"></div>
+
+      <!-- Capsule 1 -->
+      <div class="relative z-10 group">
+        <div class="rounded-2xl px-6 py-5 bg-black/40 border border-cyan-400/30 backdrop-blur-sm shadow-[0_0_25px_rgba(34,211,238,0.25)] hover:scale-105 transition-all duration-300">
+          <div class="text-cyan-400 text-lg font-bold mb-1">Стратегия</div>
+          <p class="text-gray-400 text-sm">Каждый цикл — не случайность. Мы строим движение.</p>
+        </div>
+      </div>
+
+      <!-- Capsule 2 -->
+      <div class="relative z-10 group">
+        <div class="rounded-2xl px-6 py-5 bg-black/40 border border-green-400/30 backdrop-blur-sm shadow-[0_0_25px_rgba(74,222,128,0.25)] hover:scale-105 transition-all duration-300">
+          <div class="text-green-400 text-lg font-bold mb-1">Аналитика</div>
+          <p class="text-gray-400 text-sm">Мы не гадаем. Мы действуем по данным, не по эмоциям.</p>
+        </div>
+      </div>
+
+      <!-- Capsule 3 -->
+      <div class="relative z-10 group">
+        <div class="rounded-2xl px-6 py-5 bg-black/40 border border-yellow-400/30 backdrop-blur-sm shadow-[0_0_25px_rgba(250,204,21,0.25)] hover:scale-105 transition-all duration-300">
+          <div class="text-yellow-400 text-lg font-bold mb-1">Дисциплина</div>
+          <p class="text-gray-400 text-sm">Мы не гонимся за хайпом — мы строим результат циклами.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Подпись -->
+    <div class="mt-12 text-gray-400 text-sm max-w-md mx-auto leading-relaxed" data-aos="fade-up" data-aos-delay="200">
+      Эти три принципа формируют систему ReFork: <br>
+      стратегия рождает движение, аналитика направляет, дисциплина фиксирует результат.
+    </div>
+  </div>
+</section>
+
+    <section id="process" class="py-20 text-center">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-6xl font-extrabold mb-4 three-color-gradient-1">
+  Как это приносит прибыль
+</h2>
+
+        <div class="mb-12">
+  <div class="kinetic-typography text-4xl md:text-5xl font-black mb-6">
+    <!-- Первое слово: СИГНАЛ (появляется слева) -->
+    <span class="kinetic-word kinetic-word-1 bg-gradient-to-r from-amber-500 to-orange-500 text-transparent bg-clip-text">
+      СИГНАЛ
+    </span>
+    
+    <!-- Второе слово: FOMO (появляется сверху) -->
+    <span class="kinetic-word kinetic-word-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-transparent bg-clip-text">
+      FOMO
+    </span>
+    
+    <!-- Третье слово: РОСТ ЦЕНЫ (появляется справа) -->
+    <span class="kinetic-word kinetic-word-3 bg-gradient-to-r from-green-400 to-emerald-500 text-transparent bg-clip-text">
+      PUMP
+    </span>
+  </div>
+  
+  <p class="text-gray-300 text-xl max-w-3xl mx-auto">
+    Каждая фаза проекта даёт результат — активный рост ROI и стабильный оборот средств.
+  </p>
+</div>
+
+        <div class="grid md:grid-cols-3 gap-8 text-left">
+          <div class="glow-card card-glow p-6 group hover:transform hover:scale-105 transition-all duration-300">
+            <div class="text-3xl mb-4 text-cyan-400">1</div>
+            <h3 class="text-xl font-bold mb-3 text-cyan-400 group-hover:text-white transition-colors">Запуск процесса</h3>
+            <p class="text-gray-300 leading-relaxed">
+              Поднимаем уникальный мемтокен, токеномику, визуал и ликвидность. 
+              Формируем ядро аудитории и закладываем фундамент для вирусного роста.
+            </p>
+          </div>
+          
+          <div class="glow-card card-glow p-6 group hover:transform hover:scale-105 transition-all duration-300">
+            <div class="text-3xl mb-4 text-cyan-400">2</div>
+            <h3 class="text-xl font-bold mb-3 text-cyan-400 group-hover:text-white transition-colors">Внимание и охват</h3>
+            <p class="text-gray-300 leading-relaxed">
+              AI-контент, постинг, мемы, вирусные видео. Формируется хайп и растёт 
+              узнаваемость токена через многослойную маркетинговую стратегию.
+            </p>
+          </div>
+          
+          <div class="glow-card card-glow p-6 group hover:transform hover:scale-105 transition-all duration-300">
+            <div class="text-3xl mb-4 text-cyan-400">3</div>
+            <h3 class="text-xl font-bold mb-3 text-cyan-400 group-hover:text-white transition-colors">ROI и масштаб</h3>
+            <p class="text-gray-300 leading-relaxed">
+              Спрос повышает цену, инвесторы фиксируют прибыль. Часть реинвестируется — 
+              ROI до 80% ежемесячно. Создаём устойчивую финансовую экосистему.
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-12 max-w-2xl mx-auto relative">
+  <!-- Верхняя градиентная полоса -->
+  <div class="absolute -top-px left-1/2 -translate-x-1/2 h-px w-4/5 bg-gradient-to-r from-transparent via-cyan-400/80 via-green-400/80 to-transparent rounded-full z-30"></div>
+  
+  <!-- Основной блок -->
+  <div class="bg-gray-900 p-6 rounded-2xl border-0">
+    <p class="text-gray-300 text-lg italic text-center">
+      "Мы находим забытые мем-токены, запускаем вирусные кампании и фиксируем прибыль на пике хайпа"
+    </p>
+  </div>
+  
+  <!-- Нижняя градиентная полоса -->
+  <div class="absolute -bottom-px left-1/2 -translate-x-1/2 h-px w-4/5 bg-gradient-to-r from-transparent via-cyan-400/80 via-green-400/80 to-transparent rounded-full z-30"></div>
+</div>
+    </section>
+	
+	
+
+	
+	
+
+<!-- Простой слайдер сделок -->
+<section class="simple-gallery py-16">
+  <div class="max-w-4xl mx-auto px-4">
+    
+    <!-- Минималистичный заголовок -->
+    <div class="text-center mb-12">
+      <h3 class="text-2xl font-semibold text-gray-300 mb-2">Наши сделки</h3>
+      <p class="text-gray-400 text-sm">Стратегия ReFork в действии</p>
+    </div>
+
+    <!-- Слайдер -->
+    <div class="gallery">
+      <ul class="cards">
+  <li><img src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/images/deal1.png" alt="Deal 1" /></li>
+  <li><img src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/images/deal2.png" alt="Deal 2" /></li>
+  <li><img src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/images/deal3.png" alt="Deal 3" /></li>
+  <li><img src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/images/deal4.png" alt="Deal 4" /></li>
+  <li><img src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/images/deal5.png" alt="Deal 5" /></li>
+  <li><img src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/images/deal6.png" alt="Deal 6" /></li>
+  <li><img src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/images/deal7.png" alt="Deal 7" /></li>
+      </ul>
+      <div class="actions">
+        <button class="prev">‹</button>
+        <button class="next">›</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+.simple-gallery {
+  background: transparent;
+}
+
+.gallery {
+  position: relative;
+  width: 100%;
+  height: 550px; /* Уменьшил высоту контейнера для ПК */
+  overflow: hidden;
+}
+
+.cards {
+  position: absolute;
+  width: 500px; /* Уменьшил ширину для ПК */
+  height: 465px; /* Уменьшил высоту для ПК (сохраняя пропорции) */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cards li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 500px; /* Уменьшил ширину для ПК */
+  height: 465px; /* Уменьшил высоту для ПК */
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.cards li img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.actions {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1rem;
+}
+
+button {
+  display: inline-block;
+  outline: none;
+  background: rgba(6, 182, 212, 0.2);
+  border: solid 2px rgba(6, 182, 212, 0.5);
+  color: #06b6d4;
+  text-decoration: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: rgba(6, 182, 212, 0.3);
+  transform: scale(1.1);
+}
+
+/* Планшет */
+@media (max-width: 1024px) {
+  .gallery {
+    height: 500px;
+  }
+  
+  .cards {
+    width: 400px;
+    height: 372px; /* Сохраняем пропорции */
+  }
+  
+  .cards li {
+    width: 400px;
+    height: 372px;
+  }
+}
+
+/* Мобильные */
+@media (max-width: 768px) {
+  .gallery {
+    height: 450px;
+  }
+  
+  .cards {
+    width: 320px;
+    height: 298px; /* Сохраняем пропорции */
+  }
+  
+  .cards li {
+    width: 320px;
+    height: 298px;
+  }
+  
+  button {
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery {
+    height: 400px;
+  }
+  
+  .cards {
+    width: 280px;
+    height: 260px; /* Сохраняем пропорции */
+  }
+  
+  .cards li {
+    width: 280px;
+    height: 260px;
+  }
+}
+</style>	
+
+    <section id="method" class="py-20">
+      <div class="max-w-6xl mx-auto px-4 text-center">
+        <h2 class="text-5xl font-extrabold mb-4 three-color-gradient-2">
+  Методы и системный подход
+</h2>
+        <p class="text-gray-300 max-w-3xl mx-auto mb-10 text-lg">
+          Используем SMM, AI, FOMO и инструменты пролива трафика для создания вирусных циклов и капитализации внимания
+        </p>
+
+        <div class="flex flex-col md:flex-row items-center gap-8 mb-12">
+          <div class="w-full">
+            <div class="grid grid-cols-1 sm:grid-cols-5 gap-4 text-center">
+              <div class="glow-card card-glow p-4">
+                <div class="text-xl font-semibold mb-1 text-cyan-400">Анализ</div>
+                <div class="text-gray-400 text-sm">AI-скрининг токенов<br>Выявление нарративов</div>
+              </div>
+              <div class="glow-card card-glow p-4">
+                <div class="text-xl font-semibold mb-1 text-cyan-400">Позиция</div>
+                <div class="text-gray-400 text-sm">Стратегический вход<br>До FOMO-волны</div>
+              </div>
+              <div class="glow-card card-glow p-4">
+                <div class="text-xl font-semibold mb-1 text-cyan-400">Капитализация</div>
+                <div class="text-gray-400 text-sm">SMM-прогрев<br>Умножение стоимости</div>
+              </div>
+              <div class="glow-card card-glow p-4">
+                <div class="text-xl font-semibold mb-1 text-cyan-400">Ликвидность</div>
+                <div class="text-gray-400 text-sm">Управление потоками<br>Контроль волатильности</div>
+              </div>
+              <div class="glow-card card-glow p-4">
+                <div class="text-xl font-semibold mb-1 text-cyan-400">Прибыль</div>
+                <div class="text-gray-400 text-sm">Фиксация на пиках<br>Реинвестирование</div>
+              </div>
+            </div>
+
+            <div class="relative mt-8">
+  <!-- Верхняя градиентная полоса -->
+  <div class="absolute -top-0.5 left-1/2 -translate-x-1/2 h-0.5 w-4/5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent rounded-full shadow-lg shadow-cyan-400/20 z-30"></div>
+  
+  <!-- Основной блок -->
+  <div class="bg-gray-900 p-6 rounded-xl border-0">
+    <p class="text-gray-300 text-lg leading-relaxed">
+      Каждый метод протестирован и оптимизирован для работы в условиях высокой волатильности. 
+      Мы не просто инвестируем — мы создаем системы умножения капитала через управление вниманием.
+    </p>
+    <p class="mt-4 text-lg text-cyan-400"><strong>Это не трейдинг.</strong> Это <em>системная капитализация рыночных возможностей через SMM, AI и FOMO-механики</em>.</p>
+  </div>
+  
+  <!-- Нижняя градиентная полоса -->
+  <div class="absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-0.5 w-4/5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent rounded-full shadow-lg shadow-green-400/20 z-30"></div>
+</div>
+          </div>
+        </div>
+      </div>
+    </section>
+	
+  
+<section id="full-cycle" class="py-24 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 relative z-10">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-black mb-6 bg-gradient-to-r from-purple-400 via-cyan-400 to-green-400 text-transparent bg-clip-text">
+        От Хайпа к ROI: Полный цикл капитализации
+      </h2>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+        Пошаговая трансформация внимания в прибыль. Каждый этап измеряется, оптимизируется и масштабируется.
+      </p>
+    </div>
+
+    <!-- Визуальный Flow Chart -->
+    <div class="relative mb-16">
+      <div class="grid md:grid-cols-5 gap-6 relative z-10">
+        <!-- Stage 1 -->
+        <div class="glow-card card-glow p-6 text-center group hover:scale-105 transition-all" data-aos="fade-up" data-aos-delay="100">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center text-3xl">
+            👁️
+          </div>
+          <h3 class="text-xl font-bold text-yellow-400 mb-2">Внимание</h3>
+          <p class="text-sm text-gray-300 mb-3">AI-мониторинг трендов и нарративов</p>
+          <div class="text-2xl font-black text-yellow-400">0-24h</div>
+          <p class="text-xs text-gray-500 mt-1">Поиск сигналов</p>
+        </div>
+
+        <!-- Stage 2 -->
+        <div class="glow-card card-glow p-6 text-center group hover:scale-105 transition-all" data-aos="fade-up" data-aos-delay="200">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center text-3xl">
+            📊
+          </div>
+          <h3 class="text-xl font-bold text-cyan-400 mb-2">Активность</h3>
+          <p class="text-sm text-gray-300 mb-3">SMM-кампании и вирусный контент</p>
+          <div class="text-2xl font-black text-cyan-400">1-3 дня</div>
+          <p class="text-xs text-gray-500 mt-1">Разгон охвата</p>
+        </div>
+
+        <!-- Stage 3 -->
+        <div class="glow-card card-glow p-6 text-center group hover:scale-105 transition-all" data-aos="fade-up" data-aos-delay="300">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center text-3xl">
+            💧
+          </div>
+          <h3 class="text-xl font-bold text-purple-400 mb-2">Ликвидность</h3>
+          <p class="text-sm text-gray-300 mb-3">Рост торговых объемов</p>
+          <div class="text-2xl font-black text-purple-400">3-7 дней</div>
+          <p class="text-xs text-gray-500 mt-1">Пик активности</p>
+        </div>
+
+        <!-- Stage 4 -->
+        <div class="glow-card card-glow p-6 text-center group hover:scale-105 transition-all" data-aos="fade-up" data-aos-delay="400">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center text-3xl">
+            📈
+          </div>
+          <h3 class="text-xl font-bold text-green-400 mb-2">Капитализация</h3>
+          <p class="text-sm text-gray-300 mb-3">Рост рыночной стоимости</p>
+          <div class="text-2xl font-black text-green-400">7-14 дней</div>
+          <p class="text-xs text-gray-500 mt-1">Price discovery</p>
+        </div>
+
+        <!-- Stage 5 -->
+        <div class="glow-card card-glow p-6 text-center group hover:scale-105 transition-all border-2 border-green-400" data-aos="fade-up" data-aos-delay="500">
+          <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-br from-green-400 to-teal-500 flex items-center justify-center text-3xl">
+            💰
+          </div>
+          <h3 class="text-xl font-bold text-green-400 mb-2">ROI</h3>
+          <p class="text-sm text-gray-300 mb-3">Фиксация прибыли</p>
+          <div class="text-2xl font-black text-green-400">14-21 день</div>
+          <p class="text-xs text-gray-500 mt-1">Exit & Reinvest</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Key Success -->
+<div class="text-center mb-16 max-w-4xl mx-auto px-4">
+  <h2 class="text-7xl font-bold text-cyan-400 mb-6">Ключ успеха</h2>
+  <p class="text-2xl text-gray-300 leading-tight">
+    Раннее обнаружение тренда через AI-мониторинг Twitter<br>
+    быстрый запуск мем-кампании и фиксация прибыли на пике FOMO-волны
+  </p>
+</div>
+
+<!-- Metrics Grid -->
+<div class="grid md:grid-cols-3 gap-8 mb-12 max-w-7xl mx-auto px-4">
+  <div class="glow-card p-6 text-center">
+    <div class="text-4xl font-black text-cyan-400 mb-2">$5K → $15K</div>
+    <h4 class="text-xl font-bold text-white mb-3">Средний цикл</h4>
+    <p class="text-gray-300">Типичное умножение капитала за 2-3 недели активного цикла</p>
+  </div>
+  
+  <div class="glow-card p-6 text-center border-2 border-green-400">
+    <div class="text-4xl font-black text-green-400 mb-2">80%+</div>
+    <h4 class="text-xl font-bold text-white mb-3">Чистый ROI на цикл</h4>
+    <p class="text-gray-300">При оптимальных условиях и правильной фиксации прибыли</p>
+  </div>
+  
+  <div class="glow-card p-6 text-center">
+    <div class="text-4xl font-black text-purple-400 mb-2">1-3</div>
+    <h4 class="text-xl font-bold text-white mb-3">Циклов/месяц</h4>
+    <p class="text-gray-300">Параллельная работа с несколькими проектами одновременно</p>
+  </div>
+</div>
+
+<!-- Case Study -->
+<div class="relative max-w-4xl mx-auto px-4">
+  <!-- Верхняя градиентная полоса -->
+  <div class="absolute -top-0.5 left-1/2 -translate-x-1/2 h-0.5 w-4/5 bg-gradient-to-r from-transparent via-green-400 to-transparent rounded-full shadow-lg shadow-cyan-400/20 z-30"></div>
+  
+  <!-- Основной блок кейса -->
+  <div class="bg-gray-900 p-6 rounded-2xl relative border-0">
+    <h3 class="text-2xl font-bold text-cyan-400 mb-4 text-center">📖 Кейс: PEPE 2.0 Revival</h3>
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="text-center">
+        <h4 class="font-bold text-white mb-3">Входные данные:</h4>
+        <ul class="space-y-2 text-gray-300">
+          <li>• Инвестиция: $5,000</li>
+          <li>• Старт цены: $0.000012</li>
+          <li>• Маркет кап: $50K</li>
+          <li>• Срок цикла: 18 дней</li>
+        </ul>
+      </div>
+      <div class="text-center">
+        <h4 class="font-bold text-white mb-3">Результаты:</h4>
+        <ul class="space-y-2 text-gray-300">
+          <li>• Выход: $17,500</li>
+          <li>• Пиковая цена: $0.000048</li>
+          <li>• Пик МС: $780K (15.6x)</li>
+          <li>• <span class="text-green-400 font-bold">ROI: +250%</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Нижняя градиентная полоса -->
+  <div class="absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-0.5 w-4/5 bg-gradient-to-r from-transparent via-green-400 to-transparent rounded-full shadow-lg shadow-green-400/20 z-30"></div>
+</div>
+
+<!-- Исправленная секция Психология Мем-Экономики -->
+<section id="meme-psychology" aria-labelledby="meme-psychology-title" class="py-24 bg-gradient-to-b from-black/20 to-purple-900/20">
+  <h2 id="meme-psychology-title" class="sr-only">Психология Мем-Экономики</h2>
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-black mb-6">
+        <span class="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 text-transparent bg-clip-text">
+          Психология Мем-Экономики
+        </span>
+      </h2>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+        Почему мемы стоят миллионы? Разбираем механизмы коллективного внимания и эмоциональной экономики.
+      </p>
+    </div>
+
+    <!-- Emotional Triggers -->
+    <div class="grid md:grid-cols-3 gap-8 mb-16">
+      <div class="glow-card card-glow p-6">
+        <div class="text-4xl mb-4">😂</div>
+        <h3 class="text-xl font-bold text-cyan-400 mb-3">FOMO & Юмор</h3>
+        <p class="text-gray-300 mb-4">
+          Страх упустить возможность (FOMO) + вирусный юмор = мощнейший драйвер покупок.
+        </p>
+        <div class="p-3 bg-cyan-500/10 rounded-lg">
+          <p class="text-sm text-gray-400">
+            <span class="text-cyan-400 font-bold">87%</span> покупателей мемкоинов действуют импульсивно под влиянием эмоций
+          </p>
+        </div>
+      </div>
+
+      <div class="glow-card card-glow p-6">
+        <div class="text-4xl mb-4">🧠</div>
+        <h3 class="text-xl font-bold text-purple-400 mb-3">Коллективная память</h3>
+        <p class="text-gray-300 mb-4">
+          Старые мемы хранятся в культурной памяти. Их возрождение вызывает ностальгию и узнавание.
+        </p>
+        <div class="p-3 bg-purple-500/10 rounded-lg">
+          <p class="text-sm text-gray-400">
+            <span class="text-purple-400 font-bold">3x быстрее</span> виральность у "возрожденных" брендов vs новых
+          </p>
+        </div>
+      </div>
+
+      <div class="glow-card card-glow p-6">
+        <div class="text-4xl mb-4">🔥</div>
+        <h3 class="text-xl font-bold text-orange-400 mb-3">Социальное доказательство</h3>
+        <p class="text-gray-300 mb-4">
+          Люди покупают то, что покупают другие. Создавая видимость хайпа, мы запускаем цепную реакцию.
+        </p>
+        <div class="p-3 bg-orange-500/10 rounded-lg">
+          <p class="text-sm text-gray-400">
+            <span class="text-orange-400 font-bold">65%</span> инвесторов принимают решение на основе "buzz" в соцсетях
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+
+<style>
+
+/* Mobile Timeline */
+.vertical-timeline {
+  position: relative;
+  padding-left: 30px;
+}
+
+.vertical-timeline::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, #8b5cf6, #10b981, #ef4444, #6b7280, #06b6d4);
+}
+
+.timeline-stage {
+  position: relative;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: flex-start;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: -30px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 3px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.marker-1 { background: #8b5cf6; border-color: #c4b5fd; }
+.marker-2 { background: #10b981; border-color: #a7f3d0; }
+.marker-3 { background: #ef4444; border-color: #fdba74; }
+.marker-4 { background: #6b7280; border-color: #d1d5db; }
+.marker-5 { 
+  background: #06b6d4; 
+  border-color: #7dd3fc;
+  animation: pulse 2s infinite;
+}
+
+.timeline-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(15, 23, 42, 0.6);
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+  flex: 1;
+}
+
+.stage-icon-mobile {
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+}
+
+.stage-title-mobile {
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.stage-duration-mobile {
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+.active-stage .timeline-content {
+  background: rgba(6, 182, 212, 0.1);
+  border-color: rgba(6, 182, 212, 0.3);
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .timeline-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+  
+  .stage-icon-mobile {
+    width: 36px;
+    height: 36px;
+    font-size: 1.25rem;
+  }
+}
+.glow-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 25px rgba(6,182,212,0.4);
+  transition: all 0.3s ease;
+}
+
+/* Трехцветные градиенты */
+.three-color-gradient-1 {
+  background: linear-gradient(90deg, #3b82f6 0%, #10b981 50%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.three-color-gradient-2 {
+  background: linear-gradient(90deg, #8b5cf6 0%, #06d6a0 50%, #118ab2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.three-color-gradient-3 {
+  background: linear-gradient(90deg, #06b6d4 0%, #10b981 50%, #0ea5e9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+
+
+.custom-border-top {
+  position: relative;
+}
+
+.custom-border-top::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #22d3ee, transparent);
+  border-radius: 1px;
+}
+
+.custom-border-bottom {
+  position: relative;
+}
+
+.custom-border-bottom::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #10b981, transparent);
+  border-radius: 1px;
+}
+
+
+
+/* Адаптация нового графика для мобильных */
+@media (max-width: 768px) {
+  #reforkStrategyChart {
+    min-width: 600px !important;
+    width: 200% !important;
+  }
+  
+  .glow-card .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .glow-card .overflow-x-auto::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Увеличиваем отступы для лучшего скролла */
+  .glow-card {
+    padding: 1rem !important;
+  }
+}
+
+/* Индикатор скролла для мобильных */
+.glow-card .overflow-x-auto {
+  position: relative;
+}
+
+.glow-card .overflow-x-auto::after {
+  content: '← прокрутите →';
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  color: #22d3ee;
+  font-size: 10px;
+  opacity: 0.7;
+  animation: pulse-scroll 2s infinite;
+}
+
+@keyframes pulse-scroll {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+@media (max-width: 480px) {
+  #reforkStrategyChart {
+    min-width: 700px !important;
+  }
+  
+  .glow-card .overflow-x-auto::after {
+    content: '← прокрутите график →';
+    font-size: 9px;
+  }
+}
+
+.central-stage:hover .tooltip {
+  display: block;
+  animation: fadeIn 0.4s ease forwards;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -20px); }
+  to { opacity: 1; transform: translate(-50%, -30px); }
+}
+
+#partner-row-1 img, 
+.animate-scroll-banner-reverse img {
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 0px transparent);
+}
+#partner-row-1 img:hover, 
+.animate-scroll-banner-reverse img:hover {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 8px rgba(34,211,238,0.7));
+}
+
+@media (max-width: 768px) {
+  #reforkStrategyChart {
+    min-width: 650px !important;
+    width: 100% !important;
+    transform: none !important;
+  }
+}
+
+.phase-label { 
+  font-size: 12px !important; 
+  padding: 4px 8px; 
+}
+
+/* Гарантируем отображение canvas */
+#reforkStrategyChart {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 200px;
+}
+
+
+/* На мобильных увеличиваем минимальную ширину */
+@media (max-width: 768px) {
+  .min-w-\[600px\] {
+    min-width: 700px !important;
+  }
+}
+
+/* Мобильная адаптация для первой секции */
+@media (max-width: 1024px) {
+  #hero .grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  #hero h1 {
+    font-size: 2.5rem !important;
+    text-align: center;
+    line-height: 1.2;
+  }
+  
+  #hero h2 {
+    font-size: 1.25rem !important;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  #hero {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+    min-height: auto !important;
+  }
+  
+  #hero h1 {
+    font-size: 2rem !important;
+  }
+  
+  #hero h2 {
+    font-size: 1.125rem !important;
+  }
+  
+  .glow-card {
+    padding: 1rem !important;
+  }
+  
+  #hero .flex-wrap {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  #hero h1 {
+    font-size: 1.75rem !important;
+  }
+  
+  #hero .min-w-\[500px\] {
+    min-width: 450px !important;
+  }
+  
+  .text-lg {
+    font-size: 1rem !important;
+  }
+}
+
+/* Гарантируем правильный порядок на мобильных */
+@media (max-width: 1024px) {
+  .order-1 {
+    order: 1;
+  }
+  .order-2 {
+    order: 2;
+  }
+}
+
+/* Контейнер для графика */
+.overflow-x-auto {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+
+
+/* Кинетическая типография - бесконечный цикл с разными направлениями */
+.kinetic-typography {
+  position: relative;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+}
+
+.kinetic-word {
+  position: absolute;
+  opacity: 0;
+  animation-duration: 4.5s; /* Сократили общее время цикла */
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.kinetic-word-1 {
+  animation-name: kineticLeft;
+}
+
+.kinetic-word-2 {
+  animation-name: kineticTop;
+}
+
+.kinetic-word-3 {
+  animation-name: kineticRight;
+}
+
+/* Анимация слева - появляется быстрее */
+@keyframes kineticLeft {
+  0%, 15% {
+    opacity: 0;
+    transform: translateX(-80px) rotateY(90deg);
+  }
+  20%, 30% {
+    opacity: 1;
+    transform: translateX(0) rotateY(0);
+  }
+  35%, 100% {
+    opacity: 0;
+    transform: translateX(60px) rotateY(-90deg);
+  }
+}
+
+/* Анимация сверху - появляется быстрее */
+@keyframes kineticTop {
+  0%, 35% {
+    opacity: 0;
+    transform: translateY(-60px) rotateX(90deg);
+  }
+  40%, 50% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+  55%, 100% {
+    opacity: 0;
+    transform: translateY(50px) rotateX(-90deg);
+  }
+}
+
+/* Анимация справа - появляется быстрее */
+@keyframes kineticRight {
+  0%, 55% {
+    opacity: 0;
+    transform: translateX(80px) rotateY(-90deg);
+  }
+  60%, 70% {
+    opacity: 1;
+    transform: translateX(0) rotateY(0);
+  }
+  75%, 100% {
+    opacity: 0;
+    transform: translateX(-60px) rotateY(90deg);
+  }
+}
+
+/* Для мобильных устройств */
+@media (max-width: 768px) {
+  .kinetic-typography {
+    height: 60px;
+  }
+  
+  @keyframes kineticLeft {
+    0%, 15% {
+      opacity: 0;
+      transform: translateX(-50px) rotateY(90deg);
+    }
+    20%, 30% {
+      opacity: 1;
+      transform: translateX(0) rotateY(0);
+    }
+    35%, 100% {
+      opacity: 0;
+      transform: translateX(40px) rotateY(-90deg);
+    }
+  }
+  
+  @keyframes kineticTop {
+    0%, 35% {
+      opacity: 0;
+      transform: translateY(-40px) rotateX(90deg);
+    }
+    40%, 50% {
+      opacity: 1;
+      transform: translateY(0) rotateX(0);
+    }
+    55%, 100% {
+      opacity: 0;
+      transform: translateY(35px) rotateX(-90deg);
+    }
+  }
+  
+  @keyframes kineticRight {
+    0%, 55% {
+      opacity: 0;
+      transform: translateX(50px) rotateY(-90deg);
+    }
+    60%, 70% {
+      opacity: 1;
+      transform: translateX(0) rotateY(0);
+    }
+    75%, 100% {
+      opacity: 0;
+      transform: translateX(-40px) rotateY(90deg);
+    }
+  }
+}
+
+/* Дополнительные эффекты для плавности */
+.kinetic-word {
+  filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+  will-change: transform, opacity;
+}
+
+/* Увеличиваем минимальную ширину для графика на мобильных */
+@media (max-width: 768px) {
+  .min-w-\[650px\] {
+    min-width: 650px !important;
+  }
+  
+  /* Уменьшаем отступы для легенды метрик */
+  .grid-cols-3.gap-1 .text-center {
+    padding: 0 2px;
+  }
+  
+  .grid-cols-3.gap-1 .text-lg {
+    font-size: 1rem !important;
+  }
+  
+  .grid-cols-3.gap-1 .text-xs {
+    font-size: 0.7rem !important;
+  }
+}
+
+.phase-label {
+position: relative;
+text-shadow: 0 0 12px rgba(20, 241, 149, 0.5);
+transition: all 0.3s ease;
+}
+.phase-label::after {
+content: '';
+position: absolute;
+left: 50%;
+top: 100%;
+transform: translateX(-50%);
+width: 40%;
+height: 2px;
+background: linear-gradient(90deg, #14F195, #00C2FF);
+border-radius: 2px;
+opacity: 0;
+transition: opacity 0.3s ease;
+}
+.timeline-stage:hover .phase-label::after {
+opacity: 1;
+}
+
+
+#full-cycle .glow-card {
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
+}
+
+#full-cycle .glow-card:hover {
+  transform: translateY(-5px) perspective(1000px) rotateX(5deg);
+  border-color: rgba(34, 211, 238, 0.5);
+  background: linear-gradient(180deg, 
+    rgba(255,255,255,0.08), 
+    rgba(255,255,255,0.12)
+  );
+}
+
+</style>
+
+<!-- Секрет ReFork Capital - ИСПРАВЛЕНО -->
+    <div class="mb-12">
+      <div class="p-6 bg-gradient-to-r from-cyan-900/20 to-purple-900/20 rounded-xl border border-cyan-500/30">
+        <h4 class="text-xl font-bold text-cyan-400 mb-4">💎 Секрет ReFork Capital:</h4>
+        <p class="text-gray-300 leading-relaxed mb-4">
+          Большинство теряет деньги, покупая на пике (🚀 Хайп). Мы работаем на этапе 
+          <span class="text-purple-400 font-bold">💤 Забвение → 💡 Возрождение</span>, 
+          когда цена минимальна, а культурный капитал остался.
+        </p>
+        <div class="grid md:grid-cols-3 gap-4">
+          <div class="flex items-center gap-2">
+            <span class="text-green-400 text-xl">✓</span>
+            <span class="text-sm text-gray-300">Вход по низу: -90% от ATH</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-green-400 text-xl">✓</span>
+            <span class="text-sm text-gray-300">Готовая аудитория фанатов</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-green-400 text-xl">✓</span>
+            <span class="text-sm text-gray-300">Ностальгический триггер</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Real Examples - ИСПРАВЛЕНО -->
+    <div class="grid md:grid-cols-2 gap-8 mb-8">
+      <div class="glow-card p-6">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="text-3xl">🐸</div>
+          <h4 class="text-lg font-bold text-green-400">Пример: PEPE возрождения</h4>
+        </div>
+        <p class="text-sm text-gray-300 mb-3">
+          Оригинальный PEPE умер в 2021. В 2023 появился новый PEPE с иронией и культурным кодом — вырос на 10,000%
+        </p>
+        <div class="flex items-center gap-2 text-xs text-gray-100 font-medium leading-relaxed ">
+          <span class="px-2 py-1 bg-green-500/40 rounded">Нотальгия</span>
+          <span class="px-2 py-1 bg-green-500/40 rounded">Комьюнити</span>
+          <span class="px-2 py-1 bg-green-500/40 rounded">Мем-культура</span>
+        </div>
+      </div>
+
+      <div class="glow-card p-6">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="text-3xl">🐕</div>
+          <h4 class="text-lg font-bold text-yellow-400">Пример: DOGE феномен</h4>
+        </div>
+        <p class="text-sm text-gray-300 mb-3">
+          Созданный как шутка в 2013, "умер" к 2017, но возродился в 2021 с Илоном Маском — рост на 30,000%
+        </p>
+        <div class="flex items-center gap-2 text-xs text-gray-100 font-medium leading-relaxed ">
+          <span class="px-2 py-1 bg-yellow-500/40 rounded">Celebrity</span>
+          <span class="px-2 py-1 bg-yellow-500/40 rounded">FOMO</span>
+          <span class="px-2 py-1 bg-yellow-500/40 rounded">Массовость</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Research Note -->
+    <div class="text-center">
+      <p class="text-sm text-gray-400">
+        📚 На основе исследований поведенческой экономики и анализа 150+ мем-токенов
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- НОВАЯ СЕКЦИЯ: ВОЛНА ЦИКЛОВ REFORK -->
+<section id="meme-cycle-wave" class="py-24 relative overflow-hidden bg-gradient-to-b from-black/20 to-purple-900/20">
+  <div class="max-w-7xl mx-auto px-4">
+    
+    <!-- Заголовок секции -->
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-black mb-6">
+        <span class="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 text-transparent bg-clip-text">
+          Волна Циклов ReFork
+        </span>
+      </h2>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+        От забвения к возрождению: как мы превращаем -90% в +900% потенциал роста
+      </p>
+    </div>
+
+    <!-- Десктоп версия (скрыта на мобильных) -->
+    <div class="hidden md:block">
+      
+      <!-- Основная волна графика -->
+      <div class="wave-desktop-container relative h-96 mb-16">
+        
+        <!-- Фоновая сетка -->
+        <div class="absolute inset-0 opacity-10" style="
+          background-image: 
+            linear-gradient(rgba(34,211,238,0.1) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(34,211,238,0.1) 1px, transparent 1px);
+          background-size: 40px 40px;
+        "></div>
+        
+        <!-- Контейнер волны -->
+        <div class="absolute inset-0">
+          
+          <!-- SVG волна -->
+          <svg class="w-full h-full" viewBox="0 0 1200 300" preserveAspectRatio="none">
+            <!-- Основная волна -->
+            <path id="desktop-wave" d="M0,150 C200,50 300,250 500,150 C700,50 800,250 1000,150 C1100,100 1150,200 1200,150" 
+                  stroke="url(#desktopWaveGradient)" stroke-width="4" fill="none"
+                  class="desktop-wave-path"/>
+            
+            <!-- Градиент для десктоп волны -->
+            <defs>
+              <linearGradient id="desktopWaveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#8b5cf6" />
+                <stop offset="20%" stop-color="#10b981" />
+                <stop offset="45%" stop-color="#ef4444" />
+                <stop offset="65%" stop-color="#6b7280" />
+                <stop offset="85%" stop-color="#06b6d4" />
+                <stop offset="100%" stop-color="#0ea5e9" />
+              </linearGradient>
+            </defs>
+          </svg>
+          
+          <!-- Точки этапов -->
+      <div class="desktop-point point-1" data-stage="1">
+        <div class="desktop-pulse"></div>
+        <div class="desktop-label">
+          <span class="desktop-emoji">💡</span>
+          <span class="desktop-title">Тест</span>
+          <span class="desktop-badge">День 0-2</span>
+        </div>
+      </div>
+      
+      <div class="desktop-point point-2" data-stage="2">
+        <div class="desktop-pulse"></div>
+        <div class="desktop-label">
+          <span class="desktop-emoji">🚀</span>
+          <span class="desktop-title">Наращивание</span>
+          <span class="desktop-badge">2-7 дней</span>
+        </div>
+      </div>
+      
+      <div class="desktop-point point-3" data-stage="3">
+        <div class="desktop-pulse"></div>
+        <div class="desktop-label">
+          <span class="desktop-emoji">📈</span>
+          <span class="desktop-title">Фиксация</span>
+          <span class="desktop-badge">7-10 дней</span>
+        </div>
+      </div>
+      
+      <div class="desktop-point point-4" data-stage="4">
+        <div class="desktop-pulse"></div>
+        <div class="desktop-label">
+          <span class="desktop-emoji">📉</span>
+          <span class="desktop-title">Коррекция</span>
+          <span class="desktop-badge">10-14 дней</span>
+        </div>
+      </div>
+      
+      <!-- ReFork точка - ВЫДЕЛЕННАЯ -->
+      <div class="desktop-point refork-desktop-point active" data-stage="5">
+        <div class="desktop-pulse"></div>
+        <div class="desktop-label">
+          <span class="desktop-emoji">🔁</span>
+          <span class="desktop-title">ReFork Рестарт</span>
+          <span class="desktop-badge">НОВЫЙ ЦИКЛ!</span>
+        </div>
+        <div class="refork-desktop-glow"></div>
+      </div>
+      
+      <!-- Линия входа ReFork -->
+      <div class="desktop-entry-line">
+        <div class="entry-arrow">↓</div>
+        <div class="entry-text">Стратегический вход ReFork</div>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- Карточки для десктопа -->
+  <div class="desktop-cards-grid grid grid-cols-5 gap-6 mb-12">
+    
+    <div class="desktop-stage-card" data-stage="1">
+      <div class="desktop-card-inner">
+        <div class="desktop-card-header">
+          <div class="desktop-card-emoji">💡</div>
+          <h3 class="desktop-card-title">Тест & Валидация</h3>
+        </div>
+        <div class="desktop-card-body">
+          <p>Малый вход для проверки нарратива</p>
+          <div class="desktop-card-metrics">
+            <div class="desktop-metric">
+              <span class="metric-label">Тестовая позиция:</span>
+              <span class="metric-value">$100</span>
+            </div>
+            <div class="desktop-metric">
+              <span class="metric-label">Старт цены:</span>
+              <span class="metric-value">$0.00001</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="desktop-stage-card" data-stage="2">
+      <div class="desktop-card-inner">
+        <div class="desktop-card-header">
+          <div class="desktop-card-emoji">🚀</div>
+          <h3 class="desktop-card-title">Докупаем & PUMP</h3>
+        </div>
+        <div class="desktop-card-body">
+          <p>Усиление SMM при подтверждении сигнала</p>
+          <div class="desktop-card-metrics">
+            <div class="desktop-metric positive">
+              <span class="metric-label">Рост:</span>
+              <span class="metric-value">+250%</span>
+            </div>
+            <div class="desktop-metric">
+              <span class="metric-label">Позиция:</span>
+              <span class="metric-value">$500</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="desktop-stage-card" data-stage="3">
+      <div class="desktop-card-inner">
+        <div class="desktop-card-header">
+          <div class="desktop-card-emoji">📈</div>
+          <h3 class="desktop-card-title">Фиксация & Анализ</h3>
+        </div>
+        <div class="desktop-card-body">
+          <p>Частичный выход на пике интереса</p>
+          <div class="desktop-card-metrics">
+            <div class="desktop-metric positive">
+              <span class="metric-label">Фиксация:</span>
+              <span class="metric-value">50% позиции</span>
+            </div>
+            <div class="desktop-metric">
+              <span class="metric-label">Прибыль:</span>
+              <span class="metric-value">+225%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="desktop-stage-card" data-stage="4">
+      <div class="desktop-card-inner">
+        <div class="desktop-card-header">
+          <div class="desktop-card-emoji">📉</div>
+          <h3 class="desktop-card-title">Коррекция & Накопление</h3>
+        </div>
+        <div class="desktop-card-body">
+          <p>Докупаем на просадке для рестарта</p>
+          <div class="desktop-card-metrics">
+            <div class="desktop-metric negative">
+              <span class="metric-label">Просадка:</span>
+              <span class="metric-value">-60%</span>
+            </div>
+            <div class="desktop-metric">
+              <span class="metric-label">Докупка:</span>
+              <span class="metric-value">+40%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ReFork карточка - ВЫДЕЛЕННАЯ -->
+    <div class="desktop-stage-card refork-desktop-card active" data-stage="5">
+      <div class="desktop-card-inner">
+        <div class="desktop-card-header">
+          <div class="desktop-card-emoji">🔁</div>
+          <h3 class="desktop-card-title">ReFork Рестарт</h3>
+        </div>
+        <div class="desktop-card-body">
+          <p><strong>Запуск нового цикла с усиленным капиталом</strong></p>
+          <div class="desktop-card-metrics">
+            <div class="desktop-metric positive">
+              <span class="metric-label">Цель ROI:</span>
+              <span class="metric-value">+300%</span>
+            </div>
+            <div class="desktop-metric">
+              <span class="metric-label">Цикл:</span>
+              <span class="metric-value">14-21 день</span>
+            </div>
+          </div>
+          <div class="desktop-card-actions">
+            <button class="desktop-action-btn" onclick="scrollToApply()">
+              💎 Войти в цикл
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- Мобильная версия (скрыта на десктопе) -->
+<div class="md:hidden">
+  
+  <!-- Мобильная волна -->
+  <div class="wave-mobile-container relative h-64 mb-8">
+    
+    <!-- Фоновая сетка -->
+    <div class="absolute inset-0 opacity-20" style="
+      background-image: 
+        linear-gradient(rgba(34,211,238,0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(34,211,238,0.1) 1px, transparent 1px);
+      background-size: 20px 20px;
+    "></div>
+    
+    <!-- Контейнер мобильной волны -->
+    <div class="absolute bottom-0 left-0 right-0 h-48">
+      
+      <!-- SVG мобильной волны -->
+      <svg class="w-full h-full" viewBox="0 0 400 120" preserveAspectRatio="none">
+        <path id="mobile-wave" d="M0,60 C80,10 120,110 200,60 C280,10 320,110 400,60" 
+              stroke="url(#mobileWaveGradient)" stroke-width="3" fill="none"
+              class="mobile-wave-path"/>
+        
+        <defs>
+          <linearGradient id="mobileWaveGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#8b5cf6" />
+            <stop offset="25%" stop-color="#10b981" />
+            <stop offset="50%" stop-color="#ef4444" />
+            <stop offset="75%" stop-color="#6b7280" />
+            <stop offset="100%" stop-color="#06b6d4" />
+          </linearGradient>
+        </defs>
+      </svg>
+      
+      <!-- Точки на мобильной волне -->
+      <div class="mobile-point point-1" data-stage="1">
+        <div class="mobile-pulse"></div>
+        <div class="mobile-label">💡 Тест</div>
+      </div>
+      
+      <div class="mobile-point point-2" data-stage="2">
+        <div class="mobile-pulse"></div>
+        <div class="mobile-label">🚀 Наращивание</div>
+      </div>
+      
+      <div class="mobile-point point-3" data-stage="3">
+        <div class="mobile-pulse"></div>
+        <div class="mobile-label">📈 Фиксация</div>
+      </div>
+      
+      <div class="mobile-point point-4" data-stage="4">
+        <div class="mobile-pulse"></div>
+        <div class="mobile-label">📉 Коррекция</div>
+      </div>
+      
+      <!-- ReFork точка - ВЫДЕЛЕННАЯ -->
+      <div class="mobile-point refork-mobile-point active" data-stage="5">
+        <div class="mobile-pulse"></div>
+        <div class="mobile-label">🔁 ReFork</div>
+        <div class="refork-mobile-glow"></div>
+      </div>
+      
+      <!-- Курсор входа для мобильных -->
+      <div class="mobile-entry-cursor">
+        <div class="mobile-cursor-line"></div>
+        <div class="mobile-cursor-text">🚀 Вход ReFork</div>
+      </div>
+      
+    </div>
+  </div>
+
+  <!-- Карточки для мобильных -->
+  <div class="mobile-cards-stack space-y-4">
+    
+    <div class="mobile-stage-card" data-stage="1">
+      <div class="mobile-card-header">
+        <span class="mobile-card-emoji">💡</span>
+        <span class="mobile-card-title">Тест & Валидация</span>
+        <span class="mobile-card-badge">День 0-2</span>
+      </div>
+      <div class="mobile-card-body">
+        <p>Малый вход для проверки нарратива</p>
+        <div class="mobile-card-metrics">
+          <span class="mobile-metric">💰 Тест: $100</span>
+          <span class="mobile-metric">🎯 Старт цены: $0.00001</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-stage-card" data-stage="2">
+      <div class="mobile-card-header">
+        <span class="mobile-card-emoji">🚀</span>
+        <span class="mobile-card-title">Докупаем & PUMP</span>
+        <span class="mobile-card-badge">2-7 дней</span>
+      </div>
+      <div class="mobile-card-body">
+        <p>Усиление SMM при подтверждении сигнала</p>
+        <div class="mobile-card-metrics">
+          <span class="mobile-metric positive">📈 Рост: +250%</span>
+          <span class="mobile-metric">💎 Позиция: $500</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-stage-card" data-stage="3">
+      <div class="mobile-card-header">
+        <span class="mobile-card-emoji">📈</span>
+        <span class="mobile-card-title">Фиксация & Анализ</span>
+        <span class="mobile-card-badge">7-10 дней</span>
+      </div>
+      <div class="mobile-card-body">
+        <p>Частичный выход на пике интереса</p>
+        <div class="mobile-card-metrics">
+          <span class="mobile-metric positive">💵 Фиксация: 50%</span>
+          <span class="mobile-metric">🎯 Прибыль: +225%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mobile-stage-card" data-stage="4">
+      <div class="mobile-card-header">
+        <span class="mobile-card-emoji">📉</span>
+        <span class="mobile-card-title">Коррекция & Накопление</span>
+        <span class="mobile-card-badge">10-14 дней</span>
+      </div>
+      <div class="mobile-card-body">
+        <p>Докупаем на просадке для рестарта</p>
+        <div class="mobile-card-metrics">
+          <span class="mobile-metric negative">📉 Просадка: -60%</span>
+          <span class="mobile-metric">🔄 Докупка: +40%</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ReFork карточка - ВЫДЕЛЕННАЯ -->
+    <div class="mobile-stage-card refork-mobile-card active" data-stage="5">
+      <div class="mobile-card-header">
+        <span class="mobile-card-emoji">🔁</span>
+        <span class="mobile-card-title">ReFork Рестарт</span>
+        <span class="mobile-card-badge">НОВЫЙ ЦИКЛ!</span>
+      </div>
+      <div class="mobile-card-body">
+        <p><strong>Запуск нового цикла с усиленным капиталом</strong></p>
+        <div class="mobile-card-metrics">
+          <span class="mobile-metric positive">🚀 Цель ROI: +300%</span>
+          <span class="mobile-metric">⏱ Цикл: 14-21 день</span>
+        </div>
+        <div class="mobile-card-actions">
+          <button class="mobile-action-btn" onclick="scrollToApply()">
+            💎 Войти в цикл
+          </button>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<!-- Ключевой инсайт (общий для всех устройств) -->
+<div class="key-insight mt-12 p-6 bg-gradient-to-r from-cyan-500/10 to-purple-500/10 rounded-2xl border border-cyan-500/20 text-center">
+  <h4 class="text-xl font-bold text-cyan-400 mb-3">💡 Стратегия ReFork Capital</h4>
+  <p class="text-gray-300 mb-4">
+    Мы не просто покупаем на дне — мы <strong>системно тестируем, усиливаем и перезапускаем</strong> проекты.<br> 
+    Малый вход → Валидация нарратива → Наращивание позиции → Частичная фиксация → Рестарт с усиленным капиталом.
+  </p>
+  <div class="grid md:grid-cols-3 gap-4 max-w-2xl mx-auto">
+    <div class="flex items-center gap-2 justify-center">
+      <span class="text-green-400 text-xl">✓</span>
+      <span class="text-sm text-gray-300">Минимальный риск при тестировании</span>
+    </div>
+    <div class="flex items-center gap-2 justify-center">
+      <span class="text-green-400 text-xl">✓</span>
+      <span class="text-sm text-gray-300">Поэтапное наращивание позиции</span>
+    </div>
+    <div class="flex items-center gap-2 justify-center">
+      <span class="text-green-400 text-xl">✓</span>
+      <span class="text-sm text-gray-300">Реинвестирование прибыли</span>
+    </div>
+  </div>
+</div>
+
+  </div>
+</section>
+
+<style>
+/* === ОБЩИЕ СТИЛИ ДЛЯ ВОЛНЫ === */
+
+/* Анимация рисования волны */
+.desktop-wave-path {
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: drawDesktopWave 4s ease-in-out forwards;
+}
+
+.mobile-wave-path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawMobileWave 3s ease-in-out forwards;
+}
+
+@keyframes drawDesktopWave {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes drawMobileWave {
+  to { stroke-dashoffset: 0; }
+}
+
+/* === ДЕСКТОП ВЕРСИЯ === */
+
+/* Контейнер десктоп волны */
+.wave-desktop-container {
+  overflow: hidden;
+}
+
+/* Точки на десктоп волне */
+.desktop-point {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* Позиции точек на десктоп волне */
+.desktop-point.point-1 { top: 50%; left: 10%; }
+.desktop-point.point-2 { top: 20%; left: 25%; }
+.desktop-point.point-3 { top: 80%; left: 45%; }
+.desktop-point.point-4 { top: 60%; left: 65%; }
+.desktop-point.refork-desktop-point { top: 30%; left: 85%; }
+
+/* Пульсация точек */
+.desktop-pulse {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.desktop-pulse::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  opacity: 0;
+  animation: desktopPulse 2s ease-in-out infinite;
+}
+
+.refork-desktop-point .desktop-pulse::after {
+  animation: reforkDesktopPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes desktopPulse {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.4); opacity: 0.3; }
+}
+
+@keyframes reforkDesktopPulse {
+  0%, 100% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.7); }
+  50% { transform: scale(1.8); opacity: 0.8; box-shadow: 0 0 0 15px rgba(6, 182, 212, 0); }
+}
+
+/* Цвета точек десктоп */
+.point-1 .desktop-pulse { background: #8b5cf6; }
+.point-2 .desktop-pulse { background: #10b981; }
+.point-3 .desktop-pulse { background: #ef4444; }
+.point-4 .desktop-pulse { background: #6b7280; }
+.refork-desktop-point .desktop-pulse { background: #06b6d4; }
+
+/* Подсветка ReFork точки */
+.refork-desktop-glow {
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.4), transparent 70%);
+  z-index: -1;
+}
+
+/* Лейблы точек */
+.desktop-label {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  text-align: center;
+  background: rgba(15, 23, 42, 0.9);
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  min-width: 100px;
+}
+
+.desktop-emoji {
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.desktop-title {
+  font-weight: bold;
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.desktop-badge {
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.refork-desktop-point .desktop-badge {
+  background: linear-gradient(135deg, #06b6d4, #0ea5e9);
+  color: white;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+/* Линия входа ReFork */
+.desktop-entry-line {
+  position: absolute;
+  top: 30%;
+  left: 85%;
+  transform: translateX(-50%);
+  z-index: 5;
+  text-align: center;
+}
+
+.entry-arrow {
+  font-size: 2rem;
+  color: #06b6d4;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.entry-text {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #06b6d4;
+  margin-top: 8px;
+  background: rgba(6, 182, 212, 0.1);
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Карточки десктоп */
+.desktop-cards-grid {
+  perspective: 1000px;
+}
+
+.desktop-stage-card {
+  transition: all 0.3s ease;
+  opacity: 0.7;
+  transform: translateY(10px) scale(0.95);
+}
+
+.desktop-stage-card.active,
+.desktop-stage-card:hover {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.desktop-card-inner {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 20px;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.desktop-stage-card.active .desktop-card-inner,
+.desktop-stage-card:hover .desktop-card-inner {
+  border-color: rgba(6, 182, 212, 0.5);
+  background: rgba(6, 182, 212, 0.1);
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.2);
+}
+
+.desktop-card-header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.desktop-card-emoji {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+
+.desktop-card-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #e5e7eb;
+}
+
+.desktop-card-body {
+  text-align: center;
+}
+
+.desktop-card-body p {
+  font-size: 0.9rem;
+  color: #d1d5db;
+  margin-bottom: 12px;
+}
+
+.desktop-card-metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.desktop-metric {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.desktop-metric.positive {
+  background: rgba(34, 197, 94, 0.2);
+  color: #22c55e;
+}
+
+.desktop-metric.negative {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+.metric-label {
+  font-weight: 500;
+}
+
+.metric-value {
+  font-weight: bold;
+}
+
+/* ReFork десктоп карточка */
+.refork-desktop-card .desktop-card-inner {
+  border-width: 2px;
+  background: rgba(6, 182, 212, 0.15);
+}
+
+.desktop-card-actions {
+  margin-top: 16px;
+}
+
+.desktop-action-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #06b6d4, #0ea5e9);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.desktop-action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(6, 182, 212, 0.4);
+}
+
+/* === МОБИЛЬНАЯ ВЕРСИЯ === */
+
+/* Контейнер мобильной волны */
+.wave-mobile-container {
+  overflow: hidden;
+}
+
+/* Точки на мобильной волне */
+.mobile-point {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+/* Позиции точек на мобильной волне */
+.mobile-point.point-1 { top: 50%; left: 10%; }
+.mobile-point.point-2 { top: 20%; left: 30%; }
+.mobile-point.point-3 { top: 80%; left: 50%; }
+.mobile-point.point-4 { top: 60%; left: 70%; }
+.mobile-point.refork-mobile-point { top: 30%; left: 90%; }
+
+/* Пульсация мобильных точек */
+.mobile-pulse {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  position: relative;
+}
+
+.mobile-pulse::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  opacity: 0;
+  animation: mobilePulse 2s ease-in-out infinite;
+}
+
+.refork-mobile-point .mobile-pulse::after {
+  animation: reforkMobilePulse 1.5s ease-in-out infinite;
+}
+
+@keyframes mobilePulse {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.3); opacity: 0.3; }
+}
+
+@keyframes reforkMobilePulse {
+  0%, 100% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.7); }
+  50% { transform: scale(1.5); opacity: 0.8; box-shadow: 0 0 0 10px rgba(6, 182, 212, 0); }
+}
+
+/* Цвета мобильных точек */
+.point-1 .mobile-pulse { background: #8b5cf6; }
+.point-2 .mobile-pulse { background: #10b981; }
+.point-3 .mobile-pulse { background: #ef4444; }
+.point-4 .mobile-pulse { background: #6b7280; }
+.refork-mobile-point .mobile-pulse { background: #06b6d4; }
+
+/* Подсветка ReFork мобильной точки */
+.refork-mobile-glow {
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.3), transparent 70%);
+  z-index: -1;
+}
+
+/* Лейблы мобильных точек */
+.mobile-label {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 11px;
+  font-weight: bold;
+  opacity: 0.8;
+}
+
+/* Курсор входа для мобильных */
+.mobile-entry-cursor {
+  position: absolute;
+  top: 30%;
+  left: 85%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.mobile-cursor-line {
+  width: 2px;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, #06b6d4, transparent);
+  margin: 0 auto;
+}
+
+.mobile-cursor-text {
+  font-size: 0.7rem;
+  white-space: nowrap;
+  background: rgba(6, 182, 212, 0.9);
+  padding: 4px 8px;
+  border-radius: 6px;
+  margin-top: 4px;
+  font-weight: bold;
+}
+
+/* Мобильные карточки */
+.mobile-stage-card {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 16px;
+  transition: all 0.3s ease;
+  opacity: 0.7;
+  transform: scale(0.95);
+}
+
+.mobile-stage-card.active {
+  opacity: 1;
+  transform: scale(1);
+  border-color: rgba(6, 182, 212, 0.5);
+  background: rgba(6, 182, 212, 0.1);
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.2);
+}
+
+.mobile-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.mobile-card-emoji {
+  font-size: 1.2rem;
+}
+
+.mobile-card-title {
+  font-weight: bold;
+  flex: 1;
+}
+
+.mobile-card-badge {
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.refork-mobile-card .mobile-card-badge {
+  background: linear-gradient(135deg, #06b6d4, #0ea5e9);
+  color: white;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.mobile-card-body {
+  font-size: 0.9rem;
+}
+
+.mobile-card-body p {
+  margin-bottom: 8px;
+}
+
+.mobile-card-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.mobile-metric {
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.mobile-metric.positive {
+  background: rgba(34, 197, 94, 0.2);
+  color: #22c55e;
+}
+
+.mobile-metric.negative {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+/* ReFork мобильная карточка */
+.refork-mobile-card .mobile-card-body p {
+  font-weight: bold;
+}
+
+.mobile-card-actions {
+  margin-top: 12px;
+}
+
+.mobile-action-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #06b6d4, #0ea5e9);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+/* Анимации появления карточек */
+.mobile-stage-card {
+  animation: mobileSlideInUp 0.6s ease-out forwards;
+}
+
+.mobile-stage-card:nth-child(1) { animation-delay: 0.1s; }
+.mobile-stage-card:nth-child(2) { animation-delay: 0.2s; }
+.mobile-stage-card:nth-child(3) { animation-delay: 0.3s; }
+.mobile-stage-card:nth-child(4) { animation-delay: 0.4s; }
+.mobile-stage-card:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes mobileSlideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 5px rgba(6, 182, 212, 0.5); }
+  to { box-shadow: 0 0 15px rgba(6, 182, 212, 0.8); }
+}
+
+/* Общие анимации для точек при скролле */
+.desktop-point, .mobile-point {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.5);
+  transition: all 0.5s ease;
+}
+
+.desktop-point.active, .mobile-point.active {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+</style>
+
+<script>
+// === ИНТЕРАКТИВНОСТЬ ДЛЯ ВОЛНЫ ЦИКЛОВ ===
+
+function initWaveCycle() {
+  // Инициализация десктоп версии
+  initDesktopWave();
+  
+  // Инициализация мобильной версии
+  initMobileWave();
+}
+
+function initDesktopWave() {
+  const desktopPoints = document.querySelectorAll('.desktop-point');
+  const desktopCards = document.querySelectorAll('.desktop-stage-card');
+  
+  if (desktopPoints.length === 0) return;
+  
+  // Активация при скролле
+  const desktopObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Запускаем анимации точек
+        desktopPoints.forEach((point, index) => {
+          setTimeout(() => {
+            point.classList.add('active');
+          }, index * 400);
+        });
+        
+        // Активируем ReFork карточку
+        setTimeout(() => {
+          const reforkCard = document.querySelector('.refork-desktop-card');
+          if (reforkCard) reforkCard.classList.add('active');
+        }, 2000);
+      }
+    });
+  }, { threshold: 0.2 });
+  
+  const desktopContainer = document.querySelector('.wave-desktop-container');
+  if (desktopContainer) desktopObserver.observe(desktopContainer);
+  
+  // Интерактивность: ховер по точкам
+  desktopPoints.forEach(point => {
+    point.addEventListener('mouseenter', function() {
+      const stage = this.getAttribute('data-stage');
+      
+      // Убираем активность у всех карточек
+      desktopCards.forEach(card => card.classList.remove('active'));
+      
+      // Активируем выбранную
+      const targetCard = document.querySelector(`.desktop-stage-card[data-stage="${stage}"]`);
+      if (targetCard) {
+        targetCard.classList.add('active');
+      }
+    });
+  });
+  
+  // Автоматическая ротация этапов для десктопа
+  let desktopStage = 1;
+  const desktopAutoRotate = setInterval(() => {
+    const desktopWave = document.querySelector('.wave-desktop-container');
+    if (desktopWave && desktopWave.getBoundingClientRect().top < window.innerHeight * 0.8) {
+      desktopCards.forEach(card => card.classList.remove('active'));
+      
+      const currentCard = document.querySelector(`.desktop-stage-card[data-stage="${desktopStage}"]`);
+      if (currentCard) {
+        currentCard.classList.add('active');
+      }
+      
+      desktopStage = desktopStage >= 5 ? 1 : desktopStage + 1;
+    }
+  }, 4000);
+}
+
+function initMobileWave() {
+  const mobilePoints = document.querySelectorAll('.mobile-point');
+  const mobileCards = document.querySelectorAll('.mobile-stage-card');
+  
+  if (mobilePoints.length === 0) return;
+  
+  // Активация при скролле
+  const mobileObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Запускаем анимации точек
+        mobilePoints.forEach((point, index) => {
+          setTimeout(() => {
+            point.classList.add('active');
+          }, index * 300);
+        });
+        
+        // Активируем ReFork карточку
+        setTimeout(() => {
+          const reforkCard = document.querySelector('.refork-mobile-card');
+          if (reforkCard) reforkCard.classList.add('active');
+        }, 1500);
+      }
+    });
+  }, { threshold: 0.3 });
+  
+  const mobileContainer = document.querySelector('.wave-mobile-container');
+  if (mobileContainer) mobileObserver.observe(mobileContainer);
+  
+  // Интерактивность: клик по точкам
+  mobilePoints.forEach(point => {
+    point.addEventListener('click', function() {
+      const stage = this.getAttribute('data-stage');
+      
+      // Убираем активность у всех
+      mobileCards.forEach(card => card.classList.remove('active'));
+      mobilePoints.forEach(p => p.classList.remove('highlight'));
+      
+      // Активируем выбранную
+      const targetCard = document.querySelector(`.mobile-stage-card[data-stage="${stage}"]`);
+      if (targetCard) {
+        targetCard.classList.add('active');
+        this.classList.add('highlight');
+        
+        // Плавная прокрутка к карточке
+        targetCard.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'center' 
+        });
+      }
+    });
+  });
+  
+  // Автоматическая ротация этапов для мобильных
+  let mobileStage = 1;
+  const mobileAutoRotate = setInterval(() => {
+    const mobileWave = document.querySelector('.wave-mobile-container');
+    if (mobileWave && mobileWave.getBoundingClientRect().top < window.innerHeight * 0.8) {
+      mobilePoints.forEach(p => p.classList.remove('highlight'));
+      mobileCards.forEach(card => card.classList.remove('active'));
+      
+      const currentPoint = document.querySelector(`.mobile-point[data-stage="${mobileStage}"]`);
+      const currentCard = document.querySelector(`.mobile-stage-card[data-stage="${mobileStage}"]`);
+      
+      if (currentPoint && currentCard) {
+        currentPoint.classList.add('highlight');
+        currentCard.classList.add('active');
+      }
+      
+      mobileStage = mobileStage >= 5 ? 1 : mobileStage + 1;
+    }
+  }, 3000);
+}
+
+// Инициализация после загрузки DOM
+document.addEventListener('DOMContentLoaded', function() {
+  initWaveCycle();
+});
+
+// Функция для кнопки CTA
+function scrollToApply() {
+  const applySection = document.getElementById('apply');
+  if (applySection) {
+    applySection.scrollIntoView({ 
+      behavior: 'smooth' 
     });
   }
+}
+</script>
+
+<section id="target-audience" aria-labelledby="target-audience-title" class="py-24 relative overflow-hidden bg-gradient-to-br from-gray-900/60 via-gray-800/40 to-cyan-900/20">
+  <h2 id="target-audience-title" class="sr-only">Найдите свой путь в ReFork Capital</h2>
+  
+  <!-- Animated Gradient Blobs -->
+  <div class="absolute inset-0 opacity-15">
+    <div class="absolute top-10 left-10 w-64 h-64 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
+    <div class="absolute bottom-10 right-10 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" style="animation-delay: 2s"></div>
+    <div class="absolute top-1/2 left-1/2 w-80 h-80 bg-green-500 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" style="animation-delay: 1s"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-4 relative z-10">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-black mb-6 bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 text-transparent bg-clip-text bg-size-200 animate-gradient">
+        Найдите свой путь в ReFork Capital
+      </h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 mx-auto mb-6"></div>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+        Три типа участников, три уровня вовлеченности. Выберите стратегию, которая соответствует вашим целям и возможностям.
+      </p>
+    </div>
+  </div>
+</section>
+
+    <!-- Audience Cards -->
+<div class="grid md:grid-cols-3 gap-8 mb-20">
+  <!-- Investor -->
+  <div class="relative" data-aos="fade-up" data-aos-delay="100">
+    <!-- Верхняя градиентная линия -->
+    <div class="absolute -top-0.5 left-1/2 -translate-x-1/2 h-0.5 w-4/5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent rounded-full shadow-lg shadow-cyan-400/20 z-30"></div>
+    
+    <div class="glow-card p-8 hover:scale-105 transition-all duration-300 group relative bg-gray-900 border-0">
+      <div class="text-5xl mb-6 text-center">💼</div>
+      <h3 class="text-2xl font-bold text-cyan-400 mb-4 text-center group-hover:text-white transition-colors">Инвестор</h3>
+
+      <ul class="space-y-3 mb-6 text-gray-300 text-sm leading-relaxed">
+        <li class="flex gap-3"><span class="text-green-400">✓</span> Пассивный доход от криптовалют без активного трейдинга</li>
+        <li class="flex gap-3"><span class="text-green-400">✓</span> Готовы инвестировать от $300 до $1000 в проверенную систему</li>
+        <li class="flex gap-3"><span class="text-green-400">✓</span> Хотите диверсифицировать портфель крипто активами</li>
+      </ul>
+
+      <div class="border-t border-white/10 pt-6 mt-6">
+        <h4 class="font-bold text-cyan-400 mb-3">Что вы получаете:</h4>
+        <ul class="space-y-2 text-gray-300 text-sm">
+          <li>• Доля от прибыли фонда (до 80% ROI/цикл)</li>
+          <li>• Ежемесячные отчеты с детальной аналитикой</li>
+          <li>• Доступ к закрытому чату инвесторов</li>
+          <li>• Возможность реинвестирования с бонусами</li>
+        </ul>
+      </div>
+
+      <a href="#packages" class="block mt-8 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold py-3 px-6 rounded-xl text-center hover:scale-105 transition-transform shadow-lg shadow-cyan-500/25">
+        Выбрать сумму инвестиций
+      </a>
+    </div>
+    
+    <!-- Нижняя градиентная линия -->
+    <div class="absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-0.5 w-4/5 bg-gradient-to-r from-transparent via-green-400 to-transparent rounded-full shadow-lg shadow-green-400/20 z-30"></div>
+  </div>
+
+  <!-- Strategic Partner -->
+  <div class="relative transform scale-105" data-aos="fade-up" data-aos-delay="200">
+    <!-- Верхняя градиентная линия -->
+    <div class="absolute -top-0.5 left-1/2 -translate-x-1/2 h-0.5 w-4/5 bg-gradient-to-r from-transparent via-purple-400 to-transparent rounded-full shadow-lg shadow-purple-400/20 z-30"></div>
+    
+    <div class="glow-card p-8 hover:scale-105 transition-all duration-300 group relative bg-gray-900 border-0 border-purple-500/50">
+      <div class="text-5xl mb-6 text-center">🤝</div>
+      <h3 class="text-2xl font-bold text-purple-400 mb-4 text-center group-hover:text-white transition-colors">Стратегический партнёр</h3>
+
+      <ul class="space-y-3 mb-6 text-gray-300 text-sm leading-relaxed">
+        <li class="flex gap-3"><span class="text-green-400">✓</span> Есть экспертиза в SMM, дизайне или крипто-аналитике</li>
+        <li class="flex gap-3"><span class="text-green-400">✓</span> Хотите активно участвовать в проектах + получать % от прибыли</li>
+        <li class="flex gap-3"><span class="text-green-400">✓</span> Готовы обменять навыки на долю в проектах</li>
+      </ul>
+
+      <div class="border-t border-white/10 pt-6 mt-6">
+        <h4 class="font-bold text-purple-400 mb-3">Что вы получаете:</h4>
+        <ul class="space-y-2 text-gray-300 text-sm">
+          <li>• Revenue share (5–15% от прибыли проекта)</li>
+          <li>• Ранний доступ к токенам до публичного листинга</li>
+          <li>• Совместное принятие стратегических решений</li>
+          <li>• Нетворкинг с топ-игроками криптоиндустрии</li>
+        </ul>
+      </div>
+
+      <a href="#apply" class="block mt-8 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold py-3 px-6 rounded-xl text-center hover:scale-105 transition-transform shadow-lg shadow-purple-500/25">
+        Стать стратегическим партнёром
+      </a>
+    </div>
+    
+    <!-- Нижняя градиентная линия -->
+    <div class="absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-0.5 w-4/5 bg-gradient-to-r from-transparent via-pink-400 to-transparent rounded-full shadow-lg shadow-pink-400/20 z-30"></div>
+  </div>
+
+  <!-- VIP Investor -->
+  <div class="relative" data-aos="fade-up" data-aos-delay="300">
+    <!-- Верхняя градиентная линия -->
+    <div class="absolute -top-0.5 left-1/2 -translate-x-1/2 h-0.5 w-4/5 bg-gradient-to-r from-transparent via-yellow-400 to-transparent rounded-full shadow-lg shadow-yellow-400/20 z-30"></div>
+    
+    <div class="glow-card p-8 hover:scale-105 transition-all duration-300 group relative bg-gray-900 border-0">
+      <div class="text-5xl mb-6 text-center">👑</div>
+      <h3 class="text-2xl font-bold text-yellow-400 mb-4 text-center group-hover:text-white transition-colors">VIP Инвестор</h3>
+
+      <ul class="space-y-3 mb-6 text-gray-300 text-sm leading-relaxed">
+        <li class="flex gap-3"><span class="text-green-400">✓</span> Готовы инвестировать от $5,000+ в перспективные проекты</li>
+        <li class="flex gap-3"><span class="text-green-400">✓</span> Хотите эксклюзивный доступ к pre-ICO и private rounds</li>
+        <li class="flex gap-3"><span class="text-green-400">✓</span> Ищете high-risk/high-reward возможности с потенциалом 100x</li>
+      </ul>
+
+      <div class="border-t border-white/10 pt-6 mt-6">
+        <h4 class="font-bold text-yellow-400 mb-3">Что вы получаете:</h4>
+        <ul class="space-y-2 text-gray-300 text-sm">
+          <li>• Приоритетный доступ к закрытым раундам инвестиций</li>
+          <li>• Персональный менеджер и еженедельные созвоны</li>
+          <li>• Custom deal flow под ваш риск-профиль</li>
+          <li>• Участие в governance и стратегических решениях</li>
+        </ul>
+      </div>
+
+      <a href="#apply" class="block mt-8 bg-gradient-to-r from-yellow-500 to-orange-600 text-black font-bold py-3 px-6 rounded-xl text-center hover:scale-105 transition-transform shadow-lg shadow-yellow-500/25">
+        Обсудить VIP-условия
+      </a>
+    </div>
+    
+    <!-- Нижняя градиентная линия -->
+    <div class="absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-0.5 w-4/5 bg-gradient-to-r from-transparent via-orange-400 to-transparent rounded-full shadow-lg shadow-orange-400/20 z-30"></div>
+  </div>
+</div>
+
+
+
+<style>
+/* Main Watermark Styles - теперь на переднем плане */
+.wm-text-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(4rem, 15vw, 12rem);
+  font-weight: 900;
+  letter-spacing: -0.035em;
+  background: linear-gradient(90deg, #14F195, #9945FF, #00C2FF, #14F195);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  user-select: none;
+  pointer-events: none;
+  text-shadow: 0 0 10px rgba(20,241,149,.12), 0 0 22px rgba(0,194,255,.10);
+  animation: wm-shine 9s linear infinite, wm-glow 4.5s ease-in-out infinite alternate;
+  margin-bottom: -2rem;
+  opacity: 0.8;
+}
+
+@keyframes wm-shine {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+@keyframes wm-glow {
+  from { 
+    text-shadow: 0 0 6px rgba(20,241,149,.10), 0 0 12px rgba(0,194,255,.10);
+  }
+  to { 
+    text-shadow: 0 0 18px rgba(20,241,149,.28), 0 0 34px rgba(0,194,255,.24);
+  }
+}
+
+/* Glow effect for the main button */
+.btn-glow {
+  position: relative;
+  animation: pulse-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 5px rgba(34, 197, 94, 0.4), 0 0 10px rgba(34, 197, 94, 0.3), 0 0 15px rgba(34, 197, 94, 0.2), 0 0 20px rgba(34, 197, 94, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.6), 0 0 20px rgba(34, 197, 94, 0.4), 0 0 30px rgba(34, 197, 94, 0.3), 0 0 40px rgba(34, 197, 94, 0.2);
+  }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  #tokenized-stocks-cta .grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .wm-text-main {
+    font-size: clamp(3rem, 12vw, 8rem);
+    margin-bottom: -1rem;
+    opacity: 0.7;
+  }
+}
+</style>
+
+<script>
+function scrollToFAQ() {
+  document.getElementById('faq').scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+
+    <!-- CTA Section -->
+    <div class="text-center">
+      <div class="glow-card p-8 max-w-2xl mx-auto border border-cyan-500/30 mb-8">
+        <h3 class="text-2xl font-bold text-cyan-400 mb-4">Не уверены, что подходит вам?</h3>
+        <p class="text-gray-300 mb-6 leading-relaxed">
+          Получите бесплатную консультацию и персональные рекомендации от нашего эксперта. 
+          Мы поможем выбрать оптимальный путь для достижения ваших целей.
+        </p>
+        <a href="https://t.me/c/1892588438/4"
+           target="_blank"
+           class="inline-block bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-bold px-8 py-4 rounded-xl hover:scale-105 transition-transform shadow-lg shadow-cyan-500/25">
+           📞 Получить консультацию
+        </a>
+      </div>
+	  <div class="mt-4 text-center">
+          <p class="text-sm text-yellow-400 animate-pulse">
+            ⏳ Ограниченное количество мест в каждом сегменте
+          </p>
+        </div>
+      <p class="text-gray-400 text-sm max-w-2xl mx-auto">
+        Каждый тип участия проходит тщательный отбор. Мы сотрудничаем только с теми, кто разделяет наши ценности и готов к взаимному росту.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+.bg-size-200 { background-size: 200% 200%; }
+.animate-gradient { animation: gradient-shift 4s ease infinite; }
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+</style>
+
+
+    <section id="packages" class="py-20">
+      <div class="max-w-6xl mx-auto px-4 text-center">
+        <h2 class="text-3xl font-extrabold mb-4 bg-gradient-to-r from-purple-500 to-cyan-400 text-transparent bg-clip-text">Инвестиционные уровни</h2>
+        <p class="text-gray-400 mb-10">Выберите уровень участия — от безопасного старта до закрытого круга ReFork Capital.</p>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="glow-card card-glow p-6">
+            <h3 class="text-xl font-bold mb-2">Lite </p> Базовый вход</h3>
+            <p class="text-3xl font-extrabold mb-4">$300</p>
+            <ul class="text-gray-300 text-sm space-y-2 mb-6">
+              <li>Прибыль к телу: <strong>20-50% за успешный цикл</strong></li>
+              <li>Минимально для эффективного управления</li>
+              <li>Установка и настройка кошелька</li>
+			  <li>Бонус Акции Apple на блокчейне</li>
+            </ul>
+            <a href="#apply" class="bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-4 py-2 rounded-lg inline-block">Войти в цикл</a>
+          </div>
+
+          <div class="glow-card card-glow p-6">
+            <h3 class="text-xl font-bold mb-2">Pro </p> Увеличенный вход</h3>
+            <p class="text-3xl font-extrabold mb-4">$700</p>
+            <ul class="text-gray-300 text-sm space-y-2 mb-6">
+              <li>Прибыль к телу: <strong>25-60% за успешный цикл</strong></li>
+              <li>Оптимальное для стабильного роста</li>
+              <li>Сборка портфеля с перспективными койнами</li>
+              <li>Бонус Акции Tesla на блокчейне</li>
+            </ul>
+            <a href="#apply" class="bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-4 py-2 rounded-lg inline-block">Сделать Взнос </a>
+          </div>
+
+          <div class="glow-card card-glow p-6">
+            <h3 class="text-xl font-bold mb-2">Prime </p> Премиум вход</h3>
+            <p class="text-3xl font-extrabold mb-4">$1200</p>
+            <ul class="text-gray-300 text-sm space-y-2 mb-6">
+              <li>Прибыль к телу: <strong>30-80% за успешный цикл</strong></li>
+              <li>Максимальная отдача от инвестиций</li>
+              <li>Премиум-подборка токенов и ранние входы</li>
+              <li>Бонус Акции NVIDIA на блокчейне</li>
+            </ul>
+            <a href="#apply" class="bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-4 py-2 rounded-lg inline-block">Приоритетный вход</a>
+          </div>
+        </div>
+
+        <p class="text-xs text-yellow-500 mt-9">Дисклеймер: не является инвестрекомендацией. Прибыльность: 6 из 25 циклов. Средний убыток: -25%. Средняя прибыль: +80%</p>
+      </div>
+    </section>
+
+    <section id="team" class="py-20 text-center">
+      <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-3xl font-extrabold mb-6 three-color-gradient-3">
+  Команда ReFork Capital
+</h2>
+        <p class="text-gray-300 max-w-3xl mx-auto mb-10">
+          Команда ReFork Capital — это сочетание маркетологов, разработчиков и AI-специалистов, которые умеют запускать, раскручивать и монетизировать крипто-модели. Мы превращаем идею в ROI.
+        </p>
+
+        <div class="grid md:grid-cols-3 gap-8 text-left">
+          <div class="glow-card p-6">
+            <h3 class="text-xl font-bold mb-2 text-cyan-400">Lucas M.</h3>
+            <p class="text-sm text-gray-300">Лидер проекта. Разработка стратегий, координация запусков, управление капиталом и коммуникации с инвесторами.</p>
+          </div>
+          <div class="glow-card p-6">
+            <h3 class="text-xl font-bold mb-2 text-cyan-400">Growth & Marketing</h3>
+            <p class="text-sm text-gray-300">Продвижение, контент, community-менеджмент, рейды и создание вирусного охвата.</p>
+          </div>
+          <div class="glow-card p-6">
+            <h3 class="text-xl font-bold mb-2 text-cyan-400">Tech & AI</h3>
+            <p class="text-sm text-gray-300">Технический аудит токенов, аналитика, AI-инструменты и автоматизация маркетинга.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+	
+	<!-- Перед FAQ -->
+<section id="real-risks" class="py-24 bg-gradient-to-b from-black to-red-900/20">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-4 bg-gradient-to-r from-red-500 to-orange-400 text-transparent bg-clip-text">
+        ⚠️ Реальные Риски (Читать Обязательно)
+      </h2>
+      <p class="text-gray-300 text-lg max-w-2xl mx-auto">
+        Криптоинвестиции — это высокорисковые активы. Вы можете потерять все свои деньги.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="glow-card card-glow p-6 border border-red-500/30">
+        <h3 class="text-xl font-bold text-red-400 mb-4">🔴 Риски для Капитала</h3>
+        <ul class="space-y-3 text-gray-300">
+          <li class="flex items-start gap-3">
+            <span class="text-red-400 mt-1">•</span>
+            <span><strong>Полная потеря капитала</strong>: 25% наших циклов убыточны или breakeven</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-red-400 mt-1">•</span>
+            <span><strong>Волатильность</strong>: Мемкоины могут упасть на 90% за несколько часов</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-red-400 mt-1">•</span>
+            <span><strong>Rug pulls</strong>: Даже с аудитом есть риск скама разработчиков</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-red-400 mt-1">•</span>
+            <span><strong>Ликвидность</strong>: Не всегда можно выйти по нужной цене</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="glow-card card-glow p-6 border border-orange-500/30">
+        <h3 class="text-xl font-bold text-orange-400 mb-4">🟡 Системные Риски</h3>
+        <ul class="space-y-3 text-gray-300">
+          <li class="flex items-start gap-3">
+            <span class="text-orange-400 mt-1">•</span>
+            <span><strong>Регуляторный риск</strong>: Крипта может быть запрещена в вашей юрисдикции</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-orange-400 mt-1">•</span>
+            <span><strong>Технические риски</strong>: Взломы бирж, сбои блокчейна, ошибки контрактов</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-orange-400 mt-1">•</span>
+            <span><strong>Рыночные риски</strong>: Обвал всего крипторынка (как в 2018, 2022)</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <span class="text-orange-400 mt-1">•</span>
+            <span><strong>Операционные риски</strong>: Ошибки исполнения, задержки ордеров</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 text-center">
+      <div class="bg-red-500/10 border border-red-500/30 rounded-2xl p-6 max-w-4xl mx-auto">
+        <h4 class="text-xl font-bold text-red-400 mb-4">💡 Важно Понимать</h4>
+        <p class="text-gray-300 mb-4">
+          <strong>Мы не гарантируем доходность.</strong> Исторические результаты не гарантируют будущих.
+          Криптоинвестиции — это высокорисковые активы, и вы можете потерять все свои деньги.
+        </p>
+        <p class="text-gray-300">
+          <strong>Инвестируйте ТОЛЬКО ту сумму, которую готовы потерять на 100%.</strong>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+	
+	<!-- Ответы на ключевые вопросы -->
+	
+<section id="faq" class="py-24 bg-gradient-to-b from-black to-purple-900/20">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-4 bg-gradient-to-r from-purple-500 to-cyan-400 text-transparent bg-clip-text">
+        Ответы на ключевые вопросы
+      </h2>
+      <p class="text-gray-300 text-lg max-w-2xl mx-auto">
+        Всё, что нужно знать перед началом инвестирования в ReFork Capital
+      </p>
+    </div>
+
+    <div class="space-y-4">
+      <!-- Question 1 - Самый важный -->
+      <details class="glow-card card-glow p-6 group" open>
+        <summary class="flex justify-between items-center cursor-pointer list-none">
+          <span class="text-xl font-bold text-cyan-400 group-open:text-white transition-colors">
+            ⚠️ Это инвестиционная рекомендация?
+          </span>
+          <span class="text-cyan-400 text-2xl transition-transform group-open:rotate-180">▼</span>
+        </summary>
+        <div class="mt-4 pt-4 border-t border-white/10">
+          <p class="text-gray-300 mb-3">
+            <strong>Нет.</strong> Мы — команда запуска и маркетинга крипто-проектов. 
+          </p>
+          <div class="p-3 bg-yellow-500/10 rounded-lg border border-yellow-500/20">
+            <p class="text-sm text-yellow-300">
+              <strong>Важно:</strong> Все риски остаются на стороне инвестора. Мы делимся своим опытом и методами, 
+              но не гарантируем доходность и не даём финансовых советов.
+            </p>
+          </div>
+        </div>
+      </details>
+	  
+<!-- Дополнительные FAQ карточки в едином стиле -->
+<details class="glow-card card-glow p-6 group">
+  <summary class="flex justify-between items-center cursor-pointer list-none">
+    <span class="text-xl font-bold text-cyan-400 group-open:text-white transition-colors">
+      💸 Как вы зарабатываете?
+    </span>
+    <span class="text-cyan-400 text-2xl transition-transform group-open:rotate-180">▼</span>
+  </summary>
+  <div class="mt-4 pt-4 border-t border-white/10">
+    <p class="text-gray-300 mb-3 leading-relaxed">
+      ReFork Capital получает прибыль наравне с участниками каждого цикла.
+      Модель основана на <span class="text-teal-400 font-semibold">доле результата</span> — без комиссий и фиксированных сборов.
+      Команда зарабатывает только после успешного выхода, что полностью синхронизирует интересы с участниками.
+    </p>
+    <div class="p-3 bg-cyan-500/10 rounded-lg border border-cyan-500/20">
+      <p class="text-sm text-cyan-300">
+        💡 <strong>Принцип:</strong> если цикл прибыльный — выигрывают все. Если нет — никто не получает бонусов.
+      </p>
+    </div>
+  </div>
+</details>
+
+<details class="glow-card card-glow p-6 group">
+  <summary class="flex justify-between items-center cursor-pointer list-none">
+    <span class="text-xl font-bold text-cyan-400 group-open:text-white transition-colors">
+      🧠 Почему именно мем-токены?
+    </span>
+    <span class="text-cyan-400 text-2xl transition-transform group-open:rotate-180">▼</span>
+  </summary>
+  <div class="mt-4 pt-4 border-t border-white/10">
+    <p class="text-gray-300 mb-3 leading-relaxed">
+      Мем-токены — это <span class="text-emerald-400 font-semibold">рынок внимания</span>, где эмоции и вовлечённость управляют ликвидностью.
+      Они объединяют маркетинг, AI и блокчейн, превращая социальную энергию в рост капитала.
+    </p>
+    <div class="p-3 bg-emerald-500/10 rounded-lg border border-emerald-500/20">
+      <p class="text-sm text-emerald-300">
+        🚀 <strong>Суть:</strong> мемы — это самый быcтрый способ создать волну интереса и капитализировать её в цифровую ценность.
+      </p>
+    </div>
+  </div>
+</details>
+
+
+	  
+	  <details class="glow-card card-glow p-6 group">
+  <summary class="flex justify-between items-center cursor-pointer list-none">
+    <span class="text-xl font-bold text-cyan-400 group-open:text-white transition-colors">
+      🔄 Что такое "цикл" в ReFork Capital?
+    </span>
+    <span class="text-cyan-400 text-2xl transition-transform group-open:rotate-180">▼</span>
+  </summary>
+  <div class="mt-4 pt-4 border-t border-white/10">
+    <p class="text-gray-300 mb-4">
+      <strong>Цикл</strong> — это полный процесс работы с одним мем-токеном от поиска до фиксации прибыли.
+    </p>
+    
+    <div class="grid md:grid-cols-5 gap-3 mb-4 text-center">
+      <div class="p-2 bg-cyan-500/10 rounded-lg">
+        <div class="text-lg">🔍</div>
+        <div class="text-xs text-cyan-400 font-bold">День 1-3</div>
+        <div class="text-xs text-gray-400">Поиск & Анализ</div>
+      </div>
+      <div class="p-2 bg-purple-500/10 rounded-lg">
+        <div class="text-lg">💎</div>
+        <div class="text-xs text-purple-400 font-bold">День 3-5</div>
+        <div class="text-xs text-gray-400">Накопление</div>
+      </div>
+      <div class="p-2 bg-blue-500/10 rounded-lg">
+        <div class="text-lg">🚀</div>
+        <div class="text-xs text-blue-400 font-bold">День 5-12</div>
+        <div class="text-xs text-gray-400">SMM-Разогрев</div>
+      </div>
+      <div class="p-2 bg-green-500/10 rounded-lg">
+        <div class="text-lg">📈</div>
+        <div class="text-xs text-green-400 font-bold">День 12-18</div>
+        <div class="text-xs text-gray-400">Рост & FOMO</div>
+      </div>
+      <div class="p-2 bg-yellow-500/10 rounded-lg">
+        <div class="text-lg">💰</div>
+        <div class="text-xs text-yellow-400 font-bold">День 18-21</div>
+        <div class="text-xs text-gray-400">Фиксация</div>
+      </div>
+    </div>
+
+    <div class="space-y-3 text-sm text-gray-300">
+      <p><strong>📅 Длительность:</strong> 14-21 день (в среднем)</p>
+      <p><strong>🎯 Цель:</strong> Умножить капитал на 20-80% за успешный цикл</p>
+      <p><strong>⚠️ Риски:</strong> ~25% циклов могут быть убыточными или breakeven</p>
+    </div>
+
+    <div class="mt-4 p-3 bg-cyan-500/10 rounded-lg">
+      <p class="text-sm text-cyan-300">
+        <strong>💡 Аналогия:</strong> Цикл похож на посев и сбор урожая. 
+        Мы сажаем семена (инвестируем), ухаживаем (SMM), собираем урожай (фиксируем прибыль) 
+        и готовим новое поле (следующий цикл).
+      </p>
+    </div>
+  </div>
+</details>
+
+      <!-- Question 2 -->
+<details class="glow-card card-glow p-6 group">
+  <summary class="flex justify-between items-center cursor-pointer list-none">
+    <span class="text-xl font-bold text-cyan-400 group-open:text-white transition-colors">
+      💰 Как я получаю прибыль?
+    </span>
+    <span class="text-cyan-400 text-2xl transition-transform group-open:rotate-180">▼</span>
+  </summary>
+  <div class="mt-4 pt-4 border-t border-white/10">
+    <p class="text-gray-300 mb-3">
+      Прибыль формируется за счёт роста стоимости токенов в рамках нашей стратегии:
+    </p>
+    <ul class="text-gray-300 space-y-2 text-sm">
+      <li class="flex items-start gap-2">
+        <span class="text-green-400 mt-1">•</span>
+        <span>Покупаем токены на этапе "забвения" (-80-90% от пика)</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="text-green-400 mt-1">•</span>
+        <span>Запускаем SMM-кампании и создаём виральный охват</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="text-green-400 mt-1">•</span>
+        <span>Фиксируем прибыль на пике FOMO-волны</span>
+      </li>
+      <li class="flex items-start gap-2">
+        <span class="text-green-400 mt-1">•</span>
+        <span>Реинвестируем часть прибыли в следующие циклы</span>
+      </li>
+    </ul>
+    <div class="mt-3 p-3 bg-cyan-500/10 rounded-lg">
+      <p class="text-sm text-cyan-300">
+        <strong>Выплаты:</strong> Ежемесячно 1-го числа. Минимальный вывод — $50.
+      </p>
+    </div>
+    <!-- Добавленный пример -->
+    <div class="mt-3 p-3 bg-green-500/10 rounded-lg border border-green-500/20">
+      <p class="text-sm text-green-300">
+        <strong>Пример:</strong> Инвестиция $500 → SMM-разогрев → Рост цены 200% → Фиксация прибыли $1500 
+      </p>
+    </div>
+  </div>
+</details>
+
+
+      <!-- Question 3 -->
+      <details class="glow-card card-glow p-6 group">
+        <summary class="flex justify-between items-center cursor-pointer list-none">
+          <span class="text-xl font-bold text-cyan-400 group-open:text-white transition-colors">
+            ⏱️ Как быстро можно выйти из инвестиций?
+          </span>
+          <span class="text-cyan-400 text-2xl transition-transform group-open:rotate-180">▼</span>
+        </summary>
+        <div class="mt-4 pt-4 border-t border-white/10">
+          <div class="space-y-3">
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 bg-green-500/20 rounded-full flex items-center justify-center text-green-400 text-sm font-bold flex-shrink-0">✓</div>
+              <div>
+                <h5 class="font-bold text-white mb-1">По завершении цикла</h5>
+                <p class="text-gray-300 text-sm">Стандартный выход после фиксации ROI (14-21 день)</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 bg-yellow-500/20 rounded-full flex items-center justify-center text-yellow-400 text-sm font-bold flex-shrink-0">!</div>
+              <div>
+                <h5 class="font-bold text-white mb-1">Досрочный выход</h5>
+                <p class="text-gray-300 text-sm">Возможен с комиссией 10% от суммы вывода</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-6 h-6 bg-purple-500/20 rounded-full flex items-center justify-center text-purple-400 text-sm font-bold flex-shrink-0">♻</div>
+              <div>
+                <h5 class="font-bold text-white mb-1">Реинвестирование</h5>
+                <p class="text-gray-300 text-sm">При реинвесте получаете +5% к доле в следующем цикле</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- Question 4 -->
+      <details class="glow-card card-glow p-6 group">
+        <summary class="flex justify-between items-center cursor-pointer list-none">
+          <span class="text-xl font-bold text-cyan-400 group-open:text-white transition-colors">
+            🎯 Как начать инвестировать?
+          </span>
+          <span class="text-cyan-400 text-2xl transition-transform group-open:rotate-180">▼</span>
+        </summary>
+        <div class="mt-4 pt-4 border-t border-white/10">
+          <div class="grid md:grid-cols-4 gap-4 text-center mb-4">
+            <div class="glow-card p-3">
+              <div class="text-cyan-400 text-lg font-bold mb-1">1</div>
+              <div class="text-gray-300 text-xs">Выберите Взнос</div>
+            </div>
+            <div class="glow-card p-3">
+              <div class="text-cyan-400 text-lg font-bold mb-1">2</div>
+              <div class="text-gray-300 text-xs">Заполните заявку</div>
+            </div>
+            <div class="glow-card p-3">
+              <div class="text-cyan-400 text-lg font-bold mb-1">3</div>
+              <div class="text-gray-300 text-xs">Внесите депозит</div>
+            </div>
+            <div class="glow-card p-3">
+              <div class="text-cyan-400 text-lg font-bold mb-1">4</div>
+              <div class="text-gray-300 text-xs">Получайте прибыль</div>
+            </div>
+          </div>
+          <p class="text-gray-300 text-sm">
+            Минимальная сумма: <span class="text-cyan-400 font-bold">$300</span> (Lite уровень). 
+            Максимальная не ограничена для VIP инвесторов.
+          </p>
+        </div>
+      </details>
+
+      <!-- Question 5 -->
+      <details class="glow-card card-glow p-6 group">
+        <summary class="flex justify-between items-center cursor-pointer list-none">
+          <span class="text-xl font-bold text-cyan-400 group-open:text-white transition-colors">
+            🔒 Насколько это безопасно?
+          </span>
+          <span class="text-cyan-400 text-2xl transition-transform group-open:rotate-180">▼</span>
+        </summary>
+        <div class="mt-4 pt-4 border-t border-white/10">
+          <p class="text-gray-300 mb-3">
+            Мы используем многоуровневую систему управления рисками:
+          </p>
+          <ul class="text-gray-300 space-y-2 text-sm">
+            <li class="flex items-start gap-2">
+              <span class="text-green-400 mt-1">✓</span>
+              <span><strong>Диверсификация</strong> — работа с 5-7 проектами одновременно</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-green-400 mt-1">✓</span>
+              <span><strong>Smart Contract аудит</strong> — проверка каждого токена</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-green-400 mt-1">✓</span>
+              <span><strong>Стоп-лосс стратегия</strong> — ограничение максимальных убытков</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-green-400 mt-1">✓</span>
+              <span><strong>Прозрачность</strong> — еженедельные отчеты о портфеле</span>
+            </li>
+          </ul>
+          <div class="mt-3 p-3 bg-red-500/10 rounded-lg border border-red-500/20">
+            <p class="text-sm text-red-300">
+              <strong>Помните:</strong> Криптоинвестиции — это высокорисковые активы. Инвестируйте только те средства, которые готовы потерять.
+            </p>
+          </div>
+        </div>
+      </details>
+
+      <!-- Question 6 -->
+      <details class="glow-card card-glow p-6 group">
+        <summary class="flex justify-between items-center cursor-pointer list-none">
+          <span class="text-xl font-bold text-cyan-400 group-open:text-white transition-colors">
+            📊 Как отслеживать мои инвестиции?
+          </span>
+          <span class="text-cyan-400 text-2xl transition-transform group-open:rotate-180">▼</span>
+        </summary>
+        <div class="mt-4 pt-4 border-t border-white/10">
+          <div class="space-y-3">
+            <div class="flex items-center gap-3">
+              <span class="text-2xl">📈</span>
+              <div>
+                <h5 class="font-bold text-white">Еженедельные отчеты</h5>
+                <p class="text-gray-300 text-sm">Детальная аналитика по каждому циклу</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-2xl">💬</span>
+              <div>
+                <h5 class="font-bold text-white">Закрытый чат инвесторов</h5>
+                <p class="text-gray-300 text-sm">Обсуждения и обновления в реальном времени</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="text-2xl">📱</span>
+              <div>
+                <h5 class="font-bold text-white">Персональный общение</h5>
+                <p class="text-gray-300 text-sm">Для Pro и Prime уровней</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+    </div>
+
+<style>
+/* Анимации для аккордеона */
+details[open] summary ~ * {
+  animation: sweep 0.3s ease-in-out;
+}
+
+@keyframes sweep {
+  0% { opacity: 0; transform: translateY(-10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Убираем стандартный маркер */
+summary::marker, summary::-webkit-details-marker {
+  display: none;
+}
+</style>
+
+
+<!-- CTA + Форма -->
+<section id="apply" class="py-24 text-center relative">
+  <div class="max-w-3xl mx-auto px-6">
+
+    <!-- 1️⃣ Первый call-to-action -->
+    <h2 class="text-4xl font-extrabold mb-4 bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 text-transparent bg-clip-text">
+      Готовы запустить свой цикл?
+    </h2>
+    <p class="text-gray-300 mb-8">
+      Получите персональную консультацию и ответы на все вопросы за 15 минут
+    </p>
+
+    <div class="mb-16">
+      <a href="https://t.me/c/1892588438/4" 
+         target="_blank"
+         class="inline-block bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-10 py-4 rounded-xl shadow-lg hover:scale-105 transition-all duration-300">
+        💬 Открыть Telegram
+      </a>
+    </div>
+
+    <!-- 2️⃣ Второй call-to-action перед формой -->
+    <h3 class="text-2xl font-bold mb-3 text-cyan-400">
+      Или воспользуйтесь формой
+    </h3>
+    <p class="text-gray-400 mb-10">
+      Мы свяжемся с вами, чтобы уточнить детали и запустить процесс ReFork Capital.
+    </p>
+
+    <!-- 3️⃣ Форма -->
+    <form id="leadForm"
+          method="POST"
+          class="p-8 text-left space-y-6 border border-white/10 rounded-2xl bg-white/5 shadow-[0_0_40px_rgba(0,255,255,0.08)] backdrop-blur-sm">
+
+      <input type="text" name="website" style="display:none" autocomplete="off" tabindex="-1" />
+      <input type="hidden" name="lang" value="ru">
+      <input type="hidden" name="source" value="ReFork Capital">
+
+      <div>
+        <label class="block text-sm text-gray-400 mb-1" for="name">Ваше имя *</label>
+        <input type="text" id="name" name="name" required
+               minlength="2" maxlength="100"
+               class="w-full bg-gray-900 border border-white/20 rounded-lg px-4 py-2 focus:border-cyan-400 focus:outline-none text-gray-100 placeholder-gray-500"
+               placeholder="Иван Иванов">
+      </div>
+
+      <div>
+        <label class="block text-sm text-gray-400 mb-1" for="telegram">Telegram *</label>
+        <input type="text" id="telegram" name="telegram" required
+               pattern="^@[A-Za-z0-9_]{5,32}$"
+               title="Введите корректный логин Telegram в формате @username"
+               class="w-full bg-gray-900 border border-white/20 rounded-lg px-4 py-2 focus:border-cyan-400 focus:outline-none text-gray-100 placeholder-gray-500"
+               placeholder="@username">
+        <p class="text-xs text-gray-500 mt-1">Укажите ваш Telegram в формате @username</p>
+      </div>
+
+      <div>
+        <label class="block text-sm text-gray-400 mb-1" for="package">Выберите уровень *</label>
+        <select id="package" name="package" required
+                class="w-full bg-gray-900 border border-white/20 rounded-lg px-4 py-2 text-gray-100 focus:border-cyan-400 focus:outline-none cursor-pointer">
+          <option value="" disabled selected class="bg-gray-900 text-gray-400">Выберите сумму</option>
+          <option value="Lite — $300">Lite — $300</option>
+          <option value="Pro — $700">Pro — $700</option>
+          <option value="Prime — $1200">Prime — $1200</option>
+          <option value="Консультация">Только консультация</option>
+        </select>
+      </div>
+
+<div class="text-center pt-4">
+    <button type="submit" id="leadSubmit"
+        class="
+            bg-gradient-to-r from-teal-400 to-cyan-400 text-black 
+            font-bold 
+            px-8 py-4 rounded-xl 
+            hover:scale-105 transition-transform 
+            w-full md:w-auto 
+            inline-flex items-center justify-center
+        ">
+        <span class="button-text">Отправить</span>
+        <span class="loading-spinner-btn hidden"></span>
+    </button>
+</div>
+
+      <p class="text-xs text-gray-500 text-center pt-4">
+        🔒 Конфиденциальность гарантирована. Отправка заявки не накладывает обязательств.
+      </p>
+    </form>
+  </div>
+</section>
+
+
+
+  <footer class="py-10 text-center text-sm text-gray-500 border-t border-white/10">
+    <div class="space-y-1 mb-4">
+      <p class="font-bold">ДИСКЛЕЙМЕР</p>
+      <p>ReFork Capital не гарантирует доходность.</p>
+      <p>Наша деятельность основана на собственном опыте и системе, которые доказали эффективность на практике, но каждое решение — на вашей ответственности.</p> 
+	  <p>Мы создаём движение, а не обещания.</p>
+    </div>
+    <p>© 2025 ReFork Capital. Все права защищены.</p>
+</div>
+	
+  </footer>
+
+
+
+  <!-- НОВОЕ: Critical Utilities -->
+  <script>
+    // === УТИЛИТЫ БЕЗОПАСНОСТИ ===
+    const ReForkUtils = (() => {
+      // 1. Защита от спама
+      const formProtection = {
+        storage: window.localStorage,
+        key: 'rf_last_submit',
+        cooldown: 60000,
+        
+        canSubmit() {
+          const last = this.storage.getItem(this.key);
+          if (!last) return true;
+          return Date.now() - parseInt(last) > this.cooldown;
+        },
+        
+        recordSubmit() {
+          this.storage.setItem(this.key, Date.now().toString());
+        },
+        
+        getRemainingTime() {
+          const last = this.storage.getItem(this.key);
+          if (!last) return 0;
+          const elapsed = Date.now() - parseInt(last);
+          return Math.max(0, this.cooldown - elapsed);
+        }
+      };
+
+      // 2. Санитизация ввода
+      function sanitizeInput(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+      }
+
+      // 3. Улучшенная валидация
+      function validateFormData(formData) {
+        const validators = {
+          telegram: (val) => {
+            const pattern = /^@[A-Za-z0-9_]{5,32}$/;
+            const blocked = ['@admin', '@support', '@bot', '@test'];
+            return pattern.test(val) && !blocked.includes(val.toLowerCase());
+          },
+          name: (val) => {
+            const trimmed = val.trim();
+            return trimmed.length >= 2 && trimmed.length <= 100;
+          },
+        };
+        
+		
+		
+        for (let [field, validator] of Object.entries(validators)) {
+          const value = formData.get(field) || '';
+          if (!validator(value)) {
+            return { valid: false, field };
+          }
+        }
+        return { valid: true };
+      }
+
+      return { formProtection, sanitizeInput, validateFormData };
+    })();
+
+    // === ОСНОВНЫЕ ФУНКЦИИ ===
+    document.addEventListener('DOMContentLoaded', function() {
+      // Скрыть loading screen
+      setTimeout(() => {
+        const loadingScreen = document.getElementById('loadingScreen');
+        if (loadingScreen) {
+          loadingScreen.style.opacity = '0';
+          setTimeout(() => loadingScreen.remove(), 300);
+        }
+      }, 500);
+
+      // Mobile Menu
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileMenuClose = document.getElementById('mobile-menu-close');
+      
+      if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', function() {
+          mobileMenu.classList.toggle('hidden');
+          mobileMenuButton.setAttribute('aria-expanded', 
+            mobileMenu.classList.contains('hidden') ? 'false' : 'true');
+        });
+        
+        if (mobileMenuClose) {
+          mobileMenuClose.addEventListener('click', function() {
+            mobileMenu.classList.add('hidden');
+            mobileMenuButton.setAttribute('aria-expanded', 'false');
+          });
+        }
+        
+        // Закрытие при клике вне меню (с задержкой для предотвращения конфликта)
+setTimeout(() => {
+  document.addEventListener('click', (e) => {
+    const isMenuOpen = !mobileMenu.classList.contains('hidden');
+    if (isMenuOpen && !mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+      mobileMenu.classList.add('hidden');
+      mobileMenuButton.setAttribute('aria-expanded', 'false');
+    }
+  });
+}, 100);
+        
+        // Закрытие при клике на ссылки
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+          link.addEventListener('click', function() {
+            mobileMenu.classList.add('hidden');
+            mobileMenuButton.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+      
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+
+      // Progress bar
+      window.addEventListener('scroll', function() {
+        const winHeight = window.innerHeight;
+        const docHeight = document.documentElement.scrollHeight - winHeight;
+        const scrolled = (window.scrollY / docHeight) * 100;
+        document.getElementById('progress-bar').style.width = scrolled + '%';
+      });
+
+// Умный GMGN Promo Button
+let gmgnShowCount = 0;
+const MAX_SHOWS = 3; // Максимум 3 показа за сессию
+const SHOW_DURATION = 8000; // 8 секунд показа
+const SHOW_INTERVAL = 30000; // 30 секунд между показами
+
+function showGMGNPromo() {
+  const socialProof = document.getElementById('socialProof');
+  if (!socialProof || gmgnShowCount >= MAX_SHOWS) return;
+
+  gmgnShowCount++;
+  
+  // Показываем кнопку
+  socialProof.style.display = 'block';
+  setTimeout(() => {
+    socialProof.style.opacity = '1';
+    socialProof.style.transform = 'translateY(0)';
+  }, 10);
+
+  // Скрываем через SHOW_DURATION
+  const hideTimer = setTimeout(() => {
+    hideGMGNPromo();
+    
+    // Планируем следующий показ, если не достигли максимума
+    if (gmgnShowCount < MAX_SHOWS) {
+      setTimeout(showGMGNPromo, SHOW_INTERVAL);
+    }
+  }, SHOW_DURATION);
+
+  // Обработчики закрытия
+  const closeBtn = socialProof.querySelector('.gmgn-close');
+  const gmgnButton = socialProof.querySelector('.gmgn-button');
+  
+  function closeHandler() {
+    clearTimeout(hideTimer);
+    hideGMGNPromo();
+    gmgnShowCount = MAX_SHOWS; // Больше не показываем
+  }
+  
+  closeBtn.addEventListener('click', closeHandler);
+  
+  // При клике на кнопку GMGN тоже считаем за взаимодействие
+  gmgnButton.addEventListener('click', () => {
+    clearTimeout(hideTimer);
+    // Даем время на переход по ссылке перед скрытием
+    setTimeout(() => {
+      gmgnShowCount = MAX_SHOWS;
+    }, 1000);
+  });
+}
+
+function hideGMGNPromo() {
+  const socialProof = document.getElementById('socialProof');
+  if (!socialProof) return;
+  
+  socialProof.style.opacity = '0';
+  socialProof.style.transform = 'translateY(20px)';
+  setTimeout(() => {
+    socialProof.style.display = 'none';
+  }, 500);
+}
+
+// Запускаем первый показ через 3 секунды
+setTimeout(showGMGNPromo, 3000);
+
+// Exit Intent Popup - Tokenized Stocks Offer
+let exitIntentShown = false;
+let exitIntentTimer;
+
+function initExitIntent() {
+  let exitIntentTimeout;
+  
+  // Отслеживание ухода с сайта с debounce
+  document.addEventListener('mouseleave', (e) => {
+    if (e.clientY < 0 && !exitIntentShown) {
+      clearTimeout(exitIntentTimeout);
+      exitIntentTimeout = setTimeout(() => {
+        showExitPopup();
+      }, 300); // Задержка 300ms для предотвращения ложных срабатываний
+    }
+  });
+  
+  // Отмена при возврате курсора
+  document.addEventListener('mouseenter', () => {
+    clearTimeout(exitIntentTimeout);
+  });
+
+  // Дополнительный триггер - движение к верхнему краю
+  document.addEventListener('mousemove', (e) => {
+    if (e.clientY < 50 && !exitIntentShown) {
+      clearTimeout(exitIntentTimer);
+      exitIntentTimer = setTimeout(() => {
+        showExitPopup();
+      }, 1000);
+    }
+  });
+}
+
+function showExitPopup() {
+  if (localStorage.getItem('exitPopupShown') === 'true') return;
+  
+  const popup = document.createElement('div');
+  popup.className = 'exit-popup';
+  popup.innerHTML = `
+    <div class="exit-popup-content">
+      <button class="exit-popup-close" aria-label="Закрыть окно">×</button>
+      
+      <!-- Иконка -->
+      <div class="text-4xl mb-4">📈</div>
+      
+      <h3 class="text-2xl md:text-3xl font-bold mb-3 text-cyan-400">Инвестируйте уверенно!</h3>
+      <p class="text-lg md:text-xl mb-4 text-gray-300">
+        Покупайте крипто-акции Apple, Tesla, Netflix<br class="hidden md:block">
+        через токенизированные активы
+      </p>
+      
+      <div class="bg-gradient-to-r from-cyan-500/10 to-purple-500/10 p-4 rounded-lg mb-6 border border-cyan-500/20">
+        <p class="text-sm text-cyan-300 mb-2">🎯 Наша классическая умеренная стратегия</p>
+        <p class="text-xs text-gray-400">Идеально для консервативных инвесторов</p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <button id="exitPopupInvest" class="bg-gradient-to-r from-green-500 to-cyan-500 text-white font-bold px-6 py-3 rounded-lg hover:scale-105 transition-transform shadow-lg shadow-cyan-500/25">
+          🚀 Перейти к инвестициям
+        </button>
+        <button class="exit-popup-close border border-gray-500 text-gray-300 px-6 py-3 rounded-lg hover:bg-gray-800 hover:text-white transition-colors">
+          Закрыть
+        </button>
+      </div>
+      
+      <p class="text-xs text-gray-500 mt-4">
+        Низкие комиссии • Высокая ликвидность • Регулярные дивиденды
+      </p>
+    </div>
+  `;
+
+  // Обработчик для кнопки инвестирования
+  popup.querySelector('#exitPopupInvest').addEventListener('click', () => {
+    window.open('https://lucas555-ops.github.io/tokenized_stocks_etfs_hub/', '_blank');
+    popup.remove();
+    localStorage.setItem('exitPopupShown', 'true');
+  });
+
+  // Обработчик для кнопки закрытия
+  const closeButtons = popup.querySelectorAll('.exit-popup-close');
+  closeButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      popup.remove();
+      localStorage.setItem('exitPopupShown', 'true');
+    });
+  });
+
+  // Закрытие по клику на фон
+  popup.addEventListener('click', (e) => {
+    if (e.target === popup) {
+      popup.remove();
+      localStorage.setItem('exitPopupShown', 'true');
+    }
+  });
+
+  // Закрытие по Escape
+  const handleEscape = (e) => {
+    if (e.key === 'Escape') {
+      popup.remove();
+      document.removeEventListener('keydown', handleEscape);
+      localStorage.setItem('exitPopupShown', 'true');
+    }
+  };
+  document.addEventListener('keydown', handleEscape);
+
+  document.body.appendChild(popup);
+  exitIntentShown = true;
+  
+  // Автоматическое закрытие через 24 часа
+  setTimeout(() => {
+    localStorage.removeItem('exitPopupShown');
+  }, 24 * 60 * 60 * 1000);
+}
+
+// Инициализация при загрузке страницы
+document.addEventListener('DOMContentLoaded', function() {
+  // Ждем немного перед инициализацией exit intent
+  setTimeout(initExitIntent, 3000);
+});
+
+
+     // Форма - улучшенная обработка для Vercel
+// Форма - финальная версия для Vercel
+const form = document.getElementById('leadForm');
+const btn = document.getElementById('leadSubmit');
+
+if (form && btn) {
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    
+    // Проверка rate limit
+    if (!ReForkUtils.formProtection.canSubmit()) {
+      const remaining = Math.ceil(ReForkUtils.formProtection.getRemainingTime() / 1000);
+      showError(`⏳ Подождите ${remaining} секунд перед повторной отправкой`);
+      return;
+    }
+    
+    const formData = new FormData(form);
+    
+    // Honeypot check
+    if (formData.get('website')) {
+      return;
+    }
+    
+    // Валидация
+    const validation = ReForkUtils.validateFormData(formData);
+    if (!validation.valid) {
+      const messages = {
+        telegram: '❌ Telegram должен начинаться с @ (например: @username)',
+        name: '❌ Имя должно содержать от 2 до 100 символов',
+        package: '❌ Пожалуйста, выберите сумму'
+      };
+      showError(messages[validation.field] || '❌ Проверьте правильность заполнения формы');
+      return;
+    }
+    
+    btn.disabled = true;
+    const buttonText = btn.querySelector('.button-text');
+    const spinner = btn.querySelector('.loading-spinner-btn');
+    buttonText.textContent = "Отправка...";
+    spinner.classList.remove('hidden');
+
+    // ✅ VERCEL ENDPOINT
+    const API_URL = 'https://re-fork-capital.vercel.app/api/telegram';
+    
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 10000);
+
+    try {
+      const jsonData = {
+        name: formData.get('name'),
+        telegram: formData.get('telegram'),
+        package: formData.get('package'),
+        lang: 'ru',
+        source: 'ReFork Capital'
+      };
+
+      console.log('📤 Отправка данных в Vercel:', jsonData);
+
+      const res = await fetch(API_URL, { 
+        method: "POST", 
+        body: JSON.stringify(jsonData),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        mode: 'cors',
+        signal: controller.signal
+      });
+
+      clearTimeout(timeout);
+
+      const responseData = await res.json();
+      console.log('📥 Ответ от Vercel:', responseData);
+
+      if (res.ok && responseData.success) {
+        ReForkUtils.formProtection.recordSubmit();
+        showToast("✅ Спасибо! Сигнал отправлен. Мы свяжемся с вами в ближайшее время.");
+        
+        // Redirect через 2 секунды
+        setTimeout(() => {
+          window.location.href = "https://lucas555-ops.github.io/ReFork-Capital/thank-you.html";
+        }, 2000);
+        
+        form.reset();
+      } else {
+        const errorMsg = responseData.error || 'Неизвестная ошибка сервера';
+        console.error('Vercel API error:', errorMsg);
+        
+        // Показываем пользователю понятное сообщение
+        if (errorMsg.includes('BOT_TOKEN') || errorMsg.includes('CHAT_ID')) {
+          showError("❌ Сервер не настроен. Свяжитесь с нами в Telegram.");
+        } else if (errorMsg.includes('Telegram')) {
+          showError("❌ Ошибка отправки в Telegram. Попробуйте позже.");
+        } else {
+          showError(`❌ Ошибка отправки: ${errorMsg}`);
+        }
+      }
+    } catch (err) {
+  clearTimeout(timeout);
+  console.error('Ошибка при отправке:', err);
+  
+  // Специальная обработка CORS ошибок
+  if (err.message && err.message.includes('CORS')) {
+    showError("🔒 Ошибка безопасности. Попробуйте обновить страницу или свяжитесь с нами в Telegram.");
+    return;
+  }
+  
+  if (err.name === 'AbortError') {
+    showError("⏱️ Превышено время ожидания. Проверьте соединение и попробуйте снова.");
+      } else if (err.name === 'TypeError' && err.message.includes('fetch')) {
+        showError("⚠️ Ошибка сети. Проверьте интернет-соединение и попробуйте снова.");
+      } else {
+        showError("⚠️ Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже или свяжитесь с нами в Telegram.");
+      }
+    } finally {
+      btn.disabled = false;
+      buttonText.textContent = "Отправить";
+      spinner.classList.add('hidden');
+    }
+  });
+}
+
+      function showToast(msg) {
+  const el = document.createElement("div");
+  el.className = "success-toast";
+  el.textContent = msg;
+  el.setAttribute('role', 'status');
+  el.setAttribute('aria-live', 'polite');
+  document.body.appendChild(el);
+        setTimeout(() => {
+          el.style.transition = "opacity 0.3s";
+          el.style.opacity = "0";
+          setTimeout(() => el.remove(), 300);
+        }, 4000);
+      }
+
+      function showError(msg) {
+  const el = document.createElement("div");
+  el.className = "error-toast";
+  el.textContent = msg;
+  el.setAttribute('role', 'alert');
+  el.setAttribute('aria-live', 'assertive');
+  document.body.appendChild(el);
+        setTimeout(() => {
+          el.style.transition = "opacity 0.3s";
+          el.style.opacity = "0";
+          setTimeout(() => el.remove(), 300);
+        }, 5000);
+      }
+    });
+
+
+
+// Дебаунс для resize событий
+let resizeTimeout;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(() => {
+    // логика ресайза
+  }, 250);
+});
+
+ </script>
+ 
+ 
+
+  <!-- Structured Data для SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ReFork Capital",
+    "description": "Методы капитализации и умножения криптовалюты через организацию сетевого трафика и рыночного внимания",
+    "url": "https://lucas555-ops.github.io/ReFork-Capital/",
+    "logo": "https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/apple-touch-icon.png",
+    "sameAs": [
+      "https://t.me/c/1892588438/4"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Customer Service",
+      "availableLanguage": ["Russian", "English"]
+    }
+  }
+  </script>
+
+  <!-- НОВОЕ: Performance Monitoring -->
+  <script>
+    // Мониторинг производительности
+    window.addEventListener('load', () => {
+      if ('performance' in window) {
+        const perfData = performance.getEntriesByType('navigation')[0];
+        if (perfData) {
+          console.log('Page Load Time:', Math.round(perfData.loadEventEnd - perfData.fetchStart), 'ms');
+          
+          // Отправка метрик в Google Analytics (если настроен)
+          if (typeof gtag === 'function') {
+            gtag('event', 'timing_complete', {
+              'name': 'load',
+              'value': Math.round(perfData.loadEventEnd - perfData.fetchStart),
+              'event_category': 'Page Performance'
+            });
+          }
+        }
+      }
+    });
+
+    // Отслеживание кликов по CTA
+    document.addEventListener('click', (e) => {
+      const target = e.target.closest('a[href="#apply"], a[href="#packages"]');
+      if (target && typeof gtag === 'function') {
+        gtag('event', 'cta_click', {
+          'event_category': 'Engagement',
+          'event_label': target.textContent.trim()
+        });
+      }
+    });
+  </script>
+
+  <!-- НОВОЕ: Error Tracking -->
+  <script>
+    window.addEventListener('error', (e) => {
+      console.error('Global error:', e.message, e.filename, e.lineno);
+      
+      // Отправка в Google Analytics
+      if (typeof gtag === 'function') {
+        gtag('event', 'exception', {
+          'description': e.message,
+          'fatal': false
+        });
+      }
+    });
+
+    // Отслеживание отклоненных промисов
+    window.addEventListener('unhandledrejection', (e) => {
+      console.error('Unhandled promise rejection:', e.reason);
+      
+      if (typeof gtag === 'function') {
+        gtag('event', 'exception', {
+          'description': 'Promise rejection: ' + e.reason,
+          'fatal': false
+        });
+      }
+    });
+  </script>
+  
+  <script>
+  AOS.init();
+</script>
+
+<script>
+window.addEventListener('online', () => {
+  showToast('✅ Соединение восстановлено');
+});
+
+window.addEventListener('offline', () => {
+  showError('⚠️ Нет соединения. Проверьте интернет');
+});
+</script>
+
+
+<style>
+@media (max-width: 768px) {
+  #full-cycle .grid-cols-5 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  #meme-psychology .flex-wrap {
+    flex-direction: column;
+  }
+  .text-4xl { font-size: 2rem; }
+  .text-5xl { font-size: 2.5rem; }
+}
+#full-cycle, #meme-psychology, #target-audience {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+</style>
+
+<!-- Observer удалён, используйте AOS для анимаций -->
+</script>
+
+<!-- Chart.js + ReFork Strategy Chart -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const canvas = document.getElementById('reforkStrategyChart');
+  if (!canvas) return;
+  
+  // Используем Intersection Observer для ленивой загрузки графика
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      setTimeout(initializeChart, 300);
+      observer.disconnect();
+    }
+  }, {
+    threshold: 0.1,
+    rootMargin: '50px'
+  });
+  
+  observer.observe(canvas.closest('section') || canvas);
+});
+
+function initializeChart() {
+  const canvas = document.getElementById("reforkStrategyChart");
+  if (!canvas) {
+    console.error('Canvas element not found');
+    return;
+  }
+
+  const ctx = canvas.getContext("2d");
+  
+  // Убедимся, что canvas имеет размеры
+  const container = canvas.parentElement;
+  if (container.offsetWidth > 0 && container.offsetHeight > 0) {
+    canvas.width = container.offsetWidth;
+    canvas.height = container.offsetHeight;
+  }
+  
+  const isMobile = window.innerWidth < 768;
+  
+  const mobileConfig = {
+    pointRadius: [3, 6, 6, 4, 6, 6, 8],
+    pointBorderWidth: 1,
+    borderWidth: 2,
+    fontSize: 9
+  };
+  
+  const desktopConfig = {
+    pointRadius: [4, 8, 8, 6, 8, 8, 10],
+    pointBorderWidth: 2,
+    borderWidth: 3,
+    fontSize: 10
+  };
+  
+  const config = isMobile ? mobileConfig : desktopConfig;
+
+  // Упрощенные данные без градиентов
+  const data = {
+    labels: [
+      "День 0\n💡",
+      "День 3\n🚀", 
+      "День 7\n📈",
+      "День 10\n📉",
+      "День 15\n😴",
+      "День 18\n🔄",
+      "День 25\n💰"
+    ],
+    
+    datasets: [
+      {
+        label: "❌ Retail",
+        data: [100, 180, 320, 150, 80, 50, 33],
+        borderColor: "#ef4444",
+        backgroundColor: "rgba(239, 68, 68, 0.1)",
+        borderWidth: config.borderWidth,
+        tension: 0.4,
+        pointRadius: config.pointRadius,
+        pointBackgroundColor: ["#6b7280", "#6b7280", "#ef4444", "#f87171", "#dc2626", "#991b1b", "#7f1d1d"],
+        pointBorderColor: "#ffffff",
+        pointBorderWidth: config.pointBorderWidth,
+        fill: false
+      },
+      {
+        label: "✅ ReFork", 
+        data: [100, 120, 180, 220, 280, 350, 384],
+        borderColor: "#22c55e",
+        backgroundColor: "rgba(34, 197, 94, 0.1)",
+        borderWidth: config.borderWidth,
+        tension: 0.4,
+        pointRadius: config.pointRadius,
+        pointBackgroundColor: ["#6b7280", "#6b7280", "#6b7280", "#22c55e", "#16a34a", "#10b981", "#fbbf24"],
+        pointBorderColor: "#ffffff",
+        pointBorderWidth: config.pointBorderWidth,
+        fill: true
+      }
+    ]
+  };
 
   try {
-    console.log('✅ API call from allowed origin:', origin);
-    console.log('📨 Получен запрос:', req.body);
-
-    const { name, telegram, package: pkg, lang = 'ru', source = 'ReFork Capital' } = req.body;
-
-    // Проверяем обязательные поля
-    if (!name || !telegram || !pkg) {
-      return res.status(400).json({ 
-        success: false, 
-        error: 'Отсутствуют обязательные поля' 
-      });
+    // Уничтожаем предыдущий экземпляр если существует
+    const existingChart = Chart.getChart(canvas);
+    if (existingChart) {
+      existingChart.destroy();
     }
-
-    // ===== ВАЛИДАЦИЯ TELEGRAM =====
-    const telegramPattern = /^@[A-Za-z0-9_]{5,32}$/;
-    if (!telegramPattern.test(telegram)) {
-      return res.status(400).json({ 
-        success: false, 
-        error: 'Invalid Telegram format. Use @username format' 
-      });
-    }
-
-    // Получаем переменные окружения (обновленные имена)
-    const botToken = process.env.TELEGRAM_BOT_TOKEN || process.env.BOT_TOKEN;
-    const chatId = process.env.TELEGRAM_CHAT_ID || process.env.CHAT_ID;
-
-    console.log('🔐 BOT_TOKEN exists:', !!botToken);
-    console.log('💬 CHAT_ID exists:', !!chatId);
-
-    // Проверяем наличие переменных окружения
-    if (!botToken || !chatId) {
-      console.error('❌ Missing environment variables');
-      return res.status(500).json({ 
-        success: false, 
-        error: 'Сервер не настроен. Отсутствуют TELEGRAM_BOT_TOKEN или TELEGRAM_CHAT_ID' 
-      });
-    }
-
-    // ===== ФОРМИРУЕМ УЛУЧШЕННОЕ СООБЩЕНИЕ =====
-    const message = `
-🔔 <b>Новая заявка ReFork Capital</b>
-
-👤 <b>Имя:</b> ${name}
-📱 <b>Telegram:</b> ${telegram}
-💰 <b>Пакет:</b> ${pkg}
-🌐 <b>Язык:</b> ${lang}
-📍 <b>Источник:</b> ${source}
-🕐 <b>Время:</b> ${new Date().toLocaleString('ru-RU')}
-    `.trim();
-
-    console.log('📤 Отправляем в Telegram...');
-
-    // Отправляем в Telegram
-    const telegramResponse = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        chat_id: chatId,
-        text: message,
-        parse_mode: 'HTML'
-      })
+    
+    new Chart(ctx, {
+      type: "line",
+      data: data,
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: {
+          mode: 'index',
+          intersect: false
+        },
+        plugins: {
+          legend: {
+            display: true,
+            position: 'top',
+            labels: {
+              color: '#e5e7eb',
+              usePointStyle: true,
+              padding: isMobile ? 10 : 15,
+              font: { 
+                size: isMobile ? 11 : 13, 
+                weight: 'bold' 
+              }
+            }
+          },
+          tooltip: {
+            enabled: true,
+            backgroundColor: 'rgba(17,24,39,0.95)',
+            titleColor: '#22d3ee',
+            bodyColor: '#e5e7eb',
+            borderColor: '#22d3ee',
+            borderWidth: 1,
+            padding: isMobile ? 8 : 12,
+            displayColors: true,
+            bodyFont: {
+              size: isMobile ? 11 : 13
+            },
+            titleFont: {
+              size: isMobile ? 12 : 14
+            },
+            callbacks: {
+              label: function(context) {
+                const value = context.parsed.y;
+                const initial = 100;
+                const roi = ((value - initial) / initial * 100).toFixed(0);
+                const label = isMobile 
+                  ? `${context.dataset.label === '✅ ReFork' ? 'ReFork' : 'Retail'}: $${value} (${roi > 0 ? '+' : ''}${roi}%)`
+                  : `${context.dataset.label}: $${value} (${roi > 0 ? '+' : ''}${roi}%)`;
+                return label;
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: { 
+              color: 'rgba(255,255,255,0.05)',
+              drawBorder: false
+            },
+            ticks: { 
+              color: '#9ca3af',
+              font: { 
+                size: isMobile ? 9 : 10 
+              },
+              maxRotation: 0,
+              // Ключевое изменение: показываем все метки на мобильных
+              autoSkip: false
+            },
+            // Убедимся, что график начинается с начала
+            offset: true
+          },
+          y: {
+            grid: { 
+              color: 'rgba(255,255,255,0.05)',
+              drawBorder: false
+            },
+            ticks: { 
+              color: '#9ca3af',
+              callback: value => `$${value}`,
+              font: { 
+                size: isMobile ? 9 : 11 
+              }
+            },
+            beginAtZero: true,
+            max: 400 // Немного уменьшили максимальное значение для лучшего отображения
+          }
+        },
+        animation: {
+          duration: 2000,
+          easing: 'easeOutQuart'
+        }
+      }
     });
-
-    const telegramData = await telegramResponse.json();
-    console.log('📩 Ответ от Telegram API:', telegramData);
-
-    if (telegramResponse.ok) {
-      console.log('✅ Message sent successfully to:', telegram);
-      res.status(200).json({ 
-        success: true,
-        message: '✅ Сигнал получен! Заявка принята.'
-      });
-    } else {
-      console.error('❌ Ошибка Telegram API:', telegramData);
-      res.status(500).json({ 
-        success: false, 
-        error: `Ошибка Telegram: ${telegramData.description || 'Неизвестная ошибка'}` 
-      });
-    }
-
+    
+    console.log('Chart initialized successfully');
+    
   } catch (error) {
-    console.error('💥 Ошибка сервера:', error);
-    res.status(500).json({ 
-      success: false, 
-      error: `Внутренняя ошибка сервера: ${error.message}` 
+    console.error('Error initializing chart:', error);
+    
+    // Fallback - показать сообщение об ошибке
+    const errorDiv = document.createElement('div');
+    errorDiv.innerHTML = '<p style="color: #ef4444; text-align: center; padding: 20px;">График временно недоступен</p>';
+    canvas.parentElement.appendChild(errorDiv);
+  }
+}
+
+// Перерисовка при изменении размера окна
+let resizeTimer;
+window.addEventListener('resize', function() {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(function() {
+    const chart = Chart.getChart("reforkStrategyChart");
+    if (chart) {
+      chart.destroy();
+      initializeChart();
+    }
+  }, 250);
+});
+
+
+
+
+canvas.addEventListener('mousemove', e => {
+  const rect = canvas.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+  const chart = Chart.getChart('reforkStrategyChart');
+  if (chart) {
+    const activePoints = chart.getElementsAtEventForMode(e, 'nearest', { intersect: true }, true);
+    if (activePoints.length) {
+      const point = activePoints[0];
+      const dataset = chart.data.datasets[point.datasetIndex];
+      const value = dataset.data[point.index];
+      const initial = 100;
+      const roi = ((value - initial) / initial * 100).toFixed(0);
+      const label = dataset.label === '✅ ReFork' ? 'ReFork' : 'Retail';
+      tooltip.innerHTML = `${label}: $${value} (${roi > 0 ? '+' : ''}${roi}%)`;
+      tooltip.style.left = `${x + 20}px`;
+      tooltip.style.top = `${y}px`;
+      tooltip.style.display = 'block';
+    } else {
+      tooltip.style.display = 'none';
+    }
+  }
+});
+
+</script>
+
+<script>
+(function() {
+  const parallaxContainer = document.querySelector('#traffic-engine > .-z-10');
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth < 768;
+
+  // Parallax: small translate on scroll — only for desktops (and if element exists)
+  if (parallaxContainer && !prefersReduced && !isMobile) {
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    function onScroll() {
+      lastScrollY = window.scrollY;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const rect = parallaxContainer.parentElement.getBoundingClientRect();
+          // factor: how much to move (small, subtle)
+          const factor = 0.12;
+          const offset = -rect.top * factor;
+          parallaxContainer.style.transform = `translateY(${offset}px)`;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+    // initialize
+    window.addEventListener('scroll', onScroll, { passive: true });
+    // initial set
+    onScroll();
+  } else if (parallaxContainer) {
+    // mobile/fallback: keep static but ensure correct opacity
+    parallaxContainer.style.transform = 'translateY(0)';
+  }
+
+  // Simple AOS-like reveal (only for elements inside #traffic-engine with data-aos="fade-up")
+  const aosElems = document.querySelectorAll('#traffic-engine [data-aos="fade-up"]');
+  if (aosElems.length) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('aos-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.18 });
+    aosElems.forEach(el => io.observe(el));
+  }
+})();
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // Проверяем ширину экрана
+  if (window.innerWidth < 768) {
+    // Находим все элементы с AOS внутри секции "Ответы на ключевые вопросы"
+    const faqCards = document.querySelectorAll('#faq [data-aos]');
+    faqCards.forEach(el => {
+      // Удаляем атрибуты анимации
+      el.removeAttribute('data-aos');
+      el.removeAttribute('data-aos-delay');
+      el.removeAttribute('data-aos-duration');
     });
   }
-};
+});
+</script>
+
+
+</body>
+</html>
