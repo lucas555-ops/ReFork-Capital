@@ -4121,7 +4121,7 @@ function scrollToFAQ() {
 
           <div class="glow-card card-glow p-6">
             <h3 class="text-xl font-bold mb-2">Pro </p> Увеличенный вход</h3>
-            <p class="text-3xl font-extrabold mb-4">$1000</p>
+            <p class="text-3xl font-extrabold mb-4">$700</p>
             <ul class="text-gray-300 text-sm space-y-2 mb-6">
               <li>Прибыль к телу: <strong>25-60% за успешный цикл</strong></li>
               <li>Оптимальное для стабильного роста</li>
@@ -4133,7 +4133,7 @@ function scrollToFAQ() {
 
           <div class="glow-card card-glow p-6">
             <h3 class="text-xl font-bold mb-2">Prime </p> Премиум вход</h3>
-            <p class="text-3xl font-extrabold mb-4">$1500</p>
+            <p class="text-3xl font-extrabold mb-4">$1200</p>
             <ul class="text-gray-300 text-sm space-y-2 mb-6">
               <li>Прибыль к телу: <strong>30-80% за успешный цикл</strong></li>
               <li>Максимальная отдача от инвестиций</li>
@@ -4247,6 +4247,7 @@ function scrollToFAQ() {
   </div>
 </section>
 	
+	<!-- Ответы на ключевые вопросы -->
 	
 <section id="faq" class="py-24 bg-gradient-to-b from-black to-purple-900/20">
   <div class="max-w-6xl mx-auto px-4">
@@ -4280,6 +4281,50 @@ function scrollToFAQ() {
           </div>
         </div>
       </details>
+	  
+<!-- Дополнительные FAQ карточки в едином стиле -->
+<details class="glow-card card-glow p-6 group">
+  <summary class="flex justify-between items-center cursor-pointer list-none">
+    <span class="text-xl font-bold text-cyan-400 group-open:text-white transition-colors">
+      💸 Как вы зарабатываете?
+    </span>
+    <span class="text-cyan-400 text-2xl transition-transform group-open:rotate-180">▼</span>
+  </summary>
+  <div class="mt-4 pt-4 border-t border-white/10">
+    <p class="text-gray-300 mb-3 leading-relaxed">
+      ReFork Capital получает прибыль наравне с участниками каждого цикла.
+      Модель основана на <span class="text-teal-400 font-semibold">доле результата</span> — без комиссий и фиксированных сборов.
+      Команда зарабатывает только после успешного выхода, что полностью синхронизирует интересы с участниками.
+    </p>
+    <div class="p-3 bg-cyan-500/10 rounded-lg border border-cyan-500/20">
+      <p class="text-sm text-cyan-300">
+        💡 <strong>Принцип:</strong> если цикл прибыльный — выигрывают все. Если нет — никто не получает бонусов.
+      </p>
+    </div>
+  </div>
+</details>
+
+<details class="glow-card card-glow p-6 group">
+  <summary class="flex justify-between items-center cursor-pointer list-none">
+    <span class="text-xl font-bold text-cyan-400 group-open:text-white transition-colors">
+      🧠 Почему именно мем-токены?
+    </span>
+    <span class="text-cyan-400 text-2xl transition-transform group-open:rotate-180">▼</span>
+  </summary>
+  <div class="mt-4 pt-4 border-t border-white/10">
+    <p class="text-gray-300 mb-3 leading-relaxed">
+      Мем-токены — это <span class="text-emerald-400 font-semibold">рынок внимания</span>, где эмоции и вовлечённость управляют ликвидностью.
+      Они объединяют маркетинг, AI и блокчейн, превращая социальную энергию в рост капитала.
+    </p>
+    <div class="p-3 bg-emerald-500/10 rounded-lg border border-emerald-500/20">
+      <p class="text-sm text-emerald-300">
+        🚀 <strong>Суть:</strong> мемы — это самый быcтрый способ создать волну интереса и капитализировать её в цифровую ценность.
+      </p>
+    </div>
+  </div>
+</details>
+
+
 	  
 	  <details class="glow-card card-glow p-6 group">
   <summary class="flex justify-between items-center cursor-pointer list-none">
@@ -5549,6 +5594,23 @@ canvas.addEventListener('mousemove', e => {
   }
 })();
 </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // Проверяем ширину экрана
+  if (window.innerWidth < 768) {
+    // Находим все элементы с AOS внутри секции "Ответы на ключевые вопросы"
+    const faqCards = document.querySelectorAll('#faq [data-aos]');
+    faqCards.forEach(el => {
+      // Удаляем атрибуты анимации
+      el.removeAttribute('data-aos');
+      el.removeAttribute('data-aos-delay');
+      el.removeAttribute('data-aos-duration');
+    });
+  }
+});
+</script>
+
 
 </body>
 </html>
