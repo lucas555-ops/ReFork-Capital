@@ -100,17 +100,24 @@ html, body {
     @keyframes spin{to{transform:rotate(360deg)}}
 </style>
   
-  <!-- Preconnect & DNS Prefetch -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-  <link rel="preconnect" href="https://re-fork-capital.vercel.app">
-<link rel="dns-prefetch" href="https://re-fork-capital.vercel.app">
-  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-  <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
-  
-  <!-- Preload Critical Resources -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style">
-  <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
+<!-- Preconnect & DNS Prefetch - OPTIMIZED -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
+<!-- Неблокирующая загрузка шрифтов -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+
+<!-- Fallback для отключенного JavaScript -->
+<noscript>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
+</noscript>
   
   <!-- Meta Tags -->
   <meta name="description" content="ReFork Capital: Кастомная DeFi-стратегия для мем-токенов.Пассивный ROI до 80%+ за цикл через AI-аналитику и SMM-капитализацию. Только для своих!"/>
@@ -759,7 +766,7 @@ ReFork ROI: +284%
         <div class="text-gray-400 text-xs mt-1">Типичный ROI</div>
       </div>
       <div class="text-center">
-        <div class="text-green-400 text-lg md:text-2xl font-black">+284%</div>
+        <div class="text-lg md:text-2xl font-black"><span class="roi-highlight">+284%</span></div>
         <div class="text-gray-400 text-xs mt-1">ReFork ROI</div>
       </div>
       <div class="text-center">
@@ -2481,7 +2488,46 @@ button:hover {
   -webkit-overflow-scrolling: touch;
 }
 
-
+/* === MOBILE CHART OPTIMIZATION === */
+@media (max-width: 768px) {
+  #reforkStrategyChart {
+    touch-action: pan-x pinch-zoom;
+    cursor: grab;
+  }
+  
+  #reforkStrategyChart:active {
+    cursor: grabbing;
+  }
+  
+  /* Hint для свайпа */
+  .glow-card .overflow-x-auto::before {
+    content: '← Свайп для просмотра графика →';
+    position: sticky;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10px;
+    z-index: 10;
+    background: rgba(34, 211, 238, 0.9);
+    color: #0b0e14;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(34, 211, 238, 0.3);
+    animation: swipeHint 2s ease-in-out infinite;
+  }
+  
+  @keyframes swipeHint {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+  }
+  
+  /* Скрыть hint после первого скролла */
+  .glow-card .overflow-x-auto.scrolled::before {
+    display: none;
+  }
+}
 
 /* Кинетическая типография - бесконечный цикл с разными направлениями */
 .kinetic-typography {
@@ -4111,7 +4157,7 @@ function scrollToFAQ() {
             <h3 class="text-xl font-bold mb-2">Lite </p> Базовый вход</h3>
             <p class="text-3xl font-extrabold mb-4">$300</p>
             <ul class="text-gray-300 text-sm space-y-2 mb-6">
-              <li>Прибыль к телу: <strong>20-50% за успешный цикл</strong></li>
+              <li>Прибыль к телу: <strong class="roi-highlight">20-50%</strong> за успешный цикл</strong></li>
               <li>Минимально для эффективного управления</li>
               <li>Установка и настройка кошелька</li>
 			  <li>Бонус Акции Apple на блокчейне</li>
@@ -4633,13 +4679,27 @@ summary::marker, summary::-webkit-details-marker {
                placeholder="Иван Иванов">
       </div>
 
-      <div>
+      <!-- ОБНОВЛЕННЫЙ БЛОК TELEGRAM С ВАЛИДАЦИЕЙ -->
+      <div class="relative">
         <label class="block text-sm text-gray-400 mb-1" for="telegram">Telegram *</label>
-        <input type="text" id="telegram" name="telegram" required
-               pattern="^@[A-Za-z0-9_]{5,32}$"
-               title="Введите корректный логин Telegram в формате @username"
-               class="w-full bg-gray-900 border border-white/20 rounded-lg px-4 py-2 focus:border-cyan-400 focus:outline-none text-gray-100 placeholder-gray-500"
-               placeholder="@username">
+        <div class="relative">
+          <input type="text" id="telegram" name="telegram" required
+                 pattern="^@[A-Za-z0-9_]{5,32}$"
+                 title="Введите корректный логин Telegram в формате @username"
+                 class="w-full bg-gray-900 border border-white/20 rounded-lg px-4 py-2 pr-10 focus:border-cyan-400 focus:outline-none text-gray-100 placeholder-gray-500 transition-colors"
+                 placeholder="@username">
+          <!-- Иконка валидации -->
+          <div class="absolute right-3 top-1/2 -translate-y-1/2 hidden" id="telegram-valid-icon">
+            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <div class="absolute right-3 top-1/2 -translate-y-1/2 hidden" id="telegram-invalid-icon">
+            <svg class="w-5 h-5 text-red-400" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+        </div>
         <p class="text-xs text-gray-500 mt-1">Укажите ваш Telegram в формате @username</p>
       </div>
 
@@ -4655,20 +4715,13 @@ summary::marker, summary::-webkit-details-marker {
         </select>
       </div>
 
-<div class="text-center pt-4">
-    <button type="submit" id="leadSubmit"
-        class="
-            bg-gradient-to-r from-teal-400 to-cyan-400 text-black 
-            font-bold 
-            px-8 py-4 rounded-xl 
-            hover:scale-105 transition-transform 
-            w-full md:w-auto 
-            inline-flex items-center justify-center
-        ">
-        <span class="button-text">Отправить</span>
-        <span class="loading-spinner-btn hidden"></span>
-    </button>
-</div>
+      <div class="text-center pt-4">
+        <button type="submit" id="leadSubmit"
+                class="bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-8 py-4 rounded-xl hover:scale-105 transition-transform w-full md:w-auto inline-flex items-center justify-center">
+          <span class="button-text">Отправить</span>
+          <span class="loading-spinner-btn hidden"></span>
+        </button>
+      </div>
 
       <p class="text-xs text-gray-500 text-center pt-4">
         🔒 Конфиденциальность гарантирована. Отправка заявки не накладывает обязательств.
@@ -4742,6 +4795,13 @@ summary::marker, summary::-webkit-details-marker {
           },
         };
         
+		   telegramInput.addEventListener('input', (e) => {
+     if (e.target.validity.valid) {
+       e.target.classList.add('border-green-400');
+       // показать ✓
+     }
+   });
+		
         for (let [field, validator] of Object.entries(validators)) {
           const value = formData.get(field) || '';
           if (!validator(value)) {
@@ -5296,6 +5356,9 @@ window.addEventListener('offline', () => {
 
 <!-- Chart.js + ReFork Strategy Chart -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   const canvas = document.getElementById('reforkStrategyChart');
@@ -5609,8 +5672,55 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
+
+// Hide chart scroll hint after user scrolls
+document.addEventListener('DOMContentLoaded', function() {
+  const chartContainer = document.querySelector('.glow-card .overflow-x-auto');
+  if (chartContainer && window.innerWidth < 768) {
+    chartContainer.addEventListener('scroll', function() {
+      this.classList.add('scrolled');
+    }, { once: true });
+  }
+});
+
 </script>
 
+// Real-time Telegram validation
+document.addEventListener('DOMContentLoaded', function() {
+  const telegramInput = document.getElementById('telegram');
+  const validIcon = document.getElementById('telegram-valid-icon');
+  const invalidIcon = document.getElementById('telegram-invalid-icon');
+  
+  if (telegramInput && validIcon && invalidIcon) {
+    telegramInput.addEventListener('input', function(e) {
+      const value = e.target.value.trim();document.addEventListener('DOMContentLoaded', function() {
+  const telegramInput = document.getElementById('telegram');
+      // Скрыть иконки если пусто
+      if (value.length === 0) {
+        validIcon.classList.add('hidden');
+        invalidIcon.classList.add('hidden');
+        e.target.classList.remove('border-green-400', 'border-red-400');
+        return;
+      }
+      
+      // Проверка паттерна
+      const pattern = /^@[A-Za-z0-9_]{5,32}$/;
+      const isValid = pattern.test(value);
+      
+      if (isValid) {
+        e.target.classList.add('border-green-400');
+        e.target.classList.remove('border-red-400');
+        validIcon.classList.remove('hidden');
+        invalidIcon.classList.add('hidden');
+      } else {
+        e.target.classList.add('border-red-400');
+        e.target.classList.remove('border-green-400');
+        validIcon.classList.add('hidden');
+        invalidIcon.classList.remove('hidden');
+      }
+    });
+  }
+});
 
 </body>
 </html>
