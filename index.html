@@ -100,17 +100,19 @@ html, body {
     @keyframes spin{to{transform:rotate(360deg)}}
 </style>
   
-  <!-- Preconnect & DNS Prefetch -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-  <link rel="preconnect" href="https://re-fork-capital.vercel.app">
-<link rel="dns-prefetch" href="https://re-fork-capital.vercel.app">
-  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-  <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
-  
-  <!-- Preload Critical Resources -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style">
-  <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
+<!-- Preconnect & DNS Prefetch - OPTIMIZED -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.gstatic.com">
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
+<!-- Preload Critical Resources -->
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" crossorigin>
   
   <!-- Meta Tags -->
   <meta name="description" content="ReFork Capital: Кастомная DeFi-стратегия для мем-токенов.Пассивный ROI до 80%+ за цикл через AI-аналитику и SMM-капитализацию. Только для своих!"/>
@@ -5658,6 +5660,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
+
 
 </body>
 </html>
