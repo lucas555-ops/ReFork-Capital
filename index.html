@@ -5686,7 +5686,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 	
 <script>
-// Real-time Telegram validation
 document.addEventListener('DOMContentLoaded', function() {
   const telegramInput = document.getElementById('telegram');
   const validIcon = document.getElementById('telegram-valid-icon');
@@ -5694,8 +5693,8 @@ document.addEventListener('DOMContentLoaded', function() {
   
   if (telegramInput && validIcon && invalidIcon) {
     telegramInput.addEventListener('input', function(e) {
-      const value = e.target.value.trim();document.addEventListener('DOMContentLoaded', function() {
-  const telegramInput = document.getElementById('telegram');
+      const value = e.target.value.trim();
+      
       // Скрыть иконки если пусто
       if (value.length === 0) {
         validIcon.classList.add('hidden');
