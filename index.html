@@ -2481,46 +2481,7 @@ button:hover {
   -webkit-overflow-scrolling: touch;
 }
 
-/* === MOBILE CHART OPTIMIZATION === */
-@media (max-width: 768px) {
-  #reforkStrategyChart {
-    touch-action: pan-x pinch-zoom;
-    cursor: grab;
-  }
-  
-  #reforkStrategyChart:active {
-    cursor: grabbing;
-  }
-  
-  /* Hint для свайпа */
-  .glow-card .overflow-x-auto::before {
-    content: '← Свайп для просмотра графика →';
-    position: sticky;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 10px;
-    z-index: 10;
-    background: rgba(34, 211, 238, 0.9);
-    color: #0b0e14;
-    padding: 6px 12px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: 700;
-    white-space: nowrap;
-    box-shadow: 0 4px 12px rgba(34, 211, 238, 0.3);
-    animation: swipeHint 2s ease-in-out infinite;
-  }
-  
-  @keyframes swipeHint {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.6; }
-  }
-  
-  /* Скрыть hint после первого скролла */
-  .glow-card .overflow-x-auto.scrolled::before {
-    display: none;
-  }
-}
+
 
 /* Кинетическая типография - бесконечный цикл с разными направлениями */
 .kinetic-typography {
@@ -4781,12 +4742,7 @@ summary::marker, summary::-webkit-details-marker {
           },
         };
         
-		   telegramInput.addEventListener('input', (e) => {
-     if (e.target.validity.valid) {
-       e.target.classList.add('border-green-400');
-       // показать ✓
-     }
-   });
+		
 		
         for (let [field, validator] of Object.entries(validators)) {
           const value = formData.get(field) || '';
@@ -5655,17 +5611,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
-
-// Hide chart scroll hint after user scrolls
-document.addEventListener('DOMContentLoaded', function() {
-  const chartContainer = document.querySelector('.glow-card .overflow-x-auto');
-  if (chartContainer && window.innerWidth < 768) {
-    chartContainer.addEventListener('scroll', function() {
-      this.classList.add('scrolled');
-    }, { once: true });
-  }
-});
-
 </script>
 
 
