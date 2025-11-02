@@ -139,6 +139,8 @@ html, body {
 
 <!-- Preload Critical Resources -->
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" crossorigin>
+
+
   
   <!-- Meta Tags -->
   <meta name="description" content="ReFork Capital: Кастомная DeFi-стратегия для мем-токенов.Пассивный ROI до 80%+ за цикл через AI-аналитику и SMM-капитализацию. Только для своих!"/>
@@ -195,6 +197,8 @@ html, body {
   
   <!-- Fonts (async load) -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <!-- Preload для шрифтов -->
+<link rel="preload" href="font.woff2" as="font" type="font/woff2" crossorigin>
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -589,6 +593,37 @@ html {
 
 }
 
+/* Микро-взаимодействия для кнопок */
+.cta-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.pulse {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  background: inherit;
+  animation: pulse-animation 2s infinite;
+  opacity: 0;
+  z-index: -1;
+  animation-play-state: paused;
+}
+
+@keyframes pulse-animation {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
 
 
 </style>
@@ -607,7 +642,45 @@ html {
 <noscript><div><img src="https://mc.yandex.ru/watch/104983638" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 	
+<!-- После Яндекс.Метрики в <head> -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList", 
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "ReFork Capital",
+      "item": "https://reforkcapital.online/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2, 
+      "name": "Инвестиционные пакеты",
+      "item": "https://reforkcapital.online/#packages"
+    }
+  ]
+}
+</script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FinancialService",
+  "name": "ReFork Capital",
+  "description": "Крипто-инвестиции и управление капиталом для инвесторов из России",
+  "url": "https://reforkcapital.online/",
+  "areaServed": {
+    "@type": "Country",
+    "name": "Russia"
+  },
+  "serviceType": "Cryptocurrency Investment Management"
+}
+</script>
+
+<meta name="geo.region" content="RU" />
+<meta name="geo.placename" content="Russia" />
 
 </head>
 
@@ -761,9 +834,11 @@ html {
         <!-- CTA кнопки -->
         <div class="flex flex-col sm:flex-row gap-3 pt-4 justify-center lg:justify-start">
           <a href="#packages" 
-             class="bg-gradient-to-r from-green-400 to-emerald-500 text-black font-bold px-6 py-3 md:px-8 md:py-4 rounded-lg text-center hover:scale-105 transition-transform shadow-lg shadow-green-500/25">
-            Выбрать участие 
-          </a>
+   class="cta-button bg-gradient-to-r from-green-400 to-emerald-500 text-black font-bold px-6 py-3 md:px-8 md:py-4 rounded-lg text-center hover:scale-105 transition-transform shadow-lg shadow-green-500/25"
+   onmouseover="this.querySelector('.pulse').style.animationPlayState='running'">
+  <span class="pulse"></span>
+  💎 Выбрать участие 
+</a>
           <a href="#full-cycle" 
              class="border border-cyan-400/50 text-cyan-400 font-bold px-6 py-3 md:px-8 md:py-4 rounded-lg text-center hover:bg-cyan-400/10 transition-colors">
             Как это работает
@@ -1121,6 +1196,7 @@ ReFork ROI: +284%
 <div class="flex justify-center my-8 md:my-12">
   <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"></div>
 </div>
+
 
 
     <!-- CTA -->
@@ -1604,6 +1680,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 /* Отключение анимаций для пользователей с prefers-reduced-motion */
 @media (prefers-reduced-motion: reduce) {
+  * { 
+    animation-duration: 0.01ms !important; 
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
   .quartz-bg__gradient,
   .quartz-shape,
   .quartz-particles {
@@ -4648,6 +4730,50 @@ function scrollToFAQ() {
           </div>
         </div>
       </details>
+	  
+	     <!-- Question 7 - Географическое покрытие -->
+      <details class="glow-card card-glow p-6 group">
+        <summary class="flex justify-between items-center cursor-pointer list-none">
+          <span class="text-xl font-bold text-cyan-400 group-open:text-white transition-colors">
+            🇷🇺 Доступно ли это в моём городе?
+          </span>
+          <span class="text-cyan-400 text-2xl transition-transform group-open:rotate-180">▼</span>
+        </summary>
+        <div class="mt-4 pt-4 border-t border-white/10">
+          <div class="russian-coverage-text">
+            <p class="text-gray-300 mb-4">
+              <strong>Да!</strong> ReFork Capital работает с инвесторами из <strong>Москвы, Санкт-Петербурга, Новосибирска, Екатеринбурга, Казани</strong> и всех других городов России.
+            </p>
+            <div class="p-3 bg-cyan-500/10 rounded-lg border border-cyan-500/20">
+              <p class="text-sm text-cyan-300">
+                <strong>Онлайн-доступ:</strong> Крипто-инвестиции не зависят от вашего местоположения. 
+                Все операции проводятся онлайн, что делает ReFork Capital доступным из любого города России.
+              </p>
+            </div>
+            <div class="mt-4 grid grid-cols-2 md:grid-cols-3 gap-2 text-sm">
+              <div class="flex items-center gap-2 text-gray-300">
+                <span class="text-green-400">✓</span> Москва
+              </div>
+              <div class="flex items-center gap-2 text-gray-300">
+                <span class="text-green-400">✓</span> Санкт-Петербург
+              </div>
+              <div class="flex items-center gap-2 text-gray-300">
+                <span class="text-green-400">✓</span> Новосибирск
+              </div>
+              <div class="flex items-center gap-2 text-gray-300">
+                <span class="text-green-400">✓</span> Екатеринбург
+              </div>
+              <div class="flex items-center gap-2 text-gray-300">
+                <span class="text-green-400">✓</span> Казань
+              </div>
+              <div class="flex items-center gap-2 text-gray-300">
+                <span class="text-green-400">✓</span> Все регионы РФ
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+    </div>	  
     </div>
 	</div>
 </section>
@@ -4997,7 +5123,7 @@ function initExitIntent() {
     if (e.clientY < 0 && !exitIntentShown) {
       clearTimeout(exitIntentTimeout);
       exitIntentTimeout = setTimeout(() => {
-        showExitPopup();
+        showPersonalizedExitPopup(); // ← ЗАМЕНИЛИ
       }, 300); // Задержка 300ms для предотвращения ложных срабатываний
     }
   });
@@ -5012,55 +5138,179 @@ function initExitIntent() {
     if (e.clientY < 50 && !exitIntentShown) {
       clearTimeout(exitIntentTimer);
       exitIntentTimer = setTimeout(() => {
-        showExitPopup();
+        showPersonalizedExitPopup(); // ← ЗАМЕНИЛИ
       }, 1000);
     }
   });
 }
 
-function showExitPopup() {
+
+function showPersonalizedExitPopup() {
   if (localStorage.getItem('exitPopupShown') === 'true') return;
   
+  // Персонализация на основе поведения пользователя
+  const timeOnSite = Math.floor((Date.now() - performance.timing.navigationStart) / 1000);
+  const scrollDepth = Math.floor((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
+  const packagesViewed = localStorage.getItem('packages_viewed') || '';
+  
+  let title, description, bonus, ctaText, icon;
+  
+  // Определяем контент на основе поведения
+  if (timeOnSite > 180 && scrollDepth > 70) {
+    // Серьезный интерес - видел много контента
+    title = "💎 Готовы к VIP-доступу?";
+    description = "Мы заметили ваш серьезный интерес. Дадим эксклюзивные условия!";
+    bonus = "🎯 Персональный менеджер + ранний доступ к циклам";
+    ctaText = "💫 Получить VIP-условия";
+    icon = "💎";
+  } else if (packagesViewed.includes('Prime') || packagesViewed.includes('Pro')) {
+    // Интерес к конкретным пакетам
+    title = "🚀 Почти у цели!";
+    description = "Не упустите шанс войти в текущий цикл с максимальной выгодой";
+    bonus = "⚡ Бонус: +5% к вашей доле при быстром решении";
+    ctaText = "🔥 Забронировать место";
+    icon = "🚀";
+  } else if (timeOnSite > 60) {
+    // Средний интерес
+    title = "📈 Видим ваш интерес!";
+    description = "Получите персональную консультацию по выбору оптимального пакета";
+    bonus = "🎁 Специальные условия для новых партнеров";
+    ctaText = "💬 Получить консультацию";
+    icon = "📈";
+  } else {
+    // Новый посетитель
+    title = "⚡ Не уходите!";
+    description = "Получите эксклюзивный доступ к закрытому пулу инвесторов ReFork Capital";
+    bonus = "🎯 До 80% ROI за цикл на мем-токенах";
+    ctaText = "🚀 Узнать подробности";
+    icon = "⚡";
+  }
+
   const popup = document.createElement('div');
   popup.className = 'exit-popup';
   popup.innerHTML = `
-    <div class="exit-popup-content">
+    <div class="exit-popup-content relative overflow-hidden">
+      <!-- Grain Overlay -->
+      <div class="grain-overlay"></div>
+      
       <button class="exit-popup-close" aria-label="Закрыть окно">×</button>
       
-      <!-- Иконка -->
-      <div class="text-4xl mb-4">📈</div>
+      <!-- Анимированная иконка -->
+      <div class="text-5xl mb-4 animate-bounce">${icon}</div>
       
-      <h3 class="text-2xl md:text-3xl font-bold mb-3 text-cyan-400">Инвестируйте уверенно!</h3>
-      <p class="text-lg md:text-xl mb-4 text-gray-300">
-        Покупайте крипто-акции Apple, Tesla, Netflix<br class="hidden md:block">
-        через токенизированные активы
+      <!-- Заголовок с градиентом -->
+      <h3 class="text-2xl md:text-3xl font-black mb-3 bg-gradient-to-r from-cyan-400 to-purple-400 text-transparent bg-clip-text animate-gradient-x">
+        ${title}
+      </h3>
+      
+      <!-- Описание -->
+      <p class="text-lg md:text-xl mb-4 text-gray-200 leading-relaxed">
+        ${description}
       </p>
       
-      <div class="bg-gradient-to-r from-cyan-500/10 to-purple-500/10 p-4 rounded-lg mb-6 border border-cyan-500/20">
-        <p class="text-sm text-cyan-300 mb-2">🎯 Наша классическая умеренная стратегия</p>
-        <p class="text-xs text-gray-400">Идеально для консервативных инвесторов</p>
+      <!-- Бонусный блок -->
+      <div class="bg-gradient-to-r from-cyan-500/10 to-purple-500/10 p-4 rounded-xl mb-6 border border-cyan-400/30 backdrop-blur-sm">
+        <p class="text-sm text-cyan-300 mb-2 font-semibold">${bonus}</p>
+        <p class="text-xs text-gray-400">Только для серьезных инвесторов</p>
       </div>
 
+      <!-- Таймер срочности -->
+      <div class="urgency-timer mb-6 p-3 bg-red-500/10 rounded-lg border border-red-400/30">
+        <p class="text-sm text-red-300 text-center">
+          ⏰ <strong>Спецпредложение</strong> действует еще: 
+          <span id="popupCountdown" class="font-mono">05:00</span>
+        </p>
+      </div>
+
+      <!-- Кнопки действий -->
       <div class="flex flex-col sm:flex-row gap-3 justify-center">
-        <button id="exitPopupInvest" class="bg-gradient-to-r from-green-500 to-cyan-500 text-white font-bold px-6 py-3 rounded-lg hover:scale-105 transition-transform shadow-lg shadow-cyan-500/25">
-          🚀 Перейти к инвестициям
+        <button id="exitPopupInvest" class="degen-popup-btn bg-gradient-to-r from-green-500 to-cyan-500 text-white font-bold px-8 py-4 rounded-xl hover:scale-105 transition-all duration-300 shadow-lg shadow-cyan-500/25 relative overflow-hidden group">
+          <span class="degen-pulse"></span>
+          <span class="relative z-10 flex items-center justify-center gap-2">
+            <span>${ctaText}</span>
+            <span class="group-hover:translate-x-1 transition-transform duration-300">→</span>
+          </span>
         </button>
-        <button class="exit-popup-close border border-gray-500 text-gray-300 px-6 py-3 rounded-lg hover:bg-gray-800 hover:text-white transition-colors">
-          Закрыть
+        
+        <button class="exit-popup-close border border-gray-600 text-gray-300 px-6 py-4 rounded-xl hover:bg-gray-800 hover:text-white transition-all duration-300 font-medium">
+          Вернуться на сайт
         </button>
       </div>
       
-      <p class="text-xs text-gray-500 mt-4">
-        Низкие комиссии • Высокая ликвидность • Регулярные дивиденды
-      </p>
+      <!-- Доверительные сигналы -->
+      <div class="mt-6 pt-4 border-t border-white/10">
+        <div class="flex justify-center space-x-6 text-xs text-gray-500">
+          <span>🔒 Конфиденциально</span>
+          <span>💎 Только для своих</span>
+          <span>🚀 ROI до 80%</span>
+        </div>
+      </div>
     </div>
   `;
 
+  // Стили для улучшенного popup
+  const style = document.createElement('style');
+  style.textContent = `
+    .grain-overlay {
+      position: absolute;
+      inset: 0;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.03"/></svg>') repeat;
+      pointer-events: none;
+      mix-blend-mode: overlay;
+      animation: grain-move 8s steps(10) infinite;
+    }
+    
+    .degen-popup-btn {
+      position: relative;
+      overflow: hidden;
+      border: none;
+      background: linear-gradient(90deg, #10b981, #059669, #10b981, #34d399, #10b981);
+      background-size: 300% 100%;
+      animation: gradient-x 3s linear infinite;
+    }
+    
+    .degen-popup-btn:hover {
+      animation-duration: 1.5s;
+    }
+    
+    .urgency-timer {
+      animation: pulse-urgency 2s ease-in-out infinite;
+    }
+    
+    @keyframes pulse-urgency {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
+    }
+    
+    @keyframes grain-move {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(-5%, -5%); }
+    }
+  `;
+  document.head.appendChild(style);
+
+  // Таймер обратного отсчета
+  let timeLeft = 300; // 5 минут
+  const countdownElement = popup.querySelector('#popupCountdown');
+  const countdownInterval = setInterval(() => {
+    timeLeft--;
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    countdownElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    
+    if (timeLeft <= 0) {
+      clearInterval(countdownInterval);
+      popup.remove();
+    }
+  }, 1000);
+
   // Обработчик для кнопки инвестирования
   popup.querySelector('#exitPopupInvest').addEventListener('click', () => {
-    window.open('https://lucas555-ops.github.io/tokenized_stocks_etfs_hub/', '_blank');
+    // Отправляем в Telegram
+    window.open('https://t.me/ReForkCapital/7', '_blank');
     popup.remove();
     localStorage.setItem('exitPopupShown', 'true');
+    clearInterval(countdownInterval);
   });
 
   // Обработчик для кнопки закрытия
@@ -5069,6 +5319,7 @@ function showExitPopup() {
     button.addEventListener('click', () => {
       popup.remove();
       localStorage.setItem('exitPopupShown', 'true');
+      clearInterval(countdownInterval);
     });
   });
 
@@ -5077,6 +5328,7 @@ function showExitPopup() {
     if (e.target === popup) {
       popup.remove();
       localStorage.setItem('exitPopupShown', 'true');
+      clearInterval(countdownInterval);
     }
   });
 
@@ -5086,6 +5338,7 @@ function showExitPopup() {
       popup.remove();
       document.removeEventListener('keydown', handleEscape);
       localStorage.setItem('exitPopupShown', 'true');
+      clearInterval(countdownInterval);
     }
   };
   document.addEventListener('keydown', handleEscape);
@@ -5372,6 +5625,8 @@ window.addEventListener('offline', () => {
   #full-cycle .grid-cols-5 {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
   #meme-psychology .flex-wrap {
     flex-direction: column;
   }
@@ -5742,10 +5997,6 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
-
-
-
-
 </main>
 </body>
 </html>
