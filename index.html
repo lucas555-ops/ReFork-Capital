@@ -1,6 +1,29 @@
 <!doctype html>
 <html lang="ru" class="scroll-smooth">
 <head>
+  <!-- Редиректы для устранения дублей URL -->
+  <script>
+    // Немедленный редирект для SEO
+    (function() {
+      var canonical = 'https://reforkcapital.online/';
+      var current = window.location.href;
+      
+      // Список URL для редиректа
+      var redirectUrls = [
+        'https://reforkcapital.online/index.html',
+        'http://reforkcapital.online/',
+        'http://reforkcapital.online/index.html',
+        'https://reforkcapital.online//' // двойной слеш
+      ];
+      
+      if (redirectUrls.includes(current) || current.endsWith('/index.html')) {
+        window.location.replace(canonical);
+      }
+    })();
+  </script>
+
+  <!-- Канонический URL -->
+  <link rel="canonical" href="https://reforkcapital.online/" />
   <link rel="preload" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" as="style">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -2672,7 +2695,7 @@ img.loaded {
 
 <!-- GMGN Promo Button -->
 <div class="social-proof gmgn-promo" id="socialProof" style="display:none">
-  <a href="https://gmgn.ai/r/DEFI" target="_blank" class="gmgn-button">
+  <a href="https://gmgn.ai/r/DEFI" target="_blank" rel="nofollow noopener noreferrer" class="gmgn-button">
     <span class="gmgn-text">GMGN</span>
   </a>
   <p class="gmgn-subtext">Терминал DeFi</p>
@@ -3395,7 +3418,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-    <!-- Ecosystem Partners Section -->
+<!-- Ecosystem Partners Section -->
 <section class="py-16 bg-gray-900">
   <div class="container mx-auto px-4">
     <!-- Section Header -->
@@ -3409,97 +3432,97 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="flex animate-scroll-banner" style="--scroll-banner-duration: 40s;">
     <template id="partner-logos-1">
       <!-- 16 Infrastructure logos -->
-      <a href="https://solana.com" target="_blank" rel="noopener noreferrer" class="partner-link">
+      <a href="https://solana.com" target="_blank" rel="nofollow noopener noreferrer" class="partner-link">
         <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
           <img alt="Solana" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/solana.png">
         </div>
       </a>
       
-      <a href="https://ethereum.org" target="_blank" rel="noopener noreferrer" class="partner-link">
+      <a href="https://ethereum.org" target="_blank" rel="nofollow noopener noreferrer" class="partner-link">
         <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
           <img alt="Ethereum" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/ethereum.png">
         </div>
       </a>
       
-      <a href="https://www.binance.org" target="_blank" rel="noopener noreferrer" class="partner-link">
+      <a href="https://www.binance.org" target="_blank" rel="nofollow noopener noreferrer" class="partner-link">
         <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
           <img alt="BNB" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/bnb.png">
         </div>
       </a>
       
-      <a href="https://tron.network" target="_blank" rel="noopener noreferrer" class="partner-link">
+      <a href="https://tron.network" target="_blank" rel="nofollow noopener noreferrer" class="partner-link">
         <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
           <img alt="Tron" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/tron.png">
         </div>
       </a>
       
-      <a href="https://uniswap.org" target="_blank" rel="noopener noreferrer" class="partner-link">
+      <a href="https://uniswap.org" target="_blank" rel="nofollow noopener noreferrer" class="partner-link">
         <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
           <img alt="Uniswap" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/uniswap.png">
         </div>
       </a>
       
-      <a href="https://pancakeswap.finance" target="_blank" rel="noopener noreferrer" class="partner-link">
+      <a href="https://pancakeswap.finance" target="_blank" rel="nofollow noopener noreferrer" class="partner-link">
         <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
           <img alt="PancakeSwap" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/pancakeswap.png">
         </div>
       </a>
       
-      <a href="https://metamask.io" target="_blank" rel="noopener noreferrer" class="partner-link">
+      <a href="https://metamask.io" target="_blank" rel="nofollow noopener noreferrer" class="partner-link">
         <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
           <img alt="MetaMask" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/metamask.png">
         </div>
       </a>
       
-      <a href="https://trustwallet.com" target="_blank" rel="noopener noreferrer" class="partner-link">
+      <a href="https://trustwallet.com" target="_blank" rel="nofollow noopener noreferrer" class="partner-link">
         <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
           <img alt="Trust Wallet" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/trustwallet.png">
         </div>
       </a>
       
-      <a href="https://phantom.app" target="_blank" rel="noopener noreferrer" class="partner-link">
+      <a href="https://phantom.app" target="_blank" rel="nofollow noopener noreferrer" class="partner-link">
         <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
           <img alt="Phantom" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/phantom.png">
         </div>
       </a>
       
-      <a href="https://debank.com" target="_blank" rel="noopener noreferrer" class="partner-link">
+      <a href="https://debank.com" target="_blank" rel="nofollow noopener noreferrer" class="partner-link">
         <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
           <img alt="Debank.com" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/debank.png">
         </div>
       </a>
       
-      <a href="https://dune.com" target="_blank" rel="noopener noreferrer" class="partner-link">
+      <a href="https://dune.com" target="_blank" rel="nofollow noopener noreferrer" class="partner-link">
         <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
           <img alt="Dune" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/dune.png">
         </div>
       </a>
       
-      <a href="https://jup.ag" target="_blank" rel="noopener noreferrer" class="partner-link">
+      <a href="https://jup.ag" target="_blank" rel="nofollow noopener noreferrer" class="partner-link">
         <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
           <img alt="Jupiter" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/jupiter.png">
         </div>
       </a>
       
-      <a href="https://raydium.io" target="_blank" rel="noopener noreferrer" class="partner-link">
+      <a href="https://raydium.io" target="_blank" rel="nofollow noopener noreferrer" class="partner-link">
         <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
           <img alt="Raydium" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/raydium.png">
         </div>
       </a>
       
-      <a href="https://xstocks.com" target="_blank" rel="noopener noreferrer" class="partner-link">
+      <a href="https://xstocks.com" target="_blank" rel="nofollow noopener noreferrer" class="partner-link">
         <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
           <img alt="xStocks" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/xstocks.png">
         </div>
       </a>
       
-      <a href="https://hawkfi.ag" target="_blank" rel="noopener noreferrer" class="partner-link">
+      <a href="https://hawkfi.ag" target="_blank" rel="nofollow noopener noreferrer" class="partner-link">
         <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
           <img alt="hawkfi.ag" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/hawkfi.png">
         </div>
       </a>
       
-      <a href="https://autosnipe.ai" target="_blank" rel="noopener noreferrer" class="partner-link">
+      <a href="https://autosnipe.ai" target="_blank" rel="nofollow noopener noreferrer" class="partner-link">
         <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
           <img alt="autosnipe.ai" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/autosnipe.png">
         </div>
@@ -3515,97 +3538,97 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="flex animate-scroll-banner-reverse" style="--scroll-banner-duration: 35s;">
     <template id="partner-logos-2">
       <!-- 16 Analytics & AI logos -->
-      <a href="https://dexscreener.com" target="_blank" rel="noopener noreferrer" class="partner-link">
+      <a href="https://dexscreener.com" target="_blank" rel="nofollow noopener noreferrer" class="partner-link">
         <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
           <img alt="DexScreener" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/dexscreener.png">
         </div>
       </a>
       
-      <a href="https://gmgn.ai/r/DEFI" target="_blank" rel="noopener noreferrer" class="partner-link">
+      <a href="https://gmgn.ai/r/DEFI" target="_blank" rel="nofollow noopener noreferrer" class="partner-link">
         <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
           <img alt="GMGN" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/gmgn.png">
         </div>
       </a>
       
-      <a href="https://pump.fun" target="_blank" rel="noopener noreferrer" class="partner-link">
+      <a href="https://pump.fun" target="_blank" rel="nofollow noopener noreferrer" class="partner-link">
         <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
           <img alt="Pump.fun" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/pumpfun.png">
         </div>
       </a>
       
-      <a href="https://www.dextools.io" target="_blank" rel="noopener noreferrer" class="partner-link">
+      <a href="https://www.dextools.io" target="_blank" rel="nofollow noopener noreferrer" class="partner-link">
         <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
           <img alt="DexTools" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/dextools.png">
         </div>
       </a>
       
-      <a href="https://birdeye.so" target="_blank" rel="noopener noreferrer" class="partner-link">
+      <a href="https://birdeye.so" target="_blank" rel="nofollow noopener noreferrer" class="partner-link">
         <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
           <img alt="Birdeye" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/birdeye.png">
         </div>
       </a>
       
-      <a href="https://t.me/spydefi" target="_blank" rel="noopener noreferrer" class="partner-link">
+      <a href="https://t.me/spydefi" target="_blank" rel="nofollow noopener noreferrer" class="partner-link">
         <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
           <img alt="SpyDefi" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/spydefi.png">
         </div>
       </a>
       
-      <a href="https://rewarble.com" target="_blank" rel="noopener noreferrer" class="partner-link">
+      <a href="https://rewarble.com" target="_blank" rel="nofollow noopener noreferrer" class="partner-link">
         <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
           <img alt="Rewarble.com" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/rewarble.png">
         </div>
       </a>
       
-      <a href="https://tweethunter.io" target="_blank" rel="noopener noreferrer" class="partner-link">
+      <a href="https://tweethunter.io" target="_blank" rel="nofollow noopener noreferrer" class="partner-link">
         <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
           <img alt="Tweethunter" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/tweethunter.png">
         </div>
       </a>
       
-      <a href="https://gologin.com" target="_blank" rel="noopener noreferrer" class="partner-link">
+      <a href="https://gologin.com" target="_blank" rel="nofollow noopener noreferrer" class="partner-link">
         <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
           <img alt="Gologin" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/gologin.png">
         </div>
       </a>
       
-      <a href="https://proxy-seller.com" target="_blank" rel="noopener noreferrer" class="partner-link">
+      <a href="https://proxy-seller.com" target="_blank" rel="nofollow noopener noreferrer" class="partner-link">
         <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
           <img alt="Proxy-seller" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/proxyseller.png">
         </div>
       </a>
       
-      <a href="https://cryptorank.io" target="_blank" rel="noopener noreferrer" class="partner-link">
+      <a href="https://cryptorank.io" target="_blank" rel="nofollow noopener noreferrer" class="partner-link">
         <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
           <img alt="Cryptorank" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/cryptorank.png">
         </div>
       </a>
       
-      <a href="https://openai.com" target="_blank" rel="noopener noreferrer" class="partner-link">
+      <a href="https://openai.com" target="_blank" rel="nofollow noopener noreferrer" class="partner-link">
         <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
           <img alt="OpenAI" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/openai.png">
         </div>
       </a>
       
-      <a href="https://x.ai/grok" target="_blank" rel="noopener noreferrer" class="partner-link">
+      <a href="https://x.ai/grok" target="_blank" rel="nofollow noopener noreferrer" class="partner-link">
         <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
           <img alt="Grock" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/grock.png">
         </div>
       </a>
       
-      <a href="https://rogerai.com" target="_blank" rel="noopener noreferrer" class="partner-link">
+      <a href="https://rogerai.com" target="_blank" rel="nofollow noopener noreferrer" class="partner-link">
         <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
           <img alt="RogerAi" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/rogerai.png">
         </div>
       </a>
       
-      <a href="https://www.bestchange.com" target="_blank" rel="noopener noreferrer" class="partner-link">
+      <a href="https://www.bestchange.com" target="_blank" rel="nofollow noopener noreferrer" class="partner-link">
         <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
           <img alt="BEStchange" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/bestchange.png">
         </div>
       </a>
       
-      <a href="https://www.coingecko.com" target="_blank" rel="noopener noreferrer" class="partner-link">
+      <a href="https://www.coingecko.com" target="_blank" rel="nofollow noopener noreferrer" class="partner-link">
         <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
           <img alt="CoinGecko" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/coingecko.png">
         </div>
