@@ -6129,8 +6129,8 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <script>
-// Exit Intent Popup - Tokenized Stocks Offer
-// Exit Intent Popup - Premium Black & Gold Design (Исправленная версия)
+
+// Exit Intent Popup - Premium Black & Gold Design (Идеальная композиция)
 let exitIntentShown = false;
 let exitIntentTimer;
 
@@ -6165,15 +6165,205 @@ function initExitIntent() {
   // Добавляем CSS стили для премиум дизайна
   const style = document.createElement('style');
   style.textContent = `
+    .premium-popup-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      animation: premiumOverlayFadeIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      backdrop-filter: blur(25px);
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    
+    .premium-popup-container {
+      position: relative;
+      background: linear-gradient(152deg, #0a0a0a 0%, #111111 45%, #0a0a0a 100%);
+      border-radius: 28px;
+      max-width: 480px;
+      width: 100%;
+      text-align: center;
+      overflow: hidden;
+      box-shadow: 
+        0 32px 64px rgba(0, 0, 0, 0.8),
+        0 0 120px rgba(212, 175, 55, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      animation: premiumContainerScaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+      border: 1px solid rgba(212, 175, 55, 0.15);
+    }
+    
+    .premium-popup-content {
+      padding: 52px 42px 42px;
+      position: relative;
+      z-index: 2;
+    }
+    
     .premium-grain-overlay {
       position: absolute;
       inset: 0;
       background: 
-        radial-gradient(ellipse at 20% 20%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 80%, rgba(212, 175, 55, 0.02) 0%, transparent 50%),
-        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.02"/></svg>') repeat;
+        radial-gradient(ellipse at 20% 20%, rgba(212, 175, 55, 0.04) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.03"/></svg>') repeat;
       pointer-events: none;
       mix-blend-mode: overlay;
+      z-index: 1;
+    }
+    
+    .premium-border-glow {
+      position: absolute;
+      inset: -1px;
+      border-radius: 29px;
+      padding: 2px;
+      background: linear-gradient(135deg, 
+        rgba(212, 175, 55, 0.4) 0%, 
+        rgba(255, 215, 0, 0.6) 25%, 
+        rgba(212, 175, 55, 0.8) 50%, 
+        rgba(255, 215, 0, 0.6) 75%, 
+        rgba(212, 175, 55, 0.4) 100%);
+      background-size: 300% 300%;
+      animation: premiumBorderRotate 4s linear infinite;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      z-index: 1;
+      filter: blur(0.5px);
+    }
+    
+    .premium-close-btn {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(212, 175, 55, 0.08);
+      border: 1.5px solid rgba(212, 175, 55, 0.25);
+      color: #D4AF37;
+      font-size: 22px;
+      font-weight: 300;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      backdrop-filter: blur(15px);
+      z-index: 3;
+    }
+    
+    .premium-close-btn:hover {
+      background: rgba(212, 175, 55, 0.15);
+      border-color: #FFD700;
+      transform: rotate(90deg) scale(1.05);
+      color: #FFD700;
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+    }
+    
+    .premium-icon-container {
+      margin-bottom: 32px;
+    }
+    
+    .premium-icon {
+      font-size: 5rem;
+      filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4));
+      animation: premiumIconFloat 3.5s ease-in-out infinite;
+      display: inline-block;
+    }
+    
+    .premium-title {
+      background: linear-gradient(135deg, #D4AF37 0%, #FFD700 25%, #F5F5DC 50%, #FFD700 75%, #D4AF37 100%);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: premiumTextShine 4s ease-in-out infinite;
+      font-size: 2.1rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+    }
+    
+    .premium-description {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 32px;
+      font-weight: 400;
+      letter-spacing: 0.01em;
+    }
+    
+    .premium-bonus-card {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(255, 215, 0, 0.05));
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      border-radius: 16px;
+      padding: 28px 24px;
+      margin-bottom: 28px;
+      backdrop-filter: blur(15px);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .premium-bonus-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+    }
+    
+    .premium-bonus-text {
+      font-size: 1.1rem;
+      color: #FFD700;
+      font-weight: 600;
+      margin-bottom: 8px;
+      letter-spacing: 0.02em;
+    }
+    
+    .premium-bonus-subtext {
+      font-size: 0.9rem;
+      color: rgba(255, 215, 0, 0.7);
+      font-weight: 400;
+    }
+    
+    .premium-timer {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.12), rgba(255, 215, 0, 0.06));
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 32px;
+      backdrop-filter: blur(10px);
+      animation: premiumTimerPulse 2.5s ease-in-out infinite alternate;
+    }
+    
+    .premium-timer-text {
+      font-size: 1rem;
+      color: #FFD700;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+    
+    .premium-timer-countdown {
+      font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #FFD700;
+      margin-left: 6px;
+      letter-spacing: 0.05em;
+    }
+    
+    .premium-buttons-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 32px;
     }
     
     .premium-gold-btn {
@@ -6182,25 +6372,33 @@ function initExitIntent() {
       border: none;
       background: linear-gradient(135deg, #D4AF37 0%, #FFD700 25%, #D4AF37 50%, #FFD700 75%, #D4AF37 100%);
       background-size: 200% 200%;
-      animation: premium-shine 3s ease-in-out infinite;
+      animation: premiumButtonShine 3s ease-in-out infinite;
       color: #000;
-      font-weight: 800;
-      letter-spacing: 0.5px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
-      box-shadow: 
-        0 4px 15px rgba(212, 175, 55, 0.3),
-        0 0 30px rgba(212, 175, 55, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+      border-radius: 14px;
+      padding: 20px 24px;
+      font-size: 1.05rem;
       transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      box-shadow: 
+        0 6px 20px rgba(212, 175, 55, 0.4),
+        0 0 40px rgba(212, 175, 55, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+      min-height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
     }
     
     .premium-gold-btn:hover {
-      transform: translateY(-2px);
+      transform: translateY(-3px);
       box-shadow: 
-        0 8px 25px rgba(212, 175, 55, 0.5),
-        0 0 40px rgba(212, 175, 55, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.6);
-      animation-duration: 1.5s;
+        0 10px 30px rgba(212, 175, 55, 0.6),
+        0 0 60px rgba(212, 175, 55, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.7);
+      animation-duration: 1.2s;
     }
     
     .premium-gold-pulse {
@@ -6211,113 +6409,137 @@ function initExitIntent() {
       bottom: 0;
       border-radius: inherit;
       background: linear-gradient(135deg, #D4AF37, #FFD700, #D4AF37);
-      animation: premium-pulse 2s ease-out infinite;
+      animation: premiumButtonPulse 2.5s ease-out infinite;
       opacity: 0;
       z-index: -1;
     }
     
-    .premium-urgency-timer {
-      background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(255, 215, 0, 0.05));
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      backdrop-filter: blur(10px);
-      animation: premium-glow 3s ease-in-out infinite alternate;
-    }
-    
-    .premium-close-btn {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: rgba(212, 175, 55, 0.1);
-      border: 1px solid rgba(212, 175, 55, 0.3);
+    .premium-return-btn {
+      background: rgba(212, 175, 55, 0.07);
+      border: 1.5px solid rgba(212, 175, 55, 0.3);
       color: #D4AF37;
-      font-size: 20px;
-      font-weight: 300;
-      cursor: pointer;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      backdrop-filter: blur(15px);
+      border-radius: 14px;
+      padding: 20px 24px;
+      font-size: 1rem;
+      min-height: 64px;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-    }
-    
-    .premium-close-btn:hover {
-      background: rgba(212, 175, 55, 0.2);
-      border-color: #D4AF37;
-      transform: rotate(90deg);
-      color: #FFD700;
-    }
-
-    .premium-return-btn {
-      background: rgba(212, 175, 55, 0.05);
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      color: #D4AF37;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      backdrop-filter: blur(10px);
     }
     
     .premium-return-btn:hover {
-      background: rgba(212, 175, 55, 0.15);
+      background: rgba(212, 175, 55, 0.12);
       color: #FFD700;
-      transform: translateY(-1px);
+      transform: translateY(-2px);
       border-color: rgba(212, 175, 55, 0.5);
+      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.2);
     }
     
-    .premium-gold-text {
-      background: linear-gradient(135deg, #D4AF37 0%, #FFD700 25%, #F5F5DC 50%, #FFD700 75%, #D4AF37 100%);
-      background-size: 200% 200%;
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: premium-text-shine 4s ease-in-out infinite;
+    .premium-trust-signals {
+      padding-top: 28px;
+      border-top: 1px solid rgba(212, 175, 55, 0.15);
     }
     
-    .premium-border-glow {
-      position: relative;
+    .premium-trust-grid {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
     }
     
-    .premium-border-glow::before {
-      content: '';
+    .premium-trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: rgba(212, 175, 55, 0.7);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+    
+    .premium-decoration {
       position: absolute;
-      inset: -1px;
-      border-radius: inherit;
-      padding: 1px;
-      background: linear-gradient(135deg, #D4AF37, #FFD700, #D4AF37, #FFD700);
-      background-size: 300% 300%;
-      animation: premium-border-rotate 3s linear infinite;
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      pointer-events: none;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+      filter: blur(25px);
+      z-index: 0;
     }
     
-    @keyframes premium-shine {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
+    .decoration-1 {
+      top: -60px;
+      left: -60px;
+      width: 120px;
+      height: 120px;
     }
     
-    @keyframes premium-text-shine {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
+    .decoration-2 {
+      bottom: -80px;
+      right: -80px;
+      width: 160px;
+      height: 160px;
     }
     
-    @keyframes premium-pulse {
-      0% { transform: scale(1); opacity: 0.8; }
-      100% { transform: scale(1.5); opacity: 0; }
+    /* Анимации */
+    @keyframes premiumOverlayFadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
     
-    @keyframes premium-glow {
-      0% { box-shadow: 0 0 20px rgba(212, 175, 55, 0.3); }
-      100% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.5); }
+    @keyframes premiumContainerScaleIn {
+      from { 
+        opacity: 0;
+        transform: scale(0.85) translateY(20px);
+      }
+      to { 
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
     }
     
-    @keyframes premium-border-rotate {
+    @keyframes premiumBorderRotate {
       0% { background-position: 0% 0%; }
       100% { background-position: 200% 200%; }
+    }
+    
+    @keyframes premiumIconFloat {
+      0%, 100% { 
+        transform: translateY(0px) scale(1); 
+        filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4));
+      }
+      50% { 
+        transform: translateY(-10px) scale(1.08); 
+        filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.7));
+      }
+    }
+    
+    @keyframes premiumTextShine {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    
+    @keyframes premiumButtonShine {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    
+    @keyframes premiumButtonPulse {
+      0% { transform: scale(1); opacity: 0.7; }
+      100% { transform: scale(1.4); opacity: 0; }
+    }
+    
+    @keyframes premiumTimerPulse {
+      0% { 
+        box-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
+        border-color: rgba(212, 175, 55, 0.3);
+      }
+      100% { 
+        box-shadow: 0 0 35px rgba(212, 175, 55, 0.4);
+        border-color: rgba(212, 175, 55, 0.5);
+      }
     }
   `;
   document.head.appendChild(style);
@@ -6341,148 +6563,114 @@ function showPersonalizedExitPopup() {
   
   // Определяем контент на основе поведения
   if (timeOnSite > 180 && scrollDepth > 70) {
-    title = "💎 ДОСТУП К ЗОЛОТОМУ ПУЛУ";
-    description = "Ваш интерес не остался незамеченным. Предлагаем эксклюзивные условия для избранных инвесторов";
-    bonus = "🎯 Персональный менеджер + Приоритетный доступ к циклам";
-    ctaText = "💫 ПОЛУЧИТЬ VIP-ДОСТУП";
+    title = "ДОСТУП К ЗОЛОТОМУ ПУЛУ";
+    description = "Ваш интерес не остался незамеченным. Предлагаем эксклюзивные условия для избранных инвесторов.";
+    bonus = "Персональный менеджер + Приоритетный доступ к циклам";
+    ctaText = "ПОЛУЧИТЬ VIP-ДОСТУП";
     icon = "💎";
     ctaUrl = "https://t.me/ReForkCapital/7";
   } else if (packagesViewed.includes('Prime') || packagesViewed.includes('Pro')) {
-    title = "🚀 ВАШ ШАНС НА ПРЕВОСХОДСТВО";
-    description = "Не упустите возможность войти в следующий цикл с максимальными привилегиями";
-    bonus = "⚡ Эксклюзивный бонус: +5% к вашей доле";
-    ctaText = "🔥 ЗАБРОНИРОВАТЬ МЕСТО";
+    title = "ВАШ ШАНС НА ПРЕВОСХОДСТВО";
+    description = "Не упустите возможность войти в следующий цикл с максимальными привилегиями.";
+    bonus = "Эксклюзивный бонус: +5% к вашей доле";
+    ctaText = "ЗАБРОНИРОВАТЬ МЕСТО";
     icon = "🚀";
     ctaUrl = "#apply";
   } else if (timeOnSite > 60) {
-    title = "📈 ПЕРСОНАЛЬНОЕ ПРЕДЛОЖЕНИЕ";
-    description = "Мы подготовили для вас индивидуальные условия участия в закрытом пуле";
-    bonus = "🎁 Специальные условия для новых партнеров";
-    ctaText = "💬 ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ";
+    title = "ПЕРСОНАЛЬНОЕ ПРЕДЛОЖЕНИЕ";
+    description = "Мы подготовили для вас индивидуальные условия участия в закрытом пуле.";
+    bonus = "Специальные условия для новых партнеров";
+    ctaText = "ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ";
     icon = "📈";
     ctaUrl = "https://t.me/ReForkCapital/7";
   } else {
-    title = "⚡ ЭКСКЛЮЗИВНЫЙ ДОСТУП";
-    description = "Получите привилегированный доступ к закрытому инвестиционному пулу ReFork Capital";
-    bonus = "🎯 До 80% ROI за цикл на премиальных активах";
-    ctaText = "🚀 УЗНАТЬ ПОДРОБНОСТИ";
+    title = "ЭКСКЛЮЗИВНЫЙ ДОСТУП";
+    description = "Получите привилегированный доступ к закрытому инвестиционному пулу ReFork Capital.";
+    bonus = "До 80% ROI за цикл на премиальных активах";
+    ctaText = "УЗНАТЬ ПОДРОБНОСТИ";
     icon = "⚡";
     ctaUrl = "#apply";
   }
 
   const popup = document.createElement('div');
-  popup.className = 'exit-popup dark:bg-black/95';
+  popup.className = 'premium-popup-overlay';
   popup.style.cssText = `
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.95);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10000;
-    animation: fadeIn 0.4s ease;
-    backdrop-filter: blur(20px);
     font-family: 'Inter', 'Poppins', 'Segoe UI', system-ui, -apple-system, sans-serif;
   `;
   
   popup.innerHTML = `
-    <div class="premium-border-glow" style="
-      position: relative;
-      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
-      padding: 50px 40px 40px;
-      border-radius: 24px;
-      max-width: 560px;
-      text-align: center;
-      margin: 20px;
-      overflow: hidden;
-      box-shadow: 
-        0 25px 50px rgba(0, 0, 0, 0.8),
-        0 0 100px rgba(212, 175, 55, 0.1);
-    ">
-      <!-- Premium Grain Overlay -->
+    <div class="premium-popup-container">
+      <!-- Декоративные элементы -->
+      <div class="premium-decoration decoration-1"></div>
+      <div class="premium-decoration decoration-2"></div>
+      
+      <!-- Grain Overlay -->
       <div class="premium-grain-overlay"></div>
       
-      <!-- Premium Close Button -->
+      <!-- Animated Border Glow -->
+      <div class="premium-border-glow"></div>
+      
+      <!-- Close Button -->
       <button class="premium-close-btn" aria-label="Закрыть окно">×</button>
       
-      <!-- Анимированная иконка с премиум стилем -->
-      <div class="premium-icon-glow text-6xl mb-6" style="font-size: 4rem;">${icon}</div>
-      
-      <!-- Заголовок с золотым градиентом -->
-      <h3 class="premium-gold-text text-3xl md:text-4xl font-black mb-4 tracking-tight" style="
-        font-size: 2rem;
-        line-height: 1.2;
-        margin-bottom: 1.5rem;
-      ">
-        ${title}
-      </h3>
-      
-      <!-- Описание -->
-      <p class="text-xl mb-6 text-gray-300 leading-relaxed font-light tracking-wide" style="
-        font-size: 1.25rem;
-        line-height: 1.6;
-      ">
-        ${description}
-      </p>
-      
-      <!-- Бонусный блок в премиум стиле -->
-      <div class="premium-urgency-timer p-5 rounded-2xl mb-8" style="
-        background: linear-gradient(135deg, rgba(212, 175, 55, 0.08), rgba(255, 215, 0, 0.04));
-        border: 1px solid rgba(212, 175, 55, 0.2);
-      ">
-        <p class="text-lg text-amber-200 mb-2 font-semibold tracking-wide">${bonus}</p>
-        <p class="text-sm text-amber-100/60 font-light">Эксклюзивное предложение для избранных клиентов</p>
-      </div>
-
-      <!-- Таймер срочности в золотом стиле -->
-      <div class="premium-urgency-timer mb-8 p-4 rounded-xl border border-amber-500/30" style="
-        background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(255, 215, 0, 0.05));
-      ">
-        <p class="text-base text-amber-200 text-center font-medium tracking-wide">
-          ⏰ <strong>СПЕЦПРЕДЛОЖЕНИЕ ДЕЙСТВУЕТ</strong>: 
-          <span id="popupCountdown" class="font-mono text-amber-300" style="font-weight: 700;">05:00</span>
-        </p>
-      </div>
-
-      <!-- Кнопки действий в премиум стиле -->
-      <div class="flex flex-col sm:flex-row gap-4 justify-center items-stretch">
-        <button id="exitPopupInvest" class="premium-gold-btn flex-1 py-5 px-8 rounded-xl transition-all duration-300 relative overflow-hidden group min-w-[240px]" style="
-          min-height: 60px;
-          font-size: 1.1rem;
-        ">
-          <span class="premium-gold-pulse"></span>
-          <span class="relative z-10 flex items-center justify-center gap-3 font-bold tracking-wider">
-            <span>${ctaText}</span>
-            <span class="group-hover:translate-x-2 transition-transform duration-300 text-lg">→</span>
-          </span>
-        </button>
+      <!-- Main Content -->
+      <div class="premium-popup-content">
+        <!-- Icon -->
+        <div class="premium-icon-container">
+          <div class="premium-icon">${icon}</div>
+        </div>
         
-        <button class="premium-return-btn border border-amber-800 text-amber-200 px-8 py-5 rounded-xl transition-all duration-300 font-medium tracking-wide flex-1 min-w-[200px]" style="
-          min-height: 60px;
-          font-size: 1rem;
-        ">
-          Вернуться на сайт
-        </button>
-      </div>
-      
-      <!-- Доверительные сигналы в премиум стиле -->
-      <div class="mt-8 pt-6 border-t border-amber-900/30">
-        <div class="flex flex-wrap justify-center gap-6 text-sm text-amber-200/60 font-light tracking-wide">
-          <span class="flex items-center gap-2">
-            <span class="text-amber-400">🔒</span> Конфиденциально
-          </span>
-          <span class="flex items-center gap-2">
-            <span class="text-amber-400">💎</span> Только для избранных
-          </span>
-          <span class="flex items-center gap-2">
-            <span class="text-amber-400">🚀</span> Премиум условия
+        <!-- Title -->
+        <h1 class="premium-title">${title}</h1>
+        
+        <!-- Description -->
+        <p class="premium-description">${description}</p>
+        
+        <!-- Bonus Card -->
+        <div class="premium-bonus-card">
+          <div class="premium-bonus-text">${bonus}</div>
+          <div class="premium-bonus-subtext">Эксклюзивное предложение для избранных клиентов</div>
+        </div>
+        
+        <!-- Timer -->
+        <div class="premium-timer">
+          <span class="premium-timer-text">
+            ⏰ СПЕЦПРЕДЛОЖЕНИЕ ДЕЙСТВУЕТ: 
+            <span id="popupCountdown" class="premium-timer-countdown">05:00</span>
           </span>
         </div>
+        
+        <!-- Buttons -->
+        <div class="premium-buttons-container">
+          <button id="exitPopupInvest" class="premium-gold-btn">
+            <span class="premium-gold-pulse"></span>
+            <span>${ctaText}</span>
+            <span style="transition: transform 0.3s ease;">→</span>
+          </button>
+          
+          <button class="premium-return-btn">
+            Вернуться на сайт
+          </button>
+        </div>
+        
+        <!-- Trust Signals -->
+        <div class="premium-trust-signals">
+          <div class="premium-trust-grid">
+            <div class="premium-trust-item">
+              <span>🔒</span>
+              <span>Конфиденциально</span>
+            </div>
+            <div class="premium-trust-item">
+              <span>💎</span>
+              <span>Только для избранных</span>
+            </div>
+            <div class="premium-trust-item">
+              <span>🚀</span>
+              <span>Премиум условия</span>
+            </div>
+          </div>
+        </div>
       </div>
-
-      <!-- Декоративные элементы -->
-      <div class="absolute -top-10 -left-10 w-20 h-20 bg-amber-500/5 rounded-full blur-xl"></div>
-      <div class="absolute -bottom-10 -right-10 w-24 h-24 bg-amber-500/5 rounded-full blur-xl"></div>
     </div>
   `;
 
@@ -6498,8 +6686,8 @@ function showPersonalizedExitPopup() {
       
       // Меняем цвет при малом времени
       if (timeLeft < 60) {
-        countdownElement.style.color = '#fbbf24';
-        countdownElement.style.fontWeight = '800';
+        countdownElement.style.color = '#ffcc00';
+        countdownElement.style.textShadow = '0 0 10px rgba(255, 204, 0, 0.5)';
       }
     }
     
@@ -6517,6 +6705,12 @@ function showPersonalizedExitPopup() {
   const investButton = popup.querySelector('#exitPopupInvest');
   if (investButton) {
     investButton.addEventListener('click', () => {
+      // Анимация клика
+      investButton.style.transform = 'scale(0.95)';
+      setTimeout(() => {
+        investButton.style.transform = '';
+      }, 150);
+      
       if (ctaUrl.startsWith('http')) {
         window.open(ctaUrl, '_blank');
       } else {
@@ -6578,10 +6772,10 @@ function hideExitPopup(popup) {
 
   if (popup && popup.parentNode) {
     popup.style.opacity = '0';
-    popup.style.transform = 'scale(0.95)';
+    popup.querySelector('.premium-popup-container').style.transform = 'scale(0.9) translateY(20px)';
     setTimeout(() => {
       popup.remove();
-    }, 300);
+    }, 400);
   }
 }
 
@@ -6589,45 +6783,6 @@ function hideExitPopup(popup) {
 document.addEventListener('DOMContentLoaded', function() {
   setTimeout(initExitIntent, 3000);
 });
-
-// Добавляем анимацию fadeIn и premium-icon-float (без дублирования)
-if (!document.querySelector('style[data-premium-popup-animations]')) {
-  const animationStyle = document.createElement('style');
-  animationStyle.setAttribute('data-premium-popup-animations', 'true');
-  animationStyle.textContent = `
-    @keyframes fadeIn {
-      from { 
-        opacity: 0; 
-        transform: scale(0.9) translateY(20px);
-      }
-      to { 
-        opacity: 1; 
-        transform: scale(1) translateY(0);
-      }
-    }
-    
-    .exit-popup {
-      animation: fadeIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-    }
-    
-    .premium-icon-glow {
-      filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
-      animation: premium-icon-float 3s ease-in-out infinite;
-    }
-    
-    @keyframes premium-icon-float {
-      0%, 100% { 
-        transform: translateY(0px) scale(1); 
-        filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
-      }
-      50% { 
-        transform: translateY(-8px) scale(1.05); 
-        filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.8));
-      }
-    }
-  `;
-  document.head.appendChild(animationStyle);
-}
 </script>
 
 </main>
