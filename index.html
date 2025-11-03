@@ -624,12 +624,6 @@ html {
   }
 }
 
-// внизу, после загрузки AOS
-if (window.innerWidth < 768) {
-  document.querySelectorAll('[data-aos]').forEach(el => {
-    el.removeAttribute('data-aos');
-  });
-}
 
 
 </style>
@@ -1442,60 +1436,107 @@ document.addEventListener('DOMContentLoaded', function() {
       Our Ecosystem Partners
     </h2>
 
-    <!-- First Scrolling Banner - Infrastructure (16 logos) -->
+<!-- First Scrolling Banner - Infrastructure (16 logos) -->
 <div class="relative flex w-full translate-x-0 overflow-hidden mb-8" 
      style="mask: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 30%, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 100%);">
   <div class="flex animate-scroll-banner" style="--scroll-banner-duration: 40s;">
     <template id="partner-logos-1">
       <!-- 16 Infrastructure logos -->
-      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
-        <img alt="Solana" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/solana.png">
-      </div>
-      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
-        <img alt="Ethereum" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/ethereum.png">
-      </div>
-      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
-        <img alt="BNB" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/bnb.png">
-      </div>
-      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
-        <img alt="Tron" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/tron.png">
-      </div>
-      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
-        <img alt="Uniswap" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/uniswap.png">
-      </div>
-      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
-        <img alt="PancakeSwap" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/pancakeswap.png">
-      </div>
-      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
-        <img alt="MetaMask" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/metamask.png">
-      </div>
-      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
-        <img alt="Trust Wallet" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/trustwallet.png">
-      </div>
-      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
-        <img alt="Phantom" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/phantom.png">
-      </div>
-      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
-        <img alt="Debank.com" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/debank.png">
-      </div>
-      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
-        <img alt="Dune" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/dune.png">
-      </div>
-      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
-        <img alt="Jupiter" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/jupiter.png">
-      </div>
-      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
-        <img alt="Raydium" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/raydium.png">
-      </div>
-      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
-        <img alt="xStocks" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/xstocks.png">
-      </div>
-      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
-        <img alt="hawkfi.ag" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/hawkfi.png">
-      </div>
-      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
-        <img alt="autosnipe.ai" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/autosnipe.png">
-      </div>
+      <a href="https://solana.com" target="_blank" rel="noopener noreferrer" class="partner-link">
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="Solana" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/solana.png">
+        </div>
+      </a>
+      
+      <a href="https://ethereum.org" target="_blank" rel="noopener noreferrer" class="partner-link">
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="Ethereum" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/ethereum.png">
+        </div>
+      </a>
+      
+      <a href="https://www.binance.org" target="_blank" rel="noopener noreferrer" class="partner-link">
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="BNB" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/bnb.png">
+        </div>
+      </a>
+      
+      <a href="https://tron.network" target="_blank" rel="noopener noreferrer" class="partner-link">
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="Tron" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/tron.png">
+        </div>
+      </a>
+      
+      <a href="https://uniswap.org" target="_blank" rel="noopener noreferrer" class="partner-link">
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="Uniswap" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/uniswap.png">
+        </div>
+      </a>
+      
+      <a href="https://pancakeswap.finance" target="_blank" rel="noopener noreferrer" class="partner-link">
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="PancakeSwap" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/pancakeswap.png">
+        </div>
+      </a>
+      
+      <a href="https://metamask.io" target="_blank" rel="noopener noreferrer" class="partner-link">
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="MetaMask" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/metamask.png">
+        </div>
+      </a>
+      
+      <a href="https://trustwallet.com" target="_blank" rel="noopener noreferrer" class="partner-link">
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="Trust Wallet" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/trustwallet.png">
+        </div>
+      </a>
+      
+      <a href="https://phantom.app" target="_blank" rel="noopener noreferrer" class="partner-link">
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="Phantom" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/phantom.png">
+        </div>
+      </a>
+      
+      <a href="https://debank.com" target="_blank" rel="noopener noreferrer" class="partner-link">
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="Debank.com" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/debank.png">
+        </div>
+      </a>
+      
+      <a href="https://dune.com" target="_blank" rel="noopener noreferrer" class="partner-link">
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="Dune" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/dune.png">
+        </div>
+      </a>
+      
+      <a href="https://jup.ag" target="_blank" rel="noopener noreferrer" class="partner-link">
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="Jupiter" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/jupiter.png">
+        </div>
+      </a>
+      
+      <a href="https://raydium.io" target="_blank" rel="noopener noreferrer" class="partner-link">
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="Raydium" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/raydium.png">
+        </div>
+      </a>
+      
+      <a href="https://xstocks.com" target="_blank" rel="noopener noreferrer" class="partner-link">
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="xStocks" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/xstocks.png">
+        </div>
+      </a>
+      
+      <a href="https://hawkfi.ag" target="_blank" rel="noopener noreferrer" class="partner-link">
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="hawkfi.ag" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/hawkfi.png">
+        </div>
+      </a>
+      
+      <a href="https://autosnipe.ai" target="_blank" rel="noopener noreferrer" class="partner-link">
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="autosnipe.ai" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/autosnipe.png">
+        </div>
+      </a>
     </template>
     <div class="flex" id="partner-row-1"></div>
   </div>
@@ -1507,54 +1548,101 @@ document.addEventListener('DOMContentLoaded', function() {
   <div class="flex animate-scroll-banner-reverse" style="--scroll-banner-duration: 35s;">
     <template id="partner-logos-2">
       <!-- 16 Analytics & AI logos -->
-      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
-        <img alt="DexScreener" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/dexscreener.png">
-      </div>
-      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
-        <img alt="GMGN" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/gmgn.png">
-      </div>
-      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
-        <img alt="Pump.fun" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/pumpfun.png">
-      </div>
-      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
-        <img alt="DexTools" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/dextools.png">
-      </div>
-      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
-        <img alt="Birdeye" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/birdeye.png">
-      </div>
-      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
-        <img alt="SpyDefi" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/spydefi.png">
-      </div>
-      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
-        <img alt="Rewarble.com" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/rewarble.png">
-      </div>
-      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
-        <img alt="Tweethunter" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/tweethunter.png">
-      </div>
-      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
-        <img alt="Gologin" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/gologin.png">
-      </div>
-      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
-        <img alt="Proxy-seller" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/proxyseller.png">
-      </div>
-      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
-        <img alt="Cryptorank" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/cryptorank.png">
-      </div>
-      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
-        <img alt="OpenAI" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/openai.png">
-      </div>
-      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
-        <img alt="Grock" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/grock.png">
-      </div>
-      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
-        <img alt="RogerAi" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/rogerai.png">
-      </div>
-      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
-        <img alt="BEStchange" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/bestchange.png">
-      </div>
-      <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
-        <img alt="CoinGecko" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/coingecko.png">
-      </div>
+      <a href="https://dexscreener.com" target="_blank" rel="noopener noreferrer" class="partner-link">
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="DexScreener" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/dexscreener.png">
+        </div>
+      </a>
+      
+      <a href="https://gmgn.ai/r/DEFI" target="_blank" rel="noopener noreferrer" class="partner-link">
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="GMGN" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/gmgn.png">
+        </div>
+      </a>
+      
+      <a href="https://pump.fun" target="_blank" rel="noopener noreferrer" class="partner-link">
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="Pump.fun" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/pumpfun.png">
+        </div>
+      </a>
+      
+      <a href="https://www.dextools.io" target="_blank" rel="noopener noreferrer" class="partner-link">
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="DexTools" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/dextools.png">
+        </div>
+      </a>
+      
+      <a href="https://birdeye.so" target="_blank" rel="noopener noreferrer" class="partner-link">
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="Birdeye" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/birdeye.png">
+        </div>
+      </a>
+      
+      <a href="https://t.me/spydefi" target="_blank" rel="noopener noreferrer" class="partner-link">
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="SpyDefi" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/spydefi.png">
+        </div>
+      </a>
+      
+      <a href="https://rewarble.com" target="_blank" rel="noopener noreferrer" class="partner-link">
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="Rewarble.com" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/rewarble.png">
+        </div>
+      </a>
+      
+      <a href="https://tweethunter.io" target="_blank" rel="noopener noreferrer" class="partner-link">
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="Tweethunter" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/tweethunter.png">
+        </div>
+      </a>
+      
+      <a href="https://gologin.com" target="_blank" rel="noopener noreferrer" class="partner-link">
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="Gologin" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/gologin.png">
+        </div>
+      </a>
+      
+      <a href="https://proxy-seller.com" target="_blank" rel="noopener noreferrer" class="partner-link">
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="Proxy-seller" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/proxyseller.png">
+        </div>
+      </a>
+      
+      <a href="https://cryptorank.io" target="_blank" rel="noopener noreferrer" class="partner-link">
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="Cryptorank" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/cryptorank.png">
+        </div>
+      </a>
+      
+      <a href="https://openai.com" target="_blank" rel="noopener noreferrer" class="partner-link">
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="OpenAI" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/openai.png">
+        </div>
+      </a>
+      
+      <a href="https://x.ai/grok" target="_blank" rel="noopener noreferrer" class="partner-link">
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="Grock" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/grock.png">
+        </div>
+      </a>
+      
+      <a href="https://rogerai.com" target="_blank" rel="noopener noreferrer" class="partner-link">
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="RogerAi" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/rogerai.png">
+        </div>
+      </a>
+      
+      <a href="https://www.bestchange.com" target="_blank" rel="noopener noreferrer" class="partner-link">
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="BEStchange" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/bestchange.png">
+        </div>
+      </a>
+      
+      <a href="https://www.coingecko.com" target="_blank" rel="noopener noreferrer" class="partner-link">
+        <div class="flex h-16 w-[93.3px] items-center justify-center md:h-20 md:w-[116.6px]">
+          <img alt="CoinGecko" class="partner-logo" src="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/assets/partners/coingecko.png">
+        </div>
+      </a>
     </template>
     <div class="flex" id="partner-row-2"></div>
   </div>
@@ -1562,7 +1650,6 @@ document.addEventListener('DOMContentLoaded', function() {
 </section>
 
 <style>
-
 /* Quartz Background Styles */
 .quartz-bg {
   position: absolute;
@@ -1747,7 +1834,26 @@ document.addEventListener('DOMContentLoaded', function() {
   animation: scroll-banner-reverse var(--scroll-banner-duration, 35s) linear infinite;
 }
 
-/* Новые стили для логотипов (добавляем к существующим) */
+/* Стили для кликабельных логотипов партнеров */
+.partner-link {
+  display: block;
+  transition: all 0.3s ease;
+  border-radius: 12px;
+  padding: 4px;
+  text-decoration: none;
+}
+
+.partner-link:hover {
+  transform: scale(1.1);
+  background: rgba(34, 211, 238, 0.1);
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+}
+
+.partner-link:hover .partner-logo {
+  filter: brightness(1.2) drop-shadow(0 0 8px rgba(34,211,238,0.7));
+}
+
+/* Улучшенные стили для логотипов */
 .partner-logo {
   width: 60px;
   height: 60px;
@@ -1772,6 +1878,10 @@ document.addEventListener('DOMContentLoaded', function() {
     height: 50px;
     padding: 6px;
   }
+  
+  .partner-link:hover {
+    transform: scale(1.05);
+  }
 }
 
 /* Вставьте в конец существующего тега style */
@@ -1780,6 +1890,16 @@ document.addEventListener('DOMContentLoaded', function() {
     animation-play-state: running !important;
   }
 }
+
+/* УДАЛЕН НЕКОРРЕКТНЫЙ КОД ИЗ CSS:
+// внизу, после загрузки AOS
+if (window.innerWidth < 768) {
+  document.querySelectorAll('[data-aos]').forEach(el => {
+    el.removeAttribute('data-aos');
+  });
+}
+*/
+
 </style>
 
 <script>
@@ -5038,7 +5158,17 @@ summary::marker, summary::-webkit-details-marker {
 </div>
 </footer>
 
-
+<script>
+// Инициализация AOS с отключением на мобильных
+document.addEventListener('DOMContentLoaded', function() {
+  AOS.init({
+    disable: window.innerWidth < 768 ? true : false,
+    once: true, // Анимация только один раз
+    offset: 100, // Запуск анимации при прокрутке 100px
+    duration: 800 // Длительность анимации
+  });
+});
+</script>
 
   <!-- НОВОЕ: Critical Utilities -->
   <script>
