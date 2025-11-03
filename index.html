@@ -636,6 +636,1860 @@ html {
 
 
 
+/* Mobile Timeline */
+.vertical-timeline {
+  position: relative;
+  padding-left: 30px;
+}
+
+.vertical-timeline::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, #8b5cf6, #10b981, #ef4444, #6b7280, #06b6d4);
+}
+
+.timeline-stage {
+  position: relative;
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: flex-start;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: -30px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 3px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.marker-1 { background: #8b5cf6; border-color: #c4b5fd; }
+.marker-2 { background: #10b981; border-color: #a7f3d0; }
+.marker-3 { background: #ef4444; border-color: #fdba74; }
+.marker-4 { background: #6b7280; border-color: #d1d5db; }
+.marker-5 { 
+  background: #06b6d4; 
+  border-color: #7dd3fc;
+  animation: pulse 2s infinite;
+}
+
+.timeline-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(15, 23, 42, 0.6);
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.1);
+  flex: 1;
+}
+
+.stage-icon-mobile {
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+}
+
+.stage-title-mobile {
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.stage-duration-mobile {
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+.active-stage .timeline-content {
+  background: rgba(6, 182, 212, 0.1);
+  border-color: rgba(6, 182, 212, 0.3);
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .timeline-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+  
+  .stage-icon-mobile {
+    width: 36px;
+    height: 36px;
+    font-size: 1.25rem;
+  }
+}
+.glow-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 25px rgba(6,182,212,0.4);
+  transition: all 0.3s ease;
+}
+
+/* Трехцветные градиенты */
+.three-color-gradient-1 {
+  background: linear-gradient(90deg, #3b82f6 0%, #10b981 50%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.three-color-gradient-2 {
+  background: linear-gradient(90deg, #8b5cf6 0%, #06d6a0 50%, #118ab2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.three-color-gradient-3 {
+  background: linear-gradient(90deg, #06b6d4 0%, #10b981 50%, #0ea5e9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+
+
+.custom-border-top {
+  position: relative;
+}
+
+.custom-border-top::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #22d3ee, transparent);
+  border-radius: 1px;
+}
+
+.custom-border-bottom {
+  position: relative;
+}
+
+.custom-border-bottom::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #10b981, transparent);
+  border-radius: 1px;
+}
+
+
+
+/* Адаптация нового графика для мобильных */
+@media (max-width: 768px) {
+  #reforkStrategyChart {
+    min-width: 600px !important;
+    width: 200% !important;
+  }
+  
+  .glow-card .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .glow-card .overflow-x-auto::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Увеличиваем отступы для лучшего скролла */
+  .glow-card {
+    padding: 1rem !important;
+  }
+}
+
+/* Индикатор скролла для мобильных */
+.glow-card .overflow-x-auto {
+  position: relative;
+}
+
+.glow-card .overflow-x-auto::after {
+  content: '← прокрутите →';
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  color: #22d3ee;
+  font-size: 10px;
+  opacity: 0.7;
+  animation: pulse-scroll 2s infinite;
+}
+
+@keyframes pulse-scroll {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+@media (max-width: 480px) {
+  #reforkStrategyChart {
+    min-width: 700px !important;
+  }
+  
+  .glow-card .overflow-x-auto::after {
+    content: '← прокрутите график →';
+    font-size: 9px;
+  }
+}
+
+.central-stage:hover .tooltip {
+  display: block;
+  animation: fadeIn 0.4s ease forwards;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -20px); }
+  to { opacity: 1; transform: translate(-50%, -30px); }
+}
+
+#partner-row-1 img, 
+.animate-scroll-banner-reverse img {
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 0 0px transparent);
+}
+#partner-row-1 img:hover, 
+.animate-scroll-banner-reverse img:hover {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 8px rgba(34,211,238,0.7));
+}
+
+@media (max-width: 768px) {
+  #reforkStrategyChart {
+    min-width: 650px !important;
+    width: 100% !important;
+    transform: none !important;
+  }
+}
+
+.phase-label { 
+  font-size: 12px !important; 
+  padding: 4px 8px; 
+}
+
+/* Гарантируем отображение canvas */
+#reforkStrategyChart {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 200px;
+}
+
+
+/* На мобильных увеличиваем минимальную ширину */
+@media (max-width: 768px) {
+  .min-w-\[600px\] {
+    min-width: 700px !important;
+  }
+}
+
+/* Мобильная адаптация для первой секции */
+@media (max-width: 1024px) {
+  #hero .grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  #hero h1 {
+    font-size: 2.5rem !important;
+    text-align: center;
+    line-height: 1.2;
+  }
+  
+  #hero h2 {
+    font-size: 1.25rem !important;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  #hero {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+    min-height: auto !important;
+  }
+  
+  #hero h1 {
+    font-size: 2rem !important;
+  }
+  
+  #hero h2 {
+    font-size: 1.125rem !important;
+  }
+  
+  .glow-card {
+    padding: 1rem !important;
+  }
+  
+  #hero .flex-wrap {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  #hero h1 {
+    font-size: 1.75rem !important;
+  }
+  
+  #hero .min-w-\[500px\] {
+    min-width: 450px !important;
+  }
+  
+  .text-lg {
+    font-size: 1rem !important;
+  }
+}
+
+/* Гарантируем правильный порядок на мобильных */
+@media (max-width: 1024px) {
+  .order-1 {
+    order: 1;
+  }
+  .order-2 {
+    order: 2;
+  }
+}
+
+/* Контейнер для графика */
+.overflow-x-auto {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Кинетическая типография - бесконечный цикл с разными направлениями */
+.kinetic-typography {
+  position: relative;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+}
+
+.kinetic-word {
+  position: absolute;
+  opacity: 0;
+  animation-duration: 4.5s; /* Сократили общее время цикла */
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.kinetic-word-1 {
+  animation-name: kineticLeft;
+}
+
+.kinetic-word-2 {
+  animation-name: kineticTop;
+}
+
+.kinetic-word-3 {
+  animation-name: kineticRight;
+}
+
+/* Анимация слева - появляется быстрее */
+@keyframes kineticLeft {
+  0%, 15% {
+    opacity: 0;
+    transform: translateX(-80px) rotateY(90deg);
+  }
+  20%, 30% {
+    opacity: 1;
+    transform: translateX(0) rotateY(0);
+  }
+  35%, 100% {
+    opacity: 0;
+    transform: translateX(60px) rotateY(-90deg);
+  }
+}
+
+/* Анимация сверху - появляется быстрее */
+@keyframes kineticTop {
+  0%, 35% {
+    opacity: 0;
+    transform: translateY(-60px) rotateX(90deg);
+  }
+  40%, 50% {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+  55%, 100% {
+    opacity: 0;
+    transform: translateY(50px) rotateX(-90deg);
+  }
+}
+
+/* Анимация справа - появляется быстрее */
+@keyframes kineticRight {
+  0%, 55% {
+    opacity: 0;
+    transform: translateX(80px) rotateY(-90deg);
+  }
+  60%, 70% {
+    opacity: 1;
+    transform: translateX(0) rotateY(0);
+  }
+  75%, 100% {
+    opacity: 0;
+    transform: translateX(-60px) rotateY(90deg);
+  }
+}
+
+/* Для мобильных устройств */
+@media (max-width: 768px) {
+  .kinetic-typography {
+    height: 60px;
+  }
+  
+  @keyframes kineticLeft {
+    0%, 15% {
+      opacity: 0;
+      transform: translateX(-50px) rotateY(90deg);
+    }
+    20%, 30% {
+      opacity: 1;
+      transform: translateX(0) rotateY(0);
+    }
+    35%, 100% {
+      opacity: 0;
+      transform: translateX(40px) rotateY(-90deg);
+    }
+  }
+  
+  @keyframes kineticTop {
+    0%, 35% {
+      opacity: 0;
+      transform: translateY(-40px) rotateX(90deg);
+    }
+    40%, 50% {
+      opacity: 1;
+      transform: translateY(0) rotateX(0);
+    }
+    55%, 100% {
+      opacity: 0;
+      transform: translateY(35px) rotateX(-90deg);
+    }
+  }
+  
+  @keyframes kineticRight {
+    0%, 55% {
+      opacity: 0;
+      transform: translateX(50px) rotateY(-90deg);
+    }
+    60%, 70% {
+      opacity: 1;
+      transform: translateX(0) rotateY(0);
+    }
+    75%, 100% {
+      opacity: 0;
+      transform: translateX(-40px) rotateY(90deg);
+    }
+  }
+}
+
+/* Дополнительные эффекты для плавности */
+.kinetic-word {
+  filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
+  will-change: transform, opacity;
+}
+
+/* Увеличиваем минимальную ширину для графика на мобильных */
+@media (max-width: 768px) {
+  .min-w-\[650px\] {
+    min-width: 650px !important;
+  }
+  
+  /* Уменьшаем отступы для легенды метрик */
+  .grid-cols-3.gap-1 .text-center {
+    padding: 0 2px;
+  }
+  
+  .grid-cols-3.gap-1 .text-lg {
+    font-size: 1rem !important;
+  }
+  
+  .grid-cols-3.gap-1 .text-xs {
+    font-size: 0.7rem !important;
+  }
+}
+
+.phase-label {
+position: relative;
+text-shadow: 0 0 12px rgba(20, 241, 149, 0.5);
+transition: all 0.3s ease;
+}
+.phase-label::after {
+content: '';
+position: absolute;
+left: 50%;
+top: 100%;
+transform: translateX(-50%);
+width: 40%;
+height: 2px;
+background: linear-gradient(90deg, #14F195, #00C2FF);
+border-radius: 2px;
+opacity: 0;
+transition: opacity 0.3s ease;
+}
+.timeline-stage:hover .phase-label::after {
+opacity: 1;
+}
+
+
+#full-cycle .glow-card {
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
+}
+
+#full-cycle .glow-card:hover {
+  transform: translateY(-5px) perspective(1000px) rotateX(5deg);
+  border-color: rgba(34, 211, 238, 0.5);
+  background: linear-gradient(180deg, 
+    rgba(255,255,255,0.08), 
+    rgba(255,255,255,0.12)
+  );
+}
+
+
+
+/* Quartz Background Styles */
+.quartz-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  background: 
+    radial-gradient(ellipse at 20% 20%, rgba(56, 189, 248, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+    linear-gradient(180deg, rgba(11, 14, 20, 0.95) 0%, rgba(5, 8, 15, 1) 100%);
+}
+
+.quartz-bg__gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(56, 189, 248, 0.1) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.1) 0%, transparent 40%),
+    radial-gradient(circle at 40% 50%, rgba(20, 184, 166, 0.08) 0%, transparent 40%);
+  animation: gradientPulse 8s ease-in-out infinite;
+}
+
+@keyframes gradientPulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+/* Анимированные формы */
+.quartz-shape {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(45deg, rgba(56, 189, 248, 0.1), rgba(139, 92, 246, 0.1));
+  filter: blur(40px);
+  animation: float 20s infinite linear;
+}
+
+.quartz-shape--1 {
+  width: 300px;
+  height: 300px;
+  top: 10%;
+  left: 10%;
+  animation-duration: 25s;
+  background: linear-gradient(45deg, rgba(56, 189, 248, 0.15), rgba(139, 92, 246, 0.1));
+}
+
+.quartz-shape--2 {
+  width: 400px;
+  height: 400px;
+  top: 60%;
+  left: 70%;
+  animation-duration: 30s;
+  animation-delay: -5s;
+  background: linear-gradient(45deg, rgba(139, 92, 246, 0.1), rgba(20, 184, 166, 0.15));
+}
+
+.quartz-shape--3 {
+  width: 250px;
+  height: 250px;
+  top: 30%;
+  left: 80%;
+  animation-duration: 20s;
+  animation-delay: -10s;
+  background: linear-gradient(45deg, rgba(20, 184, 166, 0.1), rgba(56, 189, 248, 0.15));
+}
+
+.quartz-shape--4 {
+  width: 350px;
+  height: 350px;
+  top: 70%;
+  left: 20%;
+  animation-duration: 35s;
+  animation-delay: -15s;
+  background: linear-gradient(45deg, rgba(56, 189, 248, 0.1), rgba(139, 92, 246, 0.15));
+}
+
+.quartz-shape--5 {
+  width: 200px;
+  height: 200px;
+  top: 20%;
+  left: 50%;
+  animation-duration: 18s;
+  animation-delay: -7s;
+  background: linear-gradient(45deg, rgba(139, 92, 246, 0.1), rgba(20, 184, 166, 0.1));
+}
+
+@keyframes float {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translate(50px, 30px) rotate(90deg) scale(1.1);
+  }
+  50% {
+    transform: translate(0, 60px) rotate(180deg) scale(1.2);
+  }
+  75% {
+    transform: translate(-50px, 30px) rotate(270deg) scale(1.1);
+  }
+  100% {
+    transform: translate(0, 0) rotate(360deg) scale(1);
+  }
+}
+
+/* Эффект частиц */
+.quartz-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, rgba(56, 189, 248, 0.3), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(139, 92, 246, 0.3), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(56, 189, 248, 0.4), transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(139, 92, 246, 0.3), transparent),
+    radial-gradient(2px 2px at 160px 30px, rgba(20, 184, 166, 0.3), transparent);
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  animation: particlesMove 100s linear infinite;
+  opacity: 0.3;
+}
+
+@keyframes particlesMove {
+  from { transform: translateY(0); }
+  to { transform: translateY(-200px); }
+}
+
+/* Гарантируем, что hero секция имеет relative positioning */
+#hero {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Убедимся, что контент поверх фона */
+#hero > *:not(.quartz-bg) {
+  position: relative;
+  z-index: 10;
+}
+
+.quartz-bg,
+.quartz-shape,
+.quartz-particles {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Отключение анимаций для пользователей с prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  * { 
+    animation-duration: 0.01ms !important; 
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .quartz-bg__gradient,
+  .quartz-shape,
+  .quartz-particles {
+    animation: none !important;
+  }
+}
+
+/* Анимации для бесконечной прокрутки (НЕ УДАЛЯТЬ!) */
+@keyframes scroll-banner {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-100% / 2)); }
+}
+@keyframes scroll-banner-reverse {
+  0% { transform: translateX(calc(-100% / 2)); }
+  100% { transform: translateX(0); }
+}
+.animate-scroll-banner {
+  animation: scroll-banner var(--scroll-banner-duration, 40s) linear infinite;
+}
+.animate-scroll-banner-reverse {
+  animation: scroll-banner-reverse var(--scroll-banner-duration, 35s) linear infinite;
+}
+
+/* Стили для кликабельных логотипов партнеров */
+.partner-link {
+  display: block;
+  transition: all 0.3s ease;
+  border-radius: 12px;
+  padding: 4px;
+  text-decoration: none;
+}
+
+.partner-link:hover {
+  transform: scale(1.1);
+  background: rgba(34, 211, 238, 0.1);
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+}
+
+.partner-link:hover .partner-logo {
+  filter: brightness(1.2) drop-shadow(0 0 8px rgba(34,211,238,0.7));
+}
+
+/* Улучшенные стили для логотипов */
+.partner-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 8px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.partner-logo:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+  border-color: rgba(34, 211, 238, 0.3);
+}
+
+@media (max-width: 768px) {
+  .partner-logo {
+    width: 50px;
+    height: 50px;
+    padding: 6px;
+  }
+  
+  .partner-link:hover {
+    transform: scale(1.05);
+  }
+}
+
+/* Вставьте в конец существующего тега style */
+@media (min-width: 769px) {
+  .animate-scroll-banner, .animate-scroll-banner-reverse {
+    animation-play-state: running !important;
+  }
+}
+
+/* УДАЛЕН НЕКОРРЕКТНЫЙ КОД ИЗ CSS:
+// внизу, после загрузки AOS
+if (window.innerWidth < 768) {
+  document.querySelectorAll('[data-aos]').forEach(el => {
+    el.removeAttribute('data-aos');
+  });
+}
+*/
+
+<!-- === Styles & Animations === -->
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+.animate-pulse-slow { animation: pulse-slow 3s ease-in-out infinite; }
+
+/* Optional slight glow hover for CTA text */
+.group:hover .relative.z-10 {
+  text-shadow: 0 0 15px rgba(255,255,255,0.4);
+}
+
+
+
+.simple-gallery {
+  background: transparent;
+}
+
+.gallery {
+  position: relative;
+  width: 100%;
+  height: 550px; /* Уменьшил высоту контейнера для ПК */
+  overflow: hidden;
+}
+
+.cards {
+  position: absolute;
+  width: 500px; /* Уменьшил ширину для ПК */
+  height: 465px; /* Уменьшил высоту для ПК (сохраняя пропорции) */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.cards li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 500px; /* Уменьшил ширину для ПК */
+  height: 465px; /* Уменьшил высоту для ПК */
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.cards li img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.actions {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1rem;
+}
+
+button {
+  display: inline-block;
+  outline: none;
+  background: rgba(6, 182, 212, 0.2);
+  border: solid 2px rgba(6, 182, 212, 0.5);
+  color: #06b6d4;
+  text-decoration: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: rgba(6, 182, 212, 0.3);
+  transform: scale(1.1);
+}
+
+/* Планшет */
+@media (max-width: 1024px) {
+  .gallery {
+    height: 500px;
+  }
+  
+  .cards {
+    width: 400px;
+    height: 372px; /* Сохраняем пропорции */
+  }
+  
+  .cards li {
+    width: 400px;
+    height: 372px;
+  }
+}
+
+/* Мобильные */
+@media (max-width: 768px) {
+  .gallery {
+    height: 450px;
+  }
+  
+  .cards {
+    width: 320px;
+    height: 298px; /* Сохраняем пропорции */
+  }
+  
+  .cards li {
+    width: 320px;
+    height: 298px;
+  }
+  
+  button {
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery {
+    height: 400px;
+  }
+  
+  .cards {
+    width: 280px;
+    height: 260px; /* Сохраняем пропорции */
+  }
+  
+  .cards li {
+    width: 280px;
+    height: 260px;
+  }
+}
+
+
+
+/* === ОБЩИЕ СТИЛИ ДЛЯ ВОЛНЫ === */
+
+/* Анимация рисования волны */
+.desktop-wave-path {
+  stroke-dasharray: 2000;
+  stroke-dashoffset: 2000;
+  animation: drawDesktopWave 4s ease-in-out forwards;
+}
+
+.mobile-wave-path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawMobileWave 3s ease-in-out forwards;
+}
+
+@keyframes drawDesktopWave {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes drawMobileWave {
+  to { stroke-dashoffset: 0; }
+}
+
+/* === ДЕСКТОП ВЕРСИЯ === */
+
+/* Контейнер десктоп волны */
+.wave-desktop-container {
+  overflow: hidden;
+}
+
+/* Точки на десктоп волне */
+.desktop-point {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* Позиции точек на десктоп волне */
+.desktop-point.point-1 { top: 50%; left: 10%; }
+.desktop-point.point-2 { top: 20%; left: 25%; }
+.desktop-point.point-3 { top: 80%; left: 45%; }
+.desktop-point.point-4 { top: 60%; left: 65%; }
+.desktop-point.refork-desktop-point { top: 30%; left: 85%; }
+
+/* Пульсация точек */
+.desktop-pulse {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.desktop-pulse::after {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  opacity: 0;
+  animation: desktopPulse 2s ease-in-out infinite;
+}
+
+.refork-desktop-point .desktop-pulse::after {
+  animation: reforkDesktopPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes desktopPulse {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.4); opacity: 0.3; }
+}
+
+@keyframes reforkDesktopPulse {
+  0%, 100% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.7); }
+  50% { transform: scale(1.8); opacity: 0.8; box-shadow: 0 0 0 15px rgba(6, 182, 212, 0); }
+}
+
+/* Цвета точек десктоп */
+.point-1 .desktop-pulse { background: #8b5cf6; }
+.point-2 .desktop-pulse { background: #10b981; }
+.point-3 .desktop-pulse { background: #ef4444; }
+.point-4 .desktop-pulse { background: #6b7280; }
+.refork-desktop-point .desktop-pulse { background: #06b6d4; }
+
+/* Подсветка ReFork точки */
+.refork-desktop-glow {
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.4), transparent 70%);
+  z-index: -1;
+}
+
+/* Лейблы точек */
+.desktop-label {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  text-align: center;
+  background: rgba(15, 23, 42, 0.9);
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  min-width: 100px;
+}
+
+.desktop-emoji {
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.desktop-title {
+  font-weight: bold;
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.desktop-badge {
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.refork-desktop-point .desktop-badge {
+  background: linear-gradient(135deg, #06b6d4, #0ea5e9);
+  color: white;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+/* Линия входа ReFork */
+.desktop-entry-line {
+  position: absolute;
+  top: 30%;
+  left: 85%;
+  transform: translateX(-50%);
+  z-index: 5;
+  text-align: center;
+}
+
+.entry-arrow {
+  font-size: 2rem;
+  color: #06b6d4;
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.entry-text {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #06b6d4;
+  margin-top: 8px;
+  background: rgba(6, 182, 212, 0.1);
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Карточки десктоп */
+.desktop-cards-grid {
+  perspective: 1000px;
+}
+
+.desktop-stage-card {
+  transition: all 0.3s ease;
+  opacity: 0.7;
+  transform: translateY(10px) scale(0.95);
+}
+
+.desktop-stage-card.active,
+.desktop-stage-card:hover {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.desktop-card-inner {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 20px;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.desktop-stage-card.active .desktop-card-inner,
+.desktop-stage-card:hover .desktop-card-inner {
+  border-color: rgba(6, 182, 212, 0.5);
+  background: rgba(6, 182, 212, 0.1);
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.2);
+}
+
+.desktop-card-header {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.desktop-card-emoji {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+
+.desktop-card-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #e5e7eb;
+}
+
+.desktop-card-body {
+  text-align: center;
+}
+
+.desktop-card-body p {
+  font-size: 0.9rem;
+  color: #d1d5db;
+  margin-bottom: 12px;
+}
+
+.desktop-card-metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.desktop-metric {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.desktop-metric.positive {
+  background: rgba(34, 197, 94, 0.2);
+  color: #22c55e;
+}
+
+.desktop-metric.negative {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+.metric-label {
+  font-weight: 500;
+}
+
+.metric-value {
+  font-weight: bold;
+}
+
+/* ReFork десктоп карточка */
+.refork-desktop-card .desktop-card-inner {
+  border-width: 2px;
+  background: rgba(6, 182, 212, 0.15);
+}
+
+.desktop-card-actions {
+  margin-top: 16px;
+}
+
+.desktop-action-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #06b6d4, #0ea5e9);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.desktop-action-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(6, 182, 212, 0.4);
+}
+
+/* === МОБИЛЬНАЯ ВЕРСИЯ === */
+
+/* Контейнер мобильной волны */
+.wave-mobile-container {
+  overflow: hidden;
+}
+
+/* Точки на мобильной волне */
+.mobile-point {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+/* Позиции точек на мобильной волне */
+.mobile-point.point-1 { top: 50%; left: 10%; }
+.mobile-point.point-2 { top: 20%; left: 30%; }
+.mobile-point.point-3 { top: 80%; left: 50%; }
+.mobile-point.point-4 { top: 60%; left: 70%; }
+.mobile-point.refork-mobile-point { top: 30%; left: 90%; }
+
+/* Пульсация мобильных точек */
+.mobile-pulse {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  position: relative;
+}
+
+.mobile-pulse::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  opacity: 0;
+  animation: mobilePulse 2s ease-in-out infinite;
+}
+
+.refork-mobile-point .mobile-pulse::after {
+  animation: reforkMobilePulse 1.5s ease-in-out infinite;
+}
+
+@keyframes mobilePulse {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.3); opacity: 0.3; }
+}
+
+@keyframes reforkMobilePulse {
+  0%, 100% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.7); }
+  50% { transform: scale(1.5); opacity: 0.8; box-shadow: 0 0 0 10px rgba(6, 182, 212, 0); }
+}
+
+/* Цвета мобильных точек */
+.point-1 .mobile-pulse { background: #8b5cf6; }
+.point-2 .mobile-pulse { background: #10b981; }
+.point-3 .mobile-pulse { background: #ef4444; }
+.point-4 .mobile-pulse { background: #6b7280; }
+.refork-mobile-point .mobile-pulse { background: #06b6d4; }
+
+/* Подсветка ReFork мобильной точки */
+.refork-mobile-glow {
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.3), transparent 70%);
+  z-index: -1;
+}
+
+/* Лейблы мобильных точек */
+.mobile-label {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: 11px;
+  font-weight: bold;
+  opacity: 0.8;
+}
+
+/* Курсор входа для мобильных */
+.mobile-entry-cursor {
+  position: absolute;
+  top: 30%;
+  left: 85%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.mobile-cursor-line {
+  width: 2px;
+  height: 60px;
+  background: linear-gradient(to bottom, transparent, #06b6d4, transparent);
+  margin: 0 auto;
+}
+
+.mobile-cursor-text {
+  font-size: 0.7rem;
+  white-space: nowrap;
+  background: rgba(6, 182, 212, 0.9);
+  padding: 4px 8px;
+  border-radius: 6px;
+  margin-top: 4px;
+  font-weight: bold;
+}
+
+/* Мобильные карточки */
+.mobile-stage-card {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 16px;
+  transition: all 0.3s ease;
+  opacity: 0.7;
+  transform: scale(0.95);
+}
+
+.mobile-stage-card.active {
+  opacity: 1;
+  transform: scale(1);
+  border-color: rgba(6, 182, 212, 0.5);
+  background: rgba(6, 182, 212, 0.1);
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.2);
+}
+
+.mobile-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.mobile-card-emoji {
+  font-size: 1.2rem;
+}
+
+.mobile-card-title {
+  font-weight: bold;
+  flex: 1;
+}
+
+.mobile-card-badge {
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.refork-mobile-card .mobile-card-badge {
+  background: linear-gradient(135deg, #06b6d4, #0ea5e9);
+  color: white;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+.mobile-card-body {
+  font-size: 0.9rem;
+}
+
+.mobile-card-body p {
+  margin-bottom: 8px;
+}
+
+.mobile-card-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.mobile-metric {
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.mobile-metric.positive {
+  background: rgba(34, 197, 94, 0.2);
+  color: #22c55e;
+}
+
+.mobile-metric.negative {
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+}
+
+/* ReFork мобильная карточка */
+.refork-mobile-card .mobile-card-body p {
+  font-weight: bold;
+}
+
+.mobile-card-actions {
+  margin-top: 12px;
+}
+
+.mobile-action-btn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #06b6d4, #0ea5e9);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+/* Анимации появления карточек */
+.mobile-stage-card {
+  animation: mobileSlideInUp 0.6s ease-out forwards;
+}
+
+.mobile-stage-card:nth-child(1) { animation-delay: 0.1s; }
+.mobile-stage-card:nth-child(2) { animation-delay: 0.2s; }
+.mobile-stage-card:nth-child(3) { animation-delay: 0.3s; }
+.mobile-stage-card:nth-child(4) { animation-delay: 0.4s; }
+.mobile-stage-card:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes mobileSlideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 5px rgba(6, 182, 212, 0.5); }
+  to { box-shadow: 0 0 15px rgba(6, 182, 212, 0.8); }
+}
+
+/* Общие анимации для точек при скролле */
+.desktop-point, .mobile-point {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.5);
+  transition: all 0.5s ease;
+}
+
+.desktop-point.active, .mobile-point.active {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+
+.bg-size-200 { background-size: 200% 200%; }
+.animate-gradient { animation: gradient-shift 4s ease infinite; }
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+
+
+/* Main Watermark Styles - теперь на переднем плане */
+.wm-text-main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(4rem, 15vw, 12rem);
+  font-weight: 900;
+  letter-spacing: -0.035em;
+  background: linear-gradient(90deg, #14F195, #9945FF, #00C2FF, #14F195);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  user-select: none;
+  pointer-events: none;
+  text-shadow: 0 0 10px rgba(20,241,149,.12), 0 0 22px rgba(0,194,255,.10);
+  animation: wm-shine 9s linear infinite, wm-glow 4.5s ease-in-out infinite alternate;
+  margin-bottom: -2rem;
+  opacity: 0.8;
+}
+
+@keyframes wm-shine {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+@keyframes wm-glow {
+  from { 
+    text-shadow: 0 0 6px rgba(20,241,149,.10), 0 0 12px rgba(0,194,255,.10);
+  }
+  to { 
+    text-shadow: 0 0 18px rgba(20,241,149,.28), 0 0 34px rgba(0,194,255,.24);
+  }
+}
+
+/* Glow effect for the main button */
+.btn-glow {
+  position: relative;
+  animation: pulse-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 5px rgba(34, 197, 94, 0.4), 0 0 10px rgba(34, 197, 94, 0.3), 0 0 15px rgba(34, 197, 94, 0.2), 0 0 20px rgba(34, 197, 94, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.6), 0 0 20px rgba(34, 197, 94, 0.4), 0 0 30px rgba(34, 197, 94, 0.3), 0 0 40px rgba(34, 197, 94, 0.2);
+  }
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  #tokenized-stocks-cta .grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .wm-text-main {
+    font-size: clamp(3rem, 12vw, 8rem);
+    margin-bottom: -1rem;
+    opacity: 0.7;
+  }
+}
+
+
+  // Стили для улучшенного popup
+  const style = document.createElement('style');
+  style.textContent = `
+    .grain-overlay {
+      position: absolute;
+      inset: 0;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.03"/></svg>') repeat;
+      pointer-events: none;
+      mix-blend-mode: overlay;
+      animation: grain-move 8s steps(10) infinite;
+    }
+    
+    .degen-popup-btn {
+      position: relative;
+      overflow: hidden;
+      border: none;
+      background: linear-gradient(90deg, #10b981, #059669, #10b981, #34d399, #10b981);
+      background-size: 300% 100%;
+      animation: gradient-x 3s linear infinite;
+    }
+    
+    .degen-popup-btn:hover {
+      animation-duration: 1.5s;
+    }
+    
+    .urgency-timer {
+      animation: pulse-urgency 2s ease-in-out infinite;
+    }
+    
+    @keyframes pulse-urgency {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
+    }
+    
+    @keyframes grain-move {
+      0% { transform: translate(0, 0); }
+      100% { transform: translate(-5%, -5%); }
+    }
+  `;
+  document.head.appendChild(style);
+
+  // Таймер обратного отсчета
+  let timeLeft = 300; // 5 минут
+  const countdownElement = popup.querySelector('#popupCountdown');
+  const countdownInterval = setInterval(() => {
+    timeLeft--;
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    countdownElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    
+    if (timeLeft <= 0) {
+      clearInterval(countdownInterval);
+      popup.remove();
+    }
+  }, 1000);
+
+  // Обработчик для кнопки инвестирования
+  popup.querySelector('#exitPopupInvest').addEventListener('click', () => {
+    // Отправляем в Telegram
+    window.open('https://t.me/ReForkCapital/7', '_blank');
+    popup.remove();
+    localStorage.setItem('exitPopupShown', 'true');
+    clearInterval(countdownInterval);
+  });
+
+  // Обработчик для кнопки закрытия
+  const closeButtons = popup.querySelectorAll('.exit-popup-close');
+  closeButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      popup.remove();
+      localStorage.setItem('exitPopupShown', 'true');
+      clearInterval(countdownInterval);
+    });
+  });
+
+  // Закрытие по клику на фон
+  popup.addEventListener('click', (e) => {
+    if (e.target === popup) {
+      popup.remove();
+      localStorage.setItem('exitPopupShown', 'true');
+      clearInterval(countdownInterval);
+    }
+  });
+
+  // Закрытие по Escape
+  const handleEscape = (e) => {
+    if (e.key === 'Escape') {
+      popup.remove();
+      document.removeEventListener('keydown', handleEscape);
+      localStorage.setItem('exitPopupShown', 'true');
+      clearInterval(countdownInterval);
+    }
+  };
+  document.addEventListener('keydown', handleEscape);
+
+  document.body.appendChild(popup);
+  exitIntentShown = true;
+  
+  // Автоматическое закрытие через 24 часа
+  setTimeout(() => {
+    localStorage.removeItem('exitPopupShown');
+  }, 24 * 60 * 60 * 1000);
+}
+
+// Инициализация при загрузке страницы
+document.addEventListener('DOMContentLoaded', function() {
+  // Ждем немного перед инициализацией exit intent
+  setTimeout(initExitIntent, 3000);
+});
+
+
+     // Форма - улучшенная обработка для Vercel
+// Форма - финальная версия для Vercel
+const form = document.getElementById('leadForm');
+const btn = document.getElementById('leadSubmit');
+
+if (form && btn) {
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    
+    // Проверка rate limit
+    if (!ReForkUtils.formProtection.canSubmit()) {
+      const remaining = Math.ceil(ReForkUtils.formProtection.getRemainingTime() / 1000);
+      showError(`⏳ Подождите ${remaining} секунд перед повторной отправкой`);
+      return;
+    }
+    
+    const formData = new FormData(form);
+    
+    // Honeypot check
+    if (formData.get('website')) {
+      return;
+    }
+    
+    // Валидация
+    const validation = ReForkUtils.validateFormData(formData);
+    if (!validation.valid) {
+      const messages = {
+        telegram: '❌ Telegram должен начинаться с @ (например: @username)',
+        name: '❌ Имя должно содержать от 2 до 100 символов',
+        package: '❌ Пожалуйста, выберите сумму'
+      };
+      showError(messages[validation.field] || '❌ Проверьте правильность заполнения формы');
+      return;
+    }
+    
+    btn.disabled = true;
+    const buttonText = btn.querySelector('.button-text');
+    const spinner = btn.querySelector('.loading-spinner-btn');
+    buttonText.textContent = "Отправка...";
+    spinner.classList.remove('hidden');
+
+    // ✅ VERCEL ENDPOINT
+    const API_URL = 'https://re-fork-capital.vercel.app/api/telegram';
+    
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 10000);
+
+    try {
+      const jsonData = {
+        name: formData.get('name'),
+        telegram: formData.get('telegram'),
+        package: formData.get('package'),
+        lang: 'ru',
+        source: 'ReFork Capital'
+      };
+
+      console.log('📤 Отправка данных в Vercel:', jsonData);
+
+      const res = await fetch(API_URL, { 
+        method: "POST", 
+        body: JSON.stringify(jsonData),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        mode: 'cors',
+        signal: controller.signal
+      });
+
+      clearTimeout(timeout);
+
+      const responseData = await res.json();
+      console.log('📥 Ответ от Vercel:', responseData);
+
+      if (res.ok && responseData.success) {
+        ReForkUtils.formProtection.recordSubmit();
+        showToast("✅ Спасибо! Сигнал отправлен. Мы свяжемся с вами в ближайшее время.");
+        
+        // Redirect через 2 секунды
+        setTimeout(() => {
+          window.location.href = "https://lucas555-ops.github.io/ReFork-Capital/thank-you.html";
+        }, 2000);
+        
+        form.reset();
+      } else {
+        const errorMsg = responseData.error || 'Неизвестная ошибка сервера';
+        console.error('Vercel API error:', errorMsg);
+        
+        // Показываем пользователю понятное сообщение
+        if (errorMsg.includes('BOT_TOKEN') || errorMsg.includes('CHAT_ID')) {
+          showError("❌ Сервер не настроен. Свяжитесь с нами в Telegram.");
+        } else if (errorMsg.includes('Telegram')) {
+          showError("❌ Ошибка отправки в Telegram. Попробуйте позже.");
+        } else {
+          showError(`❌ Ошибка отправки: ${errorMsg}`);
+        }
+      }
+    } catch (err) {
+  clearTimeout(timeout);
+  console.error('Ошибка при отправке:', err);
+  
+  // Специальная обработка CORS ошибок
+  if (err.message && err.message.includes('CORS')) {
+    showError("🔒 Ошибка безопасности. Попробуйте обновить страницу или свяжитесь с нами в Telegram.");
+    return;
+  }
+  
+  if (err.name === 'AbortError') {
+    showError("⏱️ Превышено время ожидания. Проверьте соединение и попробуйте снова.");
+      } else if (err.name === 'TypeError' && err.message.includes('fetch')) {
+        showError("⚠️ Ошибка сети. Проверьте интернет-соединение и попробуйте снова.");
+      } else {
+        showError("⚠️ Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже или свяжитесь с нами в Telegram.");
+      }
+    } finally {
+      btn.disabled = false;
+      buttonText.textContent = "Отправить";
+      spinner.classList.add('hidden');
+    }
+  });
+}
+
+      function showToast(msg) {
+  const el = document.createElement("div");
+  el.className = "success-toast";
+  el.textContent = msg;
+  el.setAttribute('role', 'status');
+  el.setAttribute('aria-live', 'polite');
+  document.body.appendChild(el);
+        setTimeout(() => {
+          el.style.transition = "opacity 0.3s";
+          el.style.opacity = "0";
+          setTimeout(() => el.remove(), 300);
+        }, 4000);
+      }
+
+      function showError(msg) {
+  const el = document.createElement("div");
+  el.className = "error-toast";
+  el.textContent = msg;
+  el.setAttribute('role', 'alert');
+  el.setAttribute('aria-live', 'assertive');
+  document.body.appendChild(el);
+        setTimeout(() => {
+          el.style.transition = "opacity 0.3s";
+          el.style.opacity = "0";
+          setTimeout(() => el.remove(), 300);
+        }, 5000);
+      }
+    });
+
+
+
+// Дебаунс для resize событий
+let resizeTimeout;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(() => {
+    // логика ресайза
+  }, 250);
+});
+
+
+
+@media (max-width: 768px) {
+  #full-cycle .grid-cols-5 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+  #meme-psychology .flex-wrap {
+    flex-direction: column;
+  }
+  .text-4xl { font-size: 2rem; }
+  .text-5xl { font-size: 2.5rem; }
+}
+#full-cycle, #meme-psychology, #target-audience {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+
+
+/* Анимации для аккордеона */
+details[open] summary ~ * {
+  animation: sweep 0.3s ease-in-out;
+}
+
+@keyframes sweep {
+  0% { opacity: 0; transform: translateY(-10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Убираем стандартный маркер */
+summary::marker, summary::-webkit-details-marker {
+  display: none;
+}
+
+
 </style>
 
 <!-- Yandex.Metrika counter -->
@@ -1272,19 +3126,7 @@ ReFork ROI: +284%
 </div>
 </section>
 
-<!-- === Styles & Animations === -->
-<style>
-@keyframes pulse-slow {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
-}
-.animate-pulse-slow { animation: pulse-slow 3s ease-in-out infinite; }
 
-/* Optional slight glow hover for CTA text */
-.group:hover .relative.z-10 {
-  text-shadow: 0 0 15px rgba(255,255,255,0.4);
-}
-</style>
 
 
 
@@ -1663,258 +3505,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 </section>
 
-<style>
-/* Quartz Background Styles */
-.quartz-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  overflow: hidden;
-  background: 
-    radial-gradient(ellipse at 20% 20%, rgba(56, 189, 248, 0.15) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(11, 14, 20, 0.95) 0%, rgba(5, 8, 15, 1) 100%);
-}
 
-.quartz-bg__gradient {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: 
-    radial-gradient(circle at 20% 30%, rgba(56, 189, 248, 0.1) 0%, transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.1) 0%, transparent 40%),
-    radial-gradient(circle at 40% 50%, rgba(20, 184, 166, 0.08) 0%, transparent 40%);
-  animation: gradientPulse 8s ease-in-out infinite;
-}
-
-@keyframes gradientPulse {
-  0%, 100% { opacity: 0.7; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.05); }
-}
-
-/* Анимированные формы */
-.quartz-shape {
-  position: absolute;
-  border-radius: 50%;
-  background: linear-gradient(45deg, rgba(56, 189, 248, 0.1), rgba(139, 92, 246, 0.1));
-  filter: blur(40px);
-  animation: float 20s infinite linear;
-}
-
-.quartz-shape--1 {
-  width: 300px;
-  height: 300px;
-  top: 10%;
-  left: 10%;
-  animation-duration: 25s;
-  background: linear-gradient(45deg, rgba(56, 189, 248, 0.15), rgba(139, 92, 246, 0.1));
-}
-
-.quartz-shape--2 {
-  width: 400px;
-  height: 400px;
-  top: 60%;
-  left: 70%;
-  animation-duration: 30s;
-  animation-delay: -5s;
-  background: linear-gradient(45deg, rgba(139, 92, 246, 0.1), rgba(20, 184, 166, 0.15));
-}
-
-.quartz-shape--3 {
-  width: 250px;
-  height: 250px;
-  top: 30%;
-  left: 80%;
-  animation-duration: 20s;
-  animation-delay: -10s;
-  background: linear-gradient(45deg, rgba(20, 184, 166, 0.1), rgba(56, 189, 248, 0.15));
-}
-
-.quartz-shape--4 {
-  width: 350px;
-  height: 350px;
-  top: 70%;
-  left: 20%;
-  animation-duration: 35s;
-  animation-delay: -15s;
-  background: linear-gradient(45deg, rgba(56, 189, 248, 0.1), rgba(139, 92, 246, 0.15));
-}
-
-.quartz-shape--5 {
-  width: 200px;
-  height: 200px;
-  top: 20%;
-  left: 50%;
-  animation-duration: 18s;
-  animation-delay: -7s;
-  background: linear-gradient(45deg, rgba(139, 92, 246, 0.1), rgba(20, 184, 166, 0.1));
-}
-
-@keyframes float {
-  0% {
-    transform: translate(0, 0) rotate(0deg) scale(1);
-  }
-  25% {
-    transform: translate(50px, 30px) rotate(90deg) scale(1.1);
-  }
-  50% {
-    transform: translate(0, 60px) rotate(180deg) scale(1.2);
-  }
-  75% {
-    transform: translate(-50px, 30px) rotate(270deg) scale(1.1);
-  }
-  100% {
-    transform: translate(0, 0) rotate(360deg) scale(1);
-  }
-}
-
-/* Эффект частиц */
-.quartz-particles {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    radial-gradient(2px 2px at 20px 30px, rgba(56, 189, 248, 0.3), transparent),
-    radial-gradient(2px 2px at 40px 70px, rgba(139, 92, 246, 0.3), transparent),
-    radial-gradient(1px 1px at 90px 40px, rgba(56, 189, 248, 0.4), transparent),
-    radial-gradient(1px 1px at 130px 80px, rgba(139, 92, 246, 0.3), transparent),
-    radial-gradient(2px 2px at 160px 30px, rgba(20, 184, 166, 0.3), transparent);
-  background-repeat: repeat;
-  background-size: 200px 200px;
-  animation: particlesMove 100s linear infinite;
-  opacity: 0.3;
-}
-
-@keyframes particlesMove {
-  from { transform: translateY(0); }
-  to { transform: translateY(-200px); }
-}
-
-/* Гарантируем, что hero секция имеет relative positioning */
-#hero {
-  position: relative;
-  overflow: hidden;
-}
-
-/* Убедимся, что контент поверх фона */
-#hero > *:not(.quartz-bg) {
-  position: relative;
-  z-index: 10;
-}
-
-.quartz-bg,
-.quartz-shape,
-.quartz-particles {
-  will-change: transform, opacity;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-}
-
-/* Отключение анимаций для пользователей с prefers-reduced-motion */
-@media (prefers-reduced-motion: reduce) {
-  * { 
-    animation-duration: 0.01ms !important; 
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-  
-  .quartz-bg__gradient,
-  .quartz-shape,
-  .quartz-particles {
-    animation: none !important;
-  }
-}
-
-/* Анимации для бесконечной прокрутки (НЕ УДАЛЯТЬ!) */
-@keyframes scroll-banner {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(calc(-100% / 2)); }
-}
-@keyframes scroll-banner-reverse {
-  0% { transform: translateX(calc(-100% / 2)); }
-  100% { transform: translateX(0); }
-}
-.animate-scroll-banner {
-  animation: scroll-banner var(--scroll-banner-duration, 40s) linear infinite;
-}
-.animate-scroll-banner-reverse {
-  animation: scroll-banner-reverse var(--scroll-banner-duration, 35s) linear infinite;
-}
-
-/* Стили для кликабельных логотипов партнеров */
-.partner-link {
-  display: block;
-  transition: all 0.3s ease;
-  border-radius: 12px;
-  padding: 4px;
-  text-decoration: none;
-}
-
-.partner-link:hover {
-  transform: scale(1.1);
-  background: rgba(34, 211, 238, 0.1);
-  box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
-}
-
-.partner-link:hover .partner-logo {
-  filter: brightness(1.2) drop-shadow(0 0 8px rgba(34,211,238,0.7));
-}
-
-/* Улучшенные стили для логотипов */
-.partner-logo {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 8px;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.partner-logo:hover {
-  transform: scale(1.1);
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
-  border-color: rgba(34, 211, 238, 0.3);
-}
-
-@media (max-width: 768px) {
-  .partner-logo {
-    width: 50px;
-    height: 50px;
-    padding: 6px;
-  }
-  
-  .partner-link:hover {
-    transform: scale(1.05);
-  }
-}
-
-/* Вставьте в конец существующего тега style */
-@media (min-width: 769px) {
-  .animate-scroll-banner, .animate-scroll-banner-reverse {
-    animation-play-state: running !important;
-  }
-}
-
-/* УДАЛЕН НЕКОРРЕКТНЫЙ КОД ИЗ CSS:
-// внизу, после загрузки AOS
-if (window.innerWidth < 768) {
-  document.querySelectorAll('[data-aos]').forEach(el => {
-    el.removeAttribute('data-aos');
-  });
-}
-*/
-
-</style>
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
@@ -2116,138 +3707,7 @@ document.addEventListener("DOMContentLoaded", () => {
   </div>
 </section>
 
-<style>
-.simple-gallery {
-  background: transparent;
-}
-
-.gallery {
-  position: relative;
-  width: 100%;
-  height: 550px; /* Уменьшил высоту контейнера для ПК */
-  overflow: hidden;
-}
-
-.cards {
-  position: absolute;
-  width: 500px; /* Уменьшил ширину для ПК */
-  height: 465px; /* Уменьшил высоту для ПК (сохраняя пропорции) */
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.cards li {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  width: 500px; /* Уменьшил ширину для ПК */
-  height: 465px; /* Уменьшил высоту для ПК */
-  text-align: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.cards li img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 12px;
-}
-
-.actions {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 1rem;
-}
-
-button {
-  display: inline-block;
-  outline: none;
-  background: rgba(6, 182, 212, 0.2);
-  border: solid 2px rgba(6, 182, 212, 0.5);
-  color: #06b6d4;
-  text-decoration: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  font-weight: 600;
-  cursor: pointer;
-  font-size: 20px;
-  transition: all 0.3s ease;
-}
-
-button:hover {
-  background: rgba(6, 182, 212, 0.3);
-  transform: scale(1.1);
-}
-
-/* Планшет */
-@media (max-width: 1024px) {
-  .gallery {
-    height: 500px;
-  }
-  
-  .cards {
-    width: 400px;
-    height: 372px; /* Сохраняем пропорции */
-  }
-  
-  .cards li {
-    width: 400px;
-    height: 372px;
-  }
-}
-
-/* Мобильные */
-@media (max-width: 768px) {
-  .gallery {
-    height: 450px;
-  }
-  
-  .cards {
-    width: 320px;
-    height: 298px; /* Сохраняем пропорции */
-  }
-  
-  .cards li {
-    width: 320px;
-    height: 298px;
-  }
-  
-  button {
-    width: 44px;
-    height: 44px;
-    font-size: 18px;
-  }
-}
-
-@media (max-width: 480px) {
-  .gallery {
-    height: 400px;
-  }
-  
-  .cards {
-    width: 280px;
-    height: 260px; /* Сохраняем пропорции */
-  }
-  
-  .cards li {
-    width: 280px;
-    height: 260px;
-  }
-}
-
-
-</style>	
+	
 
     <section id="method" class="py-20">
       <div class="max-w-6xl mx-auto px-4 text-center">
@@ -2514,545 +3974,7 @@ button:hover {
 
 
 
-<style>
 
-/* Mobile Timeline */
-.vertical-timeline {
-  position: relative;
-  padding-left: 30px;
-}
-
-.vertical-timeline::before {
-  content: '';
-  position: absolute;
-  left: 15px;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: linear-gradient(to bottom, #8b5cf6, #10b981, #ef4444, #6b7280, #06b6d4);
-}
-
-.timeline-stage {
-  position: relative;
-  margin-bottom: 2rem;
-  display: flex;
-  align-items: flex-start;
-}
-
-.timeline-marker {
-  position: absolute;
-  left: -30px;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  border: 3px solid;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 2;
-}
-
-.marker-1 { background: #8b5cf6; border-color: #c4b5fd; }
-.marker-2 { background: #10b981; border-color: #a7f3d0; }
-.marker-3 { background: #ef4444; border-color: #fdba74; }
-.marker-4 { background: #6b7280; border-color: #d1d5db; }
-.marker-5 { 
-  background: #06b6d4; 
-  border-color: #7dd3fc;
-  animation: pulse 2s infinite;
-}
-
-.timeline-content {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: rgba(15, 23, 42, 0.6);
-  padding: 12px 16px;
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.1);
-  flex: 1;
-}
-
-.stage-icon-mobile {
-  font-size: 1.5rem;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.1);
-}
-
-.stage-title-mobile {
-  font-weight: bold;
-  margin-bottom: 2px;
-}
-
-.stage-duration-mobile {
-  font-size: 0.75rem;
-  color: #9ca3af;
-}
-
-.active-stage .timeline-content {
-  background: rgba(6, 182, 212, 0.1);
-  border-color: rgba(6, 182, 212, 0.3);
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-  100% { transform: scale(1); }
-}
-
-/* Responsive adjustments */
-@media (max-width: 480px) {
-  .timeline-content {
-    flex-direction: column;
-    text-align: center;
-    gap: 8px;
-  }
-  
-  .stage-icon-mobile {
-    width: 36px;
-    height: 36px;
-    font-size: 1.25rem;
-  }
-}
-.glow-card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 25px rgba(6,182,212,0.4);
-  transition: all 0.3s ease;
-}
-
-/* Трехцветные градиенты */
-.three-color-gradient-1 {
-  background: linear-gradient(90deg, #3b82f6 0%, #10b981 50%, #3b82f6 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.three-color-gradient-2 {
-  background: linear-gradient(90deg, #8b5cf6 0%, #06d6a0 50%, #118ab2 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.three-color-gradient-3 {
-  background: linear-gradient(90deg, #06b6d4 0%, #10b981 50%, #0ea5e9 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-
-
-.custom-border-top {
-  position: relative;
-}
-
-.custom-border-top::before {
-  content: '';
-  position: absolute;
-  top: -1px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #22d3ee, transparent);
-  border-radius: 1px;
-}
-
-.custom-border-bottom {
-  position: relative;
-}
-
-.custom-border-bottom::after {
-  content: '';
-  position: absolute;
-  bottom: -1px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #10b981, transparent);
-  border-radius: 1px;
-}
-
-
-
-/* Адаптация нового графика для мобильных */
-@media (max-width: 768px) {
-  #reforkStrategyChart {
-    min-width: 600px !important;
-    width: 200% !important;
-  }
-  
-  .glow-card .overflow-x-auto {
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-  
-  .glow-card .overflow-x-auto::-webkit-scrollbar {
-    display: none;
-  }
-  
-  /* Увеличиваем отступы для лучшего скролла */
-  .glow-card {
-    padding: 1rem !important;
-  }
-}
-
-/* Индикатор скролла для мобильных */
-.glow-card .overflow-x-auto {
-  position: relative;
-}
-
-.glow-card .overflow-x-auto::after {
-  content: '← прокрутите →';
-  position: absolute;
-  bottom: 5px;
-  right: 10px;
-  color: #22d3ee;
-  font-size: 10px;
-  opacity: 0.7;
-  animation: pulse-scroll 2s infinite;
-}
-
-@keyframes pulse-scroll {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.8; }
-}
-
-@media (max-width: 480px) {
-  #reforkStrategyChart {
-    min-width: 700px !important;
-  }
-  
-  .glow-card .overflow-x-auto::after {
-    content: '← прокрутите график →';
-    font-size: 9px;
-  }
-}
-
-.central-stage:hover .tooltip {
-  display: block;
-  animation: fadeIn 0.4s ease forwards;
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: translate(-50%, -20px); }
-  to { opacity: 1; transform: translate(-50%, -30px); }
-}
-
-#partner-row-1 img, 
-.animate-scroll-banner-reverse img {
-  transition: all 0.3s ease;
-  filter: drop-shadow(0 0 0px transparent);
-}
-#partner-row-1 img:hover, 
-.animate-scroll-banner-reverse img:hover {
-  transform: scale(1.08);
-  filter: drop-shadow(0 0 8px rgba(34,211,238,0.7));
-}
-
-@media (max-width: 768px) {
-  #reforkStrategyChart {
-    min-width: 650px !important;
-    width: 100% !important;
-    transform: none !important;
-  }
-}
-
-.phase-label { 
-  font-size: 12px !important; 
-  padding: 4px 8px; 
-}
-
-/* Гарантируем отображение canvas */
-#reforkStrategyChart {
-  display: block !important;
-  width: 100% !important;
-  height: 100% !important;
-  min-height: 200px;
-}
-
-
-/* На мобильных увеличиваем минимальную ширину */
-@media (max-width: 768px) {
-  .min-w-\[600px\] {
-    min-width: 700px !important;
-  }
-}
-
-/* Мобильная адаптация для первой секции */
-@media (max-width: 1024px) {
-  #hero .grid {
-    grid-template-columns: 1fr !important;
-  }
-  
-  #hero h1 {
-    font-size: 2.5rem !important;
-    text-align: center;
-    line-height: 1.2;
-  }
-  
-  #hero h2 {
-    font-size: 1.25rem !important;
-    text-align: center;
-  }
-}
-
-@media (max-width: 768px) {
-  #hero {
-    padding-top: 2rem !important;
-    padding-bottom: 2rem !important;
-    min-height: auto !important;
-  }
-  
-  #hero h1 {
-    font-size: 2rem !important;
-  }
-  
-  #hero h2 {
-    font-size: 1.125rem !important;
-  }
-  
-  .glow-card {
-    padding: 1rem !important;
-  }
-  
-  #hero .flex-wrap {
-    justify-content: center;
-  }
-}
-
-@media (max-width: 480px) {
-  #hero h1 {
-    font-size: 1.75rem !important;
-  }
-  
-  #hero .min-w-\[500px\] {
-    min-width: 450px !important;
-  }
-  
-  .text-lg {
-    font-size: 1rem !important;
-  }
-}
-
-/* Гарантируем правильный порядок на мобильных */
-@media (max-width: 1024px) {
-  .order-1 {
-    order: 1;
-  }
-  .order-2 {
-    order: 2;
-  }
-}
-
-/* Контейнер для графика */
-.overflow-x-auto {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-/* Кинетическая типография - бесконечный цикл с разными направлениями */
-.kinetic-typography {
-  position: relative;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  perspective: 1000px;
-}
-
-.kinetic-word {
-  position: absolute;
-  opacity: 0;
-  animation-duration: 4.5s; /* Сократили общее время цикла */
-  animation-iteration-count: infinite;
-  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.kinetic-word-1 {
-  animation-name: kineticLeft;
-}
-
-.kinetic-word-2 {
-  animation-name: kineticTop;
-}
-
-.kinetic-word-3 {
-  animation-name: kineticRight;
-}
-
-/* Анимация слева - появляется быстрее */
-@keyframes kineticLeft {
-  0%, 15% {
-    opacity: 0;
-    transform: translateX(-80px) rotateY(90deg);
-  }
-  20%, 30% {
-    opacity: 1;
-    transform: translateX(0) rotateY(0);
-  }
-  35%, 100% {
-    opacity: 0;
-    transform: translateX(60px) rotateY(-90deg);
-  }
-}
-
-/* Анимация сверху - появляется быстрее */
-@keyframes kineticTop {
-  0%, 35% {
-    opacity: 0;
-    transform: translateY(-60px) rotateX(90deg);
-  }
-  40%, 50% {
-    opacity: 1;
-    transform: translateY(0) rotateX(0);
-  }
-  55%, 100% {
-    opacity: 0;
-    transform: translateY(50px) rotateX(-90deg);
-  }
-}
-
-/* Анимация справа - появляется быстрее */
-@keyframes kineticRight {
-  0%, 55% {
-    opacity: 0;
-    transform: translateX(80px) rotateY(-90deg);
-  }
-  60%, 70% {
-    opacity: 1;
-    transform: translateX(0) rotateY(0);
-  }
-  75%, 100% {
-    opacity: 0;
-    transform: translateX(-60px) rotateY(90deg);
-  }
-}
-
-/* Для мобильных устройств */
-@media (max-width: 768px) {
-  .kinetic-typography {
-    height: 60px;
-  }
-  
-  @keyframes kineticLeft {
-    0%, 15% {
-      opacity: 0;
-      transform: translateX(-50px) rotateY(90deg);
-    }
-    20%, 30% {
-      opacity: 1;
-      transform: translateX(0) rotateY(0);
-    }
-    35%, 100% {
-      opacity: 0;
-      transform: translateX(40px) rotateY(-90deg);
-    }
-  }
-  
-  @keyframes kineticTop {
-    0%, 35% {
-      opacity: 0;
-      transform: translateY(-40px) rotateX(90deg);
-    }
-    40%, 50% {
-      opacity: 1;
-      transform: translateY(0) rotateX(0);
-    }
-    55%, 100% {
-      opacity: 0;
-      transform: translateY(35px) rotateX(-90deg);
-    }
-  }
-  
-  @keyframes kineticRight {
-    0%, 55% {
-      opacity: 0;
-      transform: translateX(50px) rotateY(-90deg);
-    }
-    60%, 70% {
-      opacity: 1;
-      transform: translateX(0) rotateY(0);
-    }
-    75%, 100% {
-      opacity: 0;
-      transform: translateX(-40px) rotateY(90deg);
-    }
-  }
-}
-
-/* Дополнительные эффекты для плавности */
-.kinetic-word {
-  filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
-  will-change: transform, opacity;
-}
-
-/* Увеличиваем минимальную ширину для графика на мобильных */
-@media (max-width: 768px) {
-  .min-w-\[650px\] {
-    min-width: 650px !important;
-  }
-  
-  /* Уменьшаем отступы для легенды метрик */
-  .grid-cols-3.gap-1 .text-center {
-    padding: 0 2px;
-  }
-  
-  .grid-cols-3.gap-1 .text-lg {
-    font-size: 1rem !important;
-  }
-  
-  .grid-cols-3.gap-1 .text-xs {
-    font-size: 0.7rem !important;
-  }
-}
-
-.phase-label {
-position: relative;
-text-shadow: 0 0 12px rgba(20, 241, 149, 0.5);
-transition: all 0.3s ease;
-}
-.phase-label::after {
-content: '';
-position: absolute;
-left: 50%;
-top: 100%;
-transform: translateX(-50%);
-width: 40%;
-height: 2px;
-background: linear-gradient(90deg, #14F195, #00C2FF);
-border-radius: 2px;
-opacity: 0;
-transition: opacity 0.3s ease;
-}
-.timeline-stage:hover .phase-label::after {
-opacity: 1;
-}
-
-
-#full-cycle .glow-card {
-  transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-  transform-style: preserve-3d;
-}
-
-#full-cycle .glow-card:hover {
-  transform: translateY(-5px) perspective(1000px) rotateX(5deg);
-  border-color: rgba(34, 211, 238, 0.5);
-  background: linear-gradient(180deg, 
-    rgba(255,255,255,0.08), 
-    rgba(255,255,255,0.12)
-  );
-}
-
-</style>
 
 <!-- Секрет ReFork Capital - ИСПРАВЛЕНО -->
     <div class="mb-12">
@@ -3550,542 +4472,7 @@ opacity: 1;
   </div>
 </section>
 
-<style>
-/* === ОБЩИЕ СТИЛИ ДЛЯ ВОЛНЫ === */
 
-/* Анимация рисования волны */
-.desktop-wave-path {
-  stroke-dasharray: 2000;
-  stroke-dashoffset: 2000;
-  animation: drawDesktopWave 4s ease-in-out forwards;
-}
-
-.mobile-wave-path {
-  stroke-dasharray: 1000;
-  stroke-dashoffset: 1000;
-  animation: drawMobileWave 3s ease-in-out forwards;
-}
-
-@keyframes drawDesktopWave {
-  to { stroke-dashoffset: 0; }
-}
-
-@keyframes drawMobileWave {
-  to { stroke-dashoffset: 0; }
-}
-
-/* === ДЕСКТОП ВЕРСИЯ === */
-
-/* Контейнер десктоп волны */
-.wave-desktop-container {
-  overflow: hidden;
-}
-
-/* Точки на десктоп волне */
-.desktop-point {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  transition: all 0.3s ease;
-  cursor: pointer;
-  z-index: 10;
-}
-
-/* Позиции точек на десктоп волне */
-.desktop-point.point-1 { top: 50%; left: 10%; }
-.desktop-point.point-2 { top: 20%; left: 25%; }
-.desktop-point.point-3 { top: 80%; left: 45%; }
-.desktop-point.point-4 { top: 60%; left: 65%; }
-.desktop-point.refork-desktop-point { top: 30%; left: 85%; }
-
-/* Пульсация точек */
-.desktop-pulse {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  position: relative;
-  transition: all 0.3s ease;
-}
-
-.desktop-pulse::after {
-  content: '';
-  position: absolute;
-  inset: -6px;
-  border-radius: 50%;
-  border: 2px solid currentColor;
-  opacity: 0;
-  animation: desktopPulse 2s ease-in-out infinite;
-}
-
-.refork-desktop-point .desktop-pulse::after {
-  animation: reforkDesktopPulse 1.5s ease-in-out infinite;
-}
-
-@keyframes desktopPulse {
-  0%, 100% { transform: scale(1); opacity: 0.7; }
-  50% { transform: scale(1.4); opacity: 0.3; }
-}
-
-@keyframes reforkDesktopPulse {
-  0%, 100% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.7); }
-  50% { transform: scale(1.8); opacity: 0.8; box-shadow: 0 0 0 15px rgba(6, 182, 212, 0); }
-}
-
-/* Цвета точек десктоп */
-.point-1 .desktop-pulse { background: #8b5cf6; }
-.point-2 .desktop-pulse { background: #10b981; }
-.point-3 .desktop-pulse { background: #ef4444; }
-.point-4 .desktop-pulse { background: #6b7280; }
-.refork-desktop-point .desktop-pulse { background: #06b6d4; }
-
-/* Подсветка ReFork точки */
-.refork-desktop-glow {
-  position: absolute;
-  inset: -12px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(6, 182, 212, 0.4), transparent 70%);
-  z-index: -1;
-}
-
-/* Лейблы точек */
-.desktop-label {
-  position: absolute;
-  top: -50px;
-  left: 50%;
-  transform: translateX(-50%);
-  white-space: nowrap;
-  text-align: center;
-  background: rgba(15, 23, 42, 0.9);
-  padding: 8px 12px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  min-width: 100px;
-}
-
-.desktop-emoji {
-  font-size: 1.5rem;
-  display: block;
-  margin-bottom: 4px;
-}
-
-.desktop-title {
-  font-weight: bold;
-  font-size: 0.9rem;
-  display: block;
-  margin-bottom: 2px;
-}
-
-.desktop-badge {
-  font-size: 0.7rem;
-  padding: 2px 6px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.refork-desktop-point .desktop-badge {
-  background: linear-gradient(135deg, #06b6d4, #0ea5e9);
-  color: white;
-  animation: glow 2s ease-in-out infinite alternate;
-}
-
-/* Линия входа ReFork */
-.desktop-entry-line {
-  position: absolute;
-  top: 30%;
-  left: 85%;
-  transform: translateX(-50%);
-  z-index: 5;
-  text-align: center;
-}
-
-.entry-arrow {
-  font-size: 2rem;
-  color: #06b6d4;
-  animation: bounce 2s ease-in-out infinite;
-}
-
-.entry-text {
-  font-size: 0.9rem;
-  font-weight: bold;
-  color: #06b6d4;
-  margin-top: 8px;
-  background: rgba(6, 182, 212, 0.1);
-  padding: 4px 8px;
-  border-radius: 6px;
-}
-
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-/* Карточки десктоп */
-.desktop-cards-grid {
-  perspective: 1000px;
-}
-
-.desktop-stage-card {
-  transition: all 0.3s ease;
-  opacity: 0.7;
-  transform: translateY(10px) scale(0.95);
-}
-
-.desktop-stage-card.active,
-.desktop-stage-card:hover {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-.desktop-card-inner {
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  padding: 20px;
-  height: 100%;
-  transition: all 0.3s ease;
-}
-
-.desktop-stage-card.active .desktop-card-inner,
-.desktop-stage-card:hover .desktop-card-inner {
-  border-color: rgba(6, 182, 212, 0.5);
-  background: rgba(6, 182, 212, 0.1);
-  box-shadow: 0 0 30px rgba(6, 182, 212, 0.2);
-}
-
-.desktop-card-header {
-  text-align: center;
-  margin-bottom: 16px;
-}
-
-.desktop-card-emoji {
-  font-size: 2.5rem;
-  margin-bottom: 8px;
-}
-
-.desktop-card-title {
-  font-weight: bold;
-  font-size: 1.1rem;
-  color: #e5e7eb;
-}
-
-.desktop-card-body {
-  text-align: center;
-}
-
-.desktop-card-body p {
-  font-size: 0.9rem;
-  color: #d1d5db;
-  margin-bottom: 12px;
-}
-
-.desktop-card-metrics {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.desktop-metric {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.8rem;
-  padding: 6px 8px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.desktop-metric.positive {
-  background: rgba(34, 197, 94, 0.2);
-  color: #22c55e;
-}
-
-.desktop-metric.negative {
-  background: rgba(239, 68, 68, 0.2);
-  color: #ef4444;
-}
-
-.metric-label {
-  font-weight: 500;
-}
-
-.metric-value {
-  font-weight: bold;
-}
-
-/* ReFork десктоп карточка */
-.refork-desktop-card .desktop-card-inner {
-  border-width: 2px;
-  background: rgba(6, 182, 212, 0.15);
-}
-
-.desktop-card-actions {
-  margin-top: 16px;
-}
-
-.desktop-action-btn {
-  width: 100%;
-  padding: 12px;
-  background: linear-gradient(135deg, #06b6d4, #0ea5e9);
-  color: white;
-  border: none;
-  border-radius: 10px;
-  font-weight: bold;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-}
-
-.desktop-action-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(6, 182, 212, 0.4);
-}
-
-/* === МОБИЛЬНАЯ ВЕРСИЯ === */
-
-/* Контейнер мобильной волны */
-.wave-mobile-container {
-  overflow: hidden;
-}
-
-/* Точки на мобильной волне */
-.mobile-point {
-  position: absolute;
-  transform: translate(-50%, -50%);
-  transition: all 0.3s ease;
-  z-index: 10;
-}
-
-/* Позиции точек на мобильной волне */
-.mobile-point.point-1 { top: 50%; left: 10%; }
-.mobile-point.point-2 { top: 20%; left: 30%; }
-.mobile-point.point-3 { top: 80%; left: 50%; }
-.mobile-point.point-4 { top: 60%; left: 70%; }
-.mobile-point.refork-mobile-point { top: 30%; left: 90%; }
-
-/* Пульсация мобильных точек */
-.mobile-pulse {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  position: relative;
-}
-
-.mobile-pulse::after {
-  content: '';
-  position: absolute;
-  inset: -4px;
-  border-radius: 50%;
-  border: 2px solid currentColor;
-  opacity: 0;
-  animation: mobilePulse 2s ease-in-out infinite;
-}
-
-.refork-mobile-point .mobile-pulse::after {
-  animation: reforkMobilePulse 1.5s ease-in-out infinite;
-}
-
-@keyframes mobilePulse {
-  0%, 100% { transform: scale(1); opacity: 0.7; }
-  50% { transform: scale(1.3); opacity: 0.3; }
-}
-
-@keyframes reforkMobilePulse {
-  0%, 100% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.7); }
-  50% { transform: scale(1.5); opacity: 0.8; box-shadow: 0 0 0 10px rgba(6, 182, 212, 0); }
-}
-
-/* Цвета мобильных точек */
-.point-1 .mobile-pulse { background: #8b5cf6; }
-.point-2 .mobile-pulse { background: #10b981; }
-.point-3 .mobile-pulse { background: #ef4444; }
-.point-4 .mobile-pulse { background: #6b7280; }
-.refork-mobile-point .mobile-pulse { background: #06b6d4; }
-
-/* Подсветка ReFork мобильной точки */
-.refork-mobile-glow {
-  position: absolute;
-  inset: -8px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(6, 182, 212, 0.3), transparent 70%);
-  z-index: -1;
-}
-
-/* Лейблы мобильных точек */
-.mobile-label {
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-  white-space: nowrap;
-  font-size: 11px;
-  font-weight: bold;
-  opacity: 0.8;
-}
-
-/* Курсор входа для мобильных */
-.mobile-entry-cursor {
-  position: absolute;
-  top: 30%;
-  left: 85%;
-  transform: translate(-50%, -50%);
-  z-index: 10;
-}
-
-.mobile-cursor-line {
-  width: 2px;
-  height: 60px;
-  background: linear-gradient(to bottom, transparent, #06b6d4, transparent);
-  margin: 0 auto;
-}
-
-.mobile-cursor-text {
-  font-size: 0.7rem;
-  white-space: nowrap;
-  background: rgba(6, 182, 212, 0.9);
-  padding: 4px 8px;
-  border-radius: 6px;
-  margin-top: 4px;
-  font-weight: bold;
-}
-
-/* Мобильные карточки */
-.mobile-stage-card {
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 16px;
-  transition: all 0.3s ease;
-  opacity: 0.7;
-  transform: scale(0.95);
-}
-
-.mobile-stage-card.active {
-  opacity: 1;
-  transform: scale(1);
-  border-color: rgba(6, 182, 212, 0.5);
-  background: rgba(6, 182, 212, 0.1);
-  box-shadow: 0 0 20px rgba(6, 182, 212, 0.2);
-}
-
-.mobile-card-header {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 8px;
-}
-
-.mobile-card-emoji {
-  font-size: 1.2rem;
-}
-
-.mobile-card-title {
-  font-weight: bold;
-  flex: 1;
-}
-
-.mobile-card-badge {
-  font-size: 0.7rem;
-  padding: 2px 8px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.refork-mobile-card .mobile-card-badge {
-  background: linear-gradient(135deg, #06b6d4, #0ea5e9);
-  color: white;
-  animation: glow 2s ease-in-out infinite alternate;
-}
-
-.mobile-card-body {
-  font-size: 0.9rem;
-}
-
-.mobile-card-body p {
-  margin-bottom: 8px;
-}
-
-.mobile-card-metrics {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-
-.mobile-metric {
-  font-size: 0.75rem;
-  padding: 2px 6px;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.05);
-}
-
-.mobile-metric.positive {
-  background: rgba(34, 197, 94, 0.2);
-  color: #22c55e;
-}
-
-.mobile-metric.negative {
-  background: rgba(239, 68, 68, 0.2);
-  color: #ef4444;
-}
-
-/* ReFork мобильная карточка */
-.refork-mobile-card .mobile-card-body p {
-  font-weight: bold;
-}
-
-.mobile-card-actions {
-  margin-top: 12px;
-}
-
-.mobile-action-btn {
-  width: 100%;
-  padding: 12px;
-  background: linear-gradient(135deg, #06b6d4, #0ea5e9);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  font-size: 0.9rem;
-}
-
-/* Анимации появления карточек */
-.mobile-stage-card {
-  animation: mobileSlideInUp 0.6s ease-out forwards;
-}
-
-.mobile-stage-card:nth-child(1) { animation-delay: 0.1s; }
-.mobile-stage-card:nth-child(2) { animation-delay: 0.2s; }
-.mobile-stage-card:nth-child(3) { animation-delay: 0.3s; }
-.mobile-stage-card:nth-child(4) { animation-delay: 0.4s; }
-.mobile-stage-card:nth-child(5) { animation-delay: 0.5s; }
-
-@keyframes mobileSlideInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes glow {
-  from { box-shadow: 0 0 5px rgba(6, 182, 212, 0.5); }
-  to { box-shadow: 0 0 15px rgba(6, 182, 212, 0.8); }
-}
-
-/* Общие анимации для точек при скролле */
-.desktop-point, .mobile-point {
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0.5);
-  transition: all 0.5s ease;
-}
-
-.desktop-point.active, .mobile-point.active {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
-}
-
-</style>
 
 <script>
 // === ИНТЕРАКТИВНОСТЬ ДЛЯ ВОЛНЫ ЦИКЛОВ ===
@@ -4380,74 +4767,7 @@ function scrollToApply() {
 
 
 
-<style>
-/* Main Watermark Styles - теперь на переднем плане */
-.wm-text-main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: clamp(4rem, 15vw, 12rem);
-  font-weight: 900;
-  letter-spacing: -0.035em;
-  background: linear-gradient(90deg, #14F195, #9945FF, #00C2FF, #14F195);
-  background-size: 300% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  user-select: none;
-  pointer-events: none;
-  text-shadow: 0 0 10px rgba(20,241,149,.12), 0 0 22px rgba(0,194,255,.10);
-  animation: wm-shine 9s linear infinite, wm-glow 4.5s ease-in-out infinite alternate;
-  margin-bottom: -2rem;
-  opacity: 0.8;
-}
 
-@keyframes wm-shine {
-  0% { background-position: 0% 50%; }
-  100% { background-position: 200% 50%; }
-}
-
-@keyframes wm-glow {
-  from { 
-    text-shadow: 0 0 6px rgba(20,241,149,.10), 0 0 12px rgba(0,194,255,.10);
-  }
-  to { 
-    text-shadow: 0 0 18px rgba(20,241,149,.28), 0 0 34px rgba(0,194,255,.24);
-  }
-}
-
-/* Glow effect for the main button */
-.btn-glow {
-  position: relative;
-  animation: pulse-glow 2s ease-in-out infinite alternate;
-}
-
-@keyframes pulse-glow {
-  0% {
-    box-shadow: 0 0 5px rgba(34, 197, 94, 0.4), 0 0 10px rgba(34, 197, 94, 0.3), 0 0 15px rgba(34, 197, 94, 0.2), 0 0 20px rgba(34, 197, 94, 0.1);
-  }
-  100% {
-    box-shadow: 0 0 10px rgba(34, 197, 94, 0.6), 0 0 20px rgba(34, 197, 94, 0.4), 0 0 30px rgba(34, 197, 94, 0.3), 0 0 40px rgba(34, 197, 94, 0.2);
-  }
-}
-
-/* Mobile Optimizations */
-@media (max-width: 768px) {
-  #tokenized-stocks-cta .grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  
-  .wm-text-main {
-    font-size: clamp(3rem, 12vw, 8rem);
-    margin-bottom: -1rem;
-    opacity: 0.7;
-  }
-}
-
-
-</style>
 
 <script>
 function scrollToFAQ() {
@@ -4481,14 +4801,7 @@ function scrollToFAQ() {
   </div>
 </section>
 
-<style>
-.bg-size-200 { background-size: 200% 200%; }
-.animate-gradient { animation: gradient-shift 4s ease infinite; }
-@keyframes gradient-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-</style>
+
 
 
     <section id="packages" class="py-20">
@@ -5042,22 +5355,7 @@ function scrollToFAQ() {
 	</div>
 </section>
 
-<style>
-/* Анимации для аккордеона */
-details[open] summary ~ * {
-  animation: sweep 0.3s ease-in-out;
-}
 
-@keyframes sweep {
-  0% { opacity: 0; transform: translateY(-10px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-/* Убираем стандартный маркер */
-summary::marker, summary::-webkit-details-marker {
-  display: none;
-}
-</style>
 
 
 
@@ -5520,280 +5818,9 @@ function showPersonalizedExitPopup() {
         </div>
       </div>
     </div>
-  `;
-
-  // Стили для улучшенного popup
-  const style = document.createElement('style');
-  style.textContent = `
-    .grain-overlay {
-      position: absolute;
-      inset: 0;
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.03"/></svg>') repeat;
-      pointer-events: none;
-      mix-blend-mode: overlay;
-      animation: grain-move 8s steps(10) infinite;
-    }
-    
-    .degen-popup-btn {
-      position: relative;
-      overflow: hidden;
-      border: none;
-      background: linear-gradient(90deg, #10b981, #059669, #10b981, #34d399, #10b981);
-      background-size: 300% 100%;
-      animation: gradient-x 3s linear infinite;
-    }
-    
-    .degen-popup-btn:hover {
-      animation-duration: 1.5s;
-    }
-    
-    .urgency-timer {
-      animation: pulse-urgency 2s ease-in-out infinite;
-    }
-    
-    @keyframes pulse-urgency {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.8; }
-    }
-    
-    @keyframes grain-move {
-      0% { transform: translate(0, 0); }
-      100% { transform: translate(-5%, -5%); }
-    }
-  `;
-  document.head.appendChild(style);
-
-  // Таймер обратного отсчета
-  let timeLeft = 300; // 5 минут
-  const countdownElement = popup.querySelector('#popupCountdown');
-  const countdownInterval = setInterval(() => {
-    timeLeft--;
-    const minutes = Math.floor(timeLeft / 60);
-    const seconds = timeLeft % 60;
-    countdownElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-    
-    if (timeLeft <= 0) {
-      clearInterval(countdownInterval);
-      popup.remove();
-    }
-  }, 1000);
-
-  // Обработчик для кнопки инвестирования
-  popup.querySelector('#exitPopupInvest').addEventListener('click', () => {
-    // Отправляем в Telegram
-    window.open('https://t.me/ReForkCapital/7', '_blank');
-    popup.remove();
-    localStorage.setItem('exitPopupShown', 'true');
-    clearInterval(countdownInterval);
-  });
-
-  // Обработчик для кнопки закрытия
-  const closeButtons = popup.querySelectorAll('.exit-popup-close');
-  closeButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      popup.remove();
-      localStorage.setItem('exitPopupShown', 'true');
-      clearInterval(countdownInterval);
-    });
-  });
-
-  // Закрытие по клику на фон
-  popup.addEventListener('click', (e) => {
-    if (e.target === popup) {
-      popup.remove();
-      localStorage.setItem('exitPopupShown', 'true');
-      clearInterval(countdownInterval);
-    }
-  });
-
-  // Закрытие по Escape
-  const handleEscape = (e) => {
-    if (e.key === 'Escape') {
-      popup.remove();
-      document.removeEventListener('keydown', handleEscape);
-      localStorage.setItem('exitPopupShown', 'true');
-      clearInterval(countdownInterval);
-    }
-  };
-  document.addEventListener('keydown', handleEscape);
-
-  document.body.appendChild(popup);
-  exitIntentShown = true;
-  
-  // Автоматическое закрытие через 24 часа
-  setTimeout(() => {
-    localStorage.removeItem('exitPopupShown');
-  }, 24 * 60 * 60 * 1000);
-}
-
-// Инициализация при загрузке страницы
-document.addEventListener('DOMContentLoaded', function() {
-  // Ждем немного перед инициализацией exit intent
-  setTimeout(initExitIntent, 3000);
-});
+`;
 
 
-     // Форма - улучшенная обработка для Vercel
-// Форма - финальная версия для Vercel
-const form = document.getElementById('leadForm');
-const btn = document.getElementById('leadSubmit');
-
-if (form && btn) {
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    
-    // Проверка rate limit
-    if (!ReForkUtils.formProtection.canSubmit()) {
-      const remaining = Math.ceil(ReForkUtils.formProtection.getRemainingTime() / 1000);
-      showError(`⏳ Подождите ${remaining} секунд перед повторной отправкой`);
-      return;
-    }
-    
-    const formData = new FormData(form);
-    
-    // Honeypot check
-    if (formData.get('website')) {
-      return;
-    }
-    
-    // Валидация
-    const validation = ReForkUtils.validateFormData(formData);
-    if (!validation.valid) {
-      const messages = {
-        telegram: '❌ Telegram должен начинаться с @ (например: @username)',
-        name: '❌ Имя должно содержать от 2 до 100 символов',
-        package: '❌ Пожалуйста, выберите сумму'
-      };
-      showError(messages[validation.field] || '❌ Проверьте правильность заполнения формы');
-      return;
-    }
-    
-    btn.disabled = true;
-    const buttonText = btn.querySelector('.button-text');
-    const spinner = btn.querySelector('.loading-spinner-btn');
-    buttonText.textContent = "Отправка...";
-    spinner.classList.remove('hidden');
-
-    // ✅ VERCEL ENDPOINT
-    const API_URL = 'https://re-fork-capital.vercel.app/api/telegram';
-    
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 10000);
-
-    try {
-      const jsonData = {
-        name: formData.get('name'),
-        telegram: formData.get('telegram'),
-        package: formData.get('package'),
-        lang: 'ru',
-        source: 'ReFork Capital'
-      };
-
-      console.log('📤 Отправка данных в Vercel:', jsonData);
-
-      const res = await fetch(API_URL, { 
-        method: "POST", 
-        body: JSON.stringify(jsonData),
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        mode: 'cors',
-        signal: controller.signal
-      });
-
-      clearTimeout(timeout);
-
-      const responseData = await res.json();
-      console.log('📥 Ответ от Vercel:', responseData);
-
-      if (res.ok && responseData.success) {
-        ReForkUtils.formProtection.recordSubmit();
-        showToast("✅ Спасибо! Сигнал отправлен. Мы свяжемся с вами в ближайшее время.");
-        
-        // Redirect через 2 секунды
-        setTimeout(() => {
-          window.location.href = "https://lucas555-ops.github.io/ReFork-Capital/thank-you.html";
-        }, 2000);
-        
-        form.reset();
-      } else {
-        const errorMsg = responseData.error || 'Неизвестная ошибка сервера';
-        console.error('Vercel API error:', errorMsg);
-        
-        // Показываем пользователю понятное сообщение
-        if (errorMsg.includes('BOT_TOKEN') || errorMsg.includes('CHAT_ID')) {
-          showError("❌ Сервер не настроен. Свяжитесь с нами в Telegram.");
-        } else if (errorMsg.includes('Telegram')) {
-          showError("❌ Ошибка отправки в Telegram. Попробуйте позже.");
-        } else {
-          showError(`❌ Ошибка отправки: ${errorMsg}`);
-        }
-      }
-    } catch (err) {
-  clearTimeout(timeout);
-  console.error('Ошибка при отправке:', err);
-  
-  // Специальная обработка CORS ошибок
-  if (err.message && err.message.includes('CORS')) {
-    showError("🔒 Ошибка безопасности. Попробуйте обновить страницу или свяжитесь с нами в Telegram.");
-    return;
-  }
-  
-  if (err.name === 'AbortError') {
-    showError("⏱️ Превышено время ожидания. Проверьте соединение и попробуйте снова.");
-      } else if (err.name === 'TypeError' && err.message.includes('fetch')) {
-        showError("⚠️ Ошибка сети. Проверьте интернет-соединение и попробуйте снова.");
-      } else {
-        showError("⚠️ Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже или свяжитесь с нами в Telegram.");
-      }
-    } finally {
-      btn.disabled = false;
-      buttonText.textContent = "Отправить";
-      spinner.classList.add('hidden');
-    }
-  });
-}
-
-      function showToast(msg) {
-  const el = document.createElement("div");
-  el.className = "success-toast";
-  el.textContent = msg;
-  el.setAttribute('role', 'status');
-  el.setAttribute('aria-live', 'polite');
-  document.body.appendChild(el);
-        setTimeout(() => {
-          el.style.transition = "opacity 0.3s";
-          el.style.opacity = "0";
-          setTimeout(() => el.remove(), 300);
-        }, 4000);
-      }
-
-      function showError(msg) {
-  const el = document.createElement("div");
-  el.className = "error-toast";
-  el.textContent = msg;
-  el.setAttribute('role', 'alert');
-  el.setAttribute('aria-live', 'assertive');
-  document.body.appendChild(el);
-        setTimeout(() => {
-          el.style.transition = "opacity 0.3s";
-          el.style.opacity = "0";
-          setTimeout(() => el.remove(), 300);
-        }, 5000);
-      }
-    });
-
-
-
-// Дебаунс для resize событий
-let resizeTimeout;
-window.addEventListener('resize', () => {
-  clearTimeout(resizeTimeout);
-  resizeTimeout = setTimeout(() => {
-    // логика ресайза
-  }, 250);
-});
 
  </script>
  
@@ -5894,24 +5921,7 @@ window.addEventListener('offline', () => {
 </script>
 
 
-<style>
-@media (max-width: 768px) {
-  #full-cycle .grid-cols-5 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
 
-  #meme-psychology .flex-wrap {
-    flex-direction: column;
-  }
-  .text-4xl { font-size: 2rem; }
-  .text-5xl { font-size: 2.5rem; }
-}
-#full-cycle, #meme-psychology, #target-audience {
-  transform: translateZ(0);
-  backface-visibility: hidden;
-}
-</style>
 
 <!-- Observer удалён, используйте AOS для анимаций -->
 </script>
