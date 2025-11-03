@@ -6129,8 +6129,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <script>
-
-// Exit Intent Popup - Premium Black & Gold Design (Идеальная композиция)
+// Exit Intent Popup - Premium Modern Design
 let exitIntentShown = false;
 let exitIntentTimer;
 
@@ -6162,245 +6161,160 @@ function initExitIntent() {
     }
   });
 
-  // Добавляем CSS стили для премиум дизайна
+  // Добавляем CSS стили для современного дизайна
   const style = document.createElement('style');
   style.textContent = `
     .premium-popup-overlay {
       position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.92);
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(20px) saturate(160%);
       display: flex;
       align-items: center;
       justify-content: center;
       z-index: 10000;
-      animation: premiumOverlayFadeIn 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      backdrop-filter: blur(25px);
+      animation: fadeInOverlay 0.4s ease;
       padding: 20px;
       box-sizing: border-box;
     }
-    
+
     .premium-popup-container {
       position: relative;
-      background: linear-gradient(152deg, #0a0a0a 0%, #111111 45%, #0a0a0a 100%);
+      background: linear-gradient(145deg, rgba(14, 20, 30, 0.95), rgba(8, 10, 16, 0.98));
+      border: 1px solid rgba(56, 189, 248, 0.25);
       border-radius: 28px;
-      max-width: 480px;
+      box-shadow:
+        0 0 80px rgba(0, 255, 255, 0.08),
+        0 0 40px rgba(168, 85, 247, 0.05),
+        inset 0 1px 0 rgba(255,255,255,0.08);
       width: 100%;
+      max-width: 500px;
       text-align: center;
-      overflow: hidden;
-      box-shadow: 
-        0 32px 64px rgba(0, 0, 0, 0.8),
-        0 0 120px rgba(212, 175, 55, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-      animation: premiumContainerScaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-      border: 1px solid rgba(212, 175, 55, 0.15);
+      animation: popupShow 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-sizing: border-box;
     }
-    
+
     .premium-popup-content {
-      padding: 52px 42px 42px;
+      padding: 40px 32px 32px;
       position: relative;
       z-index: 2;
+      box-sizing: border-box;
     }
-    
-    .premium-grain-overlay {
-      position: absolute;
-      inset: 0;
-      background: 
-        radial-gradient(ellipse at 20% 20%, rgba(212, 175, 55, 0.04) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 80%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
-        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.03"/></svg>') repeat;
-      pointer-events: none;
-      mix-blend-mode: overlay;
-      z-index: 1;
-    }
-    
-    .premium-border-glow {
-      position: absolute;
-      inset: -1px;
-      border-radius: 29px;
-      padding: 2px;
-      background: linear-gradient(135deg, 
-        rgba(212, 175, 55, 0.4) 0%, 
-        rgba(255, 215, 0, 0.6) 25%, 
-        rgba(212, 175, 55, 0.8) 50%, 
-        rgba(255, 215, 0, 0.6) 75%, 
-        rgba(212, 175, 55, 0.4) 100%);
-      background-size: 300% 300%;
-      animation: premiumBorderRotate 4s linear infinite;
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      pointer-events: none;
-      z-index: 1;
-      filter: blur(0.5px);
-    }
-    
-    .premium-close-btn {
-      position: absolute;
-      top: 24px;
-      right: 24px;
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: rgba(212, 175, 55, 0.08);
-      border: 1.5px solid rgba(212, 175, 55, 0.25);
-      color: #D4AF37;
-      font-size: 22px;
-      font-weight: 300;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      backdrop-filter: blur(15px);
-      z-index: 3;
-    }
-    
-    .premium-close-btn:hover {
-      background: rgba(212, 175, 55, 0.15);
-      border-color: #FFD700;
-      transform: rotate(90deg) scale(1.05);
-      color: #FFD700;
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
-    }
-    
+
     .premium-icon-container {
-      margin-bottom: 32px;
+      margin-bottom: 20px;
     }
-    
+
     .premium-icon {
-      font-size: 5rem;
-      filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4));
-      animation: premiumIconFloat 3.5s ease-in-out infinite;
+      font-size: 3.5rem;
+      filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.3));
+      animation: iconFloat 3s ease-in-out infinite;
       display: inline-block;
     }
-    
+
     .premium-title {
-      background: linear-gradient(135deg, #D4AF37 0%, #FFD700 25%, #F5F5DC 50%, #FFD700 75%, #D4AF37 100%);
-      background-size: 200% 200%;
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: premiumTextShine 4s ease-in-out infinite;
-      font-size: 2.1rem;
+      font-size: 1.5rem;
       font-weight: 800;
-      line-height: 1.15;
-      margin-bottom: 20px;
-      letter-spacing: -0.02em;
       text-transform: uppercase;
+      background: linear-gradient(135deg, #06b6d4 0%, #a855f7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      line-height: 1.2;
     }
-    
+
     .premium-description {
-      font-size: 1.2rem;
-      line-height: 1.6;
       color: rgba(255, 255, 255, 0.85);
-      margin-bottom: 32px;
+      font-size: 0.95rem;
+      line-height: 1.4;
+      margin-bottom: 20px;
       font-weight: 400;
-      letter-spacing: 0.01em;
     }
-    
+
     .premium-bonus-card {
-      background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(255, 215, 0, 0.05));
-      border: 1px solid rgba(212, 175, 55, 0.25);
+      background: rgba(56, 189, 248, 0.06);
+      border: 1px solid rgba(56, 189, 248, 0.25);
       border-radius: 16px;
-      padding: 28px 24px;
-      margin-bottom: 28px;
-      backdrop-filter: blur(15px);
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .premium-bonus-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, #D4AF37, transparent);
-    }
-    
-    .premium-bonus-text {
-      font-size: 1.1rem;
-      color: #FFD700;
-      font-weight: 600;
-      margin-bottom: 8px;
-      letter-spacing: 0.02em;
-    }
-    
-    .premium-bonus-subtext {
-      font-size: 0.9rem;
-      color: rgba(255, 215, 0, 0.7);
-      font-weight: 400;
-    }
-    
-    .premium-timer {
-      background: linear-gradient(135deg, rgba(212, 175, 55, 0.12), rgba(255, 215, 0, 0.06));
-      border: 1px solid rgba(212, 175, 55, 0.3);
-      border-radius: 14px;
-      padding: 20px;
-      margin-bottom: 32px;
+      padding: 16px;
+      margin-bottom: 20px;
       backdrop-filter: blur(10px);
-      animation: premiumTimerPulse 2.5s ease-in-out infinite alternate;
     }
-    
-    .premium-timer-text {
-      font-size: 1rem;
-      color: #FFD700;
+
+    .premium-bonus-text {
       font-weight: 600;
-      letter-spacing: 0.03em;
+      color: #06b6d4;
+      font-size: 0.9rem;
+      margin-bottom: 4px;
     }
-    
+
+    .premium-bonus-subtext {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.8rem;
+    }
+
+    .premium-timer {
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 12px;
+      padding: 12px 16px;
+      margin-bottom: 20px;
+      color: #22d3ee;
+      font-weight: 600;
+      font-size: 0.85rem;
+      animation: timerPulse 2s ease-in-out infinite alternate;
+    }
+
     .premium-timer-countdown {
-      font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: #FFD700;
+      font-family: 'SF Mono', monospace;
+      font-size: 1rem;
+      color: #22d3ee;
       margin-left: 6px;
-      letter-spacing: 0.05em;
+      font-weight: 700;
     }
-    
+
     .premium-buttons-container {
       display: flex;
-      flex-direction: column;
-      gap: 16px;
-      margin-bottom: 32px;
+      gap: 12px;
+      margin-bottom: 20px;
+      justify-content: center;
+      align-items: center;
     }
-    
+
     .premium-gold-btn {
-      position: relative;
-      overflow: hidden;
-      border: none;
-      background: linear-gradient(135deg, #D4AF37 0%, #FFD700 25%, #D4AF37 50%, #FFD700 75%, #D4AF37 100%);
+      border: 1px solid rgba(168, 85, 247, 0.4);
+      background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #a855f7 100%);
       background-size: 200% 200%;
-      animation: premiumButtonShine 3s ease-in-out infinite;
-      color: #000;
+      animation: buttonPulse 4s ease-in-out infinite;
+      border-radius: 12px;
+      padding: 12px 20px;
+      color: #fff;
       font-weight: 700;
+      font-size: 0.9rem;
       letter-spacing: 0.05em;
       text-transform: uppercase;
-      border-radius: 14px;
-      padding: 20px 24px;
-      font-size: 1.05rem;
-      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      box-shadow: 
-        0 6px 20px rgba(212, 175, 55, 0.4),
-        0 0 40px rgba(212, 175, 55, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.5);
-      min-height: 64px;
+      transition: all 0.3s ease;
+      min-height: 48px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
+      gap: 6px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      box-sizing: border-box;
+      flex: 1;
     }
-    
+
     .premium-gold-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 
-        0 10px 30px rgba(212, 175, 55, 0.6),
-        0 0 60px rgba(212, 175, 55, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.7);
-      animation-duration: 1.2s;
+      transform: translateY(-2px);
+      box-shadow: 0 0 25px rgba(56,189,248,0.4);
+      animation-duration: 2s;
     }
-    
+
     .premium-gold-pulse {
       position: absolute;
       top: 0;
@@ -6408,137 +6322,235 @@ function initExitIntent() {
       right: 0;
       bottom: 0;
       border-radius: inherit;
-      background: linear-gradient(135deg, #D4AF37, #FFD700, #D4AF37);
-      animation: premiumButtonPulse 2.5s ease-out infinite;
+      background: linear-gradient(135deg, #06b6d4, #a855f7, #06b6d4);
+      animation: buttonPulseInner 2s ease-out infinite;
       opacity: 0;
       z-index: -1;
     }
-    
+
     .premium-return-btn {
-      background: rgba(212, 175, 55, 0.07);
-      border: 1.5px solid rgba(212, 175, 55, 0.3);
-      color: #D4AF37;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      background: rgba(56,189,248,0.05);
+      border-radius: 12px;
+      color: #22d3ee;
+      padding: 12px 20px;
       font-weight: 600;
-      letter-spacing: 0.03em;
-      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      backdrop-filter: blur(15px);
-      border-radius: 14px;
-      padding: 20px 24px;
-      font-size: 1rem;
-      min-height: 64px;
+      min-height: 48px;
+      transition: all 0.3s ease;
       display: flex;
       align-items: center;
       justify-content: center;
+      cursor: pointer;
+      box-sizing: border-box;
+      flex: 1;
+      font-size: 0.9rem;
     }
-    
+
     .premium-return-btn:hover {
-      background: rgba(212, 175, 55, 0.12);
-      color: #FFD700;
-      transform: translateY(-2px);
-      border-color: rgba(212, 175, 55, 0.5);
-      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.2);
+      background: rgba(56,189,248,0.1);
+      color: #a855f7;
+      transform: translateY(-1px);
     }
-    
+
     .premium-trust-signals {
-      padding-top: 28px;
-      border-top: 1px solid rgba(212, 175, 55, 0.15);
+      padding-top: 16px;
+      border-top: 1px solid rgba(56, 189, 248, 0.1);
     }
-    
+
     .premium-trust-grid {
       display: flex;
       justify-content: center;
-      gap: 28px;
+      gap: 16px;
       flex-wrap: wrap;
     }
-    
+
     .premium-trust-item {
       display: flex;
       align-items: center;
-      gap: 8px;
-      font-size: 0.85rem;
-      color: rgba(212, 175, 55, 0.7);
+      gap: 4px;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.75rem;
       font-weight: 500;
-      letter-spacing: 0.02em;
     }
-    
-    .premium-decoration {
+
+    .premium-close-btn {
       position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 32px;
+      height: 32px;
+      background: rgba(56,189,248,0.1);
+      border: 1px solid rgba(56,189,248,0.3);
       border-radius: 50%;
-      background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
-      filter: blur(25px);
-      z-index: 0;
+      color: #22d3ee;
+      font-size: 18px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
     }
-    
-    .decoration-1 {
-      top: -60px;
-      left: -60px;
-      width: 120px;
-      height: 120px;
+
+    .premium-close-btn:hover {
+      background: rgba(168,85,247,0.15);
+      color: #a855f7;
+      transform: rotate(90deg);
     }
-    
-    .decoration-2 {
-      bottom: -80px;
-      right: -80px;
-      width: 160px;
-      height: 160px;
+
+    /* Мобильная адаптация */
+    @media (max-width: 768px) {
+      .premium-popup-overlay {
+        padding: 16px;
+      }
+      
+      .premium-popup-container {
+        max-width: 100%;
+        border-radius: 20px;
+      }
+
+      .premium-popup-content {
+        padding: 32px 24px 24px;
+      }
+      
+      .premium-icon {
+        font-size: 3rem;
+      }
+      
+      .premium-title {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+      }
+      
+      .premium-description {
+        font-size: 0.9rem;
+        margin-bottom: 16px;
+      }
+      
+      .premium-bonus-card {
+        padding: 14px;
+        margin-bottom: 16px;
+      }
+      
+      .premium-bonus-text {
+        font-size: 0.85rem;
+      }
+      
+      .premium-bonus-subtext {
+        font-size: 0.75rem;
+      }
+      
+      .premium-timer {
+        padding: 10px 14px;
+        margin-bottom: 16px;
+        font-size: 0.8rem;
+      }
+      
+      .premium-timer-countdown {
+        font-size: 0.9rem;
+      }
+      
+      .premium-buttons-container {
+        gap: 10px;
+        margin-bottom: 16px;
+      }
+      
+      .premium-gold-btn, .premium-return-btn {
+        min-height: 44px;
+        padding: 10px 16px;
+        font-size: 0.85rem;
+      }
+      
+      .premium-trust-grid {
+        gap: 12px;
+      }
+      
+      .premium-trust-item {
+        font-size: 0.7rem;
+      }
     }
-    
-    /* Анимации */
-    @keyframes premiumOverlayFadeIn {
+
+    @media (max-width: 480px) {
+      .premium-popup-content {
+        padding: 28px 20px 20px;
+      }
+      
+      .premium-icon {
+        font-size: 2.5rem;
+      }
+      
+      .premium-title {
+        font-size: 1.2rem;
+      }
+      
+      .premium-buttons-container {
+        flex-direction: column;
+      }
+      
+      .premium-gold-btn, .premium-return-btn {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .premium-popup-content {
+        padding: 24px 16px 16px;
+      }
+      
+      .premium-icon {
+        font-size: 2.2rem;
+      }
+      
+      .premium-title {
+        font-size: 1.1rem;
+      }
+    }
+
+    @keyframes fadeInOverlay { 
       from { opacity: 0; }
       to { opacity: 1; }
     }
     
-    @keyframes premiumContainerScaleIn {
+    @keyframes popupShow {
       from { 
-        opacity: 0;
-        transform: scale(0.85) translateY(20px);
+        transform: scale(0.9) translateY(10px); 
+        opacity: 0; 
       }
       to { 
-        opacity: 1;
-        transform: scale(1) translateY(0);
+        transform: scale(1) translateY(0); 
+        opacity: 1; 
       }
     }
     
-    @keyframes premiumBorderRotate {
-      0% { background-position: 0% 0%; }
-      100% { background-position: 200% 200%; }
-    }
-    
-    @keyframes premiumIconFloat {
-      0%, 100% { 
-        transform: translateY(0px) scale(1); 
-        filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4));
-      }
-      50% { 
-        transform: translateY(-10px) scale(1.08); 
-        filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.7));
-      }
-    }
-    
-    @keyframes premiumTextShine {
+    @keyframes buttonPulse {
       0%, 100% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
     }
-    
-    @keyframes premiumButtonShine {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
-    
-    @keyframes premiumButtonPulse {
+
+    @keyframes buttonPulseInner {
       0% { transform: scale(1); opacity: 0.7; }
-      100% { transform: scale(1.4); opacity: 0; }
+      100% { transform: scale(1.3); opacity: 0; }
     }
-    
-    @keyframes premiumTimerPulse {
+
+    @keyframes timerPulse {
       0% { 
-        box-shadow: 0 0 20px rgba(212, 175, 55, 0.25);
-        border-color: rgba(212, 175, 55, 0.3);
+        box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+        border-color: rgba(56, 189, 248, 0.25);
       }
       100% { 
-        box-shadow: 0 0 35px rgba(212, 175, 55, 0.4);
-        border-color: rgba(212, 175, 55, 0.5);
+        box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
+        border-color: rgba(56, 189, 248, 0.4);
+      }
+    }
+
+    @keyframes iconFloat {
+      0%, 100% { 
+        transform: translateY(0px) scale(1);
+        filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.3));
+      }
+      50% { 
+        transform: translateY(-8px) scale(1.05);
+        filter: drop-shadow(0 0 30px rgba(56, 189, 248, 0.5));
       }
     }
   `;
@@ -6563,14 +6575,14 @@ function showPersonalizedExitPopup() {
   
   // Определяем контент на основе поведения
   if (timeOnSite > 180 && scrollDepth > 70) {
-    title = "ДОСТУП К ЗОЛОТОМУ ПУЛУ";
-    description = "Ваш интерес не остался незамеченным. Предлагаем эксклюзивные условия для избранных инвесторов.";
+    title = "ДОСТУП К ПРЕМИУМ ПУЛУ";
+    description = "Ваш серьезный интерес открывает эксклюзивные возможности для избранных инвесторов.";
     bonus = "Персональный менеджер + Приоритетный доступ к циклам";
     ctaText = "ПОЛУЧИТЬ VIP-ДОСТУП";
     icon = "💎";
     ctaUrl = "https://t.me/ReForkCapital/7";
   } else if (packagesViewed.includes('Prime') || packagesViewed.includes('Pro')) {
-    title = "ВАШ ШАНС НА ПРЕВОСХОДСТВО";
+    title = "ВАШ ШАНС НА УСПЕХ";
     description = "Не упустите возможность войти в следующий цикл с максимальными привилегиями.";
     bonus = "Эксклюзивный бонус: +5% к вашей доле";
     ctaText = "ЗАБРОНИРОВАТЬ МЕСТО";
@@ -6600,16 +6612,6 @@ function showPersonalizedExitPopup() {
   
   popup.innerHTML = `
     <div class="premium-popup-container">
-      <!-- Декоративные элементы -->
-      <div class="premium-decoration decoration-1"></div>
-      <div class="premium-decoration decoration-2"></div>
-      
-      <!-- Grain Overlay -->
-      <div class="premium-grain-overlay"></div>
-      
-      <!-- Animated Border Glow -->
-      <div class="premium-border-glow"></div>
-      
       <!-- Close Button -->
       <button class="premium-close-btn" aria-label="Закрыть окно">×</button>
       
@@ -6634,10 +6636,8 @@ function showPersonalizedExitPopup() {
         
         <!-- Timer -->
         <div class="premium-timer">
-          <span class="premium-timer-text">
-            ⏰ СПЕЦПРЕДЛОЖЕНИЕ ДЕЙСТВУЕТ: 
-            <span id="popupCountdown" class="premium-timer-countdown">05:00</span>
-          </span>
+          ⏰ СПЕЦПРЕДЛОЖЕНИЕ ДЕЙСТВУЕТ: 
+          <span id="popupCountdown" class="premium-timer-countdown">05:00</span>
         </div>
         
         <!-- Buttons -->
@@ -6686,8 +6686,8 @@ function showPersonalizedExitPopup() {
       
       // Меняем цвет при малом времени
       if (timeLeft < 60) {
-        countdownElement.style.color = '#ffcc00';
-        countdownElement.style.textShadow = '0 0 10px rgba(255, 204, 0, 0.5)';
+        countdownElement.style.color = '#ff6b6b';
+        countdownElement.style.textShadow = '0 0 10px rgba(255, 107, 107, 0.5)';
       }
     }
     
@@ -6697,7 +6697,7 @@ function showPersonalizedExitPopup() {
     }
   }, 1000);
 
-  // 🧠 Добавляем интервал в глобальный массив для очистки
+  // Добавляем интервал в глобальный массив для очистки
   window.__premiumIntervals = window.__premiumIntervals || [];
   window.__premiumIntervals.push(countdownInterval);
 
@@ -6764,7 +6764,7 @@ function showPersonalizedExitPopup() {
 }
 
 function hideExitPopup(popup) {
-  // 💨 Очищаем все висячие таймеры и интервалы
+  // Очищаем все висячие таймеры и интервалы
   clearTimeout(exitIntentTimer);
   const intervals = window.__premiumIntervals || [];
   intervals.forEach(clearInterval);
@@ -6772,7 +6772,7 @@ function hideExitPopup(popup) {
 
   if (popup && popup.parentNode) {
     popup.style.opacity = '0';
-    popup.querySelector('.premium-popup-container').style.transform = 'scale(0.9) translateY(20px)';
+    popup.querySelector('.premium-popup-container').style.transform = 'scale(0.9) translateY(10px)';
     setTimeout(() => {
       popup.remove();
     }, 400);
