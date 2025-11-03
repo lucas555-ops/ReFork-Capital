@@ -15,6 +15,8 @@
   <!-- Подключение AOS -->
 <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<!-- Chart.js + ReFork Strategy Chart -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <!-- Preconnect to external domains -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1279,6 +1281,8 @@ ReFork ROI: +284%
   text-shadow: 0 0 15px rgba(255,255,255,0.4);
 }
 </style>
+
+
 
 <!-- === Scroll-triggered progress animation === -->
 <script>
@@ -5908,8 +5912,7 @@ window.addEventListener('offline', () => {
 <!-- Observer удалён, используйте AOS для анимаций -->
 </script>
 
-<!-- Chart.js + ReFork Strategy Chart -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <script>
 document.addEventListener("DOMContentLoaded", function() {
   const canvas = document.getElementById('reforkStrategyChart');
@@ -6919,7 +6922,54 @@ function hideExitPopup(popup) {
 document.addEventListener('DOMContentLoaded', function() {
   setTimeout(initExitIntent, 3000);
 });
+
+
+// --- БЛОК ДЛЯ КОРРЕКТНОГО СКРЫТИЯ ПРЕЛОАДЕРА И ЗАПУСКА АНИМАЦИЙ ---
+
+document.addEventListener('DOMContentLoaded', function() {
+    // В вашем коде прелоадер имеет ID 'loadingScreen', поэтому используем его.
+    const preloader = document.getElementById('loadingScreen');
+
+    if (preloader) {
+        // Ждем полной загрузки всех ресурсов (изображений, стилей, шрифтов), чтобы показать его до конца.
+        window.addEventListener('load', () => {
+            
+            // Задержка 500 мс перед началом скрытия (для лучшего UX)
+            setTimeout(() => {
+                
+                // Шаг 1: Начинаем плавное скрытие прелоадера
+                preloader.style.transition = 'opacity 1s ease'; // Добавляем CSS-переход
+                preloader.style.opacity = '0'; // Делаем его невидимым
+                preloader.style.pointerEvents = 'none'; // Отключаем клики во время затухания
+
+                // Шаг 2: Удаляем элемент из DOM после завершения анимации (1000 мс)
+                setTimeout(() => {
+                    preloader.remove(); 
+                    
+                    // Шаг 3: Агрессивное обновление анимационных библиотек (ФИКС КОНФЛИКТА)
+                    
+                    // Обновляем AOS: пересчет видимости всех элементов с data-aos
+                    if (window.AOS) {
+                        window.AOS.refreshHard(); 
+                    }
+                    
+                    // Обновляем ScrollTrigger (для GSAP и других сложных движущихся элементов)
+                    if (window.ScrollTrigger) {
+                        window.ScrollTrigger.refresh(true); 
+                    }
+                    
+                    // Имитируем событие прокрутки, чтобы принудительно активировать триггеры
+                    window.dispatchEvent(new Event('scroll'));
+                    
+                }, 1000); // Время должно совпадать с длительностью transition (1s)
+            }, 500); 
+        });
+    }
+});
+
 </script>
+
+
 
 </main>
 </body>
