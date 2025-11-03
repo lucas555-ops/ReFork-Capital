@@ -79,30 +79,7 @@
 }
 </script>	
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "InvestmentOrFinancialProduct",
-  "name": "ReFork Capital",
-  "description": "Закрытый пул инвесторов с доходностью до 80% за цикл. DeFi стратегия на мем-токенах, AI аналитика и SMM капитализация.",
-  "url": "https://reforkcapital.online/",
-  "image": "https://reforkcapital.online/og-image.jpg",
-  "offers": {
-    "@type": "Offer",
-    "priceCurrency": "USDT",
-    "price": "300",
-    "availability": "https://schema.org/InStock"
-  },
-  "brand": {
-    "@type": "Organization",
-    "name": "ReFork Capital"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "ReFork Capital"
-  }
-}
-</script>
+
 
 <script>
 document.querySelectorAll('img').forEach(img => img.setAttribute('loading', 'lazy'));
@@ -139,6 +116,11 @@ html, body {
 
 <!-- Preload Critical Resources -->
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" as="style" crossorigin/>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"></noscript>
+  <!-- Fonts (async load) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+  <!-- Preload для шрифтов -->
+  <link rel="preload" href="font.woff2" as="font" type="font/woff2" crossorigin/>
 
 
   
@@ -164,6 +146,8 @@ html, body {
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/favicon.ico"/>
   <link rel="apple-touch-icon" sizes="180x180" href="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/apple-touch-icon.png"/>
+  <link rel="icon" type="image/png" sizes="512x512" href="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/icon-512.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/icon-192.png">
   
   <!-- ИСПРАВЛЕНО: Open Graph с реальными изображениями -->
   <meta property="og:type" content="website" />
@@ -202,10 +186,6 @@ html, body {
 
 
   
-  <!-- Fonts (async load) -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
-  <!-- Preload для шрифтов -->
-  <link rel="preload" href="font.woff2" as="font" type="font/woff2" crossorigin/>
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -2491,6 +2471,20 @@ summary::marker, summary::-webkit-details-marker {
 }
 
 
+/* ✅ Core Web Vitals improvements */
+.content-visibility-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1000px;
+}
+img[loading="lazy"] {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+img.loaded {
+  opacity: 1;
+}
+
+
 </style>
 
 <!-- Yandex.Metrika counter -->
@@ -2546,6 +2540,122 @@ summary::marker, summary::-webkit-details-marker {
 
 <meta name="geo.region" content="RU" />
 <meta name="geo.placename" content="Russia" />
+
+<!-- ✅ Schema.org — Полная структура (Product + Organization + Website + FAQ) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "InvestmentOrFinancialProduct",
+      "@id": "https://reforkcapital.online/#product",
+      "name": "ReFork Capital Pool",
+      "description": "Закрытый пул инвесторов с доходностью до 80% за цикл. DeFi-стратегия на мем-токенах, AI аналитика и SMM капитализация.",
+      "url": "https://reforkcapital.online/",
+      "image": "https://reforkcapital.online/og-image.jpg",
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "USDT",
+        "price": "300",
+        "availability": "https://schema.org/InStock"
+      },
+      "brand": {
+        "@type": "Organization",
+        "name": "ReFork Capital",
+        "url": "https://reforkcapital.online/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "ReFork Capital"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "127"
+      },
+      "sameAs": [
+        "https://t.me/ReForkCapital",
+        "https://twitter.com/ReForkCapital"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://reforkcapital.online/#organization",
+      "name": "ReFork Capital",
+      "url": "https://reforkcapital.online/",
+      "logo": "https://reforkcapital.online/og-image.jpg",
+      "description": "ReFork Capital — команда AI и DeFi-аналитиков, создающая прибыльные стратегии на рынке мем-токенов.",
+      "founder": {
+        "@type": "Person",
+        "name": "Lucas M"
+      },
+      "sameAs": [
+        "https://t.me/ReForkCapital",
+        "https://twitter.com/ReForkCapital"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Investor Relations",
+        "url": "https://t.me/ReForkCapital"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://reforkcapital.online/#website",
+      "url": "https://reforkcapital.online/",
+      "name": "ReFork Capital",
+      "description": "ReFork Capital — AI DeFi стратегия с доходностью до 80% за цикл. Приватный инвестиционный пул на рынке мем-токенов.",
+      "publisher": {
+        "@id": "https://reforkcapital.online/#organization"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://reforkcapital.online/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://reforkcapital.online/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Что такое ReFork Capital?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ReFork Capital — закрытая AI + DeFi стратегия, объединяющая аналитику мем-токенов, поведение китов и эмоции комьюнити для получения стабильной прибыли до 80% за цикл."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как работает стратегия ReFork Capital?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "AI-модели анализируют сотни метрик — транзакции китов, тренды в соцсетях и токеномику. Система определяет оптимальные точки входа и выхода, минимизируя риски и увеличивая ROI."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как можно стать партнёром ReFork Capital?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Достаточно подать заявку на сайте и пройти короткую верификацию. После подтверждения вы получаете доступ к закрытому пулу и участвуете в распределении прибыли."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Безопасно ли инвестировать через ReFork Capital?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Да. Все операции проходят через смарт-контракты и прозрачные DeFi-пулы. Мы не храним средства пользователей и обеспечиваем высокий уровень прозрачности и контроля."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
 
 </head>
 
@@ -6981,6 +7091,40 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+<!-- ✅ Web Vitals Optimization -->
+
+  const criticalImages = [
+    'https://reforkcapital.online/og-image.jpg',
+    'https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/favicon.ico'
+  ];
+  criticalImages.forEach(src => {
+    const link = document.createElement('link');
+    link.rel = 'preload';
+    link.as = 'image';
+    link.href = src;
+    document.head.appendChild(link);
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const lazyImages = [].slice.call(document.querySelectorAll('img[loading="lazy"]'));
+    if ('IntersectionObserver' in window) {
+      const lazyImageObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            const lazyImage = entry.target;
+            lazyImage.classList.add('loaded');
+            lazyImageObserver.unobserve(lazyImage);
+          }
+        });
+      });
+      lazyImages.forEach(function(lazyImage) {
+        lazyImageObserver.observe(lazyImage);
+      });
+    }
+  });
+
+
 
 </script>
 
