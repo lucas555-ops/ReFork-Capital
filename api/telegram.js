@@ -16,9 +16,26 @@ export default async function handler(req, res) {
     return res.status(400).json({ success: false, error: 'Invalid JSON body' });
   }
 
-  const { name, telegram, package: pkg, lang = 'ru', source = 'unknown' } = body;
+  // Honeypot protection
+  if (body.website) {
+    console.log('🤖 Bot detected - honeypot triggered');
+    return res.status(200).json({ success: true, message: '✅ Сигнал получен!' });
+  }
+
+  const { name, telegram, package: pkg, lang, source } = body;
+  
+  // Required fields validation
   if (!name || !telegram || !pkg)
-    return res.status(400).json({ success: false, error: 'Missing fields' });
+    return res.status(400).json({ success: false, error: 'Missing required fields' });
+
+  // Telegram format validation
+  const telegramRegex = /^@[A-Za-z0-9_]{5,32}$/;
+  if (!telegramRegex.test(telegram)) {
+    return res.status(400).json({ 
+      success: false, 
+      error: 'Invalid telegram format' 
+    });
+  }
 
   const botToken = process.env.BOT_TOKEN;
   const chatId = process.env.CHAT_ID;
@@ -31,8 +48,8 @@ export default async function handler(req, res) {
 👤 <b>Имя:</b> ${name}
 📱 <b>Telegram:</b> ${telegram}
 💰 <b>Пакет:</b> ${pkg}
-🌐 <b>Язык:</b> ${lang}
-📍 <b>Источник:</b> ${source}
+🌐 <b>Язык:</b> ${lang || 'ru'}
+📍 <b>Источник:</b> ${source || 'ReFork Capital'}
 🕐 <b>Время:</b> ${new Date().toLocaleString('ru-RU', { timeZone: 'Europe/Moscow' })}
 `.trim();
 
