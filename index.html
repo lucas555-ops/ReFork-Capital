@@ -1,8 +1,9 @@
 <!doctype html>
 <html lang="ru" class="scroll-smooth">
+
 <head>
 <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-     
+    
 	  <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
   <!-- Редиректы для устранения дублей URL -->
@@ -145,7 +146,9 @@ html, body {
   <!-- Preload для шрифтов -->
   <link rel="preload" href="font.woff2" as="font" type="font/woff2" crossorigin/>
   <link rel="preload" as="image" href="https://reforkcapital.online/og-image.jpg">
-
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 
   
@@ -208,6 +211,42 @@ html, body {
 
 
   <style>
+  
+  /* 1. Глобальные переменные */
+:root{--bg:#0b0e14;--muted:#9aa5b1;--accent:#6ee7b7;--accent-2:#22d3ee}
+
+/* 2. Базовые стили: ВОССТАНОВЛЕНИЕ ФОНА И ШРИФТОВ */
+*{
+  box-sizing: border-box;
+}
+
+html,body{
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background:var(--bg); /* ВОТ ЭТО ВАШ ТЕМНЫЙ ФОН */
+  color:#e5e7eb;
+  font-family:system-ui,-apple-system,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale
+}
+
+/* 3. Стили для нового прелоадера (#loadingScreen) и плавного скрытия */
+#loadingScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #111; /* Цвет, которым закрывается экран */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 1s ease; /* КРИТИЧЕСКИ ВАЖНЫЙ ПЕРЕХОД */
+}
+  
     section, header, footer{position:relative;z-index:20}
     h1,h2,h3,p,details,summary,button,a,input,textarea,select,form{position:relative;z-index:30}
 
@@ -6840,6 +6879,7 @@ function showPersonalizedExitPopup() {
     </div>
   `;
 
+
   // Таймер обратного отсчета
   let timeLeft = 300;
   const countdownElement = popup.querySelector('#popupCountdown');
@@ -6945,15 +6985,15 @@ function hideExitPopup(popup) {
   }
 }
 
-// Инициализация при загрузке страницы
-document.addEventListener('DOMContentLoaded', function() {
-  setTimeout(initExitIntent, 3000);
-});
-
 
 // --- БЛОК ДЛЯ КОРРЕКТНОГО СКРЫТИЯ ПРЕЛОАДЕРА И ЗАПУСКА АНИМАЦИЙ ---
+// Объединяем оба обработчика DOMContentLoaded
 
 document.addEventListener('DOMContentLoaded', function() {
+    
+    // Переносим сюда запуск функции "Выходное намерение"
+    setTimeout(initExitIntent, 3000); // 👈 Добавлено сюда
+
     // В вашем коде прелоадер имеет ID 'loadingScreen', поэтому используем его.
     const preloader = document.getElementById('loadingScreen');
 
