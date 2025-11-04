@@ -7187,84 +7187,129 @@ function hideExitPopup(popup) {
 
 
 // --- БЛОК ДЛЯ КОРРЕКТНОГО СКРЫТИЯ ПРЕЛОАДЕРА И ЗАПУСКА АНИМАЦИЙ ---
-// Объединяем оба обработчика DOMContentLoaded
-
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('✅ DOM загружен, инициализируем прелоадер...');
     
-    // Переносим сюда запуск функции "Выходное намерение"
-    setTimeout(initExitIntent, 3000); // 👈 Добавлено сюда
+    // ✅ Web Vitals Optimization - переместили сюда
+    const criticalImages = [
+        'https://reforkcapital.online/og-image.jpg',
+        'https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/favicon.ico'
+    ];
+    
+    criticalImages.forEach(src => {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'image';
+        link.href = src;
+        document.head.appendChild(link);
+    });
 
-    // В вашем коде прелоадер имеет ID 'loadingScreen', поэтому используем его.
+    // ✅ Lazy loading для изображений
+    const lazyImages = [].slice.call(document.querySelectorAll('img[loading="lazy"]'));
+    if ('IntersectionObserver' in window) {
+        const lazyImageObserver = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    const lazyImage = entry.target;
+                    lazyImage.classList.add('loaded');
+                    lazyImageObserver.unobserve(lazyImage);
+                }
+            });
+        });
+        
+        lazyImages.forEach(function(lazyImage) {
+            lazyImageObserver.observe(lazyImage);
+        });
+    }
+
+    // ✅ Инициализация exit intent (если функция существует)
+    if (typeof initExitIntent === 'function') {
+        setTimeout(initExitIntent, 3000);
+    } else {
+        console.warn('⚠️ initExitIntent не определена');
+    }
+
+    // ✅ Обработка прелоадера
     const preloader = document.getElementById('loadingScreen');
 
     if (preloader) {
-        // Ждем полной загрузки всех ресурсов (изображений, стилей, шрифтов), чтобы показать его до конца.
-        window.addEventListener('load', () => {
+        console.log('✅ Прелоадер найден, настраиваем скрытие...');
+        
+        // Функция для скрытия прелоадера
+        const hidePreloader = () => {
+            console.log('🔄 Начинаем скрытие прелоадера...');
             
-            // Задержка 500 мс перед началом скрытия (для лучшего UX)
+            // Задержка 500 мс перед началом скрытия
             setTimeout(() => {
-                
-                // Шаг 1: Начинаем плавное скрытие прелоадера
-                preloader.style.transition = 'opacity 1s ease'; // Добавляем CSS-переход
-                preloader.style.opacity = '0'; // Делаем его невидимым
-                preloader.style.pointerEvents = 'none'; // Отключаем клики во время затухания
+                preloader.style.transition = 'opacity 1s ease';
+                preloader.style.opacity = '0';
+                preloader.style.pointerEvents = 'none';
 
-                // Шаг 2: Удаляем элемент из DOM после завершения анимации (1000 мс)
+                // Удаляем элемент после анимации
                 setTimeout(() => {
                     preloader.remove(); 
+                    console.log('✅ Прелоадер удален');
                     
-                    // Шаг 3: Агрессивное обновление анимационных библиотек (ФИКС КОНФЛИКТА)
-                    
-                    // Обновляем AOS: пересчет видимости всех элементов с data-aos
+                    // Обновляем анимационные библиотеки
                     if (window.AOS) {
-                        window.AOS.refreshHard(); 
+                        try {
+                            window.AOS.refresh();
+                            console.log('✅ AOS обновлен');
+                        } catch (e) {
+                            console.warn('⚠️ Ошибка обновления AOS:', e);
+                        }
                     }
                     
-                    // Обновляем ScrollTrigger (для GSAP и других сложных движущихся элементов)
                     if (window.ScrollTrigger) {
-                        window.ScrollTrigger.refresh(true); 
+                        try {
+                            window.ScrollTrigger.refresh();
+                            console.log('✅ ScrollTrigger обновлен');
+                        } catch (e) {
+                            console.warn('⚠️ Ошибка обновления ScrollTrigger:', e);
+                        }
                     }
                     
-                    // Имитируем событие прокрутки, чтобы принудительно активировать триггеры
+                    // Имитируем событие прокрутки
                     window.dispatchEvent(new Event('scroll'));
                     
-                }, 1000); // Время должно совпадать с длительностью transition (1s)
-            }, 500); 
+                }, 1000);
+            }, 500);
+        };
+
+        // Ждем полной загрузки страницы, но с таймаутом на случай ошибок
+        let loadTimeout = setTimeout(() => {
+            console.warn('⚠️ Таймаут загрузки страницы, скрываем прелоадер принудительно');
+            hidePreloader();
+        }, 5000); // 5 секунд таймаут
+
+        window.addEventListener('load', () => {
+            clearTimeout(loadTimeout);
+            console.log('✅ Страница полностью загружена');
+            hidePreloader();
         });
+
+        // Альтернатива: скрыть прелоадер если основные элементы загружены
+        if (document.readyState === 'complete') {
+            clearTimeout(loadTimeout);
+            hidePreloader();
+        }
+        
+    } else {
+        console.warn('⚠️ Прелоадер не найден (element with id "loadingScreen")');
     }
 });
 
-<!-- ✅ Web Vitals Optimization -->
-
-  const criticalImages = [
-    'https://reforkcapital.online/og-image.jpg',
-    'https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/favicon.ico'
-  ];
-  criticalImages.forEach(src => {
-    const link = document.createElement('link');
-    link.rel = 'preload';
-    link.as = 'image';
-    link.href = src;
-    document.head.appendChild(link);
-  });
-
-  document.addEventListener('DOMContentLoaded', function() {
-    const lazyImages = [].slice.call(document.querySelectorAll('img[loading="lazy"]'));
-    if ('IntersectionObserver' in window) {
-      const lazyImageObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            const lazyImage = entry.target;
-            lazyImage.classList.add('loaded');
-            lazyImageObserver.unobserve(lazyImage);
-          }
-        });
-      });
-      lazyImages.forEach(function(lazyImage) {
-        lazyImageObserver.observe(lazyImage);
-      });
+// ✅ Добавляем обработчик ошибок для отлова проблем
+window.addEventListener('error', function(e) {
+    console.error('🚨 Глобальная ошибка:', e.error);
+    
+    // Принудительно скрываем прелоадер при ошибках
+    const preloader = document.getElementById('loadingScreen');
+    if (preloader) {
+        preloader.style.display = 'none';
+        preloader.remove();
     }
-  });
+});
 
 
 
