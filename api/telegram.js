@@ -16,7 +16,7 @@ export default async function handler(req, res) {
     return res.status(400).json({ success: false, error: 'Invalid JSON body' });
   }
 
-  const { name, telegram, package: pkg } = body;
+  const { name, telegram, package: pkg, lang = 'ru', source = 'unknown' } = body;
   if (!name || !telegram || !pkg)
     return res.status(400).json({ success: false, error: 'Missing fields' });
 
@@ -27,11 +27,14 @@ export default async function handler(req, res) {
 
   const message = `
 <b>Новая заявка ReFork Capital</b>
-👤 ${name}
-📱 ${telegram}
-💰 ${pkg}
-🕐 ${new Date().toLocaleString('ru-RU')}
-`;
+
+👤 <b>Имя:</b> ${name}
+📱 <b>Telegram:</b> ${telegram}
+💰 <b>Пакет:</b> ${pkg}
+🌐 <b>Язык:</b> ${lang}
+📍 <b>Источник:</b> ${source}
+🕐 <b>Время:</b> ${new Date().toLocaleString('ru-RU', { timeZone: 'Europe/Moscow' })}
+`.trim();
 
   const tgRes = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
     method: 'POST',
