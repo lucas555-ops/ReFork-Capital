@@ -1,7 +1,18 @@
 {
   "name": "refork-capital",
   "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
-    "start": "vercel dev"
+    "dev": "vercel dev",
+    "start": "vercel dev",
+    "build": "echo 'No build step required for static site'",
+    "deploy": "vercel --prod"
+  },
+  "devDependencies": {
+    "vercel": "^32.0.0"
   }
 }
