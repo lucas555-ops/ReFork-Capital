@@ -1,82 +1,69 @@
 // /api/telegram.js
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   // ===== CORS WHITELIST =====
   const allowedOrigins = [
     'https://lucas555-ops.github.io',
     'https://reforkcapital.online',
     'http://localhost:3000'
   ];
-  
-  const origin = req.headers.origin;
-  
-  // Проверяем origin и устанавливаем соответствующий заголовок
+
+  const origin = req.headers.origin || '';
   if (allowedOrigins.includes(origin)) {
     res.setHeader('Access-Control-Allow-Origin', origin);
   } else {
     console.log('🚫 Blocked origin:', origin);
-    return res.status(403).json({ 
-      success: false, 
-      error: 'Origin not allowed' 
-    });
   }
-  
+
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept');
   res.setHeader('Access-Control-Max-Age', '86400');
 
-  // Обрабатываем OPTIONS запросы для CORS
+  // Обрабатываем preflight-запрос
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
 
   // Разрешаем только POST
   if (req.method !== 'POST') {
-    return res.status(405).json({ 
-      success: false, 
-      error: 'Method not allowed' 
+    return res.status(405).json({
+      success: false,
+      error: 'Method not allowed'
     });
   }
 
   try {
-    console.log('✅ API call from allowed origin:', origin);
+    console.log('✅ API call from:', origin);
     console.log('📨 Получен запрос:', req.body);
 
-    const { name, telegram, package: pkg, lang = 'ru', source = 'ReFork Capital' } = req.body;
+    const { name, telegram, package: pkg, lang = 'ru', source = 'ReFork Capital' } = req.body || {};
 
-    // Проверяем обязательные поля
     if (!name || !telegram || !pkg) {
-      return res.status(400).json({ 
-        success: false, 
-        error: 'Отсутствуют обязательные поля' 
+      return res.status(400).json({
+        success: false,
+        error: 'Отсутствуют обязательные поля'
       });
     }
 
-    // ===== ВАЛИДАЦИЯ TELEGRAM =====
+    // Валидация Telegram
     const telegramPattern = /^@[A-Za-z0-9_]{5,32}$/;
     if (!telegramPattern.test(telegram)) {
-      return res.status(400).json({ 
-        success: false, 
-        error: 'Invalid Telegram format. Use @username format' 
+      return res.status(400).json({
+        success: false,
+        error: 'Некорректный формат Telegram. Используйте @username'
       });
     }
 
-    // Получаем переменные окружения (обновленные имена)
     const botToken = process.env.TELEGRAM_BOT_TOKEN || process.env.BOT_TOKEN;
     const chatId = process.env.TELEGRAM_CHAT_ID || process.env.CHAT_ID;
 
-    console.log('🔐 BOT_TOKEN exists:', !!botToken);
-    console.log('💬 CHAT_ID exists:', !!chatId);
-
-    // Проверяем наличие переменных окружения
     if (!botToken || !chatId) {
-      console.error('❌ Missing environment variables');
-      return res.status(500).json({ 
-        success: false, 
-        error: 'Сервер не настроен. Отсутствуют TELEGRAM_BOT_TOKEN или TELEGRAM_CHAT_ID' 
+      console.error('❌ Missing env vars');
+      return res.status(500).json({
+        success: false,
+        error: 'Сервер не настроен. Отсутствует BOT_TOKEN или CHAT_ID'
       });
     }
 
-    // ===== ФОРМИРУЕМ УЛУЧШЕННОЕ СООБЩЕНИЕ =====
     const message = `
 🔔 <b>Новая заявка ReFork Capital</b>
 
@@ -90,12 +77,9 @@ module.exports = async function handler(req, res) {
 
     console.log('📤 Отправляем в Telegram...');
 
-    // Отправляем в Telegram
-    const telegramResponse = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+    const tgRes = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         chat_id: chatId,
         text: message,
@@ -103,28 +87,23 @@ module.exports = async function handler(req, res) {
       })
     });
 
-    const telegramData = await telegramResponse.json();
-    console.log('📩 Ответ от Telegram API:', telegramData);
+    const tgData = await tgRes.json();
 
-    if (telegramResponse.ok) {
-      console.log('✅ Message sent successfully to:', telegram);
-      res.status(200).json({ 
-        success: true,
-        message: '✅ Сигнал получен! Заявка принята.'
-      });
-    } else {
-      console.error('❌ Ошибка Telegram API:', telegramData);
-      res.status(500).json({ 
-        success: false, 
-        error: `Ошибка Telegram: ${telegramData.description || 'Неизвестная ошибка'}` 
-      });
+    if (!tgRes.ok) {
+      throw new Error(tgData.description || 'Telegram API error');
     }
+
+    console.log('✅ Message sent successfully:', tgData);
+    return res.status(200).json({
+      success: true,
+      message: '✅ Сигнал получен! Заявка принята.'
+    });
 
   } catch (error) {
     console.error('💥 Ошибка сервера:', error);
-    res.status(500).json({ 
-      success: false, 
-      error: `Внутренняя ошибка сервера: ${error.message}` 
+    return res.status(500).json({
+      success: false,
+      error: error.message || 'Internal Server Error'
     });
   }
-};
+}
