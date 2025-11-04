@@ -22,6 +22,7 @@ export default async function handler(req, res) {
     return res.status(200).json({ success: true, message: '✅ Сигнал получен!' });
   }
 
+  // ✅ ИСПРАВЛЕНО: используем переданные значения без defaults
   const { name, telegram, package: pkg, lang, source } = body;
   
   // Required fields validation
@@ -42,14 +43,15 @@ export default async function handler(req, res) {
   if (!botToken || !chatId)
     return res.status(500).json({ success: false, error: 'Missing BOT_TOKEN or CHAT_ID' });
 
+  // ✅ ИСПРАВЛЕНО: используем реальные значения из формы
   const message = `
 <b>Новая заявка ReFork Capital</b>
 
 👤 <b>Имя:</b> ${name}
 📱 <b>Telegram:</b> ${telegram}
 💰 <b>Пакет:</b> ${pkg}
-🌐 <b>Язык:</b> ${lang || 'ru'}
-📍 <b>Источник:</b> ${source || 'ReFork Capital'}
+🌐 <b>Язык:</b> ${lang}
+📍 <b>Источник:</b> ${source}
 🕐 <b>Время:</b> ${new Date().toLocaleString('ru-RU', { timeZone: 'Europe/Moscow' })}
 `.trim();
 
