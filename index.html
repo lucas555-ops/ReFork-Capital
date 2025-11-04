@@ -37,8 +37,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
   <title>ReFork Capital: DeFi-стратегия для мем-токенов, до 80%  за цикл</title>
 
-  <!-- Подключение AOS -->
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 
 
 <!-- Preconnect to external domains -->
@@ -146,6 +144,8 @@ html, body {
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
   <!-- Preload для шрифтов -->
   <link rel="preload" href="font.woff2" as="font" type="font/woff2" crossorigin/>
+  <link rel="preload" as="image" href="https://reforkcapital.online/og-image.jpg">
+
 
 
   
@@ -7034,9 +7034,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 </main>
   
-<script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
-  
+<script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>  
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script>
-
+<script>
+  // инициализация AOS после загрузки
+  document.addEventListener('DOMContentLoaded', function(){
+    if(window.AOS) AOS.init({ once: true, duration: 600 });
+  });
+</script>
 </body>
 </html>
