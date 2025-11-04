@@ -1,30 +1,7 @@
 // /api/telegram.js
 module.exports = async function handler(req, res) {
-  // Берем список доменов из переменной окружения и преобразуем в массив
-  // Переменная должна содержать домены, разделенные запятыми, например:
-  // "https://reforkcapital.online,https://staging.reforkcapital.online"
-  const corsOriginEnv = process.env.CORS_ORIGIN || '';
-  const allowedOrigins = corsOriginEnv.split(',').map(s => s.trim()).filter(s => s.length > 0);
-  
-  // Добавляем домен Vercel для предпросмотра, если это нужно для тестирования
-  // allowedOrigins.push(req.headers.host); 
-  
-  const origin = req.headers.origin;
-  
-  // Проверяем origin и устанавливаем соответствующий заголовок
-  if (allowedOrigins.includes(origin)) {
-    res.setHeader('Access-Control-Allow-Origin', origin);
-  } else if (allowedOrigins.length === 0 && origin) {
-     // Если список пуст, но origin есть (отключаем CORS, если нужно)
-     // res.setHeader('Access-Control-Allow-Origin', '*'); 
-  } else {
-    console.log('🚫 Blocked origin:', origin);
-    return res.status(403).json({ 
-      success: false, 
-      error: 'Origin not allowed' 
-    });
-  }
-  
+  // Разрешаем запросы с любого origin (так как убрали CORS_ORIGIN)
+  res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept');
   res.setHeader('Access-Control-Max-Age', '86400');
