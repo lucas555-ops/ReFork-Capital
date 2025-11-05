@@ -1,5 +1,3 @@
-Проверь 
-
 module.exports = async function handler(req, res) {
   // ===== CORS НАСТРОЙКА =====
   const allowedOrigins = [
