@@ -1,11 +1,12 @@
 // /api/telegram.js
 module.exports = async function handler(req, res) {
   // ===== CORS WHITELIST =====
-  const allowedOrigins = [
-    'https://lucas555-ops.github.io',
-    'https://reforkcapital.online',
-    'http://localhost:3000'
-  ];
+const allowedOrigins = [
+  'https://lucas555-ops.github.io',
+  'https://reforkcapital.online',
+  'https://www.reforkcapital.online',
+  'http://localhost:3000'
+];
   
   const origin = req.headers.origin;
   
@@ -73,7 +74,7 @@ module.exports = async function handler(req, res) {
       console.error('❌ Missing environment variables');
       return res.status(500).json({ 
         success: false, 
-        error: 'Сервер не настроен. Отсутствуют BOT_TOKEN или CHAT_ID' 
+        eerror: 'Сервер не настроен. Отсутствуют BOT_TOKEN или CHAT_ID' 
       });
     }
 
