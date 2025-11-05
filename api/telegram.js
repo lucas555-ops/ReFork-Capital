@@ -1,8 +1,7 @@
+import fetch from "node-fetch";
 
+export default async function handler(req, res) 
 
-
-// /api/telegram.js
-module.exports = async function handler(req, res) {
   // Разрешаем запросы с любого origin (так как убрали CORS_ORIGIN)
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
