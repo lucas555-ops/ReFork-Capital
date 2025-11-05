@@ -1,26 +1,44 @@
 import fetch from "node-fetch";
 
 export default async function handler(req, res) {
-  // ===== CORS НАСТРОЙКА =====
+  // ===== ИСПРАВЛЕННАЯ CORS НАСТРОЙКА =====
   const allowedOrigins = [
     "https://lucas555-ops.github.io",
     "https://reforkcapital.online",
-    "https://www.reforkcapital.online",
+    "https://www.reforkcapital.online", 
     "http://localhost:3000",
-    "https://re-fork-capital.vercel.app"    
+    "https://re-fork-capital.vercel.app"
   ];
 
   const origin = req.headers.origin || req.headers.referer;
 
-  // Устанавливаем CORS заголовки ДО логики
+  // Устанавливаем CORS заголовки
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Accept");
   res.setHeader("Access-Control-Max-Age", "86400");
 
-  if (origin && allowedOrigins.some((allowed) => origin.includes(allowed.replace("www.", "")))) {
-    res.setHeader("Access-Control-Allow-Origin", origin);
+  // УПРОЩЕННАЯ И БЕЗОПАСНАЯ ПРОВЕРКА CORS
+  if (origin) {
+    try {
+      const url = new URL(origin);
+      const originHost = url.hostname;
+      
+      const isAllowed = allowedOrigins.some(allowed => {
+        const allowedUrl = new URL(allowed);
+        return allowedUrl.hostname === originHost;
+      });
+
+      if (isAllowed) {
+        res.setHeader("Access-Control-Allow-Origin", origin);
+      } else {
+        res.setHeader("Access-Control-Allow-Origin", "https://lucas555-ops.github.io");
+      }
+    } catch (e) {
+      // Если не удалось распарсить URL, разрешаем только GitHub Pages
+      res.setHeader("Access-Control-Allow-Origin", "https://lucas555-ops.github.io");
+    }
   } else {
-    res.setHeader("Access-Control-Allow-Origin", "*"); // на время отладки
+    res.setHeader("Access-Control-Allow-Origin", "https://lucas555-ops.github.io");
   }
 
   // Обработка preflight-запроса
@@ -36,6 +54,7 @@ export default async function handler(req, res) {
     });
   }
 
+  // ... остальная часть вашего кода без изменений ...
   try {
     console.log("✅ API call from origin:", origin);
 
