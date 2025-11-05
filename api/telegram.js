@@ -83,12 +83,14 @@ module.exports = async function handler(req, res) {
     }
 
     // ===== ФОРМИРУЕМ СООБЩЕНИЕ =====
-    const message = `
+      const message = `
 🔔 <b>Новая заявка ReFork Capital</b>
 
 👤 <b>Имя:</b> ${name}
 📱 <b>Telegram:</b> ${telegram}
 💰 <b>Пакет:</b> ${pkg}
+🌐 <b>Язык:</b> ${lang}
+📍 <b>Источник:</b> ${source}
 🕐 <b>Время:</b> ${new Date().toLocaleString('ru-RU')}
     `.trim();
 
