@@ -6,14 +6,14 @@
     { "src": "assets/**/*", "use": "@vercel/static" }
   ],
   "routes": [
-    // API routes - ДОЛЖНЫ БЫТЬ ПЕРВЫМИ
+    /
     { "src": "/api/(.*)", "dest": "/api/$1" },
     
-    // Статические файлы
+    
     { "src": "/assets/(.*)", "dest": "/assets/$1" },
     { "src": "/(.*\\.(html|css|js|png|jpg|jpeg|gif|ico|svg))", "dest": "/$1" },
     
-    // Все остальное → SPA
+    
     { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
