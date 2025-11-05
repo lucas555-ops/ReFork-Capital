@@ -1,15 +1,12 @@
-// api/telegram.js
-module.exports = async (req, res) => {
-  // Разрешаем CORS
-  res.setHeader('Access-Control-Allow-Credentials', true);
+module.exports = async function handler(req, res) {
+  // Включаем CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
-  res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
-  
-  // Обрабатываем OPTIONS запрос для CORS
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  // Обрабатываем OPTIONS запросы для CORS
   if (req.method === 'OPTIONS') {
-    res.status(200).end();
-    return;
+    return res.status(200).end();
   }
 
   // Разрешаем только POST
@@ -18,35 +15,49 @@ module.exports = async (req, res) => {
   }
 
   try {
-    const { name, telegram, package: pkg } = req.body;
+    console.log('Получен запрос:', req.body);
 
-    // Базовая валидация
-    if (!name || !telegram || !pkg) {
-      return res.status(400).json({ error: 'Missing required fields' });
+    const { name, telegram, package } = req.body;
+
+    // Проверяем обязательные поля
+    if (!name || !telegram || !package) {
+      return res.status(400).json({ 
+        success: false, 
+        error: 'Отсутствуют обязательные поля' 
+      });
     }
 
-    // Проверяем переменные окружения
-    const botToken = process.env.TELEGRAM_BOT_TOKEN;
-    const chatId = process.env.TELEGRAM_CHAT_ID;
+    // Получаем переменные окружения
+    const botToken = process.env.BOT_TOKEN;
+    const chatId = process.env.CHAT_ID;
 
+    console.log('BOT_TOKEN exists:', !!botToken);
+    console.log('CHAT_ID exists:', !!chatId);
+
+    // Проверяем наличие переменных окружения
     if (!botToken || !chatId) {
       console.error('Missing environment variables');
-      return res.status(500).json({ error: 'Server configuration error' });
+      return res.status(500).json({ 
+        success: false, 
+        error: 'Сервер не настроен. Отсутствуют BOT_TOKEN или CHAT_ID' 
+      });
     }
 
     // Формируем сообщение
-    const message = `
-🔔 Новая заявка ReFork Capital
-👤 Имя: ${name}
-📱 Telegram: ${telegram}
-💰 Пакет: ${pkg}
-🕐 Время: ${new Date().toLocaleString('ru-RU')}
-    `.trim();
+    const message = `🎯 <b>Новая заявка ReFork Capital</b>\n\n` +
+                   `👤 <b>Имя:</b> ${name}\n` +
+                   `📱 <b>Telegram:</b> ${telegram}\n` +
+                   `💰 <b>Пакет:</b> ${package}\n` +
+                   `⏰ <b>Время:</b> ${new Date().toLocaleString('ru-RU')}`;
+
+    console.log('Отправляем в Telegram...');
 
     // Отправляем в Telegram
     const telegramResponse = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         chat_id: chatId,
         text: message,
@@ -55,23 +66,29 @@ module.exports = async (req, res) => {
     });
 
     const telegramData = await telegramResponse.json();
+    console.log('Ответ от Telegram API:', telegramData);
 
     if (telegramResponse.ok) {
       res.status(200).json({ 
-        success: true,
-        message: '✅ Заявка успешно отправлена!'
-      });
+  success: true,
+  message: '✅ Сигнал получен! Заявка принята.'
+});
     } else {
-      console.error('Telegram API error:', telegramData);
+      console.error('Ошибка Telegram API:', telegramData);
       res.status(500).json({ 
-        error: `Telegram error: ${telegramData.description || 'Unknown error'}` 
+        success: false, 
+        error: `Ошибка Telegram: ${telegramData.description || 'Неизвестная ошибка'}` 
       });
     }
 
   } catch (error) {
-    console.error('Server error:', error);
+    console.error('Ошибка сервера:', error);
     res.status(500).json({ 
-      error: `Internal server error: ${error.message}` 
+      success: false, 
+      error: `Внутренняя ошибка сервера: ${error.message}` 
     });
   }
 };
+
+
+
