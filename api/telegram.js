@@ -1,10 +1,6 @@
 import fetch from "node-fetch";
 
-export default async function handler(req, res) 
-
-
-module.exports = async function handler(req, res) {
-  // ===== CORS НАСТРОЙКА =====
+export default async function handler(req, res) {
   const allowedOrigins = [
     'https://lucas555-ops.github.io',
     'https://reforkcapital.online',
@@ -12,70 +8,48 @@ module.exports = async function handler(req, res) {
     'http://localhost:3000',
     'https://re-fork-capital.vercel.app'
   ];
-  
+
   const origin = req.headers.origin || req.headers.referer;
   
-  if (allowedOrigins.some(allowed => origin?.includes(allowed))) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Credentials', 'true');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept');
   res.setHeader('Access-Control-Max-Age', '86400');
-    }
-  
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
+
+  if (origin && allowedOrigins.some(allowed => origin.includes(allowed.replace('www.', '')))) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  } else {
+    res.setHeader('Access-Control-Allow-Origin', '*');
   }
 
-  if (req.method !== 'POST') {
-    return res.status(405).json({ 
-      success: false, 
-      error: 'Method not allowed' 
-    });
-  }
-
+  if (req.method === 'OPTIONS') return res.status(200).end();
+  if (req.method !== 'POST') return res.status(405).json({ success: false, error: 'Method not allowed' });
 
   try {
-    console.log('✅ API call from allowed origin:', origin);
+    console.log('✅ API call from origin:', origin);
     console.log('📨 Получен запрос:', req.body);
 
-    const { name, telegram, package: pkg, lang = 'ru', source = 'ReFork Capital' } = req.body;
-
-    // Проверяем обязательные поля
-    if (!name || !telegram || !pkg) {
-      return res.status(400).json({ 
-        success: false, 
-        error: 'Отсутствуют обязательные поля' 
-      });
+    let body;
+    try {
+      body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
+    } catch {
+      body = req.body;
     }
 
-    // ===== ВАЛИДАЦИЯ TELEGRAM =====
+    const { name, telegram, package: pkg, lang = 'ru', source = 'ReFork Capital' } = body;
+
+    if (!name || !telegram || !pkg)
+      return res.status(400).json({ success: false, error: 'Отсутствуют обязательные поля' });
+
     const telegramPattern = /^@[A-Za-z0-9_]{5,32}$/;
-    if (!telegramPattern.test(telegram)) {
-      return res.status(400).json({ 
-        success: false, 
-        error: 'Invalid Telegram format. Use @username format' 
-      });
-    }
+    if (!telegramPattern.test(telegram))
+      return res.status(400).json({ success: false, error: 'Invalid Telegram format. Use @username format' });
 
-    // Получаем переменные окружения (обновленные имена)
-    // Получаем переменные окружения
     const botToken = process.env.BOT_TOKEN;
     const chatId = process.env.CHAT_ID;
 
-    console.log('BOT_TOKEN exists:', !!botToken);
-    console.log('CHAT_ID exists:', !!chatId);
+    if (!botToken || !chatId)
+      return res.status(500).json({ success: false, error: 'Missing BOT_TOKEN or CHAT_ID' });
 
-    // Проверяем наличие переменных окружения
-    if (!botToken || !chatId) {
-      console.error('❌ Missing environment variables');
-      return res.status(500).json({ 
-        success: false, 
-        error: 'Сервер не настроен. Отсутствуют BOT_TOKEN или CHAT_ID' 
-      });
-    }
-
-    // ===== ФОРМИРУЕМ УЛУЧШЕННОЕ СООБЩЕНИЕ =====
     const message = `
 🔔 <b>Новая заявка ReFork Capital</b>
 
@@ -87,14 +61,9 @@ module.exports = async function handler(req, res) {
 🕐 <b>Время:</b> ${new Date().toLocaleString('ru-RU')}
     `.trim();
 
-    console.log('📤 Отправляем в Telegram...');
-
-    // Отправляем в Telegram
     const telegramResponse = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         chat_id: chatId,
         text: message,
@@ -103,27 +72,15 @@ module.exports = async function handler(req, res) {
     });
 
     const telegramData = await telegramResponse.json();
-    console.log('📩 Ответ от Telegram API:', telegramData);
 
-    if (telegramResponse.ok) {
-      console.log('✅ Message sent successfully to:', telegram);
-      res.status(200).json({ 
-        success: true,
-        message: '✅ Сигнал получен! Заявка принята.'
-      });
-    } else {
-      console.error('❌ Ошибка Telegram API:', telegramData);
-      res.status(500).json({ 
-        success: false, 
-        error: `Ошибка Telegram: ${telegramData.description || 'Неизвестная ошибка'}` 
-      });
-    }
+    if (telegramResponse.ok)
+      return res.status(200).json({ success: true, message: '✅ Заявка отправлена!' });
+
+    console.error('❌ Telegram API error:', telegramData);
+    return res.status(500).json({ success: false, error: telegramData.description || 'Telegram API error' });
 
   } catch (error) {
     console.error('💥 Ошибка сервера:', error);
-    res.status(500).json({ 
-      success: false, 
-      error: `Внутренняя ошибка сервера: ${error.message}` 
-    });
+    return res.status(500).json({ success: false, error: `Server error: ${error.message}` });
   }
-};
+}
