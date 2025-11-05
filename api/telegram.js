@@ -112,14 +112,12 @@ export default async function handler(req, res) {
       });
     }
 
-    // ===== ФОРМИРУЕМ СООБЩЕНИЕ =====
-    const message = `
-🔔 <b>Новая заявка ReFork Capital</b>
-
-👤 <b>Имя:</b> ${name}
-📱 <b>Telegram:</b> ${telegram}
-💰 <b>Пакет:</b> ${pkg}
-🕐 <b>Время:</b> ${new Date().toLocaleString("ru-RU")}
+    // Формируем сообщение
+    const message = `🎯 <b>Новая заявка ReFork Capital</b>\n\n` +
+                   `👤 <b>Имя:</b> ${name}\n` +
+                   `📱 <b>Telegram:</b> ${telegram}\n` +
+                   `💰 <b>Пакет:</b> ${package}\n` +
+                   `⏰ <b>Время:</b> ${new Date().toLocaleString('ru-RU')}`;
     `.trim();
 
     console.log("📤 Отправляем в Telegram...");
