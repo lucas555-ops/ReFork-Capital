@@ -5,7 +5,6 @@
     { "src": "api/**/*.js", "use": "@vercel/node" }
   ],
   "routes": [
-    { "src": "/api/(.*)", "methods": ["OPTIONS"], "dest": "/api/$1", "headers": { "Access-Control-Allow-Origin": "*" } },
     { "src": "/api/(.*)", "dest": "/api/$1" },
     { "src": "/(.*)", "dest": "/index.html" }
   ],
