@@ -1,42 +1,34 @@
-// /api/telegram.js
 module.exports = async function handler(req, res) {
-  // ===== CORS WHITELIST =====
-const allowedOrigins = [
-  'https://lucas555-ops.github.io',
-  'https://reforkcapital.online',
-  'https://www.reforkcapital.online',
-  'http://localhost:3000'
-];
+  // ===== CORS НАСТРОЙКА =====
+  const allowedOrigins = [
+    'https://lucas555-ops.github.io',
+    'https://reforkcapital.online',
+    'https://www.reforkcapital.online',
+    'http://localhost:3000',
+    'https://re-fork-capital.vercel.app'
+  ];
   
-  const origin = req.headers.origin;
+  const origin = req.headers.origin || req.headers.referer;
   
-  // Проверяем origin и устанавливаем соответствующий заголовок
-  if (allowedOrigins.includes(origin)) {
+  if (allowedOrigins.some(allowed => origin?.includes(allowed))) {
     res.setHeader('Access-Control-Allow-Origin', origin);
-  } else {
-    console.log('🚫 Blocked origin:', origin);
-    return res.status(403).json({ 
-      success: false, 
-      error: 'Origin not allowed' 
-    });
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
   }
   
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept');
-  res.setHeader('Access-Control-Max-Age', '86400');
-
-  // Обрабатываем OPTIONS запросы для CORS
+  
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
 
-  // Разрешаем только POST
   if (req.method !== 'POST') {
     return res.status(405).json({ 
       success: false, 
       error: 'Method not allowed' 
     });
   }
+
 
   try {
     console.log('✅ API call from allowed origin:', origin);
