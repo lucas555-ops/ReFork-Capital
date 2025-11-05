@@ -74,7 +74,7 @@ const allowedOrigins = [
       console.error('❌ Missing environment variables');
       return res.status(500).json({ 
         success: false, 
-        eerror: 'Сервер не настроен. Отсутствуют BOT_TOKEN или CHAT_ID' 
+        error: 'Сервер не настроен. Отсутствуют BOT_TOKEN или CHAT_ID' 
       });
     }
 
