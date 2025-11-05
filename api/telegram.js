@@ -73,7 +73,7 @@ module.exports = async function handler(req, res) {
       console.error('❌ Missing environment variables');
       return res.status(500).json({ 
         success: false, 
-        error: 'Сервер не настроен. Отсутствуют TELEGRAM_BOT_TOKEN или TELEGRAM_CHAT_ID' 
+        error: 'Сервер не настроен. Отсутствуют BOT_TOKEN или CHAT_ID' 
       });
     }
 
