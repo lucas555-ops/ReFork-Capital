@@ -7,23 +7,27 @@ module.exports = async function handler(req, res) {
     'http://localhost:3000',
     'https://re-fork-capital.vercel.app'
   ];
-  if (origin && allowedOrigins.some(allowed => origin.includes(allowed.replace('www.', '')))) {
-
   
   const origin = req.headers.origin || req.headers.referer;
   
-  if (allowedOrigins.some(allowed => origin?.includes(allowed))) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Credentials', 'true');
+  // Устанавливаем CORS заголовки ДО любой логики
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept');
   res.setHeader('Access-Control-Max-Age', '86400');
-    }
   
+  // Проверяем и устанавливаем origin
+  if (origin && allowedOrigins.some(allowed => origin.includes(allowed.replace('www.', '')))) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  } else {
+    res.setHeader('Access-Control-Allow-Origin', '*'); // На время отладки
+  }
+
+  // Обрабатываем OPTIONS запрос
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
 
+  // Разрешаем только POST
   if (req.method !== 'POST') {
     return res.status(405).json({ 
       success: false, 
@@ -31,12 +35,19 @@ module.exports = async function handler(req, res) {
     });
   }
 
-
   try {
-    console.log('✅ API call from allowed origin:', origin);
+    console.log('✅ API call from origin:', origin);
     console.log('📨 Получен запрос:', req.body);
 
-    const { name, telegram, package: pkg, lang = 'ru', source = 'ReFork Capital' } = req.body;
+    // Парсим тело запроса (ВАЖНО для Vercel!)
+    let body;
+    try {
+      body = typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
+    } catch (e) {
+      body = req.body;
+    }
+
+    const { name, telegram, package: pkg, lang = 'ru', source = 'ReFork Capital' } = body;
 
     // Проверяем обязательные поля
     if (!name || !telegram || !pkg) {
@@ -55,7 +66,6 @@ module.exports = async function handler(req, res) {
       });
     }
 
-    // Получаем переменные окружения (обновленные имена)
     // Получаем переменные окружения
     const botToken = process.env.BOT_TOKEN;
     const chatId = process.env.CHAT_ID;
@@ -72,15 +82,13 @@ module.exports = async function handler(req, res) {
       });
     }
 
-    // ===== ФОРМИРУЕМ УЛУЧШЕННОЕ СООБЩЕНИЕ =====
+    // ===== ФОРМИРУЕМ СООБЩЕНИЕ =====
     const message = `
 🔔 <b>Новая заявка ReFork Capital</b>
 
 👤 <b>Имя:</b> ${name}
 📱 <b>Telegram:</b> ${telegram}
 💰 <b>Пакет:</b> ${pkg}
-🌐 <b>Язык:</b> ${lang}
-📍 <b>Источник:</b> ${source}
 🕐 <b>Время:</b> ${new Date().toLocaleString('ru-RU')}
     `.trim();
 
