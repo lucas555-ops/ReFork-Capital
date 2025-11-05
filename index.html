@@ -2447,7 +2447,7 @@ if (typeof ReForkUtils === 'undefined') {
 }
 
 
-// --- Логика обработки формы ---
+// Форма - финальная версия для Vercel
 const form = document.getElementById('leadForm');
 const btn = document.getElementById('leadSubmit');
 
@@ -2455,7 +2455,7 @@ if (form && btn) {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     
-    // 1. Проверка rate limit
+    // Проверка rate limit
     if (!ReForkUtils.formProtection.canSubmit()) {
       const remaining = Math.ceil(ReForkUtils.formProtection.getRemainingTime() / 1000);
       showError(`⏳ Подождите ${remaining} секунд перед повторной отправкой`);
@@ -2464,13 +2464,12 @@ if (form && btn) {
     
     const formData = new FormData(form);
     
-    // 2. Honeypot check
+    // Honeypot check
     if (formData.get('website')) {
-      console.log("Honeypot triggered");
       return;
     }
     
-    // 3. Валидация
+    // Валидация
     const validation = ReForkUtils.validateFormData(formData);
     if (!validation.valid) {
       const messages = {
@@ -2482,31 +2481,28 @@ if (form && btn) {
       return;
     }
     
-    // 4. Блокировка кнопки
     btn.disabled = true;
     const buttonText = btn.querySelector('.button-text');
     const spinner = btn.querySelector('.loading-spinner-btn');
-    if(buttonText) buttonText.textContent = "Отправка...";
-    if (spinner) spinner.classList.remove('hidden');
+    buttonText.textContent = "Отправка...";
+    spinner.classList.remove('hidden');
 
-    // 5. ✅ ИСПРАВЛЕНИЕ API URL:
-    // Мы используем относительный путь. Vercel сам направит запрос /api/telegram 
-    // к функции, даже если вы используете preview URL.
-    const API_URL = '/api/telegram'; 
+    // ✅ VERCEL ENDPOINT - АБСОЛЮТНЫЙ URL
+    const API_URL = 'https://re-fork-capital.vercel.app/api/telegram';
     
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 10000); // 10 сек таймаут
+    const timeout = setTimeout(() => controller.abort(), 10000);
 
     try {
       const jsonData = {
         name: formData.get('name'),
         telegram: formData.get('telegram'),
         package: formData.get('package'),
-        lang: formData.get('lang') || 'ru',
-        source: formData.get('source') || 'ReFork Capital'
+        lang: 'ru',
+        source: 'ReFork Capital'
       };
 
-      console.log('📤 Отправка данных:', jsonData);
+      console.log('📤 Отправка данных в Vercel:', jsonData);
 
       const res = await fetch(API_URL, { 
         method: "POST", 
@@ -2515,67 +2511,59 @@ if (form && btn) {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
+        mode: 'cors',
         signal: controller.signal
-        // 'mode: cors' не нужен для относительного пути
       });
 
       clearTimeout(timeout);
 
-      // 6. ✅ ИСПРАВЛЕНО: Добавлена обработка 404/405/500
-      if (!res.ok) {
-          // Если сервер вернул 4xx или 5xx
-          console.error('HTTP Error Status:', res.status);
-          if(res.status === 404) {
-             showError("❌ Ошибка 404: API-маршрут не найден. Проверьте URL.");
-          } else if (res.status === 405) {
-             showError("❌ Ошибка 405: Метод не разрешен. (Проблема с Vercel/DNS)");
-          } else if (res.status === 500) {
-             showError("❌ Ошибка 500: Внутренняя ошибка сервера. (Проверьте токены на Vercel)");
-          } else {
-             showError(`❌ Ошибка HTTP: ${res.status}. Попробуйте позже.`);
-          }
-          // Мы не пытаемся парсить .json() из ошибки, так как его может не быть
-          throw new Error(`HTTP error! status: ${res.status}`);
-      }
-
-      // Только если res.ok (статус 200-299)
       const responseData = await res.json();
       console.log('📥 Ответ от Vercel:', responseData);
 
-      if (responseData.success) {
+      if (res.ok && responseData.success) {
         ReForkUtils.formProtection.recordSubmit();
-        showToast(responseData.message || "✅ Спасибо! Сигнал отправлен.");
+        showToast("✅ Спасибо! Сигнал отправлен. Мы свяжемся с вами в ближайшее время.");
         
-        // Редирект на страницу благодарности
+        // Redirect через 2 секунды
         setTimeout(() => {
-          // Используйте относительный путь или полный URL
-          window.location.href = "https" + "://lucas555-ops.github.io/ReFork-Capital/thank-you.html";
+          window.location.href = "https://lucas555-ops.github.io/ReFork-Capital/thank-you.html";
         }, 2000);
         
         form.reset();
       } else {
-        // Ошибка, которую вернул API (например, "Invalid Telegram format")
-        showError(`❌ Ошибка: ${responseData.error || 'Неизвестная ошибка сервера'}`);
+        const errorMsg = responseData.error || 'Неизвестная ошибка сервера';
+        console.error('Vercel API error:', errorMsg);
+        
+        // Показываем пользователю понятное сообщение
+        if (errorMsg.includes('BOT_TOKEN') || errorMsg.includes('CHAT_ID')) {
+          showError("❌ Сервер не настроен. Свяжитесь с нами в Telegram.");
+        } else if (errorMsg.includes('Telegram')) {
+          showError("❌ Ошибка отправки в Telegram. Попробуйте позже.");
+        } else {
+          showError(`❌ Ошибка отправки: ${errorMsg}`);
+        }
       }
-
     } catch (err) {
       clearTimeout(timeout);
-      console.error('Ошибка при отправке (Fetch error):', err);
+      console.error('Ошибка при отправке:', err);
+      
+      // Специальная обработка CORS ошибок
+      if (err.message && err.message.includes('CORS')) {
+        showError("🔒 Ошибка безопасности. Попробуйте обновить страницу или свяжитесь с нами в Telegram.");
+        return;
+      }
       
       if (err.name === 'AbortError') {
-        showError("⏱️ Превышено время ожидания. Проверьте соединение.");
-      } else if (err.message && err.message.includes('HTTP error')) {
-        // Ошибка уже была показана выше (404/405/500)
-      } else if (err.name === 'TypeError') {
-        showError("⚠️ Ошибка сети. Проверьте интернет-соединение.");
+        showError("⏱️ Превышено время ожидания. Проверьте соединение и попробуйте снова.");
+      } else if (err.name === 'TypeError' && err.message.includes('fetch')) {
+        showError("⚠️ Ошибка сети. Проверьте интернет-соединение и попробуйте снова.");
       } else {
-        showError("⚠️ Непредвиденная ошибка. Попробуйте позже.");
+        showError("⚠️ Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже или свяжитесь с нами в Telegram.");
       }
     } finally {
-      // 7. Восстановление кнопки
       btn.disabled = false;
-      if(buttonText) buttonText.textContent = "Отправить";
-      if (spinner) spinner.classList.add('hidden');
+      buttonText.textContent = "Отправить";
+      spinner.classList.add('hidden');
     }
   });
 }
