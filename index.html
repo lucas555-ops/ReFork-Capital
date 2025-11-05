@@ -2452,134 +2452,124 @@ if (typeof ReForkUtils === 'undefined') {
 }
 
 
-<script>
-// ===============================================
-// ✅ ФИНАЛЬНЫЙ КОД ОБРАБОТКИ ФОРМЫ (ИСПРАВЛЕННЫЙ)
-// ===============================================
+// Форма - финальная версия для Vercel
+const form = document.getElementById('leadForm');
+const btn = document.getElementById('leadSubmit');
 
-document.addEventListener('DOMContentLoaded', function() {
-    // ВАЖНО: Убедитесь, что это ваш рабочий URL Vercel
-    const apiEndpoint = '/api/telegram'; 
-    // const apiEndpoint = 'https://re-fork-capital.vercel.app/api/telegram'; // Если нужно использовать абсолютный URL
+if (form && btn) {
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
     
-    // Элементы формы
-    const form = document.getElementById('leadForm'); 
-    const submitButton = document.getElementById('leadSubmit'); 
-    const nameInput = document.getElementById('name');
-    const telegramInput = document.getElementById('telegram');
-    const packageSelect = document.getElementById('package'); 
-    
-    // Элементы для сообщений (вам нужно добавить их в HTML перед закрытием формы)
-    const formContainer = form ? form.parentElement : null;
-    let successMessageElement, errorMessageElement;
-
-    // Создание элементов для вывода сообщений, если они не существуют
-    if (formContainer) {
-        successMessageElement = document.createElement('p');
-        successMessageElement.id = 'success-message';
-        successMessageElement.className = 'text-green-400 text-center mt-4 hidden';
-        formContainer.insertBefore(successMessageElement, form);
-
-        errorMessageElement = document.createElement('p');
-        errorMessageElement.id = 'error-message';
-        errorMessageElement.className = 'text-red-400 text-center mt-4 hidden';
-        formContainer.insertBefore(errorMessageElement, form);
+    // Проверка rate limit
+    if (!ReForkUtils.formProtection.canSubmit()) {
+      const remaining = Math.ceil(ReForkUtils.formProtection.getRemainingTime() / 1000);
+      showError(`⏳ Подождите ${remaining} секунд перед повторной отправкой`);
+      return;
     }
     
-    if (form) {
-        form.addEventListener('submit', async function(e) {
-            e.preventDefault();
-
-            // 1. Сброс сообщений
-            if (successMessageElement) successMessageElement.classList.add('hidden');
-            if (errorMessageElement) errorMessageElement.classList.add('hidden');
-
-            // 2. Блокировка и индикация загрузки
-            const originalButtonText = submitButton.querySelector('.button-text');
-            const loadingSpinner = submitButton.querySelector('.loading-spinner-btn');
-            
-            if (submitButton) {
-                submitButton.disabled = true;
-                if(originalButtonText) originalButtonText.classList.add('hidden');
-                if(loadingSpinner) {
-                    loadingSpinner.classList.remove('hidden');
-                    loadingSpinner.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> Отправка...';
-                }
-            }
-
-            // 3. Сбор данных
-            const data = {
-                name: nameInput ? nameInput.value.trim() : '',
-                telegram: telegramInput ? telegramInput.value.trim() : '',
-                package: packageSelect ? packageSelect.value : '', 
-                // Эти поля берутся из скрытых полей формы
-                lang: 'ru', 
-                source: 'ReFork Capital'
-            };
-            
-            console.log('Client: Отправка данных:', data); 
-
-            // 4. Валидация на клиенте
-            const telegramPattern = /^@[A-Za-z0-9_]{5,32}$/;
-            if (!data.name || !data.telegram || !data.package || !telegramPattern.test(data.telegram)) {
-                if (errorMessageElement) {
-                    errorMessageElement.textContent = 'Пожалуйста, заполните все поля корректно и выберите уровень.';
-                    errorMessageElement.classList.remove('hidden');
-                }
-                
-                // Восстановление кнопки
-                if (submitButton) submitButton.disabled = false;
-                if(originalButtonText) originalButtonText.classList.remove('hidden');
-                if(loadingSpinner) loadingSpinner.classList.add('hidden');
-                return;
-            }
-
-            // 5. Отправка запроса с правильным Content-Type
-            try {
-                const response = await fetch(apiEndpoint, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json', // КРИТИЧЕСКИ ВАЖНО
-                    },
-                    body: JSON.stringify(data), // Данные ДОЛЖНЫ быть строкой JSON
-                });
-
-                const result = await response.json();
-
-                if (response.ok && result.success) {
-                    console.log('Client: Успешная отправка!', result);
-                    if (successMessageElement) {
-                        successMessageElement.textContent = result.message || 'Заявка успешно отправлена! Мы скоро свяжемся с вами.';
-                        successMessageElement.classList.remove('hidden');
-                    }
-                    form.reset(); 
-                } else {
-                    console.error('Client: Ошибка API:', result.error);
-                    if (errorMessageElement) {
-                        errorMessageElement.textContent = `Ошибка: ${result.error || 'Произошла ошибка при отправке заявки.'}`;
-                        errorMessageElement.classList.remove('hidden');
-                    }
-                }
-            } catch (error) {
-                console.error('Client: Ошибка сети/fetch:', error);
-                if (errorMessageElement) {
-                    errorMessageElement.textContent = 'Произошла ошибка сети. Проверьте подключение или попробуйте позже.';
-                    errorMessageElement.classList.remove('hidden');
-                }
-            } finally {
-                // 6. Разблокировка кнопки и восстановление текста
-                if (submitButton) submitButton.disabled = false;
-                if(originalButtonText) originalButtonText.classList.remove('hidden');
-                if(loadingSpinner) loadingSpinner.classList.add('hidden');
-            }
-        });
-    } else {
-        console.error('Client: Форма с ID "leadForm" не найдена. Проверьте HTML.');
+    const formData = new FormData(form);
+    
+    // Honeypot check
+    if (formData.get('website')) {
+      return;
     }
-});
+    
+    // Валидация
+    const validation = ReForkUtils.validateFormData(formData);
+    if (!validation.valid) {
+      const messages = {
+        telegram: '❌ Telegram должен начинаться с @ (например: @username)',
+        name: '❌ Имя должно содержать от 2 до 100 символов',
+        package: '❌ Пожалуйста, выберите сумму'
+      };
+      showError(messages[validation.field] || '❌ Проверьте правильность заполнения формы');
+      return;
+    }
+    
+    btn.disabled = true;
+    const buttonText = btn.querySelector('.button-text');
+    const spinner = btn.querySelector('.loading-spinner-btn');
+    buttonText.textContent = "Отправка...";
+    spinner.classList.remove('hidden');
 
-// ... (Остальные ваши скрипты, например, для валидации Telegram в реальном времени)
-</script>
+    // ✅ VERCEL ENDPOINT - АБСОЛЮТНЫЙ URL
+    const API_URL = 'https://www.reforkcapital.online/api/telegram';
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 10000);
+
+    try {
+      const jsonData = {
+        name: formData.get('name'),
+        telegram: formData.get('telegram'),
+        package: formData.get('package'),        
+        source: 'ReFork Capital'
+      };
+
+      console.log('📤 Отправка данных в Vercel:', jsonData);
+
+      const res = await fetch(API_URL, { 
+        method: "POST", 
+        body: JSON.stringify(jsonData),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        mode: 'cors',
+        signal: controller.signal
+      });
+
+      clearTimeout(timeout);
+
+      const responseData = await res.json();
+      console.log('📥 Ответ от Vercel:', responseData);
+
+      if (res.ok && responseData.success) {
+        ReForkUtils.formProtection.recordSubmit();
+        showToast("✅ Спасибо! Сигнал отправлен. Мы свяжемся с вами в ближайшее время.");
+        
+        // Redirect через 2 секунды
+        setTimeout(() => {
+          window.location.href = "https://lucas555-ops.github.io/ReFork-Capital/thank-you.html";
+        }, 2000);
+        
+        form.reset();
+      } else {
+        const errorMsg = responseData.error || 'Неизвестная ошибка сервера';
+        console.error('Vercel API error:', errorMsg);
+        
+        // Показываем пользователю понятное сообщение
+        if (errorMsg.includes('BOT_TOKEN') || errorMsg.includes('CHAT_ID')) {
+          showError("❌ Сервер не настроен. Свяжитесь с нами в Telegram.");
+        } else if (errorMsg.includes('Telegram')) {
+          showError("❌ Ошибка отправки в Telegram. Попробуйте позже.");
+        } else {
+          showError(`❌ Ошибка отправки: ${errorMsg}`);
+        }
+      }
+    } catch (err) {
+      clearTimeout(timeout);
+      console.error('Ошибка при отправке:', err);
+      
+      // Специальная обработка CORS ошибок
+      if (err.message && err.message.includes('CORS')) {
+        showError("🔒 Ошибка безопасности. Попробуйте обновить страницу или свяжитесь с нами в Telegram.");
+        return;
+      }
+      
+      if (err.name === 'AbortError') {
+        showError("⏱️ Превышено время ожидания. Проверьте соединение и попробуйте снова.");
+      } else if (err.name === 'TypeError' && err.message.includes('fetch')) {
+        showError("⚠️ Ошибка сети. Проверьте интернет-соединение и попробуйте снова.");
+      } else {
+        showError("⚠️ Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже или свяжитесь с нами в Telegram.");
+      }
+    } finally {
+      btn.disabled = false;
+      buttonText.textContent = "Отправить";
+      spinner.classList.add('hidden');
+    }
+  });
+}
 
 
 
