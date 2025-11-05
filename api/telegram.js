@@ -12,8 +12,6 @@ module.exports = async function handler(req, res) {
     'http://localhost:3000',
     'https://re-fork-capital.vercel.app'
   ];
-  if (origin && allowedOrigins.some(allowed => origin.includes(allowed.replace('www.', '')))) {
-
   
   const origin = req.headers.origin || req.headers.referer;
   
