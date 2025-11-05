@@ -2488,8 +2488,7 @@ if (form && btn) {
     spinner.classList.remove('hidden');
 
     // ✅ VERCEL ENDPOINT - АБСОЛЮТНЫЙ URL
-    const API_URL = 'https://re-fork-capital.vercel.app/api/telegram';
-
+    const API_URL = '/api/telegram';
     
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 10000);
