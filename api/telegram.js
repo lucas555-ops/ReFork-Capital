@@ -91,8 +91,6 @@ module.exports = async function handler(req, res) {
 👤 <b>Имя:</b> ${name}
 📱 <b>Telegram:</b> ${telegram}
 💰 <b>Пакет:</b> ${pkg}
-🌐 <b>Язык:</b> ${lang}
-📍 <b>Источник:</b> ${source}
 🕐 <b>Время:</b> ${new Date().toLocaleString('ru-RU')}
     `.trim();
 
@@ -132,4 +130,5 @@ module.exports = async function handler(req, res) {
     });
   }
 };
+
 
