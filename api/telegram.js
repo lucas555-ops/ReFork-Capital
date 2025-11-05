@@ -8,6 +8,7 @@ export default async function handler(req, res) {
     "https://www.reforkcapital.online",
     "http://localhost:3000",
     "https://re-fork-capital.vercel.app"
+    "https://lucas555-ops.github.io/ReFork-Capital/
   ];
 
   const origin = req.headers.origin || req.headers.referer;
