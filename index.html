@@ -82,19 +82,15 @@
 
     </style>
 
-
-<!-- Preconnect & DNS Prefetch - OPTIMIZED -->
+    <!-- Preconnect to external domains -->
+    <!-- Заменить на системные шрифты или предзагрузку -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-
-<link rel="dns-prefetch" href="https://fonts.googleapis.com">
 <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-<link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://raw.githubusercontent.com">
 	
-<link rel="preconnect" href="https://t.me">
+	<link rel="preconnect" href="https://t.me">
 <link rel="dns-prefetch" href="https://raw.githubusercontent.com">
 
     <!-- Preload Critical Resources -->
@@ -142,11 +138,11 @@
     </script>
 
     <!-- Meta Tags -->
-    <meta name="description" content="ReFork Capital: Кастомная DeFi-стратегия для мем-токенов. Пассивный ROI до 80%+ за цикл через AI-аналитику и SMM-капитализацию. Только для своих!"/>
-    <meta name="keywords" content="ReFork Capital, crypto fund, meme tokens, investment, DeFi growth, crypto ROI, крипто инвестиции, memecoin, 100x, Solana, DEX" />
-	<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="description" content="ReFork Capital: AI-анализ, DeFi-пулы и стратегия роста капитала. ROI до 80%+ за цикл. Только для своих.">
+    <meta name="keywords" content="ReFork Capital, DeFi, Web3 инвестиции, мем токены, AI аналитика, крипто фонд, крипто инвестиции, ROI 80, Solana, DEX, memecoin, пассивный доход, DeFi стратегия">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="author" content="ReFork Capital">
-    <meta name="language" content="ru" "Russian">
+    <meta name="language" content="ru">
     
     <!-- Яндекс Верификация -->
     <meta name="yandex-verification" content="104983638">
@@ -178,9 +174,6 @@
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="ReFork Capital — DeFi & AI стратегия дохода до 80%">
     <meta property="og:locale" content="ru_RU">
-	<meta property="vk:image" content="https://reforkcapital.online/og-image.jpg">
-    <meta property="telegram:channel" content="@ReForkCapital">
-<meta property="al:web:url" content="https://reforkcapital.online/">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
@@ -2252,6 +2245,20 @@ img.loaded {
 }
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FinancialService",
+  "name": "ReFork Capital",
+  "description": "Крипто-инвестиции и управление капиталом для инвесторов из России",
+  "url": "https://reforkcapital.online/",
+  "areaServed": {
+    "@type": "Country",
+    "name": "Russia"
+  },
+  "serviceType": "Cryptocurrency Investment Management"
+}
+</script>
 
 <meta name="geo.region" content="RU" />
 <meta name="geo.placename" content="Russia" />
@@ -2267,11 +2274,6 @@ img.loaded {
       "name": "ReFork Capital Pool",
       "description": "Закрытый пул инвесторов с доходностью до 80% за цикл. DeFi-стратегия на мем-токенах, AI аналитика и SMM капитализация.",
       "url": "https://reforkcapital.online/",
-	  "areaServed": {
-    "@type": "Country",
-    "name": "Russia"
-  },
-  "serviceType": "Cryptocurrency Investment Management"
       "image": "https://reforkcapital.online/og-image.jpg",
       "offers": {
         "@type": "Offer",
@@ -6864,8 +6866,14 @@ window.addEventListener("load", () => {
 });
 </script>
 
-<script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" defer></script>
 
 <script>
 // simple reveal-on-scroll
