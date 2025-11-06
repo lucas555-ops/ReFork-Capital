@@ -3,10 +3,15 @@
   "version": "1.0.0",
   "private": true,
   "engines": {
-    "node": ">=18"
+    "node": "18.x"
   },
   "scripts": {
     "dev": "vercel dev",
-    "build": "echo 'No build step'"
+    "start": "vercel dev",
+    "build": "echo 'Static site, no build required'",
+    "deploy": "vercel --prod"
+  },
+  "devDependencies": {
+    "vercel": "^32.0.0"
   }
 }
