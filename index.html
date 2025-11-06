@@ -14,14 +14,7 @@
     <!-- Канонический URL -->
     <link rel="canonical" href="https://reforkcapital.online/">
 	
-	<!-- Оставить только самые необходимые стили для первого экрана -->
-<style>
-  /* Только стили для hero-секции и базовые */
-  :root { --bg: #0b0e14; --accent: #6ee7b7; }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body { background: var(--bg); color: #e5e7eb; font-family: system-ui; }
-  #loadingScreen { position: fixed; inset: 0; background: var(--bg); z-index: 9999; }
-</style>
+
 
 <!-- Остальные стили загружать асинхронно -->
 <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -55,31 +48,9 @@
             line-height: 1.6;
         }
         
-        #loadingScreen {
-            position: fixed;
-            inset: 0;
-            background: var(--bg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            opacity: 1;
-            transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1);
-            pointer-events: all;
-        }
         
-        .loading-spinner {
-            width: 50px;
-            height: 50px;
-            border: 4px solid rgba(34, 211, 238, 0.3);
-            border-top-color: var(--accent-2);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
         
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
+        
 
         /* Предотвращение FOUC */
         body:not(.loaded) .main-content {
@@ -181,12 +152,7 @@
         .chart-animation{stroke-dasharray:1000;stroke-dashoffset:1000;animation:drawChart 3.5s ease-in-out forwards}
         @keyframes drawChart{to{stroke-dashoffset:0}}
 
-        .bg-size-200{background-size:200% 200%}
-        .animate-gradient{animation:gradient-shift 3s ease infinite}
-        @keyframes gradient-shift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-
-        .loading-spinner-btn{display:inline-block;width:20px;height:20px;border:3px solid rgba(255,255,255,.3);border-radius:50%;border-top-color:#22d3ee;animation:spin 1s linear infinite;margin-left:8px}
-
+        
         /* Kinetic Typography */
         .kinetic-typography {
         position: relative;
@@ -318,8 +284,9 @@
     <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"></noscript>
 
     <!-- Внешние стили -->
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+	
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -422,21 +389,7 @@ html,body{
   -moz-osx-font-smoothing:grayscale
 }
 
-/* 3. Стили для нового прелоадера (#loadingScreen) и плавного скрытия */
-#loadingScreen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background: #111; /* Цвет, которым закрывается экран */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    opacity: 1;
-    transition: opacity 1s ease; /* КРИТИЧЕСКИ ВАЖНЫЙ ПЕРЕХОД */
-}
+
   
     section, header, footer{position:relative;z-index:20}
     h1,h2,h3,p,details,summary,button,a,input,textarea,select,form{position:relative;z-index:30}
@@ -2401,25 +2354,6 @@ button:hover {
 }
 
 
-  
-
-
-
-
-
-
-
-// Дебаунс для resize событий
-let resizeTimeout;
-window.addEventListener('resize', () => {
-  clearTimeout(resizeTimeout);
-  resizeTimeout = setTimeout(() => {
-    // логика ресайза
-  }, 250);
-});
-
-
-
 @media (max-width: 768px) {
   #full-cycle .grid-cols-5 {
     grid-template-columns: repeat(2, 1fr);
@@ -4035,7 +3969,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 <!-- Исправленная секция Психология Мем-Экономики -->
-<section id="meme-pmechanics" aria-labelledby="meme-psychology-title" class="py-24 bg-gradient-to-b from-black/20 to-purple-900/20">
+<section id="meme-pmechanics" aria-labelledby="meme-psychology-title" class="py-24">
   <h2 id="meme-psychology-title" class="sr-only">Психология Мем-Экономики</h2>
   <div class="max-w-6xl mx-auto px-4">
     <div class="text-center mb-16">
@@ -4079,7 +4013,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       <div class="glow-card card-glow p-6">
         <div class="text-4xl mb-4">🔥</div>
-        <h3 class="text-xl font-bold text-orange-400 mb-3">Социальное доказательство</h3>
+        <h3 class="text-xl rel="preload" href-bold text-orange-400 mb-3">Социальное доказательство</h3>
         <p class="text-gray-300 mb-4">
           Люди покупают то, что покупают другие. Создавая видимость хайпа, мы запускаем цепную реакцию.
         </p>
@@ -4164,7 +4098,7 @@ document.addEventListener("DOMContentLoaded", () => {
 </section>
 
 <!-- НОВАЯ СЕКЦИЯ: ВОЛНА ЦИКЛОВ REFORK -->
-<section id="meme-cycle-wave" class="py-24 relative overflow-hidden bg-gradient-to-b from-black/20 to-purple-900/20">
+<section id="meme-cycle-wave" class="py-24 relative overflow-hidden">
   <div class="max-w-7xl mx-auto px-4">
     
     <!-- Заголовок секции -->
@@ -4756,133 +4690,7 @@ function scrollToApply() {
 }
 </script>
 
-<section id="target-audience" aria-labelledby="target-audience-title" class="py-24 relative overflow-hidden bg-gradient-to-br from-gray-900/60 via-gray-800/40 to-cyan-900/20">
-  <h2 id="target-audience-title" class="sr-only">Найдите свой путь в ReFork Capital</h2>
-  
-  <!-- Animated Gradient Blobs -->
-  <div class="absolute inset-0 opacity-15">
-    <div class="absolute top-10 left-10 w-64 h-64 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
-    <div class="absolute bottom-10 right-10 w-72 h-72 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" style="animation-delay: 2s"></div>
-    <div class="absolute top-1/2 left-1/2 w-80 h-80 bg-green-500 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" style="animation-delay: 1s"></div>
-  </div>
 
-  <div class="max-w-7xl mx-auto px-4 relative z-10">
-    <div class="text-center mb-16">
-      <h2 class="text-4xl md:text-5xl font-black mb-6 bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 text-transparent bg-clip-text bg-size-200 animate-gradient">
-        Найдите свой путь в ReFork Capital
-      </h2>
-      <div class="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 mx-auto mb-6"></div>
-      <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-        Три типа участников, три уровня вовлеченности. Выберите стратегию, которая соответствует вашим целям и возможностям.
-      </p>
-    </div>
-  </div>
-</section>
-
-    <!-- Audience Cards -->
-<div class="grid md:grid-cols-3 gap-8 mb-20">
-  <!-- Investor -->
-  <div class="relative" data-aos="fade-up" data-aos-delay="100">
-    <!-- Верхняя градиентная линия -->
-    <div class="absolute -top-0.5 left-1/2 -translate-x-1/2 h-0.5 w-4/5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent rounded-full shadow-lg shadow-cyan-400/20 z-30"></div>
-    
-    <div class="glow-card p-8 hover:scale-105 transition-all duration-300 group relative bg-gray-900 border-0">
-      <div class="text-5xl mb-6 text-center"><i class="fas fa-chart-line text-green-400"></i></div>
-      <h3 class="text-2xl font-bold text-cyan-400 mb-4 text-center group-hover:text-white transition-colors">Инвестор</h3>
-
-      <ul class="space-y-3 mb-6 text-gray-300 text-sm leading-relaxed">
-        <li class="flex gap-3"><span class="text-green-400">✓</span> Пассивный доход от криптовалют без активного трейдинга</li>
-        <li class="flex gap-3"><span class="text-green-400">✓</span> Готовы инвестировать от $300 до $5000 в проверенную систему</li>
-        <li class="flex gap-3"><span class="text-green-400">✓</span> Хотите диверсифицировать портфель крипто активами</li>
-      </ul>
-
-      <div class="border-t border-white/10 pt-6 mt-6">
-        <h4 class="font-bold text-cyan-400 mb-3">Что вы получаете:</h4>
-        <ul class="space-y-2 text-gray-300 text-sm">
-          <li>• Доля от прибыли фонда (до 80% ROI/цикл)</li>
-          <li>• Ежемесячные отчеты с детальной аналитикой</li>
-          <li>• Доступ к закрытому чату инвесторов</li>
-          <li>• Возможность реинвестирования с бонусами</li>
-        </ul>
-      </div>
-
-      <a href="#packages" class="block mt-8 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold py-3 px-6 rounded-xl text-center hover:scale-105 transition-transform shadow-lg shadow-cyan-500/25">
-        Выбрать сумму инвестиций
-      </a>
-    </div>
-    
-    <!-- Нижняя градиентная линия -->
-    <div class="absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-0.5 w-4/5 bg-gradient-to-r from-transparent via-green-400 to-transparent rounded-full shadow-lg shadow-green-400/20 z-30"></div>
-  </div>
-
-  <!-- Strategic Partner -->
-  <div class="relative transform scale-105" data-aos="fade-up" data-aos-delay="200">
-    <!-- Верхняя градиентная линия -->
-    <div class="absolute -top-0.5 left-1/2 -translate-x-1/2 h-0.5 w-4/5 bg-gradient-to-r from-transparent via-purple-400 to-transparent rounded-full shadow-lg shadow-purple-400/20 z-30"></div>
-    
-    <div class="glow-card p-8 hover:scale-105 transition-all duration-300 group relative bg-gray-900 border-0 border-purple-500/50">
-      <div class="text-5xl mb-6 text-center"><i class="fas fa-handshake-alt text-purple-400"></i></div>
-      <h3 class="text-2xl font-bold text-purple-400 mb-4 text-center group-hover:text-white transition-colors">Стратегический партнёр</h3>
-
-      <ul class="space-y-3 mb-6 text-gray-300 text-sm leading-relaxed">
-        <li class="flex gap-3"><span class="text-green-400">✓</span> Есть экспертиза в SMM, дизайне или крипто-аналитике</li>
-        <li class="flex gap-3"><span class="text-green-400">✓</span> Хотите активно участвовать в проектах + получать % от прибыли</li>
-        <li class="flex gap-3"><span class="text-green-400">✓</span> Готовы использовать Ваши навыки за долю в проектах</li>
-      </ul>
-
-      <div class="border-t border-white/10 pt-6 mt-6">
-        <h4 class="font-bold text-purple-400 mb-3">Что вы получаете:</h4>
-        <ul class="space-y-2 text-gray-300 text-sm">
-          <li>• Revenue share (5–15% от прибыли проекта)</li>
-          <li>• Доступ к токенам до публичного листинга</li>
-          <li>• Совместное принятие стратегических решений</li>
-          <li>• Нетворкинг с топ-игроками криптоиндустрии</li>
-        </ul>
-      </div>
-
-      <a href="#apply" class="block mt-8 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold py-3 px-6 rounded-xl text-center hover:scale-105 transition-transform shadow-lg shadow-purple-500/25">
-        Стать стратегическим партнёром
-      </a>
-    </div>
-    
-    <!-- Нижняя градиентная линия -->
-    <div class="absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-0.5 w-4/5 bg-gradient-to-r from-transparent via-pink-400 to-transparent rounded-full shadow-lg shadow-pink-400/20 z-30"></div>
-  </div>
-
-  <!-- VIP Investor -->
-  <div class="relative" data-aos="fade-up" data-aos-delay="300">
-    <!-- Верхняя градиентная линия -->
-    <div class="absolute -top-0.5 left-1/2 -translate-x-1/2 h-0.5 w-4/5 bg-gradient-to-r from-transparent via-yellow-400 to-transparent rounded-full shadow-lg shadow-yellow-400/20 z-30"></div>
-    
-    <div class="glow-card p-8 hover:scale-105 transition-all duration-300 group relative bg-gray-900 border-0">
-      <div class="text-5xl mb-6 text-center"><i class="fas fa-crown text-yellow-400"></i></div>
-      <h3 class="text-2xl font-bold text-yellow-400 mb-4 text-center group-hover:text-white transition-colors">VIP Инвестор</h3>
-
-      <ul class="space-y-3 mb-6 text-gray-300 text-sm leading-relaxed">
-        <li class="flex gap-3"><span class="text-green-400">✓</span> Готовы инвестировать от $5,000+ в перспективные проекты</li>
-        <li class="flex gap-3"><span class="text-green-400">✓</span> Хотите эксклюзивный доступ к pre-ICO и private rounds</li>
-        <li class="flex gap-3"><span class="text-green-400">✓</span> Ищете high-risk/high-reward возможности с потенциалом 100x</li>
-      </ul>
-
-      <div class="border-t border-white/10 pt-6 mt-6">
-        <h4 class="font-bold text-yellow-400 mb-3">Что вы получаете:</h4>
-        <ul class="space-y-2 text-gray-300 text-sm">
-          <li>• Приоритетный доступ к закрытым раундам</li>
-          <li>• Постоянную связь с разработчиком</li>
-          <li>• Custom deal flow под ваш риск-профиль</li>
-          <li>• Участие в governance и стратегических решениях</li>
-        </ul>
-      </div>
-
-      <a href="#apply" class="block mt-8 bg-gradient-to-r from-yellow-500 to-orange-600 text-black font-bold py-3 px-6 rounded-xl text-center hover:scale-105 transition-transform shadow-lg shadow-yellow-500/25">
-        Обсудить VIP-условия
-      </a>
-    </div>
-    
-    <!-- Нижняя градиентная линия -->
-    <div class="absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-0.5 w-4/5 bg-gradient-to-r from-transparent via-orange-400 to-transparent rounded-full shadow-lg shadow-orange-400/20 z-30"></div>
-  </div>
-</div>
 
 
 
@@ -4894,8 +4702,118 @@ function scrollToFAQ() {
 }
 </script>
 
-    <!-- CTA Section -->
+    
+</section>
+
+
+
+<!-- === USDT Payment Section === -->
+<section id="payment" class="py-24 bg-gradient-to-b from-black via-gray-900/50 to-black border-t border-white/10">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-transparent bg-clip-text">
+        💎 Подключение к пулу
+      </h2>
+      <p class="text-gray-300 text-lg max-w-2xl mx-auto">
+        Выберите свой пакет участия в текущем цикле. Оплата принимается в USDT (TRC-20).
+      </p>
+    </div>
+
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+      <!-- Basic -->
+      <div class="package-card glass border border-yellow-400/30 rounded-2xl p-6 hover:border-yellow-400 hover:shadow-[0_0_30px_rgba(250,204,21,0.15)]" data-amount="300" data-package="basic">
+        <div class="text-center mb-4">
+          <h3 class="text-2xl font-bold text-yellow-400 mb-3">Basic</h3>
+          <div class="text-4xl font-extrabold text-white mb-2">$300</div>
+          <div class="text-sm text-green-400 font-semibold">20-50% ROI</div>
+        </div>
+        <p class="text-gray-400 text-sm mb-6 min-h-[60px]">
+          Базовое подключение для старта. Прибыль к телу за успешный цикл. Активация пассивного дохода.
+        </p>
+        <button class="pay-btn w-full py-3 rounded-xl bg-gradient-to-r from-yellow-500 to-orange-500 text-black font-semibold hover:opacity-90 transition-all hover:shadow-lg">
+          Выбрать
+        </button>
+		<!-- Нижняя градиентная линия -->
+    <div class="absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-0.5 w-4/5 bg-gradient-to-r from-transparent via-green-400 to-transparent rounded-full shadow-lg shadow-green-400/20 z-30"></div>
+  </div>
+    
+
+      <!-- Standard -->
+      <div class="package-card glass border border-yellow-400/30 rounded-2xl p-6 hover:border-yellow-400 hover:shadow-[0_0_30px_rgba(250,204,21,0.15)]" data-amount="700" data-package="standard">
+        <div class="text-center mb-4">
+          <h3 class="text-2xl font-bold text-yellow-400 mb-3">Standard</h3>
+          <div class="text-4xl font-extrabold text-white mb-2">$700</div>
+          <div class="text-sm text-green-400 font-semibold">30-60% ROI</div>
+        </div>
+        <p class="text-gray-400 text-sm mb-6 min-h-[60px]">
+          Оптимальный баланс цены и доходности. Быстрое умножение капитала за успешный цикл.
+        </p>
+        <button class="pay-btn w-full py-3 rounded-xl bg-gradient-to-r from-yellow-500 to-orange-500 text-black font-semibold hover:opacity-90 transition-all hover:shadow-lg">
+          Выбрать
+        </button>
+		<!-- Нижняя градиентная линия -->
+    <div class="absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-0.5 w-4/5 bg-gradient-to-r from-transparent via-green-400 to-transparent rounded-full shadow-lg shadow-green-400/20 z-30"></div>
+  </div>
+
+      <!-- Premium -->
+      <div class="package-card glass border border-yellow-400/40 rounded-2xl p-6 hover:border-yellow-400 hover:shadow-[0_0_30px_rgba(250,204,21,0.2)]" data-amount="1200" data-package="premium">
+        <div class="relative">
+          <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-yellow-500 to-orange-500 text-black text-xs font-bold px-3 py-1 rounded-full">
+            ПОПУЛЯРНЫЙ
+          </div>
+        </div>
+        <div class="text-center mb-4">
+          <h3 class="text-2xl font-bold text-yellow-400 mb-3">Premium</h3>
+          <div class="text-4xl font-extrabold text-white mb-2">$1,200</div>
+          <div class="text-sm text-green-400 font-semibold">50-80% ROI</div>
+        </div>
+        <p class="text-gray-400 text-sm mb-6 min-h-[60px]">
+          Для уверенного роста портфеля. Максимальный возврат инвестиций за успешный цикл.
+        </p>
+        <button class="pay-btn w-full py-3 rounded-xl bg-gradient-to-r from-yellow-500 to-orange-500 text-black font-semibold hover:opacity-90 transition-all hover:shadow-lg">
+          Выбрать
+        </button>
+      <!-- Нижняя градиентная линия -->
+    <div class="absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-0.5 w-4/5 bg-gradient-to-r from-transparent via-green-400 to-transparent rounded-full shadow-lg shadow-green-400/20 z-30"></div>
+  </div>
+
+      <!-- VIP -->
+      <div class="package-card glass border-2 border-yellow-400/60 rounded-2xl p-6 shadow-[0_0_30px_rgba(250,204,21,0.25)] hover:border-yellow-300 hover:shadow-[0_0_40px_rgba(250,204,21,0.35)]" data-amount="5000" data-package="vip">
+        <div class="relative">
+          <div class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-yellow-400 to-orange-400 text-black text-xs font-bold px-3 py-1 rounded-full animate-pulse">
+            VIP УРОВЕНЬ
+          </div>
+        </div>
+        <div class="text-center mb-4">
+          <h3 class="text-2xl font-bold text-yellow-300 mb-3">VIP</h3>
+          <div class="text-4xl font-extrabold text-white mb-2">$5,000</div>
+          <div class="text-sm text-green-300 font-semibold">50% чистого дохода</div>
+        </div>
+        <p class="text-gray-300 text-sm mb-6 min-h-[60px]">
+          Максимальное участие. Сверхприбыль до 10X, эксклюзивные партнерские условия.
+        </p>
+        <button class="pay-btn w-full py-3 rounded-xl bg-gradient-to-r from-yellow-400 to-orange-400 text-black font-bold hover:opacity-90 transition-all hover:shadow-lg">
+          Выбрать VIP
+        </button>
+      <!-- Нижняя градиентная линия -->
+    <div class="absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-0.5 w-4/5 bg-gradient-to-r from-transparent via-green-400 to-transparent rounded-full shadow-lg shadow-green-400/20 z-30"></div>
+  </div>
+    </div>
+
     <div class="text-center">
+      <p class="text-gray-400 text-sm">
+        <span class="inline-block mr-2">🔒</span>
+        После оплаты система автоматически проверит транзакцию в сети Tron (TRC-20)
+      </p>
+      <p class="text-gray-500 text-xs mt-2">
+        Обычное время подтверждения: 1-3 минуты
+      </p>
+	  </p>
+    </div>
+	
+	<!-- CTA Section -->
+    <div class="mt-6 text-center">
       <div class="glow-card p-8 max-w-2xl mx-auto border border-cyan-500/30 mb-8">
         <h3 class="text-2xl font-bold text-cyan-400 mb-4">Не уверены, что подходит вам?</h3>
         <p class="text-gray-300 mb-6 leading-relaxed">
@@ -4918,57 +4836,240 @@ function scrollToFAQ() {
       </p>
     </div>
   </div>
+	
+  </div>
 </section>
 
+<!-- === Модальное окно оплаты === -->
+<div id="paymentModal" class="fixed inset-0 hidden bg-black/85 backdrop-blur-md flex items-center justify-center z-50 px-4 modal-backdrop">
+  <div class="glass border border-yellow-400/40 rounded-2xl p-8 max-w-md w-full relative shadow-2xl modal-content">
+    <!-- Кнопка закрытия -->
+    <button id="closeModal"
+      class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-gray-400 hover:text-yellow-400 hover:bg-yellow-400/10 rounded-full transition-all transform hover:scale-110 active:scale-95"
+      aria-label="Закрыть">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
 
-
-
-    <section id="packages" class="py-20">
-      <div class="max-w-6xl mx-auto px-4 text-center">
-        <h2 class="text-3xl font-extrabold mb-4 bg-gradient-to-r from-purple-500 to-cyan-400 text-transparent bg-clip-text">Инвестиционные уровни</h2>
-        <p class="text-gray-400 mb-10">Выберите уровень участия — от безопасного старта до закрытого круга ReFork Capital.</p>
-
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="glow-card card-glow p-6">
-            <h3 class="text-xl font-bold mb-2">Lite </p> Базовый вход</h3>
-            <p class="text-3xl font-extrabold mb-4">$300</p>
-            <ul class="text-gray-300 text-sm space-y-2 mb-6">
-              <li>Прибыль к телу: <strong>20-50% за успешный цикл</strong></li>
-              <li>Минимально для эффективного управления</li>
-              <li>Установка и настройка кошелька</li>
-			  <li>Бонус Акции Apple на блокчейне</li>
-            </ul>
-            <a href="#apply" class="bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-4 py-2 rounded-lg inline-block">Войти в цикл</a>
-          </div>
-
-          <div class="glow-card card-glow p-6">
-            <h3 class="text-xl font-bold mb-2">Pro </p> Увеличенный вход</h3>
-            <p class="text-3xl font-extrabold mb-4">$700</p>
-            <ul class="text-gray-300 text-sm space-y-2 mb-6">
-              <li>Прибыль к телу: <strong>25-60% за успешный цикл</strong></li>
-              <li>Оптимальное для стабильного роста</li>
-              <li>Сборка портфеля с перспективными койнами</li>
-              <li>Бонус Акции Tesla на блокчейне</li>
-            </ul>
-            <a href="#apply" class="bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-4 py-2 rounded-lg inline-block">Войти в цикл</a>
-          </div>
-
-          <div class="glow-card card-glow p-6">
-            <h3 class="text-xl font-bold mb-2">Prime </p> Премиум вход</h3>
-            <p class="text-3xl font-extrabold mb-4">$1200</p>
-            <ul class="text-gray-300 text-sm space-y-2 mb-6">
-              <li>Прибыль к телу: <strong>30-80% за успешный цикл</strong></li>
-              <li>Максимальная отдача от инвестиций</li>
-              <li>Премиум-подборка токенов и ранние входы</li>
-              <li>Бонус Акции NVIDIA на блокчейне</li>
-            </ul>
-            <a href="#apply" class="bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-4 py-2 rounded-lg inline-block">Войти в цикл</a>
-          </div>
-        </div>
-
-        <p class="text-xs text-yellow-500 mt-9">Дисклеймер: не является инвестрекомендацией. Прибыльность: 6 из 25 циклов. Средний убыток: -25%. Средняя чистая прибыль: до 80%</p>
+    <div class="text-center mb-6">
+      <div class="inline-block p-3 bg-yellow-400/10 rounded-full mb-3">
+        <svg class="w-8 h-8 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/>
+        </svg>
       </div>
-    </section>
+      <h2 class="text-2xl font-bold text-yellow-400 mb-2">Оплата USDT</h2>
+      <p class="text-gray-300 text-sm">Отправьте <span id="modalAmount" class="text-yellow-400 font-semibold">точную сумму</span> на адрес ниже</p>
+    </div>
+
+    <!-- Адрес кошелька -->
+    <div class="bg-black/50 border border-yellow-400/30 rounded-xl p-4 mb-4">
+      <label class="text-xs text-gray-400 uppercase tracking-wide mb-2 block">Адрес кошелька</label>
+      <code id="walletAddress" class="text-yellow-400 text-sm break-all block mb-3 font-mono">
+        TYQfSL9Osa8Q8pJfKNkRMmyCkHfUq3hj2a
+      </code>
+      <button id="copyAddressBtn"
+        class="w-full flex items-center justify-center gap-2 text-sm bg-yellow-400/20 text-yellow-300 px-4 py-2.5 rounded-lg hover:bg-yellow-400/30 transition-all">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+        </svg>
+        <span id="copyText">Копировать адрес</span>
+      </button>
+    </div>
+
+    <!-- QR код -->
+    <div class="bg-black/30 border border-yellow-400/20 rounded-xl p-4 mb-4">
+      <div id="qrcode" class="flex justify-center mb-2"></div>
+      <p class="text-center text-xs text-gray-400">Отсканируйте для быстрой оплаты</p>
+    </div>
+
+    <!-- Информация о сети -->
+    <div class="bg-yellow-400/10 border border-yellow-400/30 rounded-lg p-3 mb-4">
+      <div class="flex items-center justify-between text-sm">
+        <span class="text-gray-400">Сеть:</span>
+        <span class="text-yellow-400 font-semibold">TRON (TRC-20)</span>
+      </div>
+      <div class="flex items-center justify-between text-sm mt-2">
+        <span class="text-gray-400">Токен:</span>
+        <span class="text-yellow-400 font-semibold">USDT</span>
+      </div>
+    </div>
+
+    <!-- Статус -->
+    <div id="paymentStatus" class="text-center py-3 rounded-lg bg-yellow-400/5 border border-yellow-400/20 mb-4">
+      <span class="text-yellow-400 font-semibold text-sm">⏳ Ожидание транзакции...</span>
+    </div>
+
+    <!-- Кнопка проверки -->
+    <button id="checkPaymentBtn"
+      class="w-full py-3.5 rounded-xl bg-gradient-to-r from-yellow-500 to-orange-500 text-black font-bold hover:opacity-90 transition-all hover:shadow-lg flex items-center justify-center gap-2">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+      </svg>
+      <span>Проверить оплату</span>
+    </button>
+
+    <p class="text-xs text-gray-500 text-center mt-4">
+      ⚠️ Убедитесь, что выбрана сеть TRC-20, иначе средства будут потеряны
+    </p>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const walletAddress = 'TYQfSL9Osa8Q8pJfKNkRMmyCkHfUq3hj2a';
+  const modal = document.getElementById('paymentModal');
+  const qr = document.getElementById('qrcode');
+  const copyBtn = document.getElementById('copyAddressBtn');
+  const copyText = document.getElementById('copyText');
+  const closeModal = document.getElementById('closeModal');
+  const statusEl = document.getElementById('paymentStatus');
+  const checkBtn = document.getElementById('checkPaymentBtn');
+  const addressEl = document.getElementById('walletAddress');
+  const modalAmount = document.getElementById('modalAmount');
+
+  let currentAmount = 0;
+  let checkInterval = null;
+
+  // Открытие модального окна
+  document.querySelectorAll('.pay-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      const card = e.target.closest('[data-package]');
+      const amount = card.dataset.amount;
+      const packageName = card.dataset.package;
+      openPaymentModal(walletAddress, amount, packageName);
+    });
+  });
+
+  function openPaymentModal(address, amount, packageName) {
+    currentAmount = amount;
+    modal.classList.remove('hidden');
+    addressEl.textContent = address;
+    modalAmount.textContent = `$${amount} USDT`;
+    
+    // Генерация QR кода
+    qr.innerHTML = '';
+    QRCode.toCanvas(
+      document.createElement('canvas'),
+      address,
+      {
+        width: 180,
+        margin: 2,
+        color: {
+          dark: '#FACC15',
+          light: '#00000000'
+        }
+      },
+      (error, canvas) => {
+        if (!error) {
+          canvas.classList.add('mx-auto', 'rounded-lg');
+          qr.appendChild(canvas);
+        }
+      }
+    );
+    
+    statusEl.innerHTML = '<span class="text-yellow-400 font-semibold text-sm">⏳ Ожидание перевода ' + amount + ' USDT...</span>';
+    
+    // Автоматическая проверка каждые 15 секунд
+    if (checkInterval) clearInterval(checkInterval);
+    checkInterval = setInterval(() => checkPayment(address, amount), 15000);
+  }
+
+  // Копирование адреса
+  copyBtn.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(walletAddress);
+      copyText.textContent = 'Скопировано!';
+      copyBtn.classList.add('bg-green-500/20', 'text-green-400');
+      copyBtn.classList.remove('bg-yellow-400/20', 'text-yellow-300');
+      
+      setTimeout(() => {
+        copyText.textContent = 'Копировать адрес';
+        copyBtn.classList.remove('bg-green-500/20', 'text-green-400');
+        copyBtn.classList.add('bg-yellow-400/20', 'text-yellow-300');
+      }, 2000);
+    } catch (err) {
+      console.error('Ошибка копирования:', err);
+      alert('Не удалось скопировать адрес');
+    }
+  });
+
+  // Закрытие модального окна
+  closeModal.addEventListener('click', () => {
+    modal.classList.add('hidden');
+    if (checkInterval) {
+      clearInterval(checkInterval);
+      checkInterval = null;
+    }
+  });
+
+  // Закрытие по клику вне модального окна
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      modal.classList.add('hidden');
+      if (checkInterval) {
+        clearInterval(checkInterval);
+        checkInterval = null;
+      }
+    }
+  });
+
+  // Проверка оплаты по кнопке
+  checkBtn.addEventListener('click', () => {
+    checkPayment(walletAddress, currentAmount);
+  });
+
+  // Функция проверки платежа
+  async function checkPayment(address, expectedAmount) {
+    statusEl.innerHTML = '<span class="text-blue-400 font-semibold text-sm">🔍 Проверка транзакций...</span>';
+    checkBtn.disabled = true;
+    checkBtn.classList.add('opacity-50', 'cursor-not-allowed');
+    
+    try {
+      const res = await fetch(`https://api.trongrid.io/v1/accounts/${address}/transactions/trc20?limit=20&only_confirmed=true`);
+      
+      if (!res.ok) {
+        throw new Error('Ошибка API');
+      }
+      
+      const data = await res.json();
+      
+      if (data.data && data.data.length > 0) {
+        // Проверяем последние транзакции на соответствие суммы
+        const recentTx = data.data.find(tx => {
+          const value = parseInt(tx.value) / 1000000; // USDT имеет 6 decimals
+          const timeDiff = Date.now() - tx.block_timestamp;
+          const withinTimeWindow = timeDiff < 3600000; // Последний час
+          return value >= parseFloat(expectedAmount) && withinTimeWindow;
+        });
+        
+        if (recentTx) {
+          statusEl.innerHTML = '<span class="text-green-400 font-semibold text-sm">✅ Платеж подтвержден!</span>';
+          if (checkInterval) {
+            clearInterval(checkInterval);
+            checkInterval = null;
+          }
+          setTimeout(() => {
+            modal.classList.add('hidden');
+            alert('Спасибо за оплату! Ваш аккаунт будет активирован в течение 5 минут.');
+          }, 2000);
+        } else {
+          statusEl.innerHTML = '<span class="text-orange-400 font-semibold text-sm">⏳ Транзакция не найдена. Проверьте сумму и сеть.</span>';
+        }
+      } else {
+        statusEl.innerHTML = '<span class="text-gray-400 font-semibold text-sm">⏳ Транзакций пока нет...</span>';
+      }
+    } catch (err) {
+      console.error('Ошибка проверки:', err);
+      statusEl.innerHTML = '<span class="text-red-400 font-semibold text-sm">❌ Ошибка проверки. Попробуйте позже.</span>';
+    } finally {
+      checkBtn.disabled = false;
+      checkBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+    }
+  }
+});
+</script>
 
 
 
@@ -6982,130 +7083,6 @@ function hideExitPopup(popup) {
 }
 
 
-// --- БЛОК ДЛЯ КОРРЕКТНОГО СКРЫТИЯ ПРЕЛОАДЕРА И ЗАПУСКА АНИМАЦИЙ ---
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('✅ DOM загружен, инициализируем прелоадер...');
-    
-    // ✅ Web Vitals Optimization - переместили сюда
-    const criticalImages = [
-        'https://reforkcapital.online/og-image.jpg',
-        'https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/favicon.ico'
-    ];
-    
-    criticalImages.forEach(src => {
-        const link = document.createElement('link');
-        link.rel = 'preload';
-        link.as = 'image';
-        link.href = src;
-        document.head.appendChild(link);
-    });
-
-    // ✅ Lazy loading для изображений
-    const lazyImages = [].slice.call(document.querySelectorAll('img[loading="lazy"]'));
-    if ('IntersectionObserver' in window) {
-        const lazyImageObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    const lazyImage = entry.target;
-                    lazyImage.classList.add('loaded');
-                    lazyImageObserver.unobserve(lazyImage);
-                }
-            });
-        });
-        
-        lazyImages.forEach(function(lazyImage) {
-            lazyImageObserver.observe(lazyImage);
-        });
-    }
-
-    // ✅ Инициализация exit intent (если функция существует)
-    if (typeof initExitIntent === 'function') {
-        setTimeout(initExitIntent, 3000);
-    } else {
-        console.warn('⚠️ initExitIntent не определена');
-    }
-
-    // ✅ Обработка прелоадера
-    const preloader = document.getElementById('loadingScreen');
-
-    if (preloader) {
-        console.log('✅ Прелоадер найден, настраиваем скрытие...');
-        
-        // Функция для скрытия прелоадера
-        const hidePreloader = () => {
-            console.log('🔄 Начинаем скрытие прелоадера...');
-            
-            // Задержка 500 мс перед началом скрытия
-            setTimeout(() => {
-                preloader.style.transition = 'opacity 1s ease';
-                preloader.style.opacity = '0';
-                preloader.style.pointerEvents = 'none';
-
-                // Удаляем элемент после анимации
-                setTimeout(() => {
-                    preloader.remove(); 
-                    console.log('✅ Прелоадер удален');
-                    
-                    // Обновляем анимационные библиотеки
-                    if (window.AOS) {
-                        try {
-                            window.AOS.refresh();
-                            console.log('✅ AOS обновлен');
-                        } catch (e) {
-                            console.warn('⚠️ Ошибка обновления AOS:', e);
-                        }
-                    }
-                    
-                    if (window.ScrollTrigger) {
-                        try {
-                            window.ScrollTrigger.refresh();
-                            console.log('✅ ScrollTrigger обновлен');
-                        } catch (e) {
-                            console.warn('⚠️ Ошибка обновления ScrollTrigger:', e);
-                        }
-                    }
-                    
-                    // Имитируем событие прокрутки
-                    window.dispatchEvent(new Event('scroll'));
-                    
-                }, 1000);
-            }, 500);
-        };
-
-        // Ждем полной загрузки страницы, но с таймаутом на случай ошибок
-        let loadTimeout = setTimeout(() => {
-            console.warn('⚠️ Таймаут загрузки страницы, скрываем прелоадер принудительно');
-            hidePreloader();
-        }, 5000); // 5 секунд таймаут
-
-        window.addEventListener('load', () => {
-            clearTimeout(loadTimeout);
-            console.log('✅ Страница полностью загружена');
-            hidePreloader();
-        });
-
-        // Альтернатива: скрыть прелоадер если основные элементы загружены
-        if (document.readyState === 'complete') {
-            clearTimeout(loadTimeout);
-            hidePreloader();
-        }
-        
-    } else {
-        console.warn('⚠️ Прелоадер не найден (element with id "loadingScreen")');
-    }
-});
-
-// ✅ Добавляем обработчик ошибок для отлова проблем
-window.addEventListener('error', function(e) {
-    console.error('🚨 Глобальная ошибка:', e.error);
-    
-    // Принудительно скрываем прелоадер при ошибках
-    const preloader = document.getElementById('loadingScreen');
-    if (preloader) {
-        preloader.style.display = 'none';
-        preloader.remove();
-    }
-});
 
 
 
@@ -7115,8 +7092,7 @@ window.addEventListener('error', function(e) {
 
 </main>
   
-<script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>  
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js" defer></script>
+
 <script>
   // инициализация AOS после загрузки
   document.addEventListener('DOMContentLoaded', function(){
@@ -7137,7 +7113,10 @@ window.addEventListener("load", () => {
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-<script src="js/main.js"></script>
-
+	<!-- В <head> или перед закрывающим </body> -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
 </body>
 </html>
