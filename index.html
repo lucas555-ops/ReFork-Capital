@@ -7122,23 +7122,7 @@ function hideExitPopup(popup) {
 }
 
 
-// --- БЛОК ДЛЯ КОРРЕКТНОГО СКРЫТИЯ ПРЕЛОАДЕРА И ЗАПУСКА АНИМАЦИЙ ---
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('✅ DOM загружен, инициализируем прелоадер...');
-    
-    // ✅ Web Vitals Optimization - переместили сюда
-    const criticalImages = [
-        'https://reforkcapital.online/og-image.jpg',
-        'https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/favicon.ico'
-    ];
-    
-    criticalImages.forEach(src => {
-        const link = document.createElement('link');
-        link.rel = 'preload';
-        link.as = 'image';
-        link.href = src;
-        document.head.appendChild(link);
-    });
+
 
     // ✅ Lazy loading для изображений
     const lazyImages = [].slice.call(document.querySelectorAll('img[loading="lazy"]'));
