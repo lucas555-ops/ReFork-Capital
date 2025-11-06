@@ -2639,10 +2639,7 @@ img.loaded {
 </head>
 
 <body>
-  <!-- Loading Screen -->
-  <div id="loadingScreen" class="loading">
-    <div class="loading-spinner"></div>
-  </div>
+
 
   <div class="bg-overlay fixed inset-0 -z-5 pointer-events-none" aria-hidden="true"></div>
 
@@ -3925,6 +3922,30 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
   </div>
 </div>
+
+<section id="apply" class="relative py-24 flex items-center justify-center text-center bg-gradient-to-b from-black via-neutral-900 to-black">
+  <div class="max-w-3xl w-full mx-auto px-6">
+    <div class="p-10 border border-amber-400/20 rounded-3xl bg-gradient-to-br from-black/60 via-neutral-900/70 to-black/60 shadow-[0_0_50px_rgba(255,191,0,0.08)] backdrop-blur-md">
+      
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-6 bg-gradient-to-r from-yellow-400 via-amber-300 to-orange-500 text-transparent bg-clip-text drop-shadow-[0_0_15px_rgba(255,191,0,0.4)]">
+        Готовы запустить свой цикл?
+      </h2>
+      
+      <p class="text-gray-300 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
+        Получите персональную консультацию и доступ к закрытым стратегиям ReFork Capital.
+      </p>
+      
+      <a href="https://t.me/ReForkCapital/7"
+         target="_blank"
+         class="inline-block bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-400 text-black font-semibold text-lg px-12 py-4 rounded-2xl shadow-[0_0_25px_rgba(255,200,0,0.3)] hover:scale-105 hover:shadow-[0_0_40px_rgba(255,200,0,0.6)] transition-all duration-300">
+        💬 Открыть Telegram
+      </a>
+      
+    </div>
+  </div>
+</section>
+
+
 
 <!-- Key Success -->
 <div class="text-center mb-16 max-w-4xl mx-auto px-4">
@@ -5449,103 +5470,32 @@ function scrollToFAQ() {
 
 
 
-<!-- CTA + Форма -->
-<section id="apply" class="py-24 text-center relative">
-  <div class="max-w-3xl mx-auto px-6">
 
-    <!-- 1️⃣ Первый call-to-action -->
-    <h2 class="text-4xl font-extrabold mb-4 bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 text-transparent bg-clip-text">
-      Готовы запустить свой цикл?
-    </h2>
-    <p class="text-gray-300 mb-8">
-      Получите персональную консультацию и ответы на все вопросы за 15 минут
-    </p>
 
-    <div class="mb-16">
-      <a href="https://t.me/ReForkCapital/7" 
+<section id="apply" class="relative py-24 flex items-center justify-center text-center bg-gradient-to-b from-black via-gray-900 to-black">
+  <div class="max-w-3xl w-full mx-auto px-6">
+    <div class="p-10 border border-white/10 rounded-3xl bg-white/5 shadow-[0_0_50px_rgba(0,255,255,0.06)] backdrop-blur-sm">
+      
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-6 bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 text-transparent bg-clip-text">
+        Готовы запустить свой цикл?
+      </h2>
+      
+      <p class="text-gray-300 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
+        Получите персональную консультацию и ответы на все вопросы за 15 минут.
+      </p>
+      
+      <a href="https://t.me/ReForkCapital/7"
          target="_blank"
-         class="inline-block bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-10 py-4 rounded-xl shadow-lg hover:scale-105 transition-all duration-300">
+         class="inline-block bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-semibold text-lg px-12 py-4 rounded-2xl shadow-[0_0_25px_rgba(0,255,255,0.3)] hover:scale-105 hover:shadow-[0_0_40px_rgba(0,255,255,0.5)] transition-all duration-300">
         💬 Открыть Telegram
       </a>
-    </div>
-	
-	
-
-    <!-- 2️⃣ Второй call-to-action перед формой -->
-    <h3 class="text-2xl font-bold mb-3 text-cyan-400">
-      Или воспользуйтесь формой
-    </h3>
-    <p class="text-gray-400 mb-10">
-      Мы свяжемся с вами, чтобы уточнить детали и запустить процесс ReFork Capital.
-    </p>
-
-    <!-- 3️⃣ Форма -->
-    <form id="leadForm"
-          method="POST"
-          class="p-8 text-left space-y-6 border border-white/10 rounded-2xl bg-white/5 shadow-[0_0_40px_rgba(0,255,255,0.08)] backdrop-blur-sm">
-
-      <input type="text" name="website" style="display:none" autocomplete="off" tabindex="-1" />
-      <input type="hidden" name="lang" value="ru">
-      <input type="hidden" name="source" value="ReFork Capital">
-
-      <div>
-        <label class="block text-sm text-gray-400 mb-1" for="name">Ваше имя *</label>
-        <input type="text" id="name" name="name" required
-               minlength="2" maxlength="100"
-               class="w-full bg-gray-900 border border-white/20 rounded-lg px-4 py-2 focus:border-cyan-400 focus:outline-none text-gray-100 placeholder-gray-500"
-               placeholder="Иван Иванов">
-      </div>
-
-      <!-- ОБНОВЛЕННЫЙ БЛОК TELEGRAM С ВАЛИДАЦИЕЙ -->
-      <div class="relative">
-        <label class="block text-sm text-gray-400 mb-1" for="telegram">Telegram *</label>
-        <div class="relative">
-          <input type="text" id="telegram" name="telegram" required
-                 pattern="^@[A-Za-z0-9_]{5,32}$"
-                 title="Введите корректный логин Telegram в формате @username"
-                 class="w-full bg-gray-900 border border-white/20 rounded-lg px-4 py-2 pr-10 focus:border-cyan-400 focus:outline-none text-gray-100 placeholder-gray-500 transition-colors"
-                 placeholder="@username">
-          <!-- Иконка валидации -->
-          <div class="absolute right-3 top-1/2 -translate-y-1/2 hidden" id="telegram-valid-icon">
-            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-            </svg>
-          </div>
-          <div class="absolute right-3 top-1/2 -translate-y-1/2 hidden" id="telegram-invalid-icon">
-            <svg class="w-5 h-5 text-red-400" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
-            </svg>
-          </div>
-        </div>
-        <p class="text-xs text-gray-500 mt-1">Укажите ваш Telegram в формате @username</p>
-      </div>
-
-      <div>
-        <label class="block text-sm text-gray-400 mb-1" for="package">Выберите уровень *</label>
-        <select id="package" name="package" required
-                class="w-full bg-gray-900 border border-white/20 rounded-lg px-4 py-2 text-gray-100 focus:border-cyan-400 focus:outline-none cursor-pointer">
-          <option value="" disabled selected class="bg-gray-900 text-gray-400">Выберите сумму</option>
-          <option value="Lite — $300">Lite — $300</option>
-          <option value="Pro — $700">Pro — $700</option>
-          <option value="Prime — $1200">Prime — $1200</option>
-          <option value="Консультация">Только консультация</option>
-        </select>
-      </div>
-
-      <div class="text-center pt-4">
-        <button type="submit" id="leadSubmit"
-                class="bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-8 py-4 rounded-xl hover:scale-105 transition-transform w-full md:w-auto inline-flex items-center justify-center">
-          <span class="button-text">Отправить</span>
-          <span class="loading-spinner-btn hidden"></span>
-        </button>
-      </div>
-
       <p class="text-xs text-gray-500 text-center pt-4">
-        🔒 Конфиденциальность гарантирована. Отправка заявки не накладывает обязательств.
+        🔒 Конфиденциальность гарантирована.
       </p>
-    </form>
+    </div>
   </div>
 </section>
+
 
 <script>
 // --- ФИНАЛЬНЫЙ РАБОЧИЙ КЛИЕНТСКИЙ СКРИПТ (03.11.2025) ---
