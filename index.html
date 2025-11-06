@@ -36,21 +36,9 @@
             padding: 0;
         }
 
-        html, body {
-            background: var(--bg);
-            color: #e5e7eb;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden;
-            width: 100%;
-            min-height: 100vh;
-            line-height: 1.6;
-        }
         
         
-        
-        
+          
 
         /* Предотвращение FOUC */
         body:not(.loaded) .main-content {
@@ -89,203 +77,31 @@
             color: white;
         }
 
-        /* Оптимизация для медленных устройств */
-        @media (prefers-reduced-motion: reduce) {
-            *,
-            *::before,
-            *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
-            
-            .loading-spinner {
-                animation: none;
-            }
-        }
-
-        /* === СТИЛИ ИЗ СТАРОГО ФАЙЛА === */
-        .bg-overlay{background:radial-gradient(800px 520px at 65% 15%,rgba(8,12,20,.55),transparent 60%),radial-gradient(900px 640px at 10% 60%,rgba(8,12,20,.45),transparent 60%),linear-gradient(180deg,rgba(5,8,15,.75),rgba(5,8,15,.95))}
         
-        .glow-card{position:relative;overflow:hidden;border-radius:1.25rem;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(106,230,255,.22);box-shadow:0 10px 28px rgba(0,0,0,.48);transform:translateZ(0);backface-visibility:hidden}
-        .glow-card::after{content:"";position:absolute;inset:-12px;z-index:-1;border-radius:calc(1.25rem + 12px);background:radial-gradient(420px 180px at 50% 0%,rgba(34,211,238,.18),transparent 60%);filter:blur(14px)}
 
-        .card-glow::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(90deg,#14F195,#9945FF,#00C2FF,#14F195);background-size:300% 300%;animation:glow-move 6s linear infinite;
-        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;mask-composite: exclude;pointer-events:none;z-index:2}
-        
-        @keyframes glow-move{0%{background-position:0% 50%}100%{background-position:200% 50%}}
 
-        #vanta{opacity:1;filter:none;will-change:transform}
-
-        @media (max-width:768px){
-        .grid-cols-5{grid-template-columns:repeat(2,1fr)}
-        .text-5xl{font-size:2.5rem}
-        .text-6xl{font-size:3rem}
-        .grid-cols-4{grid-template-columns:repeat(2,1fr)}
-        .gap-8{gap:1rem}
-        .p-10{padding:1.5rem}
-        .p-8{padding:1.5rem}
-        .glow-card:hover{transform:none !important}
-        }
-
-        .dot{width:8px;height:8px;border-radius:50%;display:inline-block;box-shadow:0 0 8px 2px currentColor}
-        .glass{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(10px)}
-
-        .form-block{max-width:100%;margin:0 auto;display:grid;gap:16px;font-family:'Inter',system-ui}
-        .form-block label{color:#e5e7eb;font-size:14px;font-weight:500}
-        .form-block input,.form-block textarea,.form-block select{width:100%;padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,0.2);background:rgba(255,255,255,0.05);color:#fff;font-family:'Inter',system-ui;margin-top:4px;transition:all 0.3s ease}
-        .form-block input:focus,.form-block textarea:focus,.form-block select:focus{outline:none;border-color:#22d3ee;box-shadow:0 0 0 3px rgba(34,211,238,0.1)}
-        .form-block input::placeholder,.form-block textarea::placeholder{color:#9ca3af}
-        .form-block button{padding:14px 24px;border-radius:12px;border:none;background:linear-gradient(90deg,#0ea5e9,#06b6d4);color:white;font-weight:600;cursor:pointer;transition:all 0.3s ease;font-family:'Inter',system-ui;margin-top:8px}
-        .form-block button:hover{opacity:0.9;transform:translateY(-1px)}
-        .form-block button:disabled{opacity:0.6;cursor:not-allowed;transform:none}
-
-        @keyframes slideIn{from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}
-
-        @media (max-width:768px){
-        .form-block{gap:12px}
-        .form-block input,.form-block textarea,.form-block select{padding:10px 14px}
-        .success-toast,.error-toast{left:20px;right:20px;text-align:center}
-        }
-
-        .chart-animation{stroke-dasharray:1000;stroke-dashoffset:1000;animation:drawChart 3.5s ease-in-out forwards}
-        @keyframes drawChart{to{stroke-dashoffset:0}}
-
-        
-        /* Kinetic Typography */
-        .kinetic-typography {
-        position: relative;
-        height: 80px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        perspective: 1000px;
-        }
-
-        .kinetic-word {
-        position: absolute;
-        opacity: 0;
-        animation-duration: 4.5s;
-        animation-iteration-count: infinite;
-        animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .kinetic-word-1 { animation-name: kineticLeft; }
-        .kinetic-word-2 { animation-name: kineticTop; }
-        .kinetic-word-3 { animation-name: kineticRight; }
-
-        @keyframes kineticLeft {
-        0%, 15% { opacity: 0; transform: translateX(-80px) rotateY(90deg); }
-        20%, 30% { opacity: 1; transform: translateX(0) rotateY(0); }
-        35%, 100% { opacity: 0; transform: translateX(60px) rotateY(-90deg); }
-        }
-
-        @keyframes kineticTop {
-        0%, 35% { opacity: 0; transform: translateY(-60px) rotateX(90deg); }
-        40%, 50% { opacity: 1; transform: translateY(0) rotateX(0); }
-        55%, 100% { opacity: 0; transform: translateY(50px) rotateX(-90deg); }
-        }
-
-        @keyframes kineticRight {
-        0%, 55% { opacity: 0; transform: translateX(80px) rotateY(-90deg); }
-        60%, 70% { opacity: 1; transform: translateX(0) rotateY(0); }
-        75%, 100% { opacity: 0; transform: translateX(-60px) rotateY(90deg); }
-        }
-
-        /* Three Color Gradients */
-        .three-color-gradient-1 {
-        background: linear-gradient(90deg, #3b82f6 0%, #10b981 50%, #3b82f6 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        }
-
-        .three-color-gradient-2 {
-        background: linear-gradient(90deg, #8b5cf6 0%, #06d6a0 50%, #118ab2 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        }
-
-        .three-color-gradient-3 {
-        background: linear-gradient(90deg, #06b6d4 0%, #10b981 50%, #0ea5e9 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        }
-
-        /* Quartz Background */
-        .quartz-bg {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        overflow: hidden;
-        background: 
-            radial-gradient(ellipse at 20% 20%, rgba(56, 189, 248, 0.15) 0%, transparent 50%),
-            radial-gradient(ellipse at 80% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
-            linear-gradient(180deg, rgba(11, 14, 20, 0.95) 0%, rgba(5, 8, 15, 1) 100%);
-        }
-
-        .quartz-bg__gradient {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: 
-            radial-gradient(circle at 20% 30%, rgba(56, 189, 248, 0.1) 0%, transparent 40%),
-            radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.1) 0%, transparent 40%),
-            radial-gradient(circle at 40% 50%, rgba(20, 184, 166, 0.08) 0%, transparent 40%);
-        animation: gradientPulse 8s ease-in-out infinite;
-        }
-
-        @keyframes gradientPulse {
-        0%, 100% { opacity: 0.7; transform: scale(1); }
-        50% { opacity: 1; transform: scale(1.05); }
-        }
-
-        /* Дополнительные стили из старого файла */
-        .timeline-stage { padding: 1rem !important; }
-        .custom-border-top::before, .custom-border-bottom::after {
-        content: ''; position: absolute; left: 50%; transform: translateX(-50%);
-        width: 80%; height: 2px; background: linear-gradient(90deg, transparent, #22d3ee, transparent);
-        }
-        .custom-border-top::before { top: -1px; }
-        .custom-border-bottom::after { bottom: -1px; background: linear-gradient(90deg, transparent, #10b981, transparent); }
-        
-        .sr-only {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        padding: 0;
-        margin: -1px;
-        overflow: hidden;
-        clip: rect(0, 0, 0, 0);
-        white-space: nowrap;
-        border: 0;
-        }
     </style>
 
-    <!-- Preconnect to external domains -->
-    <!-- Заменить на системные шрифты или предзагрузку -->
+
+<!-- Preconnect & DNS Prefetch - OPTIMIZED -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
 <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="preconnect" href="https://raw.githubusercontent.com">
+<link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+<link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+	
+<link rel="preconnect" href="https://t.me">
+<link rel="dns-prefetch" href="https://raw.githubusercontent.com">
 
     <!-- Preload Critical Resources -->
     
     <link rel="preload" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"></noscript>
 
-    <!-- Внешние стили -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 	
 
     <!-- Tailwind CSS -->
@@ -324,13 +140,21 @@
             darkMode: 'class',
         }
     </script>
+	
+	<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+      .then(() => console.log('Service Worker registered'))
+      .catch(error => console.error('Service Worker error:', error));
+  }
+</script>
 
     <!-- Meta Tags -->
-    <meta name="description" content="ReFork Capital: AI-анализ, DeFi-пулы и стратегия роста капитала. ROI до 80%+ за цикл. Только для своих.">
-    <meta name="keywords" content="ReFork Capital, DeFi, Web3 инвестиции, мем токены, AI аналитика, крипто фонд, крипто инвестиции, ROI 80, Solana, DEX, memecoin, пассивный доход, DeFi стратегия">
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="description" content="ReFork Capital: Кастомная DeFi-стратегия для мем-токенов. Пассивный ROI до 80%+ за цикл через AI-аналитику и SMM-капитализацию. Только для своих!"/>
+    <meta name="keywords" content="ReFork Capital, crypto fund, meme tokens, investment, DeFi growth, crypto ROI, крипто инвестиции, memecoin, 100x, Solana, DEX" />
+	<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
     <meta name="author" content="ReFork Capital">
-    <meta name="language" content="ru">
+    <meta name="language" content="ru" "Russian">
     
     <!-- Яндекс Верификация -->
     <meta name="yandex-verification" content="104983638">
@@ -362,6 +186,9 @@
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="ReFork Capital — DeFi & AI стратегия дохода до 80%">
     <meta property="og:locale" content="ru_RU">
+	<meta property="vk:image" content="https://reforkcapital.online/og-image.jpg">
+    <meta property="telegram:channel" content="@ReForkCapital">
+    <meta property="al:web:url" content="https://reforkcapital.online/">
     
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
@@ -388,8 +215,6 @@ html,body{
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale
 }
-
-
   
     section, header, footer{position:relative;z-index:20}
     h1,h2,h3,p,details,summary,button,a,input,textarea,select,form{position:relative;z-index:30}
@@ -405,9 +230,7 @@ html,body{
 mask-composite: exclude;pointer-events:none;z-index:2}
     @keyframes glow-move{0%{background-position:0% 50%}100%{background-position:200% 50%}}
 
-    #vanta{opacity:1;filter:none;will-change:transform}
-    .bg-overlay{background:radial-gradient(800px 520px at 65% 15%,rgba(8,12,20,.55),transparent 60%),radial-gradient(900px 640px at 10% 60%,rgba(8,12,20,.45),transparent 60%),linear-gradient(180deg,rgba(5,8,15,.75),rgba(5,8,15,.95))}
-
+    
     @media (max-width:768px){
       .grid-cols-5{grid-template-columns:repeat(2,1fr)}
       .text-5xl{font-size:2.5rem}
@@ -814,8 +637,6 @@ html {
     opacity: 0;
   }
 }
-
-
 
 /* Mobile Timeline */
 .vertical-timeline {
@@ -1508,20 +1329,6 @@ opacity: 1;
   backface-visibility: hidden;
 }
 
-/* Отключение анимаций для пользователей с prefers-reduced-motion */
-@media (prefers-reduced-motion: reduce) {
-  * { 
-    animation-duration: 0.01ms !important; 
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-  
-  .quartz-bg__gradient,
-  .quartz-shape,
-  .quartz-particles {
-    animation: none !important;
-  }
-}
 
 /* Анимации для бесконечной прокрутки (НЕ УДАЛЯТЬ!) */
 @keyframes scroll-banner {
@@ -2403,6 +2210,18 @@ img.loaded {
 }
 
 
+/* --- Fade & slide animation (CSS-only) --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
 </style>
 
 <!-- Yandex.Metrika counter -->
@@ -2441,20 +2260,6 @@ img.loaded {
 }
 </script>
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FinancialService",
-  "name": "ReFork Capital",
-  "description": "Крипто-инвестиции и управление капиталом для инвесторов из России",
-  "url": "https://reforkcapital.online/",
-  "areaServed": {
-    "@type": "Country",
-    "name": "Russia"
-  },
-  "serviceType": "Cryptocurrency Investment Management"
-}
-</script>
 
 <meta name="geo.region" content="RU" />
 <meta name="geo.placename" content="Russia" />
@@ -2470,6 +2275,11 @@ img.loaded {
       "name": "ReFork Capital Pool",
       "description": "Закрытый пул инвесторов с доходностью до 80% за цикл. DeFi-стратегия на мем-токенах, AI аналитика и SMM капитализация.",
       "url": "https://reforkcapital.online/",
+	  "areaServed": {
+    "@type": "Country",
+    "name": "Russia"
+  },
+  "serviceType": "Cryptocurrency Investment Management"
       "image": "https://reforkcapital.online/og-image.jpg",
       "offers": {
         "@type": "Offer",
@@ -5620,17 +5430,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 </footer>
 
-<script>
-// Инициализация AOS с отключением на мобильных
-document.addEventListener('DOMContentLoaded', function() {
-  AOS.init({
-    disable: window.innerWidth < 768 ? true : false,
-    once: true, // Анимация только один раз
-    offset: 100, // Запуск анимации при прокрутке 100px
-    duration: 800 // Длительность анимации
-  });
-});
-</script>
+
 
   <!-- НОВОЕ: Critical Utilities -->
   <script>
@@ -6376,60 +6176,8 @@ canvas.addEventListener('mousemove', e => {
 })();
 </script>
 
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  // Проверяем ширину экрана
-  if (window.innerWidth < 768) {
-    // Находим все элементы с AOS внутри секции "Ответы на ключевые вопросы"
-    const faqCards = document.querySelectorAll('#faq [data-aos]');
-    faqCards.forEach(el => {
-      // Удаляем атрибуты анимации
-      el.removeAttribute('data-aos');
-      el.removeAttribute('data-aos-delay');
-      el.removeAttribute('data-aos-duration');
-    });
-  }
-});
-</script>
 
-<script>
-// Real-time Telegram validation
-document.addEventListener('DOMContentLoaded', function() {
-  const telegramInput = document.getElementById('telegram');
-  const validIcon = document.getElementById('telegram-valid-icon');
-  const invalidIcon = document.getElementById('telegram-invalid-icon');
-  
-  if (telegramInput && validIcon && invalidIcon) {
-    telegramInput.addEventListener('input', function(e) {
-      const value = e.target.value.trim();
-      
-      // Скрыть иконки если пусто
-      if (value.length === 0) {
-        validIcon.classList.add('hidden');
-        invalidIcon.classList.add('hidden');
-        e.target.classList.remove('border-green-400', 'border-red-400');
-        return;
-      }
-      
-      // Проверка паттерна
-      const pattern = /^@[A-Za-z0-9_]{5,32}$/;
-      const isValid = pattern.test(value);
-      
-      if (isValid) {
-        e.target.classList.add('border-green-400');
-        e.target.classList.remove('border-red-400');
-        validIcon.classList.remove('hidden');
-        invalidIcon.classList.add('hidden');
-      } else {
-        e.target.classList.add('border-red-400');
-        e.target.classList.remove('border-green-400');
-        validIcon.classList.add('hidden');
-        invalidIcon.classList.remove('hidden');
-      }
-    });
-  }
-});
-</script>
+
 
 <script>
 // Exit Intent Popup - Premium Modern Design
@@ -7082,7 +6830,20 @@ function hideExitPopup(popup) {
   }
 }
 
-
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // Проверяем ширину экрана
+  if (window.innerWidth < 768) {
+    // Находим все элементы с AOS внутри секции "Ответы на ключевые вопросы"
+    const faqCards = document.querySelectorAll('#faq [data-aos]');
+    faqCards.forEach(el => {
+      // Удаляем атрибуты анимации
+      el.removeAttribute('data-aos');
+      el.removeAttribute('data-aos-delay');
+      el.removeAttribute('data-aos-duration');
+    });
+  }
+});
 
 
 
@@ -7113,10 +6874,24 @@ window.addEventListener("load", () => {
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-	<!-- В <head> или перед закрывающим </body> -->
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" defer></script>
+
+<script>
+// simple reveal-on-scroll
+document.addEventListener('scroll', () => {
+  document.querySelectorAll('.reveal').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 100) el.classList.add('active');
+  });
+});
+</script>
+
+
+
 </body>
 </html>
