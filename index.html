@@ -901,6 +901,22 @@ body.loaded .main-content { opacity: 1; visibility: visible; transition: opacity
       ]
     }
     </script>
+	
+	<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js', { scope: '/' })
+        .then(registration => {
+          console.log('✅ Service Worker зарегистрирован:', registration.scope);
+        })
+        .catch(error => {
+          console.error('❌ Ошибка регистрации Service Worker:', error);
+        });
+    });
+  }
+</script>
+
+	
 </head>
 
 
