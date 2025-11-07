@@ -41,12 +41,15 @@
   ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
+  ],
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        { "type": "host", "value": "www.reforkcapital.online" }
+      ],
+      "destination": "https://reforkcapital.online/:1",
+      "permanent": true
+    }
   ]
 }
-"redirects": [
-  {
-    "source": "https://www.reforkcapital.online/(.*)",
-    "destination": "https://reforkcapital.online/$1",
-    "permanent": true
-  }
-]
