@@ -32,13 +32,6 @@
       ]
     },
     {
-      "source": "/sw.js",
-      "headers": [
-        { "key": "Cache-Control", "value": "no-cache" },
-        { "key": "Service-Worker-Allowed", "value": "/" }
-      ]
-    },
-    {
       "source": "/robots.txt",
       "headers": [
         { "key": "Content-Type", "value": "text/plain" },
@@ -56,8 +49,7 @@
   "routes": [
     { "src": "/robots.txt", "dest": "/robots.txt" },
     { "src": "/sitemap.xml", "dest": "/sitemap.xml" },
-    { "src": "/manifest.json", "dest": "/manifest.json" },
-    { "src": "/sw.js", "dest": "/sw.js" }
+    { "src": "/manifest.json", "dest": "/manifest.json" }
   ],
   "rewrites": [
     {
