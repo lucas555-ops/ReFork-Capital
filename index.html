@@ -414,6 +414,27 @@ html { scroll-padding-top: 80px; }
     .text-lg { font-size: 1rem !important; }
 }
 
+.gradient-h1 {
+  background: linear-gradient(90deg, 
+    #03E1FF,    /* Ocean Blue-500 */
+    #00FFA3,    /* Surge Green-600 */
+    #007fff,    /* azure-600 */
+    #DFDFDF,    /* White -600 */
+    #0d9488     /* teal-500 */
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  background-size: 300% 300%;
+  animation: gradient-shift 4s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
 @media (max-width: 1024px) { .order-1 { order: 1; } .order-2 { order: 2; } }
 
 .overflow-x-auto { overflow-x: auto; -webkit-overflow-scrolling: touch; }
@@ -1010,14 +1031,8 @@ body.loaded .main-content { opacity: 1; visibility: visible; transition: opacity
           </a>
         </div>
 
-    <h1 aria-label="Пассивный доход на мем-токенах до 80% за цикл">
-  <span class="sr-only">Пассивный доход на мем-токенах до 80% за цикл</span>
-  <span aria-hidden="true">
-    Пассивный
-    <span class="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 text-transparent bg-clip-text">доход</span>
-    на
-    <span class="bg-gradient-to-r from-green-400 to-cyan-400 text-transparent bg-clip-text">мем-токенах</span>
-  </span>
+    <h1 class="text-3xl md:text-4xl lg:text-6xl font-black leading-tight text-center lg:text-left gradient-h1">
+  Пассивный доход на мем-токенах до 80% за цикл
 </h1>
 
         <!-- Подзаголовок -->
@@ -5423,6 +5438,8 @@ document.addEventListener('scroll', () => {
   });
 });
 </script>
+
+
 
 </body>
 </html>
