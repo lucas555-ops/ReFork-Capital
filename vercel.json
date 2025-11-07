@@ -48,6 +48,18 @@
   ],
   "rewrites": [
     {
+      "source": "/robots.txt",
+      "destination": "/robots.txt"
+    },
+    {
+      "source": "/sitemap.xml",
+      "destination": "/sitemap.xml"
+    },
+    {
+      "source": "/manifest.json",
+      "destination": "/manifest.json"
+    },
+    {
       "source": "!/((.*\\.(css|js|jpg|png|svg|json|xml|txt|ico|webmanifest|ttf|woff|woff2|eot|otf|map|html|pdf))$)",
       "destination": "/index.html"
     }
