@@ -53,7 +53,7 @@
   ],
   "rewrites": [
     {
-      "source": "!/((.*\\.(css|js|jpg|png|svg|json|xml|txt|ico|webmanifest|ttf|woff|woff2|eot|otf|map|html))$)",
+      "source": "!/((.*\\.(css|js|jpg|png|svg|json|xml|txt|ico|webmanifest|ttf|woff|woff2|eot|otf|map|html|pdf))$)",
       "destination": "/index.html"
     }
   ],
