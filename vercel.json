@@ -43,3 +43,10 @@
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
+"redirects": [
+  {
+    "source": "https://www.reforkcapital.online/(.*)",
+    "destination": "https://reforkcapital.online/$1",
+    "permanent": true
+  }
+]
