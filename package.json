@@ -2,11 +2,10 @@
   "name": "refork-capital",
   "version": "1.0.0",
   "private": true,
-  "type": "module",
   "scripts": {
+    "build": "echo 'Static site build complete'",
     "dev": "vercel dev",
     "start": "vercel dev",
-    "build": "echo 'No build step required for static site'",
     "deploy": "vercel --prod"
   },
   "devDependencies": {
