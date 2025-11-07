@@ -32,45 +32,25 @@
       ]
     },
     {
-      "source": "/robots.txt",
+      "source": "/sw.js",
       "headers": [
-        { "key": "Content-Type", "value": "text/plain" },
-        { "key": "Cache-Control", "value": "public, max-age=86400" }
-      ]
-    },
-    {
-      "source": "/sitemap.xml",
-      "headers": [
-        { "key": "Content-Type", "value": "application/xml" },
-        { "key": "Cache-Control", "value": "public, max-age=86400" }
+        { "key": "Cache-Control", "value": "no-cache" },
+        { "key": "Service-Worker-Allowed", "value": "/" }
       ]
     }
   ],
   "rewrites": [
-    {
-      "source": "/robots.txt",
-      "destination": "/robots.txt"
-    },
-    {
-      "source": "/sitemap.xml",
-      "destination": "/sitemap.xml"
-    },
-    {
-      "source": "/manifest.json",
-      "destination": "/manifest.json"
-    },
-    {
-      "source": "!/((.*\\.(css|js|jpg|png|svg|json|xml|txt|ico|webmanifest|ttf|woff|woff2|eot|otf|map|html|pdf))$)",
-      "destination": "/index.html"
-    }
+    { "source": "/(.*)", "destination": "/index.html" }
   ],
   "redirects": [
     {
       "source": "/(.*)",
-      "has": [
-        { "type": "host", "value": "www.reforkcapital.online" }
-      ],
-      "destination": "https://reforkcapital.online/:1",
+      "destination": "https://reforkcapital.online/$1",
+      "permanent": true
+    },
+    {
+      "source": "/www/(.*)",
+      "destination": "https://reforkcapital.online/$1",
       "permanent": true
     }
   ]
