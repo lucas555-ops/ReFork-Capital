@@ -46,10 +46,11 @@
       ]
     }
   ],
-  "routes": [
-    { "src": "/robots.txt", "dest": "/robots.txt" },
-    { "src": "/sitemap.xml", "dest": "/sitemap.xml" },
-    { "src": "/manifest.json", "dest": "/manifest.json" }
+  "rewrites": [
+    {
+      "source": "!/((.*\\.(css|js|jpg|png|svg|json|xml|txt|ico|webmanifest|ttf|woff|woff2|eot|otf|map|html|pdf))$)",
+      "destination": "/index.html"
+    }
   ],
   "redirects": [
     {
