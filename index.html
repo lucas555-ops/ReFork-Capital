@@ -1,513 +1,893 @@
+
 <!doctype html>
 <html lang="ru" class="scroll-smooth" data-theme="dark">
 <head>
-  <!-- =========================
-       Basic meta
-       ========================= -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="format-detection" content="telephone=no" />
-  <title>ReFork Capital: DeFi-стратегия для мем-токенов, до 80% за цикл</title>
-  <link rel="canonical" href="https://reforkcapital.online/" />
+    <!-- Базовые мета-теги -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="format-detection" content="telephone=no">
 
-  <!-- =========================
-       Preconnect / Prefetch / Preload
-       ========================= -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
-  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
-  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
-  <link rel="dns-prefetch" href="https://t.me" />
-  <link rel="dns-prefetch" href="https://raw.githubusercontent.com" />
+    <title>ReFork Capital: DeFi-стратегия для мем-токенов, до 80% за цикл</title>
+    
+    <!-- Канонический URL -->
+    <link rel="canonical" href="https://reforkcapital.online/">
 
-  <!-- Load non-critical styles async (keeps render fast) -->
-  <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <link rel="preload" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"></noscript>
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://raw.githubusercontent.com">
+    <link rel="preconnect" href="https://t.me">
+    <link rel="dns-prefetch" href="https://raw.githubusercontent.com">
 
-  <!-- =========================
-       Favicons & PWA
-       ========================= -->
-  <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/apple-touch-icon.png" />
-  <link rel="icon" type="image/png" sizes="512x512" href="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/icon-512.png" />
-  <link rel="icon" type="image/png" sizes="192x192" href="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/icon-192.png" />
-  <link rel="manifest" href="/manifest.json" />
-  <meta name="theme-color" content="#06b6d4" />
-  <meta name="msapplication-TileColor" content="#06b6d4" />
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"></noscript>
 
-  <!-- =========================
-       SEO / Social
-       ========================= -->
-  <meta name="description" content="ReFork Capital: Кастомная DeFi-стратегия для мем-токенов. Пассивный ROI до 80%+ за цикл через AI-аналитику и SMM-капитализацию. Только для своих!" />
-  <meta name="keywords" content="ReFork Capital, crypto fund, meme tokens, investment, DeFi growth, crypto ROI, крипто инвестиции, memecoin, 100x, Solana, DEX" />
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-  <meta name="author" content="ReFork Capital" />
-  <meta name="language" content="ru" />
+    <!-- Остальные стили загружать асинхронно -->
+    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://reforkcapital.online/" />
-  <meta property="og:site_name" content="ReFork Capital" />
-  <meta property="og:title" content="ReFork Capital — Пассивный доход до 80% на мем-токенах" />
-  <meta property="og:description" content="Закрытый пул инвесторов. Быстрое умножение капитала. Доходность до 80% за цикл. DeFi + AI аналитика + SMM капитализация." />
-  <meta property="og:image" content="https://reforkcapital.online/og-image.jpg" />
-  <meta property="og:image:secure_url" content="https://reforkcapital.online/og-image.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="ReFork Capital — DeFi & AI стратегия дохода до 80%" />
-  <meta property="og:locale" content="ru_RU" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@ReForkCapital" />
-  <meta name="twitter:creator" content="@ReForkCapital" />
-  <meta name="twitter:title" content="ReFork Capital — Пассивный доход до 80% на мем-токенах" />
-  <meta name="twitter:description" content="AI + DeFi = прибыль. Приватная стратегия ReFork Capital превращает хаос мем-токенов в управляемый доход." />
-  <meta name="twitter:image" content="https://reforkcapital.online/og-image.jpg" />
-
-  <!-- =========================
-       Tailwind (CDN) + config
-       ========================= -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            dark: { bg: '#0b0e14', muted: '#9aa5b1' },
-            accent: { green: '#6ee7b7', cyan: '#22d3ee' }
-          },
-          animation: {
-            fadeIn: 'fadeIn 0.6s ease-in-out',
-            slideUp: 'slideUp 0.6s ease-out',
-            pulseSlow: 'pulseSlow 3s ease-in-out infinite'
-          },
-          keyframes: {
-            fadeIn: { '0%': { opacity: 0 }, '100%': { opacity: 1 } },
-            slideUp: { '0%': { transform: 'translateY(30px)', opacity: 0 }, '100%': { transform: 'translateY(0)', opacity: 1 } }
-          }
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            bg: '#0b0e14',
+                            muted: '#9aa5b1',
+                        },
+                        accent: {
+                            green: '#6ee7b7',
+                            cyan: '#22d3ee'
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'pulse-slow': 'pulse 3s ease-in-out infinite'
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        }
+                    }
+                }
+            },
+            darkMode: 'class',
         }
-      },
-      darkMode: 'class'
+    </script>
+
+    <!-- Meta Tags -->
+    <meta name="description" content="ReFork Capital: AI-анализ, DeFi-пулы и стратегия роста капитала. ROI до 80%+ за цикл. Только для своих.">
+    <meta name="keywords" content="ReFork Capital, DeFi, Web3 инвестиции, мем токены, AI аналитика, крипто фонд, крипто инвестиции, ROI 80, Solana, DEX, memecoin, пассивный доход, DeFi стратегия">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="author" content="ReFork Capital">
+    <meta name="language" content="ru">
+    
+    <!-- Яндекс Верификация -->
+    <meta name="yandex-verification" content="104983638">
+    
+    <!-- Theme & PWA -->
+    <meta name="theme-color" content="#06b6d4">
+    <meta name="msapplication-TileColor" content="#06b6d4">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="ReFork Capital">
+    <link rel="manifest" href="/manifest.json">
+    
+    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/icon-512.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/icon-192.png">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://reforkcapital.online/">
+    <meta property="og:site_name" content="ReFork Capital">
+    <meta property="og:title" content="ReFork Capital — Пассивный доход до 80% на мем-токенах">
+    <meta property="og:description" content="Закрытый пул инвесторов. Быстрое умножение капитала. Доходность до 80% за цикл. DeFi + AI аналитика + SMM капитализация. Присоединяйся к ReFork Capital.">
+    <meta property="og:image" content="https://reforkcapital.online/og-image.jpg">
+    <meta property="og:image:secure_url" content="https://reforkcapital.online/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="ReFork Capital — DeFi & AI стратегия дохода до 80%">
+    <meta property="og:locale" content="ru_RU">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@ReForkCapital">
+    <meta name="twitter:creator" content="@ReForkCapital">
+    <meta name="twitter:title" content="ReFork Capital — Пассивный доход до 80% на мем-токенах">
+    <meta name="twitter:description" content="AI + DeFi = прибыль. Приватная стратегия ReFork Capital превращает хаос мем-токенов в управляемый доход.">
+    <meta name="twitter:image" content="https://reforkcapital.online/og-image.jpg">
+
+    <!-- Critical CSS (inline, first priority) -->
+    <style>
+:root {
+    --bg: #0b0e14;
+    --muted: #9aa5b1;
+    --accent: #6ee7b7;
+    --accent-2: #22d3ee;
+    --error: #ef4444;
+    --success: #10b981;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background: var(--bg);
+    color: #e5e7eb;
+    font-family: system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+section, header, footer { position: relative; z-index: 20; }
+h1,h2,h3,p,details,summary,button,a,input,textarea,select,form { position: relative; z-index: 30; }
+
+.glow-card { position: relative; overflow: hidden; border-radius: 1.25rem; background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02)); border: 1px solid rgba(106,230,255,.22); box-shadow: 0 10px 28px rgba(0,0,0,.48); transform: translateZ(0); backface-visibility: hidden; transition: all 0.3s ease; }
+.glow-card::after { content: ""; position: absolute; inset: -12px; z-index: -1; border-radius: calc(1.25rem + 12px); background: radial-gradient(420px 180px at 50% 0%, rgba(34,211,238,.18), transparent 60%); filter: blur(14px); }
+
+.card-glow::before { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px; background: linear-gradient(90deg, #14F195, #9945FF, #00C2FF, #14F195); background-size: 300% 300%; animation: glow-move 6s linear infinite; -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; z-index: 2; }
+@keyframes glow-move { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
+
+@media (max-width:768px) {
+    .grid-cols-5 { grid-template-columns: repeat(2,1fr); }
+    .text-5xl { font-size: 2.5rem; }
+    .text-6xl { font-size: 3rem; }
+    .grid-cols-4 { grid-template-columns: repeat(2,1fr); }
+    .gap-8 { gap: 1rem; }
+    .p-10 { padding: 1.5rem; }
+    .p-8 { padding: 1.5rem; }
+    .glow-card:hover { transform: none; }
+    .timeline-stage { padding: 1rem; }
+    .timeline-stage .text-2xl { font-size: 1.25rem; }
+    .timeline-stage .text-sm { font-size: 0.85rem; }
+    .phase-label { font-size: 12px; padding: 4px 8px; }
+}
+
+select { background-color: #1a202c; color: #f7fafc; }
+select option { background-color: #1a202c; color: #f7fafc; padding: 12px; }
+
+.dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; box-shadow: 0 0 8px 2px currentColor; }
+.glass { background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.04)); border: 1px solid rgba(255,255,255,.12); backdrop-filter: blur(10px); }
+
+html { scroll-behavior: smooth; }
+body { -webkit-overflow-scrolling: touch; overflow-scrolling: touch; -webkit-text-size-adjust: 100%; }
+
+.form-block { max-width: 100%; margin: 0 auto; display: grid; gap: 16px; font-family: 'Inter', system-ui; }
+.form-block label { color: #e5e7eb; font-size: 14px; font-weight: 500; }
+.form-block input, .form-block textarea, .form-block select { width: 100%; padding: 12px 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.05); color: #fff; font-family: 'Inter', system-ui; margin-top: 4px; transition: all 0.3s ease; }
+.form-block input:focus, .form-block textarea:focus, .form-block select:focus { outline: none; border-color: #22d3ee; box-shadow: 0 0 0 3px rgba(34,211,238,0.1); }
+.form-block input::placeholder, .form-block textarea::placeholder { color: #9ca3af; }
+.form-block button { padding: 14px 24px; border-radius: 12px; border: none; background: linear-gradient(90deg, #0ea5e9, #06b6d4); color: white; font-weight: 600; cursor: pointer; transition: all 0.3s ease; font-family: 'Inter', system-ui; margin-top: 8px; }
+.form-block button:hover { opacity: 0.9; transform: translateY(-1px); }
+.form-block button:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+.success-toast, .error-toast { position: fixed; top: 20px; right: 20px; color: white; padding: 16px 24px; border-radius: 12px; box-shadow: 0 20px 25px rgba(0,0,0,0.25); z-index: 9999; animation: slideIn 0.3s ease; font-weight: 500; border: 1px solid rgba(255,255,255,0.1); }
+.success-toast { background: linear-gradient(90deg, #46c2ff, #8b5cf6); }
+.error-toast { background: linear-gradient(90deg, #ef4444, #dc2626); }
+@keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+@media (max-width:768px) {
+    .form-block { gap: 12px; }
+    .form-block input, .form-block textarea, .form-block select { padding: 10px 14px; }
+    .success-toast, .error-toast { left: 20px; right: 20px; text-align: center; }
+}
+
+.chart-animation { stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: drawChart 3.5s ease-in-out forwards; }
+@keyframes drawChart { to { stroke-dashoffset: 0; } }
+
+.profit-zone { animation: fadeInZone 2s ease-in-out forwards; }
+@keyframes fadeInZone { to { opacity: 1; } }
+
+.phase-label { animation: fadeInUp 0.8s ease-out forwards; }
+@keyframes fadeInUp { to { opacity: 1; transform: translateY(-5px); } }
+
+@media (max-width:768px) {
+    .phase-label { font-size: 10px; }
+    .chart-animation { animation-duration: 2.5s; }
+}
+
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+.bg-size-200 { background-size: 200% 200%; }
+.animate-gradient { animation: gradient-shift 3s ease infinite; }
+@keyframes gradient-shift { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+
+.loading-spinner-btn { display: inline-block; width: 20px; height: 20px; border: 3px solid rgba(255,255,255,.3); border-radius: 50%; border-top-color: #22d3ee; animation: spin 1s linear infinite; margin-left: 8px; }
+
+.exit-popup { position: fixed; inset: 0; background: rgba(0,0,0,0.9); display: flex; align-items: center; justify-content: center; z-index: 10000; animation: fadeIn 0.3s ease; backdrop-filter: blur(5px); }
+.exit-popup-content { position: relative; background: linear-gradient(135deg, #1e293b, #0f172a); padding: 40px 30px 30px; border-radius: 20px; max-width: 500px; text-align: center; border: 2px solid #22d3ee; box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5); margin: 20px; }
+.exit-popup-close { position: absolute; top: 12px; right: 12px; width: 36px; height: 36px; border-radius: 50%; background: rgba(255, 255, 255, 0.15); color: #fff; font-size: 24px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; border: none; }
+.exit-popup-close:hover { background: rgba(239, 68, 68, 0.3); color: #fff; transform: scale(1.1); }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+@media (max-width: 640px) {
+    .exit-popup-content { margin: 20px; padding: 30px 20px 20px; }
+    .exit-popup-close { top: 10px; right: 10px; width: 28px; height: 28px; font-size: 20px; }
+    .exit-popup-content h3 { font-size: 1.5rem; }
+    .exit-popup-content p { font-size: 1rem; }
+}
+
+.social-proof { position: fixed; bottom: 20px; left: 20px; background: rgba(0,0,0,0.8); backdrop-filter: blur(10px); padding: 15px 20px; border-radius: 12px; border: 1px solid rgba(34,211,238,0.3); z-index: 100; }
+.social-proof .counter { font-size: 28px; font-weight: bold; color: #22d3ee; }
+
+@supports (-webkit-touch-callout:none) { .min-h-screen { min-height: -webkit-fill-available; } }
+
+@keyframes delay-slide-up { 0% { opacity: 0; transform: translateY(20px); } 100% { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 480px) {
+    .timeline-stage:nth-child(1) { animation: delay-slide-up 0.5s ease-in-out 0.2s forwards; }
+    .timeline-stage:nth-child(2) { animation: delay-slide-up 0.5s ease-in-out 0.4s forwards; }
+    .timeline-stage:nth-child(3) { animation: delay-slide-up 0.5s ease-in-out 0.6s forwards; }
+    .timeline-stage:nth-child(4) { animation: delay-slide-up 0.5s ease-in-out 0.8s forwards; }
+    .timeline-stage:nth-child(5) { animation: delay-slide-up 0.5s ease-in-out 1s forwards; }
+    .timeline-content { flex-direction: column; text-align: center; gap: 8px; }
+    .stage-icon-mobile { width: 36px; height: 36px; font-size: 1.25rem; }
+}
+
+.text-gray-400 { color: #d1d5db !important; }
+.text-gray-300 { color: #e5e7eb !important; }
+
+header { transform: translateZ(0); backface-visibility: hidden; }
+
+html { scroll-padding-top: 80px; }
+
+@media (max-width: 768px) { html { scroll-padding-top: 70px; } }
+
+.social-proof { animation: slideInUp 0.5s ease-out; }
+
+.gmgn-container { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 15px 20px; background: transparent; border-radius: 12px; border: 1px solid transparent; background: linear-gradient(#0b0e14, #0b0e14) padding-box, linear-gradient(135deg, #8b5cf6, #06d6a0, #14f195) border-box; position: relative; text-decoration: none; transition: all 0.3s ease; min-width: 120px; }
+.gmgn-container:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(6, 214, 160, 0.3); }
+
+.gmgn-text { font-size: 20px; font-weight: 900; background: linear-gradient(335deg, #8b5cf6, #14f195); -webkit-background-clip: text; background-clip: text; color: transparent; letter-spacing: 1px; text-shadow: 0 1px 2px rgba(0,0,0,0.5); }
+
+.gmgn-subtext { font-size: 10px; color: rgba(255,255,255,0.8); margin: 0; font-weight: 500; text-align: center; }
+
+.gmgn-close { position: absolute; top: -6px; right: -6px; width: 18px; height: 18px; border-radius: 50%; background: rgba(0,0,0,0.9); border: 1px solid rgba(255,255,255,0.3); color: white; font-size: 12px; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; z-index: 10; pointer-events: auto; }
+.gmgn-close:hover { background: rgba(239,68,68,0.9); transform: scale(1.1); }
+
+@keyframes slideInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (max-width: 768px) {
+    .gmgn-container { padding: 12px 16px; min-width: 100px; }
+    .gmgn-text { font-size: 18px; }
+    .gmgn-subtext { font-size: 9px; }
+}
+
+#traffic-engine > .-z-10::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 50% 20%, rgba(34,211,238,0.06), transparent 70%), linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.6)); opacity: 0.25; transform: translateY(0); transition: transform 0.4s ease-out; will-change: transform; }
+#traffic-engine > .-z-10::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 50% 100%, rgba(34,211,238,0.05), transparent 80%); pointer-events: none; }
+
+.traffic-card { backdrop-filter: blur(6px); transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
+.traffic-card:hover { transform: translateY(-6px) scale(1.02); border-color: rgba(34,211,238,0.2); box-shadow: 0 0 20px rgba(34,211,238,0.1); }
+
+#traffic-engine [data-aos="fade-up"] { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s ease; }
+#traffic-engine [data-aos="fade-up"].aos-visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 640px) {
+    .traffic-card { padding: 16px; }
+    #traffic-engine { padding-top: 4rem; padding-bottom: 4rem; }
+    #traffic-engine > .-z-10::before { opacity: 0.15; }
+}
+
+.cta-button { position: relative; overflow: hidden; }
+.pulse { position: absolute; top: 0; left: 0; right: 0; bottom: 0; border-radius: inherit; background: inherit; animation: pulse-animation 2s infinite; opacity: 0; z-index: -1; animation-play-state: paused; }
+@keyframes pulse-animation { 0% { transform: scale(1); opacity: 0.5; } 100% { transform: scale(1.5); opacity: 0; } }
+
+.vertical-timeline { position: relative; padding-left: 30px; }
+.vertical-timeline::before { content: ''; position: absolute; left: 15px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, #8b5cf6, #10b981, #ef4444, #6b7280, #06b6d4); }
+
+.timeline-stage { position: relative; margin-bottom: 2rem; display: flex; align-items: flex-start; }
+
+.timeline-marker { position: absolute; left: -30px; width: 32px; height: 32px; border-radius: 50%; border: 3px solid; display: flex; align-items: center; justify-content: center; z-index: 2; }
+
+.marker-1 { background: #8b5cf6; border-color: #c4b5fd; }
+.marker-2 { background: #10b981; border-color: #a7f3d0; }
+.marker-3 { background: #ef4444; border-color: #fdba74; }
+.marker-4 { background: #6b7280; border-color: #d1d5db; }
+.marker-5 { background: #06b6d4; border-color: #7dd3fc; animation: pulse 2s infinite; }
+
+.timeline-content { display: flex; align-items: center; gap: 12px; background: rgba(15, 23, 42, 0.6); padding: 12px 16px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1); flex: 1; }
+
+.stage-icon-mobile { font-size: 1.5rem; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(255,255,255,0.1); }
+
+.stage-title-mobile { font-weight: bold; margin-bottom: 2px; }
+
+.stage-duration-mobile { font-size: 0.75rem; color: #9ca3af; }
+
+.active-stage .timeline-content { background: rgba(6, 182, 212, 0.1); border-color: rgba(6, 182, 212, 0.3); }
+
+@keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.1); } 100% { transform: scale(1); } }
+
+@media (max-width: 480px) {
+    .timeline-content { flex-direction: column; text-align: center; gap: 8px; }
+    .stage-icon-mobile { width: 36px; height: 36px; font-size: 1.25rem; }
+}
+
+.glow-card:hover { transform: scale(1.03); box-shadow: 0 0 25px rgba(6,182,212,0.4); }
+
+.three-color-gradient-1 { background: linear-gradient(90deg, #3b82f6 0%, #10b981 50%, #3b82f6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.three-color-gradient-2 { background: linear-gradient(90deg, #8b5cf6 0%, #06d6a0 50%, #118ab2 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.three-color-gradient-3 { background: linear-gradient(90deg, #06b6d4 0%, #10b981 50%, #0ea5e9 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+.custom-border-top { position: relative; }
+.custom-border-top::before { content: ''; position: absolute; top: -1px; left: 50%; transform: translateX(-50%); width: 80%; height: 2px; background: linear-gradient(90deg, transparent, #22d3ee, transparent); border-radius: 1px; }
+
+.custom-border-bottom { position: relative; }
+.custom-border-bottom::after { content: ''; position: absolute; bottom: -1px; left: 50%; transform: translateX(-50%); width: 80%; height: 2px; background: linear-gradient(90deg, transparent, #10b981, transparent); border-radius: 1px; }
+
+@media (max-width: 768px) {
+    #reforkStrategyChart { min-width: 600px !important; width: 200% !important; }
+    .glow-card .overflow-x-auto { -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; }
+    .glow-card .overflow-x-auto::-webkit-scrollbar { display: none; }
+    .glow-card { padding: 1rem !important; }
+}
+
+.overflow-x-auto { position: relative; }
+.overflow-x-auto::after { content: '← прокрутите →'; position: absolute; bottom: 5px; right: 10px; color: #22d3ee; font-size: 10px; opacity: 0.7; animation: pulse-scroll 2s infinite; }
+@keyframes pulse-scroll { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.8; } }
+
+@media (max-width: 480px) {
+    #reforkStrategyChart { min-width: 700px !important; }
+    .glow-card .overflow-x-auto::after { content: '← прокрутите график →'; font-size: 9px; }
+}
+
+.central-stage:hover .tooltip { display: block; animation: fadeIn 0.4s ease forwards; }
+@keyframes fadeIn { from { opacity: 0; transform: translate(-50%, -20px); } to { opacity: 1; transform: translate(-50%, -30px); } }
+
+#partner-row-1 img, .animate-scroll-banner-reverse img { transition: all 0.3s ease; filter: drop-shadow(0 0 0px transparent); }
+#partner-row-1 img:hover, .animate-scroll-banner-reverse img:hover { transform: scale(1.08); filter: drop-shadow(0 0 8px rgba(34,211,238,0.7)); }
+
+@media (max-width: 768px) { #reforkStrategyChart { min-width: 650px !important; width: 100% !important; transform: none !important; } }
+
+.phase-label { font-size: 12px !important; padding: 4px 8px; }
+
+#reforkStrategyChart { display: block !important; width: 100% !important; height: 100% !important; min-height: 200px; }
+
+@media (max-width: 768px) { .min-w-\[600px\] { min-width: 700px !important; } }
+
+@media (max-width: 1024px) {
+    #hero .grid { grid-template-columns: 1fr !important; }
+    #hero h1 { font-size: 2.5rem !important; text-align: center; line-height: 1.2; }
+    #hero h2 { font-size: 1.25rem !important; text-align: center; }
+}
+
+@media (max-width: 768px) {
+    #hero { padding-top: 2rem !important; padding-bottom: 2rem !important; min-height: auto !important; }
+    #hero h1 { font-size: 2rem !important; }
+    #hero h2 { font-size: 1.125rem !important; }
+    .glow-card { padding: 1rem !important; }
+    #hero .flex-wrap { justify-content: center; }
+}
+
+@media (max-width: 480px) {
+    #hero h1 { font-size: 1.75rem !important; }
+    #hero .min-w-\[500px\] { min-width: 450px !important; }
+    .text-lg { font-size: 1rem !important; }
+}
+
+@media (max-width: 1024px) { .order-1 { order: 1; } .order-2 { order: 2; } }
+
+.overflow-x-auto { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+.kinetic-typography { position: relative; height: 80px; display: flex; align-items: center; justify-content: center; perspective: 1000px; }
+
+.kinetic-word { position: absolute; opacity: 0; animation-duration: 4.5s; animation-iteration-count: infinite; animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
+
+.kinetic-word-1 { animation-name: kineticLeft; }
+.kinetic-word-2 { animation-name: kineticTop; }
+.kinetic-word-3 { animation-name: kineticRight; }
+
+@keyframes kineticLeft { 0%, 15% { opacity: 0; transform: translateX(-80px) rotateY(90deg); } 20%, 30% { opacity: 1; transform: translateX(0) rotateY(0); } 35%, 100% { opacity: 0; transform: translateX(60px) rotateY(-90deg); } }
+@keyframes kineticTop { 0%, 35% { opacity: 0; transform: translateY(-60px) rotateX(90deg); } 40%, 50% { opacity: 1; transform: translateY(0) rotateX(0); } 55%, 100% { opacity: 0; transform: translateY(50px) rotateX(-90deg); } }
+@keyframes kineticRight { 0%, 55% { opacity: 0; transform: translateX(80px) rotateY(-90deg); } 60%, 70% { opacity: 1; transform: translateX(0) rotateY(0); } 75%, 100% { opacity: 0; transform: translateX(-60px) rotateY(90deg); } }
+
+@media (max-width: 768px) {
+    .kinetic-typography { height: 60px; }
+    @keyframes kineticLeft { 0%, 15% { opacity: 0; transform: translateX(-50px) rotateY(90deg); } 20%, 30% { opacity: 1; transform: translateX(0) rotateY(0); } 35%, 100% { opacity: 0; transform: translateX(40px) rotateY(-90deg); } }
+    @keyframes kineticTop { 0%, 35% { opacity: 0; transform: translateY(-40px) rotateX(90deg); } 40%, 50% { opacity: 1; transform: translateY(0) rotateX(0); } 55%, 100% { opacity: 0; transform: translateY(35px) rotateX(-90deg); } }
+    @keyframes kineticRight { 0%, 55% { opacity: 0; transform: translateX(50px) rotateY(-90deg); } 60%, 70% { opacity: 1; transform: translateX(0) rotateY(0); } 75%, 100% { opacity: 0; transform: translateX(-40px) rotateY(90deg); } }
+}
+
+.kinetic-word { filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3)); will-change: transform, opacity; }
+
+@media (max-width: 768px) { .min-w-\[650px\] { min-width: 650px !important; } .grid-cols-3.gap-1 .text-center { padding: 0 2px; } .grid-cols-3.gap-1 .text-lg { font-size: 1rem !important; } .grid-cols-3.gap-1 .text-xs { font-size: 0.7rem !important; } }
+
+.phase-label { position: relative; text-shadow: 0 0 12px rgba(20, 241, 149, 0.5); transition: all 0.3s ease; }
+.phase-label::after { content: ''; position: absolute; left: 50%; top: 100%; transform: translateX(-50%); width: 40%; height: 2px; background: linear-gradient(90deg, #14F195, #00C2FF); border-radius: 2px; opacity: 0; transition: opacity 0.3s ease; }
+.timeline-stage:hover .phase-label::after { opacity: 1; }
+
+#full-cycle .glow-card { transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); transform-style: preserve-3d; }
+#full-cycle .glow-card:hover { transform: translateY(-5px) perspective(1000px) rotateX(5deg); border-color: rgba(34, 211, 238, 0.5); background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.12)); }
+
+.quartz-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; background: radial-gradient(ellipse at 20% 20%, rgba(56, 189, 248, 0.15) 0%, transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%), linear-gradient(180deg, rgba(11, 14, 20, 0.95) 0%, rgba(5, 8, 15, 1) 100%); }
+
+.quartz-bg__gradient { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 20% 30%, rgba(56, 189, 248, 0.1) 0%, transparent 40%), radial-gradient(circle at 80% 70%, rgba(139, 92, 246, 0.1) 0%, transparent 40%), radial-gradient(circle at 40% 50%, rgba(20, 184, 166, 0.08) 0%, transparent 40%); animation: gradientPulse 8s ease-in-out infinite; }
+@keyframes gradientPulse { 0%, 100% { opacity: 0.7; transform: scale(1); } 50% { opacity: 1; transform: scale(1.05); } }
+
+.quartz-shape { position: absolute; border-radius: 50%; background: linear-gradient(45deg, rgba(56, 189, 248, 0.1), rgba(139, 92, 246, 0.1)); filter: blur(40px); animation: float 20s infinite linear; }
+
+.quartz-shape--1 { width: 300px; height: 300px; top: 10%; left: 10%; animation-duration: 25s; background: linear-gradient(45deg, rgba(56, 189, 248, 0.15), rgba(139, 92, 246, 0.1)); }
+.quartz-shape--2 { width: 400px; height: 400px; top: 60%; left: 70%; animation-duration: 30s; animation-delay: -5s; background: linear-gradient(45deg, rgba(139, 92, 246, 0.1), rgba(20, 184, 166, 0.15)); }
+.quartz-shape--3 { width: 250px; height: 250px; top: 30%; left: 80%; animation-duration: 20s; animation-delay: -10s; background: linear-gradient(45deg, rgba(20, 184, 166, 0.1), rgba(56, 189, 248, 0.15)); }
+.quartz-shape--4 { width: 350px; height: 350px; top: 70%; left: 20%; animation-duration: 35s; animation-delay: -15s; background: linear-gradient(45deg, rgba(56, 189, 248, 0.1), rgba(139, 92, 246, 0.15)); }
+.quartz-shape--5 { width: 200px; height: 200px; top: 20%; left: 50%; animation-duration: 18s; animation-delay: -7s; background: linear-gradient(45deg, rgba(139, 92, 246, 0.1), rgba(20, 184, 166, 0.1)); }
+
+@keyframes float { 0% { transform: translate(0, 0) rotate(0deg) scale(1); } 25% { transform: translate(50px, 30px) rotate(90deg) scale(1.1); } 50% { transform: translate(0, 60px) rotate(180deg) scale(1.2); } 75% { transform: translate(-50px, 30px) rotate(270deg) scale(1.1); } 100% { transform: translate(0, 0) rotate(360deg) scale(1); } }
+
+.quartz-particles { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(2px 2px at 20px 30px, rgba(56, 189, 248, 0.3), transparent), radial-gradient(2px 2px at 40px 70px, rgba(139, 92, 246, 0.3), transparent), radial-gradient(1px 1px at 90px 40px, rgba(56, 189, 248, 0.4), transparent), radial-gradient(1px 1px at 130px 80px, rgba(139, 92, 246, 0.3), transparent), radial-gradient(2px 2px at 160px 30px, rgba(20, 184, 166, 0.3), transparent); background-repeat: repeat; background-size: 200px 200px; animation: particlesMove 100s linear infinite; opacity: 0.3; }
+@keyframes particlesMove { from { transform: translateY(0); } to { transform: translateY(-200px); } }
+
+#hero { position: relative; overflow: hidden; }
+#hero > *:not(.quartz-bg) { position: relative; z-index: 10; }
+.quartz-bg, .quartz-shape, .quartz-particles { will-change: transform, opacity; transform: translateZ(0); backface-visibility: hidden; }
+
+@keyframes scroll-banner { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-100% / 2)); } }
+@keyframes scroll-banner-reverse { 0% { transform: translateX(calc(-100% / 2)); } 100% { transform: translateX(0); } }
+.animate-scroll-banner { animation: scroll-banner var(--scroll-banner-duration, 40s) linear infinite; }
+.animate-scroll-banner-reverse { animation: scroll-banner-reverse var(--scroll-banner-duration, 35s) linear infinite; }
+
+.partner-link { display: block; transition: all 0.3s ease; border-radius: 12px; padding: 4px; text-decoration: none; }
+.partner-link:hover { transform: scale(1.1); background: rgba(34, 211, 238, 0.1); box-shadow: 0 0 20px rgba(34, 211, 238, 0.3); }
+
+.partner-logo { width: 60px; height: 60px; object-fit: contain; border-radius: 12px; background: rgba(255, 255, 255, 0.05); padding: 8px; transition: all 0.3s ease; border: 1px solid rgba(255, 255, 255, 0.1); }
+.partner-logo:hover { transform: scale(1.1); background: rgba(255, 255, 255, 0.1); box-shadow: 0 0 20px rgba(34, 211, 238, 0.3); border-color: rgba(34, 211, 238, 0.3); }
+
+@media (max-width: 768px) {
+    .partner-logo { width: 50px; height: 50px; padding: 6px; }
+    .partner-link:hover { transform: scale(1.05); }
+}
+
+@media (min-width: 769px) { .animate-scroll-banner, .animate-scroll-banner-reverse { animation-play-state: running !important; } }
+
+.animate-pulse-slow { animation: pulse-slow 3s ease-in-out infinite; }
+@keyframes pulse-slow { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+
+.group:hover .relative.z-10 { text-shadow: 0 0 15px rgba(255,255,255,0.4); }
+
+.simple-gallery { background: transparent; }
+
+.gallery { position: relative; width: 100%; height: 550px; overflow: hidden; }
+.cards { position: absolute; width: 500px; height: 465px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.cards li { list-style: none; padding: 0; margin: 0; width: 500px; height: 465px; text-align: center; position: absolute; top: 0; left: 0; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); background: rgba(255, 255, 255, 0.02); }
+.cards li img { width: 100%; height: 100%; object-fit: cover; border-radius: 12px; }
+
+.actions { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 1rem; }
+
+button { display: inline-block; outline: none; background: rgba(6, 182, 212, 0.2); border: solid 2px rgba(6, 182, 212, 0.5); color: #06b6d4; text-decoration: none; border-radius: 50%; width: 50px; height: 50px; font-weight: 600; cursor: pointer; font-size: 20px; transition: all 0.3s ease; }
+button:hover { background: rgba(6, 182, 212, 0.3); transform: scale(1.1); }
+
+@media (max-width: 1024px) {
+    .gallery { height: 500px; }
+    .cards { width: 400px; height: 372px; }
+    .cards li { width: 400px; height: 372px; }
+}
+
+@media (max-width: 768px) {
+    .gallery { height: 450px; }
+    .cards { width: 320px; height: 298px; }
+    .cards li { width: 320px; height: 298px; }
+    button { width: 44px; height: 44px; font-size: 18px; }
+}
+
+@media (max-width: 480px) {
+    .gallery { height: 400px; }
+    .cards { width: 280px; height: 260px; }
+    .cards li { width: 280px; height: 260px; }
+}
+
+.desktop-wave-path { stroke-dasharray: 2000; stroke-dashoffset: 2000; animation: drawDesktopWave 4s ease-in-out forwards; }
+
+.mobile-wave-path { stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: drawMobileWave 3s ease-in-out forwards; }
+
+@keyframes drawDesktopWave { to { stroke-dashoffset: 0; } }
+@keyframes drawMobileWave { to { stroke-dashoffset: 0; } }
+
+.wave-desktop-container { overflow: hidden; }
+
+.desktop-point { position: absolute; transform: translate(-50%, -50%); transition: all 0.3s ease; cursor: pointer; z-index: 10; }
+
+.desktop-point.point-1 { top: 50%; left: 10%; }
+.desktop-point.point-2 { top: 20%; left: 25%; }
+.desktop-point.point-3 { top: 80%; left: 45%; }
+.desktop-point.point-4 { top: 60%; left: 65%; }
+.desktop-point.refork-desktop-point { top: 30%; left: 85%; }
+
+.desktop-pulse { width: 20px; height: 20px; border-radius: 50%; position: relative; transition: all 0.3s ease; }
+.desktop-pulse::after { content: ''; position: absolute; inset: -6px; border-radius: 50%; border: 2px solid currentColor; opacity: 0; animation: desktopPulse 2s ease-in-out infinite; }
+
+.refork-desktop-point .desktop-pulse::after { animation: reforkDesktopPulse 1.5s ease-in-out infinite; }
+
+@keyframes desktopPulse { 0%, 100% { transform: scale(1); opacity: 0.7; } 50% { transform: scale(1.4); opacity: 0.3; } }
+@keyframes reforkDesktopPulse { 0%, 100% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.7); } 50% { transform: scale(1.8); opacity: 0.8; box-shadow: 0 0 0 15px rgba(6, 182, 212, 0); } }
+
+.point-1 .desktop-pulse { background: #8b5cf6; }
+.point-2 .desktop-pulse { background: #10b981; }
+.point-3 .desktop-pulse { background: #ef4444; }
+.point-4 .desktop-pulse { background: #6b7280; }
+.refork-desktop-point .desktop-pulse { background: #06b6d4; }
+
+.refork-desktop-glow { position: absolute; inset: -12px; border-radius: 50%; background: radial-gradient(circle, rgba(6, 182, 212, 0.4), transparent 70%); z-index: -1; }
+
+.desktop-label { position: absolute; top: -50px; left: 50%; transform: translateX(-50%); white-space: nowrap; text-align: center; background: rgba(15, 23, 42, 0.9); padding: 8px 12px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); min-width: 100px; }
+
+.desktop-emoji { font-size: 1.5rem; display: block; margin-bottom: 4px; }
+
+.desktop-title { font-weight: bold; font-size: 0.9rem; display: block; margin-bottom: 2px; }
+
+.desktop-badge { font-size: 0.7rem; padding: 2px 6px; border-radius: 8px; background: rgba(255, 255, 255, 0.1); }
+
+.refork-desktop-point .desktop-badge { background: linear-gradient(135deg, #06b6d4, #0ea5e9); color: white; animation: glow 2s ease-in-out infinite alternate; }
+
+.desktop-entry-line { position: absolute; top: 30%; left: 85%; transform: translateX(-50%); z-index: 5; text-align: center; }
+
+.entry-arrow { font-size: 2rem; color: #06b6d4; animation: bounce 2s ease-in-out infinite; }
+
+.entry-text { font-size: 0.9rem; font-weight: bold; color: #06b6d4; margin-top: 8px; background: rgba(6, 182, 212, 0.1); padding: 4px 8px; border-radius: 6px; }
+
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+
+.desktop-cards-grid { perspective: 1000px; }
+
+.desktop-stage-card { transition: all 0.3s ease; opacity: 0.7; transform: translateY(10px) scale(0.95); }
+
+.desktop-stage-card.active, .desktop-stage-card:hover { opacity: 1; transform: translateY(0) scale(1); }
+
+.desktop-card-inner { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 16px; padding: 20px; height: 100%; transition: all 0.3s ease; }
+
+.desktop-stage-card.active .desktop-card-inner, .desktop-stage-card:hover .desktop-card-inner { border-color: rgba(6, 182, 212, 0.5); background: rgba(6, 182, 212, 0.1); box-shadow: 0 0 30px rgba(6, 182, 212, 0.2); }
+
+.desktop-card-header { text-align: center; margin-bottom: 16px; }
+
+.desktop-card-emoji { font-size: 2.5rem; margin-bottom: 8px; }
+
+.desktop-card-title { font-weight: bold; font-size: 1.1rem; color: #e5e7eb; }
+
+.desktop-card-body { text-align: center; }
+
+.desktop-card-body p { font-size: 0.9rem; color: #d1d5db; margin-bottom: 12px; }
+
+.desktop-card-metrics { display: flex; flex-direction: column; gap: 8px; }
+
+.desktop-metric { display: flex; justify-content: space-between; font-size: 0.8rem; padding: 6px 8px; border-radius: 8px; background: rgba(255, 255, 255, 0.05); }
+
+.desktop-metric.positive { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
+
+.desktop-metric.negative { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+
+.metric-label { font-weight: 500; }
+
+.metric-value { font-weight: bold; }
+
+.refork-desktop-card .desktop-card-inner { border-width: 2px; background: rgba(6, 182, 212, 0.15); }
+
+.desktop-card-actions { margin-top: 16px; }
+
+.desktop-action-btn { width: 100%; padding: 12px; background: linear-gradient(135deg, #06b6d4, #0ea5e9); color: white; border: none; border-radius: 10px; font-weight: bold; font-size: 0.9rem; transition: all 0.3s ease; }
+.desktop-action-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(6, 182, 212, 0.4); }
+
+.wave-mobile-container { overflow: hidden; }
+
+.mobile-point { position: absolute; transform: translate(-50%, -50%); transition: all 0.3s ease; z-index: 10; }
+
+.mobile-point.point-1 { top: 50%; left: 10%; }
+.mobile-point.point-2 { top: 20%; left: 30%; }
+.mobile-point.point-3 { top: 80%; left: 50%; }
+.mobile-point.point-4 { top: 60%; left: 70%; }
+.mobile-point.refork-mobile-point { top: 30%; left: 90%; }
+
+.mobile-pulse { width: 16px; height: 16px; border-radius: 50%; position: relative; }
+.mobile-pulse::after { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 2px solid currentColor; opacity: 0; animation: mobilePulse 2s ease-in-out infinite; }
+
+.refork-mobile-point .mobile-pulse::after { animation: reforkMobilePulse 1.5s ease-in-out infinite; }
+
+@keyframes mobilePulse { 0%, 100% { transform: scale(1); opacity: 0.7; } 50% { transform: scale(1.3); opacity: 0.3; } }
+@keyframes reforkMobilePulse { 0%, 100% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.7); } 50% { transform: scale(1.5); opacity: 0.8; box-shadow: 0 0 0 10px rgba(6, 182, 212, 0); } }
+
+.point-1 .mobile-pulse { background: #8b5cf6; }
+.point-2 .mobile-pulse { background: #10b981; }
+.point-3 .mobile-pulse { background: #ef4444; }
+.point-4 .mobile-pulse { background: #6b7280; }
+.refork-mobile-point .mobile-pulse { background: #06b6d4; }
+
+.refork-mobile-glow { position: absolute; inset: -8px; border-radius: 50%; background: radial-gradient(circle, rgba(6, 182, 212, 0.3), transparent 70%); z-index: -1; }
+
+.mobile-label { position: absolute; top: -30px; left: 50%; transform: translateX(-50%); white-space: nowrap; font-size: 11px; font-weight: bold; opacity: 0.8; }
+
+.mobile-entry-cursor { position: absolute; top: 30%; left: 85%; transform: translate(-50%, -50%); z-index: 10; }
+
+.mobile-cursor-line { width: 2px; height: 60px; background: linear-gradient(to bottom, transparent, #06b6d4, transparent); margin: 0 auto; }
+
+.mobile-cursor-text { font-size: 0.7rem; white-space: nowrap; background: rgba(6, 182, 212, 0.9); padding: 4px 8px; border-radius: 6px; margin-top: 4px; font-weight: bold; }
+
+.mobile-stage-card { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; padding: 16px; transition: all 0.3s ease; opacity: 0.7; transform: scale(0.95); }
+
+.mobile-stage-card.active { opacity: 1; transform: scale(1); border-color: rgba(6, 182, 212, 0.5); background: rgba(6, 182, 212, 0.1); box-shadow: 0 0 20px rgba(6, 182, 212, 0.2); }
+
+.mobile-card-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+
+.mobile-card-emoji { font-size: 1.2rem; }
+
+.mobile-card-title { font-weight: bold; flex: 1; }
+
+.mobile-card-badge { font-size: 0.7rem; padding: 2px 8px; border-radius: 12px; background: rgba(255, 255, 255, 0.1); }
+
+.refork-mobile-card .mobile-card-badge { background: linear-gradient(135deg, #06b6d4, #0ea5e9); color: white; animation: glow 2s ease-in-out infinite alternate; }
+
+.mobile-card-body { font-size: 0.9rem; }
+
+.mobile-card-body p { margin-bottom: 8px; }
+
+.mobile-card-metrics { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+
+.mobile-metric { font-size: 0.75rem; padding: 2px 6px; border-radius: 6px; background: rgba(255, 255, 255, 0.05); }
+
+.mobile-metric.positive { background: rgba(34, 197, 94, 0.2); color: #22c55e; }
+
+.mobile-metric.negative { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+
+.refork-mobile-card .mobile-card-body p { font-weight: bold; }
+
+.mobile-card-actions { margin-top: 12px; }
+
+.mobile-action-btn { width: 100%; padding: 12px; background: linear-gradient(135deg, #06b6d4, #0ea5e9); color: white; border: none; border-radius: 8px; font-weight: bold; font-size: 0.9rem; }
+
+.mobile-stage-card { animation: mobileSlideInUp 0.6s ease-out forwards; }
+
+.mobile-stage-card:nth-child(1) { animation-delay: 0.1s; }
+.mobile-stage-card:nth-child(2) { animation-delay: 0.2s; }
+.mobile-stage-card:nth-child(3) { animation-delay: 0.3s; }
+.mobile-stage-card:nth-child(4) { animation-delay: 0.4s; }
+.mobile-stage-card:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes mobileSlideInUp { from { opacity: 0; transform: translateY(20px) scale(0.95); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+@keyframes glow { from { box-shadow: 0 0 5px rgba(6, 182, 212, 0.5); } to { box-shadow: 0 0 15px rgba(6, 182, 212, 0.8); } }
+
+.desktop-point, .mobile-point { opacity: 0; transform: translate(-50%, -50%) scale(0.5); transition: all 0.5s ease; }
+
+.desktop-point.active, .mobile-point.active { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+
+.bg-size-200 { background-size: 200% 200%; }
+.animate-gradient { animation: gradient-shift 4s ease infinite; }
+@keyframes gradient-shift { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+
+.wm-text-main { display: flex; align-items: center; justify-content: center; font-size: clamp(4rem, 15vw, 12rem); font-weight: 900; letter-spacing: -0.035em; background: linear-gradient(90deg, #14F195, #9945FF, #00C2FF, #14F195); background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; user-select: none; pointer-events: none; text-shadow: 0 0 10px rgba(20,241,149,.12), 0 0 22px rgba(0,194,255,.10); animation: wm-shine 9s linear infinite, wm-glow 4.5s ease-in-out infinite alternate; margin-bottom: -2rem; opacity: 0.8; }
+
+@keyframes wm-shine { 0% { background-position: 0% 50%; } 100% { background-position: 200% 50%; } }
+
+@keyframes wm-glow { from { text-shadow: 0 0 6px rgba(20,241,149,.10), 0 0 12px rgba(0,194,255,.10); } to { text-shadow: 0 0 18px rgba(20,241,149,.28), 0 0 34px rgba(0,194,255,.24); } }
+
+.btn-glow { position: relative; animation: pulse-glow 2s ease-in-out infinite alternate; }
+
+@keyframes pulse-glow { 0% { box-shadow: 0 0 5px rgba(34, 197, 94, 0.4), 0 0 10px rgba(34, 197, 94, 0.3), 0 0 15px rgba(34, 197, 94, 0.2), 0 0 20px rgba(34, 197, 94, 0.1); } 100% { box-shadow: 0 0 10px rgba(34, 197, 94, 0.6), 0 0 20px rgba(34, 197, 94, 0.4), 0 0 30px rgba(34, 197, 94, 0.3), 0 0 40px rgba(34, 197, 94, 0.2); } }
+
+@media (max-width: 768px) {
+    #tokenized-stocks-cta .grid { grid-template-columns: 1fr; gap: 1rem; }
+    .wm-text-main { font-size: clamp(3rem, 12vw, 8rem); margin-bottom: -1rem; opacity: 0.7; }
+}
+
+@media (max-width: 768px) { #full-cycle .grid-cols-5 { grid-template-columns: repeat(2, 1fr); } }
+
+#meme-psychology .flex-wrap { flex-direction: column; }
+.text-4xl { font-size: 2rem; }
+.text-5xl { font-size: 2.5rem; }
+
+#full-cycle, #meme-psychology, #target-audience { transform: translateZ(0); backface-visibility: hidden; }
+
+details[open] summary ~ * { animation: sweep 0.3s ease-in-out; }
+
+@keyframes sweep { 0% { opacity: 0; transform: translateY(-10px); } 100% { opacity: 1; transform: translateY(0); } }
+
+summary::marker, summary::-webkit-details-marker { display: none; }
+
+.content-visibility-auto { content-visibility: auto; contain-intrinsic-size: 1000px; }
+img[loading="lazy"] { opacity: 0; transition: opacity 0.3s ease; }
+img.loaded { opacity: 1; }
+
+.reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+body:not(.loaded) .main-content { opacity: 0; visibility: hidden; }
+body.loaded .main-content { opacity: 1; visibility: visible; transition: opacity 0.5s ease 0.2s; }
+
+.success-toast, .error-toast { position: fixed; top: 20px; right: 20px; padding: 12px 20px; border-radius: 8px; z-index: 10000; box-shadow: 0 4px 12px rgba(0,0,0,0.15); opacity: 1; transition: opacity 0.3s ease; max-width: 400px; font-weight: 500; }
+.success-toast { background: var(--success); color: white; }
+.error-toast { background: var(--error); color: white; }
+
+    </style>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=104983638', 'ym');
+
+        ym(104983638, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/104983638" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+	
+    <!-- После Яндекс.Метрики -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList", 
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "ReFork Capital",
+          "item": "https://reforkcapital.online/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2, 
+          "name": "Инвестиционные пакеты",
+          "item": "https://reforkcapital.online/#packages"
+        }
+      ]
     }
-  </script>
+    </script>
 
-  <!-- =========================
-       Unified optimized CSS (all custom styles inside one <style>)
-       - deduplicated, fixed braces & comments
-       - preserves all visual effects & animations
-       ========================= -->
-  <style>
-  /* ===== root variables & base reset ===== */
-  :root{
-    --bg:#0b0e14;
-    --text:#e5e7eb;
-    --muted:#9ca3af;
-    --accent:#14F195;
-    --accent-2:#06b6d4;
-    --glass-bg: rgba(255,255,255,0.04);
-  }
-  *,*::before,*::after{box-sizing:border-box}
-  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Inter,ui-sans-serif,Segoe UI,Roboto,"Helvetica Neue",Arial;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}
-  img{max-width:100%;height:auto;display:block}
-  a{color:inherit;text-decoration:none}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FinancialService",
+      "name": "ReFork Capital",
+      "description": "Крипто-инвестиции и управление капиталом для инвесторов из России",
+      "url": "https://reforkcapital.online/",
+      "areaServed": {
+        "@type": "Country",
+        "name": "Russia"
+      },
+      "serviceType": "Cryptocurrency Investment Management"
+    }
+    </script>
 
-  /* Prevent FOUC - main content hidden until body.loaded is added */
-  body:not(.loaded) .main-content{opacity:0;visibility:hidden;transform:translateY(12px)}
-  body.loaded .main-content{opacity:1;visibility:visible;transform:none;transition:opacity .55s cubic-bezier(.22,1,.36,1),transform .55s cubic-bezier(.22,1,.36,1)  }
+    <meta name="geo.region" content="RU" />
+    <meta name="geo.placename" content="Russia" />
 
-  /* ===== utility z-index fixes ===== */
-  section,header,footer{position:relative;z-index:20}
-  h1,h2,h3,p,details,summary,button,a,input,textarea,select,form{position:relative;z-index:30}
-
-  /* ===== GLow card ===== */
-  .glow-card{
-    position:relative;overflow:hidden;border-radius:1.25rem;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.02));
-    border:1px solid rgba(106,230,255,.22);box-shadow:0 10px 28px rgba(0,0,0,.48);transform:translateZ(0);backface-visibility:hidden;transition:transform .3s ease,box-shadow .3s ease
-  }
-  .glow-card::after{
-    content:"";position:absolute;inset:-12px;z-index:-1;border-radius:calc(1.25rem + 12px);background:radial-gradient(420px 180px at 50% 0%,rgba(34,211,238,.18),transparent 60%);filter:blur(14px)
-  }
-  .card-glow::before{
-    content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(90deg,#14F195,#9945FF,#00C2FF,#14F195);
-    background-size:300% 300%;animation:glow-move 6s linear infinite;
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;mask-composite: exclude;pointer-events:none;z-index:2
-  }
-  @keyframes glow-move{0%{background-position:0% 50%}100%{background-position:200% 50%}}
-
-  .glow-card:hover{transform:scale(1.03);box-shadow:0 0 25px rgba(6,182,212,0.4)}
-
-  /* ===== Quartz background (hero) ===== */
-  .quartz-bg{position:fixed;inset:0;z-index:-1;overflow:hidden;background:
-    radial-gradient(ellipse at 20% 20%, rgba(56,189,248,0.12) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 80%, rgba(139,92,246,0.10) 0%, transparent 50%),
-    linear-gradient(180deg, rgba(11,14,20,0.95), rgba(5,8,15,1)) }
-  .quartz-bg__gradient{position:absolute;inset:0;background:
-    radial-gradient(circle at 20% 30%, rgba(56,189,248,0.08), transparent 40%),
-    radial-gradient(circle at 80% 70%, rgba(139,92,246,0.08), transparent 40%),
-    radial-gradient(circle at 40% 50%, rgba(20,184,166,0.06), transparent 40%);animation:gradientPulse 8s ease-in-out infinite}
-  @keyframes gradientPulse{0%,100%{opacity:.8;transform:scale(1)}50%{opacity:1;transform:scale(1.04)}}
-
-  .quartz-shape{position:absolute;border-radius:50%;filter:blur(40px);animation:float 20s infinite linear}
-  .quartz-shape--1{width:300px;height:300px;top:10%;left:10%;animation-duration:25s;background:linear-gradient(45deg,rgba(56,189,248,.15),rgba(139,92,246,.1))}
-  .quartz-shape--2{width:400px;height:400px;top:60%;left:70%;animation-duration:30s;animation-delay:-5s;background:linear-gradient(45deg,rgba(139,92,246,.1),rgba(20,184,166,.15))}
-  .quartz-shape--3{width:250px;height:250px;top:30%;left:80%;animation-duration:20s;animation-delay:-10s;background:linear-gradient(45deg,rgba(20,184,166,.1),rgba(56,189,248,.15))}
-  .quartz-shape--4{width:350px;height:350px;top:70%;left:20%;animation-duration:35s;animation-delay:-15s;background:linear-gradient(45deg,rgba(56,189,248,.1),rgba(139,92,246,.15))}
-  .quartz-shape--5{width:200px;height:200px;top:20%;left:50%;animation-duration:18s;animation-delay:-7s;background:linear-gradient(45deg,rgba(139,92,246,.1),rgba(20,184,166,.1))}
-
-  @keyframes float{
-    0%{transform:translate(0,0) rotate(0deg) scale(1)}
-    25%{transform:translate(50px,30px) rotate(90deg) scale(1.1)}
-    50%{transform:translate(0,60px) rotate(180deg) scale(1.2)}
-    75%{transform:translate(-50px,30px) rotate(270deg) scale(1.1)}
-    100%{transform:translate(0,0) rotate(360deg) scale(1)}
-  }
-
-  .quartz-particles{position:absolute;inset:0;background-image:
-    radial-gradient(2px 2px at 20px 30px, rgba(56,189,248,0.25), transparent),
-    radial-gradient(2px 2px at 40px 70px, rgba(139,92,246,0.25), transparent),
-    radial-gradient(1px 1px at 90px 40px, rgba(56,189,248,0.3), transparent),
-    radial-gradient(1px 1px at 130px 80px, rgba(139,92,246,0.25), transparent),
-    radial-gradient(2px 2px at 160px 30px, rgba(20,184,166,0.25), transparent);
-    background-repeat:repeat;background-size:200px 200px;animation:particlesMove 100s linear infinite;opacity:.28}
-  @keyframes particlesMove{from{transform:translateY(0)}to{transform:translateY(-200px)}}
-
-  /* ===== Forms & inputs ===== */
-  .form-block{max-width:100%;margin:0 auto;display:grid;gap:16px;font-family:Inter,system-ui}
-  .form-block label{color:var(--text);font-size:14px;font-weight:500}
-  .form-block input,.form-block textarea,.form-block select{width:100%;padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.02);color:var(--text);font-family:Inter,system-ui;margin-top:4px;transition:all .25s ease}
-  .form-block input:focus,.form-block textarea:focus,.form-block select:focus{outline:none;border-color:var(--accent-2);box-shadow:0 0 0 6px rgba(6,182,212,0.06)}
-  .form-block input::placeholder,.form-block textarea::placeholder{color:var(--muted)}
-  .form-block button{padding:12px 18px;border-radius:12px;border:none;background:linear-gradient(90deg,var(--accent-2),#0ea5e9);color:#041025;font-weight:700;cursor:pointer;transition:all .25s ease}
-  .form-block button:hover{transform:translateY(-2px)}
-
-  /* ===== Toaster ===== */
-  .success-toast,.error-toast{position:fixed;top:20px;right:20px;color:#fff;padding:12px 18px;border-radius:12px;z-index:9999;box-shadow:0 14px 30px rgba(0,0,0,.25);transition:opacity .3s ease}
-  .success-toast{background:linear-gradient(90deg,#46c2ff,#8b5cf6)}
-  .error-toast{background:linear-gradient(90deg,#ef4444,#dc2626)}
-
-  /* ===== Exit Intent Popup ===== */
-  .exit-popup{position:fixed;inset:0;background:rgba(0,0,0,.9);display:flex;align-items:center;justify-content:center;z-index:10000;backdrop-filter:blur(5px);animation:fadeIn .28s ease}
-  .exit-popup-content{position:relative;background:linear-gradient(135deg,#0f172a,#021026);padding:36px 28px;border-radius:16px;max-width:520px;width:calc(100% - 40px);box-shadow:0 25px 50px rgba(0,0,0,.5);border:1px solid rgba(34,211,238,.12)}
-  .exit-popup-close{position:absolute;top:10px;right:10px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;border:none;color:#fff;font-size:20px;cursor:pointer;transition:transform .18s ease}
-  .exit-popup-close:hover{transform:scale(1.08);background:rgba(239,68,68,.3)}
-
-  /* ===== Timeline & stages ===== */
-  .timeline-stage{padding:1rem}
-  .timeline-stage .text-2xl{font-size:1.25rem}
-  .timeline-stage .text-sm{font-size:.85rem}
-  .timeline-content{display:flex;align-items:center;gap:12px;background:rgba(7,13,23,.6);padding:12px 16px;border-radius:12px;border:1px solid rgba(255,255,255,0.04)}
-  .phase-label{position:relative;padding:4px 8px;font-size:12px;transition:all .25s ease;text-shadow:0 0 12px rgba(20,241,149,.5)}
-  .phase-label::after{content:'';position:absolute;left:50%;top:100%;transform:translateX(-50%);width:40%;height:2px;background:linear-gradient(90deg,#14F195,#00C2FF);border-radius:2px;opacity:0;transition:opacity .25s}
-  .timeline-stage:hover .phase-label::after{opacity:1}
-
-  /* ===== Chart animation / svg draw ===== */
-  .chart-animation{stroke-dasharray:1000;stroke-dashoffset:1000;animation:drawChart 3.5s ease-in-out forwards}
-  @keyframes drawChart{to{stroke-dashoffset:0}}
-
-  /* ===== Scroll/gradient animations ===== */
-  .bg-size-200{background-size:200% 200%}
-  .animate-gradient{animation:gradient-shift 4s ease infinite}
-  @keyframes gradient-shift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-
-  /* ===== Kinetic typography ===== */
-  .kinetic-typography{position:relative;height:80px;display:flex;align-items:center;justify-content:center;perspective:1000px}
-  .kinetic-word{position:absolute;opacity:0;animation-duration:4.5s;animation-iteration-count:infinite;animation-timing-function:cubic-bezier(.4,0,.2,1);will-change:transform,opacity;filter:drop-shadow(0 5px 15px rgba(0,0,0,.25))}
-  .kinetic-word-1{animation-name:kineticLeft}
-  .kinetic-word-2{animation-name:kineticTop}
-  .kinetic-word-3{animation-name:kineticRight}
-  @keyframes kineticLeft{0%,15%{opacity:0;transform:translateX(-80px) rotateY(90deg)}20%,30%{opacity:1;transform:translateX(0) rotateY(0)}35%,100%{opacity:0;transform:translateX(60px) rotateY(-90deg)}}
-  @keyframes kineticTop{0%,35%{opacity:0;transform:translateY(-60px) rotateX(90deg)}40%,50%{opacity:1;transform:translateY(0) rotateX(0)}55%,100%{opacity:0;transform:translateY(50px) rotateX(-90deg)}}
-  @keyframes kineticRight{0%,55%{opacity:0;transform:translateX(80px) rotateY(-90deg)}60%,70%{opacity:1;transform:translateX(0) rotateY(0)}75%,100%{opacity:0;transform:translateX(-60px) rotateY(90deg)}}
-
-  /* ===== Gallery / cards ===== */
-  .gallery{position:relative;width:100%;height:auto;overflow:hidden;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
-  .cards{position:relative;width:100%;height:auto;display:flex;align-items:center;justify-content:center}
-  .cards li{list-style:none;padding:0;margin:0;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,.02)}
-  .cards li img{width:100%;height:100%;object-fit:cover;border-radius:12px}
-
-  /* ===== Buttons / CTA microinteractions ===== */
-  .cta-button{position:relative;overflow:hidden}
-  .btn-glow{position:relative;animation:pulse-glow 2s ease-in-out infinite alternate}
-  @keyframes pulse-glow{0%{box-shadow:0 0 5px rgba(34,197,94,.25)}100%{box-shadow:0 0 20px rgba(34,197,94,.45)}}
-
-  /* ===== Partners logos ===== */
-  .partner-link{display:block;transition:all .25s ease;border-radius:12px;padding:4px}
-  .partner-logo{width:60px;height:60px;object-fit:contain;border-radius:12px;padding:8px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);transition:all .25s ease}
-  .partner-logo:hover{transform:scale(1.08);box-shadow:0 0 20px rgba(34,211,238,.3);border-color:rgba(34,211,238,.25)}
-
-  /* ===== Wave drawing animation ===== */
-  .desktop-wave-path{stroke-dasharray:2000;stroke-dashoffset:2000;animation:drawDesktopWave 4s ease-in-out forwards}
-  .mobile-wave-path{stroke-dasharray:1000;stroke-dashoffset:1000;animation:drawMobileWave 3s ease-in-out forwards}
-  @keyframes drawDesktopWave{to{stroke-dashoffset:0}}
-  @keyframes drawMobileWave{to{stroke-dashoffset:0}}
-
-  /* ===== Responsive utilities (kept minimal & safe) ===== */
-  @media (max-width:1024px){#hero .grid{grid-template-columns:1fr!important} #hero h1{font-size:2.5rem!important;text-align:center;line-height:1.2}}
-  @media (max-width:768px){
-    .grid-cols-5{grid-template-columns:repeat(2,1fr)} .text-5xl{font-size:2.5rem} .text-6xl{font-size:3rem}
-    .form-block{gap:12px} .form-block input,.form-block textarea{padding:10px 14px}
-    .quartz-shape{display:block} .wm-text-main{font-size:clamp(3rem,12vw,8rem);opacity:.75}
-    .glow-card{padding:1rem}
-  }
-  @media (max-width:480px){
-    .phase-label{font-size:12px;padding:4px 8px}
-    .timeline-stage:nth-child(1){animation:delay-slide-up .5s ease .2s forwards}
-    .timeline-stage:nth-child(2){animation:delay-slide-up .5s ease .4s forwards}
-    .timeline-stage:nth-child(3){animation:delay-slide-up .5s ease .6s forwards}
-    .timeline-stage:nth-child(4){animation:delay-slide-up .5s ease .8s forwards}
-    .timeline-stage:nth-child(5){animation:delay-slide-up .5s ease 1s forwards}
-  }
-  @keyframes delay-slide-up{0%{opacity:0;transform:translateY(20px)}100%{opacity:1;transform:translateY(0)}}
-
-  /* ===== Accessibility & performance helpers ===== */
-  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-  .content-visibility-auto{content-visibility:auto;contain-intrinsic-size:400px}
-  img[loading="lazy"]{opacity:0;transition:opacity .28s ease}
-  img.loaded{opacity:1}
-
-  /* ===== Reveal helper used by JS intersection observer ===== */
-  .reveal{opacity:0;transform:translateY(30px);transition:all .8s cubic-bezier(.22,1,.36,1)}
-  .reveal.active{opacity:1;transform:none}
-
-  /* small helper at very end */
-  footer{color:var(--muted)}
-
-  /* Восстановленные стили из старого head (добавлены/расширены для указанных секций без дубликатов и потери производительности) */
-
-  /* Для Our Ecosystem Partners (partners logos с hover-эффектами) - уже присутствует, но подтверждено полное восстановление */
-  .partner-link{display:block;transition:all .25s ease;border-radius:12px;padding:4px}
-  .partner-logo{width:60px;height:60px;object-fit:contain;border-radius:12px;padding:8px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);transition:all .25s ease}
-  .partner-logo:hover{transform:scale(1.08);box-shadow:0 0 20px rgba(34,211,238,.3);border-color:rgba(34,211,238,.25)}
-
-  /* Для Наши сделки / кейсы (gallery) - восстановление изображений, теней и grid с object-fit */
-  .gallery{position:relative;width:100%;height:auto;overflow:hidden;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem}
-  .cards{position:relative;width:100%;height:auto;display:flex;align-items:center;justify-content:center}
-  .cards li{list-style:none;padding:0;margin:0;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,.02)}
-  .cards li img{width:100%;height:100%;object-fit:cover;border-radius:12px}
-
-  /* Для Волна Циклов ReFork (SVG-анимация волны, плавное появление, wave path draw) - полное восстановление с расширенными стилями из старого */
-  .wave-mobile-container{overflow:hidden}
-  .desktop-wave-path{stroke-dasharray:2000;stroke-dashoffset:2000;animation:drawDesktopWave 4s ease-in-out forwards}
-  .mobile-wave-path{stroke-dasharray:1000;stroke-dashoffset:1000;animation:drawMobileWave 3s ease-in-out forwards}
-  @keyframes drawDesktopWave{to{stroke-dashoffset:0}}
-  @keyframes drawMobileWave{to{stroke-dashoffset:0}}
-  #traffic-engine > .-z-10::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 20%, rgba(34,211,238,0.06), transparent 70%),linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.6));opacity:0.25;transform:translateY(0);transition:transform 0.4s ease-out;will-change:transform}
-  #traffic-engine > .-z-10::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 100%, rgba(34,211,238,0.05), transparent 80%);pointer-events:none}
-  .traffic-card{backdrop-filter:blur(6px);transition:transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease}
-  .traffic-card:hover{transform:translateY(-5px);border-color:rgba(6,182,212,0.4);box-shadow:0 10px 30px rgba(6,182,212,0.2)}
-  .desktop-point{position:absolute;transform:translate(-50%, -50%);transition:all 0.3s ease;z-index:10}
-  .desktop-point.point-1{top:50%;left:10%}
-  .desktop-point.point-2{top:20%;left:30%}
-  .desktop-point.point-3{top:80%;left:50%}
-  .desktop-point.point-4{top:60%;left:70%}
-  .desktop-point.refork-desktop-point{top:30%;left:90%}
-  .desktop-pulse{width:20px;height:20px;border-radius:50%;position:relative}
-  .desktop-pulse::after{content:'';position:absolute;inset:-6px;border-radius:50%;border:2px solid currentColor;opacity:0;animation:desktopPulse 2s ease-in-out infinite}
-  .refork-desktop-point .desktop-pulse::after{animation:reforkDesktopPulse 1.5s ease-in-out infinite}
-  @keyframes desktopPulse{0%,100%{transform:scale(1);opacity:0.7}50%{transform:scale(1.4);opacity:0.3}}
-  @keyframes reforkDesktopPulse{0%,100%{transform:scale(1);opacity:1;box-shadow:0 0 0 0 rgba(6,182,212,0.7)}50%{transform:scale(1.8);opacity:0.8;box-shadow:0 0 0 15px rgba(6,182,212,0)}}
-  .point-1 .desktop-pulse{background:#8b5cf6}
-  .point-2 .desktop-pulse{background:#10b981}
-  .point-3 .desktop-pulse{background:#ef4444}
-  .point-4 .desktop-pulse{background:#6b7280}
-  .refork-desktop-point .desktop-pulse{background:#06b6d4}
-  .refork-desktop-glow{position:absolute;inset:-12px;border-radius:50%;background:radial-gradient(circle, rgba(6,182,212,0.4), transparent 70%);z-index:-1}
-  .desktop-label{position:absolute;top:-50px;left:50%;transform:translateX(-50%);white-space:nowrap;text-align:center;background:rgba(15,23,42,0.9);padding:8px 12px;border-radius:12px;border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(10px);min-width:100px}
-  .desktop-emoji{font-size:1.5rem;display:block;margin-bottom:4px}
-  .desktop-title{font-weight:bold;font-size:0.9rem;display:block;margin-bottom:2px}
-  .desktop-badge{font-size:0.7rem;padding:2px 6px;border-radius:8px;background:rgba(255,255,255,0.1)}
-  .refork-desktop-point .desktop-badge{background:linear-gradient(135deg, #06b6d4, #0ea5e9);color:white;animation:glow 2s ease-in-out infinite alternate}
-  .desktop-entry-line{position:absolute;top:30%;left:85%;transform:translateX(-50%);z-index:5;text-align:center}
-  .entry-arrow{font-size:2rem;color:#06b6d4;animation:bounce 2s ease-in-out infinite}
-  .entry-text{font-size:0.9rem;font-weight:bold;color:#06b6d4;margin-top:8px;background:rgba(6,182,212,0.1);padding:4px 8px;border-radius:6px}
-  @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-  .desktop-cards-grid{perspective:1000px}
-  .desktop-stage-card{transition:all 0.3s ease;opacity:0.7;transform:translateY(10px) scale(0.95)}
-  .desktop-stage-card.active,.desktop-stage-card:hover{opacity:1;transform:translateY(0) scale(1)}
-  .desktop-card-inner{background:rgba(15,23,42,0.6);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:20px;height:100%;transition:all 0.3s ease}
-  .desktop-stage-card.active .desktop-card-inner,.desktop-stage-card:hover .desktop-card-inner{border-color:rgba(6,182,212,0.5);background:rgba(6,182,212,0.1);box-shadow:0 0 30px rgba(6,182,212,0.2)}
-  .desktop-card-header{text-align:center;margin-bottom:16px}
-  .desktop-card-emoji{font-size:2.5rem;margin-bottom:8px}
-  .desktop-card-title{font-weight:bold;font-size:1.1rem;color:#e5e7eb}
-  .desktop-card-body{text-align:center}
-  .desktop-card-body p{font-size:0.9rem;color:#d1d5db;margin-bottom:12px}
-  .desktop-card-metrics{display:flex;flex-direction:column;gap:8px}
-  .desktop-metric{display:flex;justify-content:space-between;font-size:0.8rem;padding:6px 8px;border-radius:8px;background:rgba(255,255,255,0.05)}
-  .desktop-metric.positive{background:rgba(34,197,94,0.2);color:#22c55e}
-  .desktop-metric.negative{background:rgba(239,68,68,0.2);color:#ef4444}
-  .metric-label{font-weight:500}
-  .metric-value{font-weight:bold}
-  .refork-desktop-card .desktop-card-inner{border-width:2px;background:rgba(6,182,212,0.15)}
-  .desktop-card-actions{margin-top:16px}
-  .desktop-action-btn{width:100%;padding:12px;background:linear-gradient(135deg, #06b6d4, #0ea5e9);color:white;border:none;border-radius:10px;font-weight:bold;font-size:0.9rem;transition:all 0.3s ease}
-  .desktop-action-btn:hover{transform:translateY(-2px);box-shadow:0 5px 15px rgba(6,182,212,0.4)}
-  .mobile-point{position:absolute;transform:translate(-50%, -50%);transition:all 0.3s ease;z-index:10}
-  .mobile-point.point-1{top:50%;left:10%}
-  .mobile-point.point-2{top:20%;left:30%}
-  .mobile-point.point-3{top:80%;left:50%}
-  .mobile-point.point-4{top:60%;left:70%}
-  .mobile-point.refork-mobile-point{top:30%;left:90%}
-  .mobile-pulse{width:16px;height:16px;border-radius:50%;position:relative}
-  .mobile-pulse::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid currentColor;opacity:0;animation:mobilePulse 2s ease-in-out infinite}
-  .refork-mobile-point .mobile-pulse::after{animation:reforkMobilePulse 1.5s ease-in-out infinite}
-  @keyframes mobilePulse{0%,100%{transform:scale(1);opacity:0.7}50%{transform:scale(1.3);opacity:0.3}}
-  @keyframes reforkMobilePulse{0%,100%{transform:scale(1);opacity:1;box-shadow:0 0 0 0 rgba(6,182,212,0.7)}50%{transform:scale(1.5);opacity:0.8;box-shadow:0 0 0 10px rgba(6,182,212,0)}}
-  .point-1 .mobile-pulse{background:#8b5cf6}
-  .point-2 .mobile-pulse{background:#10b981}
-  .point-3 .mobile-pulse{background:#ef4444}
-  .point-4 .mobile-pulse{background:#6b7280}
-  .refork-mobile-point .mobile-pulse{background:#06b6d4}
-  .refork-mobile-glow{position:absolute;inset:-8px;border-radius:50%;background:radial-gradient(circle, rgba(6,182,212,0.3), transparent 70%);z-index:-1}
-  .mobile-label{position:absolute;top:-30px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:11px;font-weight:bold;opacity:0.8}
-  .mobile-entry-cursor{position:absolute;top:30%;left:85%;transform:translate(-50%, -50%);z-index:10}
-  .mobile-cursor-line{width:2px;height:60px;background:linear-gradient(to bottom, transparent, #06b6d4, transparent);margin:0 auto}
-  .mobile-cursor-text{font-size:0.7rem;white-space:nowrap;background:rgba(6,182,212,0.9);padding:4px 8px;border-radius:6px;margin-top:4px;font-weight:bold}
-  .mobile-stage-card{background:rgba(15,23,42,0.6);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:16px;transition:all 0.3s ease;opacity:0.7;transform:scale(0.95)}
-  .mobile-stage-card.active{opacity:1;transform:scale(1);border-color:rgba(6,182,212,0.5);background:rgba(6,182,212,0.1);box-shadow:0 0 20px rgba(6,182,212,0.2)}
-  .mobile-card-header{display:flex;align-items:center;gap:8px;margin-bottom:8px}
-  .mobile-card-emoji{font-size:1.2rem}
-  .mobile-card-title{font-weight:bold;flex:1}
-  .mobile-card-badge{font-size:0.7rem;padding:2px 8px;border-radius:12px;background:rgba(255,255,255,0.1)}
-  .refork-mobile-card .mobile-card-badge{background:linear-gradient(135deg, #06b6d4, #0ea5e9);color:white;animation:glow 2s ease-in-out infinite alternate}
-  .mobile-card-body{font-size:0.9rem}
-  .mobile-card-body p{margin-bottom:8px}
-  .mobile-card-metrics{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
-  .mobile-metric{font-size:0.75rem;padding:2px 6px;border-radius:6px;background:rgba(255,255,255,0.05)}
-  .mobile-metric.positive{background:rgba(34,197,94,0.2);color:#22c55e}
-  .mobile-metric.negative{background:rgba(239,68,68,0.2);color:#ef4444}
-  .refork-mobile-card .mobile-card-body p{font-weight:bold}
-  .mobile-card-actions{margin-top:12px}
-  .mobile-action-btn{width:100%;padding:12px;background:linear-gradient(135deg, #06b6d4, #0ea5e9);color:white;border:none;border-radius:8px;font-weight:bold;font-size:0.9rem}
-  .mobile-stage-card{animation:mobileSlideInUp 0.6s ease-out forwards}
-  .mobile-stage-card:nth-child(1){animation-delay:0.1s}
-  .mobile-stage-card:nth-child(2){animation-delay:0.2s}
-  .mobile-stage-card:nth-child(3){animation-delay:0.3s}
-  .mobile-stage-card:nth-child(4){animation-delay:0.4s}
-  .mobile-stage-card:nth-child(5){animation-delay:0.5s}
-  @keyframes mobileSlideInUp{from{opacity:0;transform:translateY(20px) scale(0.95)}to{opacity:1;transform:translateY(0) scale(1)}}
-  @keyframes glow{from{box-shadow:0 0 5px rgba(6,182,212,0.5)}to{box-shadow:0 0 15px rgba(6,182,212,0.8)}}
-  .desktop-point,.mobile-point{opacity:0;transform:translate(-50%, -50%) scale(0.5);transition:all 0.5s ease}
-  .desktop-point.active,.mobile-point.active{opacity:1;transform:translate(-50%, -50%) scale(1)}
-  </style>
-
-  <!-- =========================
-       Inline reveal script (deferred) - adds .loaded and activates .reveal elements
-       ========================= -->
-  <script defer>
-    (function(){
-      const onReady = () => {
-        // small delay so user sees smooth load
-        setTimeout(()=>document.body.classList.add('loaded'), 260);
-
-        // intersection observer for reveal animations
-        const io = new IntersectionObserver((entries)=>{
-          entries.forEach(e=>{
-            if(e.isIntersecting){
-              e.target.classList.add('active');
-              // optionally unobserve to save perf
-              io.unobserve(e.target);
+    <!-- ✅ Schema.org — Полная структура (Product + Organization + Website + FAQ) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "InvestmentOrFinancialProduct",
+          "@id": "https://reforkcapital.online/#product",
+          "name": "ReFork Capital Pool",
+          "description": "Закрытый пул инвесторов с доходностью до 80% за цикл. DeFi-стратегия на мем-токенах, AI аналитика и SMM капитализация.",
+          "url": "https://reforkcapital.online/",
+          "image": "https://reforkcapital.online/og-image.jpg",
+          "offers": {
+            "@type": "Offer",
+            "priceCurrency": "USDT",
+            "price": "300",
+            "availability": "https://schema.org/InStock"
+          },
+          "brand": {
+            "@type": "Organization",
+            "name": "ReFork Capital",
+            "url": "https://reforkcapital.online/"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "ReFork Capital"
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "127"
+          },
+          "sameAs": [
+            "https://t.me/ReForkCapital",
+            "https://twitter.com/ReForkCapital"
+          ]
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://reforkcapital.online/#organization",
+          "name": "ReFork Capital",
+          "url": "https://reforkcapital.online/",
+          "logo": "https://reforkcapital.online/og-image.jpg",
+          "description": "ReFork Capital — команда AI и DeFi-аналитиков, создающая прибыльные стратегии на рынке мем-токенов.",
+          "founder": {
+            "@type": "Person",
+            "name": "Lucas M"
+          },
+          "sameAs": [
+            "https://t.me/ReForkCapital",
+            "https://twitter.com/ReForkCapital"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "Investor Relations",
+            "url": "https://t.me/ReForkCapital"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://reforkcapital.online/#website",
+          "url": "https://reforkcapital.online/",
+          "name": "ReFork Capital",
+          "description": "ReFork Capital — AI DeFi стратегия с доходностью до 80% за цикл. Приватный инвестиционный пул на рынке мем-токенов.",
+          "publisher": {
+            "@id": "https://reforkcapital.online/#organization"
+          },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://reforkcapital.online/?s={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "@id": "https://reforkcapital.online/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Что такое ReFork Capital?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "ReFork Capital — закрытая AI + DeFi стратегия, объединяющая аналитику мем-токенов, поведение китов и эмоции комьюнити для получения стабильной прибыли до 80% за цикл."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Как работает стратегия ReFork Capital?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "AI-модели анализируют сотни метрик — транзакции китов, тренды в соцсетях и токеномику. Система определяет оптимальные точки входа и выхода, минимизируя риски и увеличивая ROI."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Как можно стать партнёром ReFork Capital?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Достаточно подать заявку на сайте и пройти короткую верификацию. После подтверждения вы получаете доступ к закрытому пулу и участвуете в распределении прибыли."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Безопасно ли инвестировать через ReFork Capital?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Да. Все операции проходят через смарт-контракты и прозрачные DeFi-пулы. Мы не храним средства пользователей и обеспечиваем высокий уровень прозрачности и контроля."
+              }
             }
-          });
-        }, { threshold: 0.15 });
+          ]
+        }
+      ]
+    }
+    </script>
 
-        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-      };
-
-      if(document.readyState === 'complete' || document.readyState === 'interactive'){
-        onReady();
-      } else {
-        document.addEventListener('DOMContentLoaded', onReady);
-      }
-    })();
-  </script>
-
-  <!-- =========================
-       JSON-LD (schema.org) — VALIDATED + optimized
-       ========================= -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@graph":[
-      {
-        "@type":"InvestmentOrFinancialProduct",
-        "@id":"https://reforkcapital.online/#product",
-        "name":"ReFork Capital Pool",
-        "description":"Закрытый пул инвесторов с доходностью до 80% за цикл. DeFi-стратегия на мем-токенах, AI аналитика и SMM капитализация.",
-        "url":"https://reforkcapital.online/",
-        "areaServed":{"@type":"Country","name":"Russia"},
-        "serviceType":"Cryptocurrency Investment Management",
-        "image":"https://reforkcapital.online/og-image.jpg",
-        "offers":{"@type":"Offer","priceCurrency":"USDT","price":"300","availability":"https://schema.org/InStock"},
-        "brand":{"@type":"Organization","name":"ReFork Capital"},
-        "publisher":{"@type":"Organization","name":"ReFork Capital"},
-        "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"127"},
-        "sameAs":["https://t.me/ReForkCapital","https://twitter.com/ReForkCapital"]
-      },
-      {
-        "@type":"Organization",
-        "@id":"https://reforkcapital.online/#organization",
-        "name":"ReFork Capital",
-        "url":"https://reforkcapital.online/",
-        "logo":"https://reforkcapital.online/og-image.jpg",
-        "description":"ReFork Capital — команда AI и DeFi-аналитиков, создающая прибыльные стратегии на рынке мем-токенов.",
-        "founder":{"@type":"Person","name":"Lucas M"},
-        "sameAs":["https://t.me/ReForkCapital","https://twitter.com/ReForkCapital"],
-        "contactPoint":{"@type":"ContactPoint","contactType":"Investor Relations","url":"https://t.me/ReForkCapital"}
-      },
-      {
-        "@type":"WebSite",
-        "@id":"https://reforkcapital.online/#website",
-        "url":"https://reforkcapital.online/",
-        "name":"ReFork Capital",
-        "description":"ReFork Capital — AI DeFi стратегия с доходностью до 80% за цикл.",
-        "publisher":{"@id":"https://reforkcapital.online/#organization"},
-        "potentialAction":{"@type":"SearchAction","target":"https://reforkcapital.online/?s={search_term_string}","query-input":"required name=search_term_string"}
-      },
-      {
-        "@type":"FAQPage",
-        "@id":"https://reforkcapital.online/#faq",
-        "mainEntity":[
-          {"@type":"Question","name":"Что такое ReFork Capital?","acceptedAnswer":{"@type":"Answer","text":"ReFork Capital — закрытая AI + DeFi стратегия, объединяющая аналитику мем-токенов, поведение китов и эмоции комьюнити для получения стабильной прибыли до 80% за цикл."}},
-          {"@type":"Question","name":"Как работает стратегия ReFork Capital?","acceptedAnswer":{"@type":"Answer","text":"AI-модели анализируют сотни метрик — транзакции китов, тренды в соцсетях и токеномику. Система определяет оптимальные точки входа и выхода, минимизируя риски и увеличивая ROI."}},
-          {"@type":"Question","name":"Как можно стать партнёром ReFork Capital?","acceptedAnswer":{"@type":"Answer","text":"Достаточно подать заявку на сайте и пройти короткую верификацию. После подтверждения вы получаете доступ к закрытому пулу и участвуете в распределении прибыли."}},
-          {"@type":"Question","name":"Безопасно ли инвестировать через ReFork Capital?","acceptedAnswer":{"@type":"Answer","text":"Да. Все операции проходят через смарт-контракты и прозрачные DeFi-пулы. Мы не храним средства пользователей и обеспечиваем высокий уровень прозрачности и контроля."}}
-        ]
-      }
-    ]
-  }
-  </script>
-
-  <!-- =========================
-       Yandex.Metrika (analytics)
-       - asynchronous, injected safely, dedup check
-       ========================= -->
-  <script>
-    (function(m,e,t,r,i,k,a){
-      m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-      m[i].l=1*new Date();
-      // avoid double injection
-      if(document.querySelector('script[src="'+r+'"]')) return;
-      k=e.createElement(t),a=e.getElementsByTagName(t)[0];
-      k.async=1;k.src=r;a.parentNode.insertBefore(k,a)
-    })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
-
-    // init
-    ym(104983638, 'init', {
-      webvisor: true,
-      clickmap: true,
-      accurateTrackBounce: true,
-      trackLinks: true
-    });
-  </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/104983638" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-
-  <!-- head end -->
 </head>
+
 
 
 <body>
