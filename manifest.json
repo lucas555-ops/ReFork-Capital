@@ -1,21 +1,235 @@
+# === manifest.json ===
 {
   "name": "ReFork Capital",
   "short_name": "ReFork",
   "description": "Пассивные инвестиции в мем-токены до 80% ROI",
-  "start_url": "/",
+  "id": "/?ref=pwa",
+  "start_url": "/?source=pwa",
   "display": "standalone",
   "background_color": "#0b0e14",
   "theme_color": "#0ea5e9",
+  "scope": "/",
+  "orientation": "portrait-primary",
   "icons": [
     {
       "src": "/icon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
     },
     {
-      "src": "/icon-512.png", 
+      "src": "/icon-512.png",
       "sizes": "512x512",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
-  ]
+  ],
+  "screenshots": [
+    {
+      "src": "/og-image.jpg",
+      "sizes": "1200x630",
+      "type": "image/jpeg",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/og-image.jpg",
+      "sizes": "540x720",
+      "type": "image/jpeg",
+      "form_factor": "narrow"
+    }
+  ],
+  "categories": ["finance", "business"],
+  "shortcuts": [
+    {
+      "name": "Инвестировать",
+      "short_name": "Инвест",
+      "description": "Присоединиться к пулу ReFork Capital",
+      "url": "/#packages",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "О нас",
+      "short_name": "О нас",
+      "description": "Узнать больше о ReFork Capital",
+      "url": "/#about",
+      "icons": [
+        {
+          "src": "/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "share_target": {
+    "action": "/share",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "files": [
+        {
+          "name": "media",
+          "accept": ["image/*"]
+        }
+      ]
+    }
+  }
 }
+
+
+# === sw.js (Service Worker) ===
+const CACHE_NAME = 'reforkcapital-v1';
+const urlsToCache = [
+  '/',
+  '/index.html',
+  '/styles.css',
+  '/manifest.json',
+  '/icon-192.png',
+  '/icon-512.png'
+];
+
+// Установка Service Worker
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(cache => {
+        console.log('Opened cache');
+        return cache.addAll(urlsToCache);
+      })
+      .catch(err => console.error('Cache addAll error:', err))
+  );
+});
+
+// Активация Service Worker
+self.addEventListener('activate', event => {
+  const cacheWhitelist = [CACHE_NAME];
+  event.waitUntil(
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(cacheName => {
+          if (cacheWhitelist.indexOf(cacheName) === -1) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
+  );
+});
+
+// Fetch события - стратегия Cache First
+self.addEventListener('fetch', event => {
+  // Пропускаем non-GET запросы
+  if (event.request.method !== 'GET') {
+    return;
+  }
+
+  // Пропускаем chrome extensions
+  if (event.request.url.startsWith('chrome-extension://')) {
+    return;
+  }
+
+  event.respondWith(
+    caches.match(event.request)
+      .then(response => {
+        // Возвращаем из кеша, если есть
+        if (response) {
+          return response;
+        }
+
+        return fetch(event.request).then(response => {
+          // Не кешируем, если нет ответа или это не успешный ответ
+          if (!response || response.status !== 200 || response.type === 'error') {
+            return response;
+          }
+
+          // Кешируем только успешные GET запросы
+          const responseToCache = response.clone();
+          caches.open(CACHE_NAME)
+            .then(cache => {
+              cache.put(event.request, responseToCache);
+            });
+
+          return response;
+        });
+      })
+      .catch(() => {
+        // Возвращаем offline страницу если нужно
+        return caches.match('/');
+      })
+  );
+});
+
+// Background Sync для офлайн-функционала
+self.addEventListener('sync', event => {
+  if (event.tag === 'sync-data') {
+    event.waitUntil(
+      // Здесь можно добавить логику синхронизации
+      Promise.resolve()
+    );
+  }
+});
+
+// Push notifications (опционально)
+self.addEventListener('push', event => {
+  const data = event.data ? event.data.json() : {};
+  const options = {
+    body: data.body || 'Новое уведомление от ReFork Capital',
+    icon: '/icon-192.png',
+    badge: '/icon-192.png',
+    tag: 'reforkcapital-notification'
+  };
+
+  event.waitUntil(
+    self.registration.showNotification(data.title || 'ReFork Capital', options)
+  );
+});
+
+// Обработка кликов на уведомлении
+self.addEventListener('notificationclick', event => {
+  event.notification.close();
+  event.waitUntil(
+    clients.matchAll({ type: 'window' }).then(clientList => {
+      for (let i = 0; i < clientList.length; i++) {
+        const client = clientList[i];
+        if (client.url === '/' && 'focus' in client) {
+          return client.focus();
+        }
+      }
+      if (clients.openWindow) {
+        return clients.openWindow('/');
+      }
+    })
+  );
+});
+
+
+# === Скрипт для регистрации Service Worker (добавить в <head>) ===
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(registration => {
+          console.log('Service Worker зарегистрирован:', registration);
+        })
+        .catch(error => {
+          console.error('Ошибка регистрации Service Worker:', error);
+        });
+    });
+  }
+</script>
