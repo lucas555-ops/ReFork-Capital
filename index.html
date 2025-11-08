@@ -811,6 +811,102 @@ body.loaded .preloader {
 /* === /SIMPLE PRELOADER === */
 
 
+/* GMGN Promo Button */
+.social-proof {
+  animation: slideInUp 0.5s ease-out;
+}
+
+.gmgn-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 15px 20px;
+  background: transparent;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: linear-gradient(#0b0e14, #0b0e14) padding-box, linear-gradient(135deg, #8b5cf6, #06d6a0, #14f195) border-box;
+  position: relative;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  min-width: 120px;
+}
+
+.gmgn-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(6, 214, 160, 0.3);
+}
+
+.gmgn-text {
+  font-size: 20px;
+  font-weight: 900;
+  background: linear-gradient(335deg, #8b5cf6, #14f195);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.gmgn-subtext {
+  font-size: 10px;
+  color: rgba(255,255,255,0.8);
+  margin: 0;
+  font-weight: 500;
+  text-align: center;
+}
+
+.gmgn-close {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(0,0,0,0.9);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 10;
+  pointer-events: auto;
+}
+
+.gmgn-close:hover {
+  background: rgba(239,68,68,0.9);
+  transform: scale(1.1);
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 768px) {
+  .gmgn-container {
+    padding: 12px 16px;
+    min-width: 100px;
+  }
+  .gmgn-text {
+    font-size: 18px;
+  }
+  .gmgn-subtext {
+    font-size: 9px;
+  }
+}
+
     </style>
 
     <!-- Yandex.Metrika counter -->
@@ -1002,10 +1098,10 @@ body.loaded .preloader {
 
 <!-- GMGN Promo Button -->
 <div class="social-proof gmgn-promo" id="socialProof" style="display:none">
-  <a href="https://gmgn.ai/r/DEFI" target="_blank" rel="nofollow noopener noreferrer" class="gmgn-button">
+  <a href="https://gmgn.ai/r/DEFI" target="_blank" rel="nofollow noopener noreferrer" class="gmgn-container gmgn-button">
     <span class="gmgn-text">GMGN</span>
+    <span class="gmgn-subtext">Терминал DeFi</span>  
   </a>
-  <p class="gmgn-subtext">Терминал DeFi</p>
   <button class="gmgn-close" aria-label="Закрыть">×</button>
 </div>
 
@@ -4193,6 +4289,67 @@ document.addEventListener('DOMContentLoaded', () => {
 
       return { formProtection, sanitizeInput, validateFormData };
     })();
+	
+// Умный GMGN Promo Button
+let gmgnShowCount = 0;
+const MAX_SHOWS = 3; // Максимум 3 показа за сессию
+const SHOW_DURATION = 8000; // 8 секунд показа
+const SHOW_INTERVAL = 30000; // 30 секунд между показами
+
+function showGMGNPromo() {
+  const socialProof = document.getElementById('socialProof');
+  if (!socialProof || gmgnShowCount >= MAX_SHOWS) return;
+  gmgnShowCount++;
+ 
+  // Показываем кнопку
+  socialProof.style.display = 'block';
+  setTimeout(() => {
+    socialProof.style.opacity = '1';
+    socialProof.style.transform = 'translateY(0)';
+  }, 10);
+ 
+  // Скрываем через SHOW_DURATION
+  const hideTimer = setTimeout(() => {
+    hideGMGNPromo();
+   
+    // Планируем следующий показ, если не достигли максимума
+    if (gmgnShowCount < MAX_SHOWS) {
+      setTimeout(showGMGNPromo, SHOW_INTERVAL);
+    }
+  }, SHOW_DURATION);
+ 
+  // Обработчики закрытия
+  const closeBtn = socialProof.querySelector('.gmgn-close');
+  const gmgnButton = socialProof.querySelector('.gmgn-button');  // Это ссылается на <a class="gmgn-container gmgn-button">
+ 
+  function closeHandler() {
+    clearTimeout(hideTimer);
+    hideGMGNPromo();
+    gmgnShowCount = MAX_SHOWS; // Больше не показываем
+  }
+ 
+  closeBtn.addEventListener('click', closeHandler);
+ 
+  // При клике на кнопку GMGN тоже считаем за взаимодействие
+  gmgnButton.addEventListener('click', () => {
+    clearTimeout(hideTimer);
+    // Даем время на переход по ссылке перед скрытием
+    setTimeout(() => {
+      gmgnShowCount = MAX_SHOWS;
+    }, 1000);
+  });
+}
+
+function hideGMGNPromo() {
+  const socialProof = document.getElementById('socialProof');
+  if (!socialProof) return;
+ 
+  socialProof.style.opacity = '0';
+  socialProof.style.transform = 'translateY(20px)';
+  setTimeout(() => {
+    socialProof.style.display = 'none';
+  }, 500);
+}
 
     // === ОСНОВНЫЕ ФУНКЦИИ ===
     document.addEventListener('DOMContentLoaded', function() {
@@ -4267,77 +4424,12 @@ setTimeout(() => {
         document.getElementById('progress-bar').style.width = scrolled + '%';
       });
 
-// Умный GMGN Promo Button
-let gmgnShowCount = 0;
-const MAX_SHOWS = 3; // Максимум 3 показа за сессию
-const SHOW_DURATION = 8000; // 8 секунд показа
-const SHOW_INTERVAL = 30000; // 30 секунд между показами
 
-function showGMGNPromo() {
-  const socialProof = document.getElementById('socialProof');
-  if (!socialProof || gmgnShowCount >= MAX_SHOWS) return;
-
-  gmgnShowCount++;
-  
-  // Показываем кнопку
-  socialProof.style.display = 'block';
-  setTimeout(() => {
-    socialProof.style.opacity = '1';
-    socialProof.style.transform = 'translateY(0)';
-  }, 10);
-
-  // Скрываем через SHOW_DURATION
-  const hideTimer = setTimeout(() => {
-    hideGMGNPromo();
-    
-    // Планируем следующий показ, если не достигли максимума
-    if (gmgnShowCount < MAX_SHOWS) {
-      setTimeout(showGMGNPromo, SHOW_INTERVAL);
-    }
-  }, SHOW_DURATION);
-
-  // Обработчики закрытия
-  const closeBtn = socialProof.querySelector('.gmgn-close');
-  const gmgnButton = socialProof.querySelector('.gmgn-button');
-  
-  function closeHandler() {
-    clearTimeout(hideTimer);
-    hideGMGNPromo();
-    gmgnShowCount = MAX_SHOWS; // Больше не показываем
-  }
-  
-  closeBtn.addEventListener('click', closeHandler);
-  
-  // При клике на кнопку GMGN тоже считаем за взаимодействие
-  gmgnButton.addEventListener('click', () => {
-    clearTimeout(hideTimer);
-    // Даем время на переход по ссылке перед скрытием
-    setTimeout(() => {
-      gmgnShowCount = MAX_SHOWS;
-    }, 1000);
-  });
-}
-
-function hideGMGNPromo() {
-  const socialProof = document.getElementById('socialProof');
-  if (!socialProof) return;
-  
-  socialProof.style.opacity = '0';
-  socialProof.style.transform = 'translateY(20px)';
-  setTimeout(() => {
-    socialProof.style.display = 'none';
-  }, 500);
-}
 
 // Запускаем первый показ через 3 секунды
 setTimeout(showGMGNPromo, 3000);
 
-// Exit Intent Popup - Tokenized Stocks Offer
-let exitIntentShown = false;
-let exitIntentTimer;
 
-function initExitIntent() {
-  let exitIntentTimeout;
   
   // Отслеживание ухода с сайта с debounce
   document.addEventListener('mouseleave', (e) => {
@@ -4555,9 +4647,7 @@ function showPersonalizedExitPopup() {
     });
   </script>
   
-  <script>
-  AOS.init();
-</script>
+
 
 <script>
 window.addEventListener('online', () => {
@@ -4572,8 +4662,7 @@ window.addEventListener('offline', () => {
 
 
 
-<!-- Observer удалён, используйте AOS для анимаций -->
-</script>
+
 
 
 <script>
@@ -5528,6 +5617,7 @@ function hideExitPopup(popup) {
     }, 400);
   }
 }
+</script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -5573,11 +5663,8 @@ window.addEventListener("load", () => {
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" defer></script>
 
 <script>
@@ -5610,6 +5697,15 @@ document.addEventListener('scroll', () => {
 })();
 </script>
 
+  <!-- Все остальные скрипты -->
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (typeof initExitIntent === 'function') {
+      initExitIntent();
+      console.log("✅ Exit Popup запущен");
+    }
+  });
+  </script>
 
 </body>
 </html>
