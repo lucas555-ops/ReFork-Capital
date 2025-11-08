@@ -128,6 +128,7 @@
 
     <!-- Critical CSS (inline, first priority) -->
     <style>
+	
 @font-face {
   font-family: 'Inter';
   src: local('Inter'), local('system-ui');
@@ -765,6 +766,51 @@ body.loaded .main-content { opacity: 1; visibility: visible; transition: opacity
 .success-toast { background: var(--success); color: white; }
 .error-toast { background: var(--error); color: white; }
 
+/* === SIMPLE PRELOADER === */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: radial-gradient(circle at center, #0b0e14 50%, #000 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.preloader-ring {
+  width: 64px;
+  height: 64px;
+  border: 3px solid rgba(255, 215, 0, 0.15);
+  border-top-color: #ffd700;
+  border-radius: 50%;
+  animation: spin 1.1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.preloader--hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* плавное скрытие при body.loaded */
+body.loaded .preloader {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* отключаем анимацию для слабых устройств и при reduce-motion */
+@media (prefers-reduced-motion: reduce) {
+  .preloader-ring { animation: none; border-color: #ffd700; }
+}
+/* === /SIMPLE PRELOADER === */
+
+
     </style>
 
     <!-- Yandex.Metrika counter -->
@@ -942,6 +988,12 @@ body.loaded .main-content { opacity: 1; visibility: visible; transition: opacity
 
 <body>
 
+<!-- === SIMPLE PRELOADER === -->
+<div id="preloader" class="preloader" aria-hidden="true" role="status" aria-label="Загрузка сайта">
+  <div class="preloader-ring"></div>
+</div>
+<!-- === /SIMPLE PRELOADER === -->
+
 
   <div class="bg-overlay fixed inset-0 -z-5 pointer-events-none" aria-hidden="true"></div>
 
@@ -1086,7 +1138,7 @@ body.loaded .main-content { opacity: 1; visibility: visible; transition: opacity
 
         <!-- CTA кнопки -->
         <div class="flex flex-col sm:flex-row gap-3 pt-4 justify-center lg:justify-start">
-          <a href="#packages" 
+          <a href="#for-who" 
    class="cta-button bg-gradient-to-r from-green-400 to-emerald-500 text-black font-bold px-6 py-3 md:px-8 md:py-4 rounded-lg text-center hover:scale-105 transition-transform shadow-lg shadow-green-500/25"
    onmouseover="this.querySelector('.pulse').style.animationPlayState='running'">
   <span class="pulse"></span>
@@ -5538,6 +5590,25 @@ document.addEventListener('scroll', () => {
 });
 </script>
 
+<script>
+(function(){
+  const pre = document.getElementById('preloader');
+  if (!pre) return;
+  
+  // Функция скрытия
+  function hidePreloader() {
+    document.body.classList.add('loaded');
+    pre.classList.add('preloader--hidden');
+    setTimeout(() => pre.remove(), 600);
+  }
+
+  // Обычная загрузка
+  window.addEventListener('load', hidePreloader);
+
+  // Таймаут страховка (если что-то зависнет)
+  setTimeout(hidePreloader, 7000);
+})();
+</script>
 
 
 </body>
