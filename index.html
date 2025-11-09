@@ -3360,7 +3360,7 @@ function scrollToFAQ() {
     <div class="bg-black/50 border border-yellow-400/30 rounded-xl p-4 mb-4">
       <label class="text-xs text-gray-400 uppercase tracking-wide mb-2 block">Адрес кошелька</label>
       <code id="walletAddress" class="text-yellow-400 text-sm break-all block mb-3 font-mono">
-        TYQfSL9Osa8Q8pJfKNkRMmyCkHfUq3hj2a
+        0xe00cE4196dC355Cf30a0aF3818EcCE3E374c8446
       </code>
       <button id="copyAddressBtn"
         class="w-full flex items-center justify-center gap-2 text-sm bg-yellow-400/20 text-yellow-300 px-4 py-2.5 rounded-lg hover:bg-yellow-400/30 transition-all">
@@ -3371,17 +3371,13 @@ function scrollToFAQ() {
       </button>
     </div>
 
-    <!-- QR код -->
-    <div class="bg-black/30 border border-yellow-400/20 rounded-xl p-4 mb-4">
-      <div id="qrcode" class="flex justify-center mb-2"></div>
-      <p class="text-center text-xs text-gray-400">Отсканируйте для быстрой оплаты</p>
-    </div>
+    
 
     <!-- Информация о сети -->
     <div class="bg-yellow-400/10 border border-yellow-400/30 rounded-lg p-3 mb-4">
       <div class="flex items-center justify-between text-sm">
         <span class="text-gray-400">Сеть:</span>
-        <span class="text-yellow-400 font-semibold">TRON (TRC-20)</span>
+        <span class="text-yellow-400 font-semibold">BSC (BEP-20)</span>
       </div>
       <div class="flex items-center justify-between text-sm mt-2">
         <span class="text-gray-400">Токен:</span>
@@ -3404,17 +3400,16 @@ function scrollToFAQ() {
     </button>
 
     <p class="text-xs text-gray-500 text-center mt-4">
-      ⚠️ Убедитесь, что выбрана сеть TRC-20, иначе средства будут потеряны
+      ⚠️ Убедитесь, что выбрана  сеть BSC - BNB Smart Chain (BEP-20), иначе средства будут потеряны
     </p>
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const walletAddress = 'TJphXbzqTbmPT4q3QxNpgz7v3z7KH3PzvW';
+  const walletAddress = '0xe00cE4196dC355Cf30a0aF3818EcCE3E374c8446';
   const modal = document.getElementById('paymentModal');
-  const qr = document.getElementById('qrcode');
+  
   const copyBtn = document.getElementById('copyAddressBtn');
   const copyText = document.getElementById('copyText');
   const closeModal = document.getElementById('closeModal');
@@ -3442,28 +3437,7 @@ document.addEventListener('DOMContentLoaded', () => {
     addressEl.textContent = address;
     modalAmount.textContent = `$${amount} USDT`;
     
-    // Генерация QR кода
-    qr.innerHTML = '';
-    QRCode.toCanvas(
-      document.createElement('canvas'),
-      address,
-      {
-        width: 180,
-        margin: 2,
-        color: {
-          dark: '#FACC15',
-          light: '#00000000'
-        }
-      },
-      (error, canvas) => {
-        if (!error) {
-          canvas.classList.add('mx-auto', 'rounded-lg');
-          qr.appendChild(canvas);
-        }
-      }
-    );
     
-    statusEl.innerHTML = '<span class="text-yellow-400 font-semibold text-sm">⏳ Ожидание перевода ' + amount + ' USDT...</span>';
     
     // Автоматическая проверка каждые 15 секунд
     if (checkInterval) clearInterval(checkInterval);
@@ -3546,7 +3520,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }
           setTimeout(() => {
             modal.classList.add('hidden');
-            alert('Спасибо за оплату! Ваш аккаунт будет активирован в течение 5 минут.');
+            alert('Пул успешно поплнен. Спасибо!.');
           }, 2000);
         } else {
           statusEl.innerHTML = '<span class="text-orange-400 font-semibold text-sm">⏳ Транзакция не найдена. Проверьте сумму и сеть.</span>';
