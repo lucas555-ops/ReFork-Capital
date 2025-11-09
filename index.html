@@ -1100,10 +1100,10 @@ body.loaded .preloader {
 
 <!-- GMGN Promo Button -->
 <div class="social-proof gmgn-promo" id="socialProof" style="display:none">
-  <a href="https://gmgn.ai/r/DEFI" target="_blank" rel="nofollow noopener noreferrer" class="gmgn-container gmgn-button">
+  <a href="https://gmgn.ai/r/DEFI" target="_blank" class="gmgn-button">
     <span class="gmgn-text">GMGN</span>
-    <span class="gmgn-subtext">Терминал DeFi</span>
   </a>
+  <p class="gmgn-subtext">Терминал DeFi</p>
   <button class="gmgn-close" aria-label="Закрыть">×</button>
 </div>
 
@@ -4490,6 +4490,10 @@ function hideGMGNPromo() {
     socialProof.style.display = 'none';
   }, 500);
 }
+window.addEventListener('load', () => {
+  setTimeout(showGMGNPromo, 3000);
+});
+
 
 /* ===========================
    === 4) Exit Intent — Premium Popup (инициализация + show/hide)
