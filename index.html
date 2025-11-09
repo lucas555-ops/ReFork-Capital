@@ -4551,7 +4551,8 @@ function showPersonalizedExitPopup() {
   if (exitIntentShown || localStorage.getItem('exitPopupShown') === 'true') return;
 
   // Персонализация
-  const timeOnSite = Math.floor((Date.now() - performance.timing.navigationStart) / 1000);
+  const navStart = performance.timeOrigin || (performance.timing ? performance.timing.navigationStart : Date.now());
+  const timeOnSite = Math.floor((Date.now() - navStart) / 1000);
   const scrollDepth = Math.floor((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
 
   let packagesViewed = '';
