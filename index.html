@@ -811,103 +811,6 @@ body.loaded .preloader {
 /* === /SIMPLE PRELOADER === */
 
 
-/* GMGN Promo Button */
-.social-proof {
-  animation: slideInUp 0.5s ease-out;
-}
-
-.gmgn-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  padding: 15px 20px;
-  background: transparent;
-  border-radius: 12px;
-  border: 1px solid transparent;
-  background: linear-gradient(#0b0e14, #0b0e14) padding-box, linear-gradient(135deg, #8b5cf6, #06d6a0, #14f195) border-box;
-  position: relative;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  min-width: 120px;
-}
-
-.gmgn-container:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(6, 214, 160, 0.3);
-}
-
-.gmgn-text {
-  font-size: 20px;
-  font-weight: 900;
-  background: linear-gradient(335deg, #8b5cf6, #14f195);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  letter-spacing: 1px;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
-}
-
-.gmgn-subtext {
-  font-size: 10px;
-  color: rgba(255,255,255,0.8);
-  margin: 0;
-  font-weight: 500;
-  text-align: center;
-}
-
-.gmgn-close {
-  position: absolute;
-  top: -6px;
-  right: -6px;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: rgba(0,0,0,0.9);
-  border: 1px solid rgba(255,255,255,0.3);
-  color: white;
-  font-size: 12px;
-  font-weight: bold;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-  z-index: 10;
-  pointer-events: auto;
-}
-
-.gmgn-close:hover {
-  background: rgba(239,68,68,0.9);
-  transform: scale(1.1);
-}
-
-@keyframes slideInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-
-/* Адаптивность для мобильных */
-@media (max-width: 768px) {
-  .gmgn-container {
-    padding: 12px 16px;
-    min-width: 100px;
-  }
-  .gmgn-text {
-    font-size: 18px;
-  }
-  .gmgn-subtext {
-    font-size: 9px;
-  }
-}
 
     </style>
 
@@ -1098,14 +1001,7 @@ body.loaded .preloader {
 <!-- Progress Bar -->
 <div class="fixed top-0 left-0 w-0 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 z-50" id="progress-bar"></div>
 
-<!-- GMGN Promo Button -->
-<div class="social-proof gmgn-promo" id="socialProof" style="display:none">
-  <a href="https://gmgn.ai/r/DEFI" target="_blank" class="gmgn-button">
-    <span class="gmgn-text">GMGN</span>
-  </a>
-  <p class="gmgn-subtext">Терминал DeFi</p>
-  <button class="gmgn-close" aria-label="Закрыть">×</button>
-</div>
+
 
 
 <header class="fixed top-0 left-0 right-0 z-50 backdrop-blur bg-black/95 border-b border-white/10 md:relative md:bg-black/40">
@@ -4426,73 +4322,6 @@ window.addEventListener('offline', () => {
   showError('⚠️ Нет соединения. Проверьте интернет');
 });
 
-/* ===========================
-   === 3) GMGN Promo Button (умный показ) ===
-   =========================== */
-let gmgnShowCount = 0;
-const MAX_SHOWS = 3; // Максимум 3 показа за сессию
-const SHOW_DURATION = 8000; // 8 секунд показа
-const SHOW_INTERVAL = 30000; // 30 секунд между показами
-
-function showGMGNPromo() {
-  const socialProof = document.getElementById('socialProof');
-  if (!socialProof || gmgnShowCount >= MAX_SHOWS) return;
-  gmgnShowCount++;
-
-  // Показываем кнопку
-  socialProof.style.display = 'block';
-  setTimeout(() => {
-    socialProof.style.opacity = '1';
-    socialProof.style.transform = 'translateY(0)';
-  }, 10);
-
-  // Скрываем через SHOW_DURATION
-  const hideTimer = setTimeout(() => {
-    hideGMGNPromo();
-
-    // Планируем следующий показ, если не достигли максимума
-    if (gmgnShowCount < MAX_SHOWS) {
-      setTimeout(showGMGNPromo, SHOW_INTERVAL);
-    }
-  }, SHOW_DURATION);
-
-  // Обработчики закрытия
-  const closeBtn = socialProof.querySelector('.gmgn-close');
-  const gmgnButton = socialProof.querySelector('.gmgn-button');
-
-  function closeHandler() {
-    clearTimeout(hideTimer);
-    hideGMGNPromo();
-    gmgnShowCount = MAX_SHOWS; // Больше не показываем
-  }
-
-  if (closeBtn) closeBtn.addEventListener('click', closeHandler);
-
-  if (gmgnButton) {
-    // При клике на кнопку GMGN тоже считаем за взаимодействие
-    gmgnButton.addEventListener('click', () => {
-      clearTimeout(hideTimer);
-      // Даем время на переход по ссылке перед скрытием
-      setTimeout(() => {
-        gmgnShowCount = MAX_SHOWS;
-      }, 1000);
-    });
-  }
-}
-
-function hideGMGNPromo() {
-  const socialProof = document.getElementById('socialProof');
-  if (!socialProof) return;
-
-  socialProof.style.opacity = '0';
-  socialProof.style.transform = 'translateY(20px)';
-  setTimeout(() => {
-    socialProof.style.display = 'none';
-  }, 500);
-}
-window.addEventListener('load', () => {
-  setTimeout(showGMGNPromo, 3000);
-});
 
 
 /* ===========================
@@ -4598,7 +4427,7 @@ function showPersonalizedExitPopup() {
   popup.className = 'premium-popup-overlay';
   popup.style.cssText = `font-family: 'Inter', 'Poppins', 'Segoe UI', system-ui, -apple-system, sans-serif;`;
 
-  popup.innerHTML = `
+popup.innerHTML = `
     <div class="premium-popup-container">
       <button class="premium-close-btn" aria-label="Закрыть окно">×</button>
       <div class="premium-popup-content">
@@ -4615,21 +4444,21 @@ function showPersonalizedExitPopup() {
           ⏰ СПЕЦПРЕДЛОЖЕНИЕ ДЕЙСТВУЕТ: 
           <span id="popupCountdown" class="premium-timer-countdown">05:00</span>
         </div>
-        <div class="premium-buttons-container">
-          <button id="exitPopupInvest" class="premium-gold-btn">
-            <span class="premium-gold-pulse"></span>
-            <span>${ctaText}</span>
-            <span style="transition: transform 0.3s ease;">→</span>
-          </button>
-          <button class="premium-return-btn">
-            Вернуться на сайт
-          </button>
+        <div class="premium-buttons-container flex justify-center gap-4 mt-6"> 
+            <button id="exitPopupInvest" class="premium-gold-btn btn-glow bg-transparent border-2 border-cyan-400 text-cyan-400 font-bold px-8 py-4 rounded-xl hover:bg-cyan-400/10 transition-all duration-300 flex items-center gap-2">
+                <span class="premium-gold-pulse"></span>
+                <span>Узнать больше</span>
+                <span style="transition: transform 0.3s ease;">→</span>
+            </button>
+            <button class="premium-return-btn btn-glow bg-transparent border-2 border-cyan-400 text-cyan-400 font-bold px-8 py-4 rounded-xl hover:bg-cyan-400/10 transition-all duration-300 flex items-center gap-2">
+                Вернуться на сайт
+            </button>
         </div>
-        <div class="premium-trust-signals">
-          <div class="premium-trust-grid">
-            <div class="premium-trust-item"><span>🔒</span><span>Конфиденциально</span></div>
-            <div class="premium-trust-item"><span>💎</span><span>Только для избранных</span></div>
-            <div class="premium-trust-item"><span>🚀</span><span>Премиум условия</span></div>
+        <div class="premium-trust-signals ">
+          <div class="premium-trust-grid flex justify-center gap-4 mt-4">
+            <div class="premium-trust-item"><span>🔒</span><span>Надежность</span></div>
+            <div class="premium-trust-item"><span>💎</span><span>Эксклюзив</span></div>
+            <div class="premium-trust-item"><span>🚀</span><span>Скорость</span></div>
           </div>
         </div>
       </div>
