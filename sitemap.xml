@@ -2505,7 +2505,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       <div class="glow-card card-glow p-6">
         <div class="text-4xl mb-4">🔥</div>
-        <h3 class="text-xl rel="preload" href-bold text-orange-400 mb-3">Социальное доказательство</h3>
+        <h3 class="text-xl text-orange-400 mb-3">Социальное доказательство</h3>
         <p class="text-gray-300 mb-4">
           Люди покупают то, что покупают другие. Создавая видимость хайпа, мы запускаем цепную реакцию.
         </p>
