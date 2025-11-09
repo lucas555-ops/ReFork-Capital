@@ -4184,31 +4184,101 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+<!-- CTA + Форма -->
+<section id="apply" class="py-24 text-center relative">
+  <div class="max-w-3xl mx-auto px-6">
 
+    <!-- 1️⃣ Первый call-to-action -->
+    <h2 class="text-4xl font-extrabold mb-4 bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 text-transparent bg-clip-text">
+      Готовы запустить свой цикл?
+    </h2>
+    <p class="text-gray-300 mb-8">
+      Получите персональную консультацию и ответы на все вопросы за 15 минут
+    </p>
 
-
-
-<section id="apply" class="relative py-24 flex items-center justify-center text-center bg-gradient-to-b from-black via-gray-900 to-black">
-  <div class="max-w-3xl w-full mx-auto px-6">
-    <div class="p-10 border border-white/10 rounded-3xl bg-white/5 shadow-[0_0_50px_rgba(0,255,255,0.06)] backdrop-blur-sm">
-      
-      <h2 class="text-4xl md:text-5xl font-extrabold mb-6 bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 text-transparent bg-clip-text">
-        Готовы запустить свой цикл?
-      </h2>
-      
-      <p class="text-gray-300 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed">
-        Получите персональную консультацию и ответы на все вопросы за 15 минут.
-      </p>
-      
-      <a href="https://t.me/ReForkCapital/7"
+    <div class="mb-16">
+      <a href="https://t.me/c/1892588438/4" 
          target="_blank"
-         class="inline-block bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-semibold text-lg px-12 py-4 rounded-2xl shadow-[0_0_25px_rgba(0,255,255,0.3)] hover:scale-105 hover:shadow-[0_0_40px_rgba(0,255,255,0.5)] transition-all duration-300">
+         class="inline-block bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-10 py-4 rounded-xl shadow-lg hover:scale-105 transition-all duration-300">
         💬 Открыть Telegram
       </a>
-      <p class="text-xs text-gray-500 text-center pt-4">
-        🔒 Конфиденциальность гарантирована.
-      </p>
     </div>
+	
+	
+
+    <!-- 2️⃣ Второй call-to-action перед формой -->
+    <h3 class="text-2xl font-bold mb-3 text-cyan-400">
+      Или воспользуйтесь формой
+    </h3>
+    <p class="text-gray-400 mb-10">
+      Мы свяжемся с вами, чтобы уточнить детали и запустить процесс ReFork Capital.
+    </p>
+
+    <!-- 3️⃣ Форма -->
+    <form id="leadForm"
+          method="POST"
+          class="p-8 text-left space-y-6 border border-white/10 rounded-2xl bg-white/5 shadow-[0_0_40px_rgba(0,255,255,0.08)] backdrop-blur-sm">
+
+      <input type="text" name="website" style="display:none" autocomplete="off" tabindex="-1" />
+      <input type="hidden" name="lang" value="ru">
+      <input type="hidden" name="source" value="ReFork Capital">
+
+      <div>
+        <label class="block text-sm text-gray-400 mb-1" for="name">Ваше имя *</label>
+        <input type="text" id="name" name="name" required
+               minlength="2" maxlength="100"
+               class="w-full bg-gray-900 border border-white/20 rounded-lg px-4 py-2 focus:border-cyan-400 focus:outline-none text-gray-100 placeholder-gray-500"
+               placeholder="Иван Иванов">
+      </div>
+
+      <!-- ОБНОВЛЕННЫЙ БЛОК TELEGRAM С ВАЛИДАЦИЕЙ -->
+      <div class="relative">
+        <label class="block text-sm text-gray-400 mb-1" for="telegram">Telegram *</label>
+        <div class="relative">
+          <input type="text" id="telegram" name="telegram" required
+                 pattern="^@[A-Za-z0-9_]{5,32}$"
+                 title="Введите корректный логин Telegram в формате @username"
+                 class="w-full bg-gray-900 border border-white/20 rounded-lg px-4 py-2 pr-10 focus:border-cyan-400 focus:outline-none text-gray-100 placeholder-gray-500 transition-colors"
+                 placeholder="@username">
+          <!-- Иконка валидации -->
+          <div class="absolute right-3 top-1/2 -translate-y-1/2 hidden" id="telegram-valid-icon">
+            <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          <div class="absolute right-3 top-1/2 -translate-y-1/2 hidden" id="telegram-invalid-icon">
+            <svg class="w-5 h-5 text-red-400" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+        </div>
+        <p class="text-xs text-gray-500 mt-1">Укажите ваш Telegram в формате @username</p>
+      </div>
+
+      <div>
+        <label class="block text-sm text-gray-400 mb-1" for="package">Выберите уровень *</label>
+        <select id="package" name="package" required
+                class="w-full bg-gray-900 border border-white/20 rounded-lg px-4 py-2 text-gray-100 focus:border-cyan-400 focus:outline-none cursor-pointer">
+          <option value="" disabled selected class="bg-gray-900 text-gray-400">Выберите сумму</option>
+          <option value="Lite — $300">Lite — $300</option>
+          <option value="Pro — $700">Pro — $700</option>
+          <option value="Prime — $1200">Prime — $1200</option>
+          <option value="Консультация">Только консультация</option>
+        </select>
+      </div>
+
+      <div class="text-center pt-4">
+        <button type="submit" id="leadSubmit"
+                class="bg-gradient-to-r from-teal-400 to-cyan-400 text-black font-bold px-8 py-4 rounded-xl hover:scale-105 transition-transform w-full md:w-auto inline-flex items-center justify-center">
+          <span class="button-text">Отправить</span>
+          <span class="loading-spinner-btn hidden"></span>
+        </button>
+      </div>
+
+      <p class="text-xs text-gray-500 text-center pt-4">
+        🔒 Конфиденциальность гарантирована. Отправка заявки не накладывает обязательств.
+      </p>
+    </form>
   </div>
 </section>
 
@@ -4231,6 +4301,1152 @@ document.addEventListener('DOMContentLoaded', () => {
 
   <!-- НОВОЕ: Critical Utilities -->
   <script>
+  
+    <!-- НОВОЕ: Critical Utilities -->
+  <script>
+    // === УТИЛИТЫ БЕЗОПАСНОСТИ ===
+    const ReForkUtils = (() => {
+      // 1. Защита от спама
+      const formProtection = {
+        storage: window.localStorage,
+        key: 'rf_last_submit',
+        cooldown: 60000,
+        
+        canSubmit() {
+          const last = this.storage.getItem(this.key);
+          if (!last) return true;
+          return Date.now() - parseInt(last) > this.cooldown;
+        },
+        
+        recordSubmit() {
+          this.storage.setItem(this.key, Date.now().toString());
+        },
+        
+        getRemainingTime() {
+          const last = this.storage.getItem(this.key);
+          if (!last) return 0;
+          const elapsed = Date.now() - parseInt(last);
+          return Math.max(0, this.cooldown - elapsed);
+        }
+      };
+
+      // 2. Санитизация ввода
+      function sanitizeInput(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+      }
+
+      // 3. Улучшенная валидация
+      function validateFormData(formData) {
+        const validators = {
+          telegram: (val) => {
+            const pattern = /^@[A-Za-z0-9_]{5,32}$/;
+            const blocked = ['@admin', '@support', '@bot', '@test'];
+            return pattern.test(val) && !blocked.includes(val.toLowerCase());
+          },
+          name: (val) => {
+            const trimmed = val.trim();
+            return trimmed.length >= 2 && trimmed.length <= 100;
+          },
+        };
+        
+		
+		
+        for (let [field, validator] of Object.entries(validators)) {
+          const value = formData.get(field) || '';
+          if (!validator(value)) {
+            return { valid: false, field };
+          }
+        }
+        return { valid: true };
+      }
+
+      return { formProtection, sanitizeInput, validateFormData };
+    })();
+
+    // === ОСНОВНЫЕ ФУНКЦИИ ===
+    document.addEventListener('DOMContentLoaded', function() {
+      // Скрыть loading screen
+      setTimeout(() => {
+        const loadingScreen = document.getElementById('loadingScreen');
+        if (loadingScreen) {
+          loadingScreen.style.opacity = '0';
+          setTimeout(() => loadingScreen.remove(), 300);
+        }
+      }, 500);
+
+      // Mobile Menu
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const mobileMenuClose = document.getElementById('mobile-menu-close');
+      
+      if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', function() {
+          mobileMenu.classList.toggle('hidden');
+          mobileMenuButton.setAttribute('aria-expanded', 
+            mobileMenu.classList.contains('hidden') ? 'false' : 'true');
+        });
+        
+        if (mobileMenuClose) {
+          mobileMenuClose.addEventListener('click', function() {
+            mobileMenu.classList.add('hidden');
+            mobileMenuButton.setAttribute('aria-expanded', 'false');
+          });
+        }
+        
+        // Закрытие при клике вне меню (с задержкой для предотвращения конфликта)
+setTimeout(() => {
+  document.addEventListener('click', (e) => {
+    const isMenuOpen = !mobileMenu.classList.contains('hidden');
+    if (isMenuOpen && !mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+      mobileMenu.classList.add('hidden');
+      mobileMenuButton.setAttribute('aria-expanded', 'false');
+    }
+  });
+}, 100);
+        
+        // Закрытие при клике на ссылки
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+          link.addEventListener('click', function() {
+            mobileMenu.classList.add('hidden');
+            mobileMenuButton.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+      
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) {
+            target.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        });
+      });
+
+      // Progress bar
+      window.addEventListener('scroll', function() {
+        const winHeight = window.innerHeight;
+        const docHeight = document.documentElement.scrollHeight - winHeight;
+        const scrolled = (window.scrollY / docHeight) * 100;
+        document.getElementById('progress-bar').style.width = scrolled + '%';
+      });
+
+// Умный GMGN Promo Button
+let gmgnShowCount = 0;
+const MAX_SHOWS = 3; // Максимум 3 показа за сессию
+const SHOW_DURATION = 8000; // 8 секунд показа
+const SHOW_INTERVAL = 30000; // 30 секунд между показами
+
+function showGMGNPromo() {
+  const socialProof = document.getElementById('socialProof');
+  if (!socialProof || gmgnShowCount >= MAX_SHOWS) return;
+
+  gmgnShowCount++;
+  
+  // Показываем кнопку
+  socialProof.style.display = 'block';
+  setTimeout(() => {
+    socialProof.style.opacity = '1';
+    socialProof.style.transform = 'translateY(0)';
+  }, 10);
+
+  // Скрываем через SHOW_DURATION
+  const hideTimer = setTimeout(() => {
+    hideGMGNPromo();
+    
+    // Планируем следующий показ, если не достигли максимума
+    if (gmgnShowCount < MAX_SHOWS) {
+      setTimeout(showGMGNPromo, SHOW_INTERVAL);
+    }
+  }, SHOW_DURATION);
+
+  // Обработчики закрытия
+  const closeBtn = socialProof.querySelector('.gmgn-close');
+  const gmgnButton = socialProof.querySelector('.gmgn-button');
+  
+  function closeHandler() {
+    clearTimeout(hideTimer);
+    hideGMGNPromo();
+    gmgnShowCount = MAX_SHOWS; // Больше не показываем
+  }
+  
+  closeBtn.addEventListener('click', closeHandler);
+  
+  // При клике на кнопку GMGN тоже считаем за взаимодействие
+  gmgnButton.addEventListener('click', () => {
+    clearTimeout(hideTimer);
+    // Даем время на переход по ссылке перед скрытием
+    setTimeout(() => {
+      gmgnShowCount = MAX_SHOWS;
+    }, 1000);
+  });
+}
+
+function hideGMGNPromo() {
+  const socialProof = document.getElementById('socialProof');
+  if (!socialProof) return;
+  
+  socialProof.style.opacity = '0';
+  socialProof.style.transform = 'translateY(20px)';
+  setTimeout(() => {
+    socialProof.style.display = 'none';
+  }, 500);
+}
+
+// Запускаем первый показ через 3 секунды
+setTimeout(showGMGNPromo, 3000);
+
+// Exit Intent Popup - Tokenized Stocks Offer
+let exitIntentShown = false;
+let exitIntentTimer;
+
+function initExitIntent() {
+  let exitIntentTimeout;
+  
+  // Отслеживание ухода с сайта с debounce
+  document.addEventListener('mouseleave', (e) => {
+    if (e.clientY < 0 && !exitIntentShown) {
+      clearTimeout(exitIntentTimeout);
+      exitIntentTimeout = setTimeout(() => {
+        showExitPopup();
+      }, 300); // Задержка 300ms для предотвращения ложных срабатываний
+    }
+  });
+  
+  // Отмена при возврате курсора
+  document.addEventListener('mouseenter', () => {
+    clearTimeout(exitIntentTimeout);
+  });
+
+  // Дополнительный триггер - движение к верхнему краю
+  document.addEventListener('mousemove', (e) => {
+    if (e.clientY < 50 && !exitIntentShown) {
+      clearTimeout(exitIntentTimer);
+      exitIntentTimer = setTimeout(() => {
+        showExitPopup();
+      }, 1000);
+    }
+  });
+}
+
+function showExitPopup() {
+  if (localStorage.getItem('exitPopupShown') === 'true') return;
+  
+  const popup = document.createElement('div');
+  popup.className = 'exit-popup';
+  popup.innerHTML = `
+    <div class="exit-popup-content">
+      <button class="exit-popup-close" aria-label="Закрыть окно">×</button>
+      
+      <!-- Иконка -->
+      <div class="text-4xl mb-4">📈</div>
+      
+      <h3 class="text-2xl md:text-3xl font-bold mb-3 text-cyan-400">Инвестируйте уверенно!</h3>
+      <p class="text-lg md:text-xl mb-4 text-gray-300">
+        Покупайте крипто-акции Apple, Tesla, Netflix<br class="hidden md:block">
+        через токенизированные активы
+      </p>
+      
+      <div class="bg-gradient-to-r from-cyan-500/10 to-purple-500/10 p-4 rounded-lg mb-6 border border-cyan-500/20">
+        <p class="text-sm text-cyan-300 mb-2">🎯 Наша классическая умеренная стратегия</p>
+        <p class="text-xs text-gray-400">Идеально для консервативных инвесторов</p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <button id="exitPopupInvest" class="bg-gradient-to-r from-green-500 to-cyan-500 text-white font-bold px-6 py-3 rounded-lg hover:scale-105 transition-transform shadow-lg shadow-cyan-500/25">
+          🚀 Перейти к инвестициям
+        </button>
+        <button class="exit-popup-close border border-gray-500 text-gray-300 px-6 py-3 rounded-lg hover:bg-gray-800 hover:text-white transition-colors">
+          Закрыть
+        </button>
+      </div>
+      
+      <p class="text-xs text-gray-500 mt-4">
+        Низкие комиссии • Высокая ликвидность • Регулярные дивиденды
+      </p>
+    </div>
+  `;
+
+  // Обработчик для кнопки инвестирования
+  popup.querySelector('#exitPopupInvest').addEventListener('click', () => {
+    window.open('https://lucas555-ops.github.io/tokenized_stocks_etfs_hub/', '_blank');
+    popup.remove();
+    localStorage.setItem('exitPopupShown', 'true');
+  });
+
+  // Обработчик для кнопки закрытия
+  const closeButtons = popup.querySelectorAll('.exit-popup-close');
+  closeButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      popup.remove();
+      localStorage.setItem('exitPopupShown', 'true');
+    });
+  });
+
+  // Закрытие по клику на фон
+  popup.addEventListener('click', (e) => {
+    if (e.target === popup) {
+      popup.remove();
+      localStorage.setItem('exitPopupShown', 'true');
+    }
+  });
+
+  // Закрытие по Escape
+  const handleEscape = (e) => {
+    if (e.key === 'Escape') {
+      popup.remove();
+      document.removeEventListener('keydown', handleEscape);
+      localStorage.setItem('exitPopupShown', 'true');
+    }
+  };
+  document.addEventListener('keydown', handleEscape);
+
+  document.body.appendChild(popup);
+  exitIntentShown = true;
+  
+  // Автоматическое закрытие через 24 часа
+  setTimeout(() => {
+    localStorage.removeItem('exitPopupShown');
+  }, 24 * 60 * 60 * 1000);
+}
+
+// Инициализация при загрузке страницы
+document.addEventListener('DOMContentLoaded', function() {
+  // Ждем немного перед инициализацией exit intent
+  setTimeout(initExitIntent, 3000);
+});
+
+
+     // Форма - улучшенная обработка для Vercel
+// Форма - финальная версия для Vercel
+const form = document.getElementById('leadForm');
+const btn = document.getElementById('leadSubmit');
+
+if (form && btn) {
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    
+    // Проверка rate limit
+    if (!ReForkUtils.formProtection.canSubmit()) {
+      const remaining = Math.ceil(ReForkUtils.formProtection.getRemainingTime() / 1000);
+      showError(`⏳ Подождите ${remaining} секунд перед повторной отправкой`);
+      return;
+    }
+    
+    const formData = new FormData(form);
+    
+    // Honeypot check
+    if (formData.get('website')) {
+      return;
+    }
+    
+    // Валидация
+    const validation = ReForkUtils.validateFormData(formData);
+    if (!validation.valid) {
+      const messages = {
+        telegram: '❌ Telegram должен начинаться с @ (например: @username)',
+        name: '❌ Имя должно содержать от 2 до 100 символов',
+        package: '❌ Пожалуйста, выберите сумму'
+      };
+      showError(messages[validation.field] || '❌ Проверьте правильность заполнения формы');
+      return;
+    }
+    
+    btn.disabled = true;
+    const buttonText = btn.querySelector('.button-text');
+    const spinner = btn.querySelector('.loading-spinner-btn');
+    buttonText.textContent = "Отправка...";
+    spinner.classList.remove('hidden');
+
+    // ✅ VERCEL ENDPOINT
+    const API_URL = 'https://re-fork-capital.vercel.app/api/telegram';
+    
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 10000);
+
+    try {
+      const jsonData = {
+        name: formData.get('name'),
+        telegram: formData.get('telegram'),
+        package: formData.get('package'),
+        lang: 'ru',
+        source: 'ReFork Capital'
+      };
+
+      console.log('📤 Отправка данных в Vercel:', jsonData);
+
+      const res = await fetch(API_URL, { 
+        method: "POST", 
+        body: JSON.stringify(jsonData),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        mode: 'cors',
+        signal: controller.signal
+      });
+
+      clearTimeout(timeout);
+
+      const responseData = await res.json();
+      console.log('📥 Ответ от Vercel:', responseData);
+
+      if (res.ok && responseData.success) {
+        ReForkUtils.formProtection.recordSubmit();
+        showToast("✅ Спасибо! Сигнал отправлен. Мы свяжемся с вами в ближайшее время.");
+        
+        // Redirect через 2 секунды
+        setTimeout(() => {
+          window.location.href = "https://lucas555-ops.github.io/ReFork-Capital/thank-you.html";
+        }, 2000);
+        
+        form.reset();
+      } else {
+        const errorMsg = responseData.error || 'Неизвестная ошибка сервера';
+        console.error('Vercel API error:', errorMsg);
+        
+        // Показываем пользователю понятное сообщение
+        if (errorMsg.includes('BOT_TOKEN') || errorMsg.includes('CHAT_ID')) {
+          showError("❌ Сервер не настроен. Свяжитесь с нами в Telegram.");
+        } else if (errorMsg.includes('Telegram')) {
+          showError("❌ Ошибка отправки в Telegram. Попробуйте позже.");
+        } else {
+          showError(`❌ Ошибка отправки: ${errorMsg}`);
+        }
+      }
+    } catch (err) {
+  clearTimeout(timeout);
+  console.error('Ошибка при отправке:', err);
+  
+  // Специальная обработка CORS ошибок
+  if (err.message && err.message.includes('CORS')) {
+    showError("🔒 Ошибка безопасности. Попробуйте обновить страницу или свяжитесь с нами в Telegram.");
+    return;
+  }
+  
+  if (err.name === 'AbortError') {
+    showError("⏱️ Превышено время ожидания. Проверьте соединение и попробуйте снова.");
+      } else if (err.name === 'TypeError' && err.message.includes('fetch')) {
+        showError("⚠️ Ошибка сети. Проверьте интернет-соединение и попробуйте снова.");
+      } else {
+        showError("⚠️ Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже или свяжитесь с нами в Telegram.");
+      }
+    } finally {
+      btn.disabled = false;
+      buttonText.textContent = "Отправить";
+      spinner.classList.add('hidden');
+    }
+  });
+}
+
+      function showToast(msg) {
+  const el = document.createElement("div");
+  el.className = "success-toast";
+  el.textContent = msg;
+  el.setAttribute('role', 'status');
+  el.setAttribute('aria-live', 'polite');
+  document.body.appendChild(el);
+        setTimeout(() => {
+          el.style.transition = "opacity 0.3s";
+          el.style.opacity = "0";
+          setTimeout(() => el.remove(), 300);
+        }, 4000);
+      }
+
+      function showError(msg) {
+  const el = document.createElement("div");
+  el.className = "error-toast";
+  el.textContent = msg;
+  el.setAttribute('role', 'alert');
+  el.setAttribute('aria-live', 'assertive');
+  document.body.appendChild(el);
+        setTimeout(() => {
+          el.style.transition = "opacity 0.3s";
+          el.style.opacity = "0";
+          setTimeout(() => el.remove(), 300);
+        }, 5000);
+      }
+    });
+
+
+
+// Дебаунс для resize событий
+let resizeTimeout;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(() => {
+    // логика ресайза
+  }, 250);
+});
+
+ </script>
+ 
+ 
+
+  <!-- Structured Data для SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ReFork Capital",
+    "description": "Методы капитализации и умножения криптовалюты через организацию сетевого трафика и рыночного внимания",
+    "url": "https://lucas555-ops.github.io/ReFork-Capital/",
+    "logo": "https://raw.githubusercontent.com/lucas555-ops/ReFork-Capital/main/apple-touch-icon.png",
+    "sameAs": [
+      "https://t.me/c/1892588438/4"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "Customer Service",
+      "availableLanguage": ["Russian", "English"]
+    }
+  }
+  </script>
+
+  <!-- НОВОЕ: Performance Monitoring -->
+  <script>
+    // Мониторинг производительности
+    window.addEventListener('load', () => {
+      if ('performance' in window) {
+        const perfData = performance.getEntriesByType('navigation')[0];
+        if (perfData) {
+          console.log('Page Load Time:', Math.round(perfData.loadEventEnd - perfData.fetchStart), 'ms');
+          
+          // Отправка метрик в Google Analytics (если настроен)
+          if (typeof gtag === 'function') {
+            gtag('event', 'timing_complete', {
+              'name': 'load',
+              'value': Math.round(perfData.loadEventEnd - perfData.fetchStart),
+              'event_category': 'Page Performance'
+            });
+          }
+        }
+      }
+    });
+
+    // Отслеживание кликов по CTA
+    document.addEventListener('click', (e) => {
+      const target = e.target.closest('a[href="#apply"], a[href="#packages"]');
+      if (target && typeof gtag === 'function') {
+        gtag('event', 'cta_click', {
+          'event_category': 'Engagement',
+          'event_label': target.textContent.trim()
+        });
+      }
+    });
+  </script>
+
+  <!-- НОВОЕ: Error Tracking -->
+  <script>
+    window.addEventListener('error', (e) => {
+      console.error('Global error:', e.message, e.filename, e.lineno);
+      
+      // Отправка в Google Analytics
+      if (typeof gtag === 'function') {
+        gtag('event', 'exception', {
+          'description': e.message,
+          'fatal': false
+        });
+      }
+    });
+
+    // Отслеживание отклоненных промисов
+    window.addEventListener('unhandledrejection', (e) => {
+      console.error('Unhandled promise rejection:', e.reason);
+      
+      if (typeof gtag === 'function') {
+        gtag('event', 'exception', {
+          'description': 'Promise rejection: ' + e.reason,
+          'fatal': false
+        });
+      }
+    });
+  </script>
+  
+  <script>
+  AOS.init();
+</script>
+
+<script>
+window.addEventListener('online', () => {
+  showToast('✅ Соединение восстановлено');
+});
+
+window.addEventListener('offline', () => {
+  showError('⚠️ Нет соединения. Проверьте интернет');
+});
+</script>
+
+
+<style>
+@media (max-width: 768px) {
+  #full-cycle .grid-cols-5 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  #meme-psychology .flex-wrap {
+    flex-direction: column;
+  }
+  .text-4xl { font-size: 2rem; }
+  .text-5xl { font-size: 2.5rem; }
+}
+#full-cycle, #meme-psychology, #target-audience {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+</style>
+
+<!-- Observer удалён, используйте AOS для анимаций -->
+</script>
+
+<!-- Chart.js + ReFork Strategy Chart -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const canvas = document.getElementById('reforkStrategyChart');
+  if (!canvas) return;
+  
+  // Используем Intersection Observer для ленивой загрузки графика
+  const observer = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      setTimeout(initializeChart, 300);
+      observer.disconnect();
+    }
+  }, {
+    threshold: 0.1,
+    rootMargin: '50px'
+  });
+  
+  observer.observe(canvas.closest('section') || canvas);
+});
+
+function initializeChart() {
+  const canvas = document.getElementById("reforkStrategyChart");
+  if (!canvas) {
+    console.error('Canvas element not found');
+    return;
+  }
+
+  const ctx = canvas.getContext("2d");
+  
+  // Убедимся, что canvas имеет размеры
+  const container = canvas.parentElement;
+  if (container.offsetWidth > 0 && container.offsetHeight > 0) {
+    canvas.width = container.offsetWidth;
+    canvas.height = container.offsetHeight;
+  }
+  
+  const isMobile = window.innerWidth < 768;
+  
+  const mobileConfig = {
+    pointRadius: [3, 6, 6, 4, 6, 6, 8],
+    pointBorderWidth: 1,
+    borderWidth: 2,
+    fontSize: 9
+  };
+  
+  const desktopConfig = {
+    pointRadius: [4, 8, 8, 6, 8, 8, 10],
+    pointBorderWidth: 2,
+    borderWidth: 3,
+    fontSize: 10
+  };
+  
+  const config = isMobile ? mobileConfig : desktopConfig;
+
+  // Упрощенные данные без градиентов
+  const data = {
+    labels: [
+      "День 0\n💡",
+      "День 3\n🚀", 
+      "День 7\n📈",
+      "День 10\n📉",
+      "День 15\n😴",
+      "День 18\n🔄",
+      "День 25\n💰"
+    ],
+    
+    datasets: [
+      {
+        label: "❌ Retail",
+        data: [100, 180, 320, 150, 80, 50, 33],
+        borderColor: "#ef4444",
+        backgroundColor: "rgba(239, 68, 68, 0.1)",
+        borderWidth: config.borderWidth,
+        tension: 0.4,
+        pointRadius: config.pointRadius,
+        pointBackgroundColor: ["#6b7280", "#6b7280", "#ef4444", "#f87171", "#dc2626", "#991b1b", "#7f1d1d"],
+        pointBorderColor: "#ffffff",
+        pointBorderWidth: config.pointBorderWidth,
+        fill: false
+      },
+      {
+        label: "✅ ReFork", 
+        data: [100, 120, 180, 220, 280, 350, 384],
+        borderColor: "#22c55e",
+        backgroundColor: "rgba(34, 197, 94, 0.1)",
+        borderWidth: config.borderWidth,
+        tension: 0.4,
+        pointRadius: config.pointRadius,
+        pointBackgroundColor: ["#6b7280", "#6b7280", "#6b7280", "#22c55e", "#16a34a", "#10b981", "#fbbf24"],
+        pointBorderColor: "#ffffff",
+        pointBorderWidth: config.pointBorderWidth,
+        fill: true
+      }
+    ]
+  };
+
+  try {
+    // Уничтожаем предыдущий экземпляр если существует
+    const existingChart = Chart.getChart(canvas);
+    if (existingChart) {
+      existingChart.destroy();
+    }
+    
+    new Chart(ctx, {
+      type: "line",
+      data: data,
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: {
+          mode: 'index',
+          intersect: false
+        },
+        plugins: {
+          legend: {
+            display: true,
+            position: 'top',
+            labels: {
+              color: '#e5e7eb',
+              usePointStyle: true,
+              padding: isMobile ? 10 : 15,
+              font: { 
+                size: isMobile ? 11 : 13, 
+                weight: 'bold' 
+              }
+            }
+          },
+          tooltip: {
+            enabled: true,
+            backgroundColor: 'rgba(17,24,39,0.95)',
+            titleColor: '#22d3ee',
+            bodyColor: '#e5e7eb',
+            borderColor: '#22d3ee',
+            borderWidth: 1,
+            padding: isMobile ? 8 : 12,
+            displayColors: true,
+            bodyFont: {
+              size: isMobile ? 11 : 13
+            },
+            titleFont: {
+              size: isMobile ? 12 : 14
+            },
+            callbacks: {
+              label: function(context) {
+                const value = context.parsed.y;
+                const initial = 100;
+                const roi = ((value - initial) / initial * 100).toFixed(0);
+                const label = isMobile 
+                  ? `${context.dataset.label === '✅ ReFork' ? 'ReFork' : 'Retail'}: $${value} (${roi > 0 ? '+' : ''}${roi}%)`
+                  : `${context.dataset.label}: $${value} (${roi > 0 ? '+' : ''}${roi}%)`;
+                return label;
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: { 
+              color: 'rgba(255,255,255,0.05)',
+              drawBorder: false
+            },
+            ticks: { 
+              color: '#9ca3af',
+              font: { 
+                size: isMobile ? 9 : 10 
+              },
+              maxRotation: 0,
+              // Ключевое изменение: показываем все метки на мобильных
+              autoSkip: false
+            },
+            // Убедимся, что график начинается с начала
+            offset: true
+          },
+          y: {
+            grid: { 
+              color: 'rgba(255,255,255,0.05)',
+              drawBorder: false
+            },
+            ticks: { 
+              color: '#9ca3af',
+              callback: value => `$${value}`,
+              font: { 
+                size: isMobile ? 9 : 11 
+              }
+            },
+            beginAtZero: true,
+            max: 400 // Немного уменьшили максимальное значение для лучшего отображения
+          }
+        },
+        animation: {
+          duration: 2000,
+          easing: 'easeOutQuart'
+        }
+      }
+    });
+    
+    console.log('Chart initialized successfully');
+    
+  } catch (error) {
+    console.error('Error initializing chart:', error);
+    
+    // Fallback - показать сообщение об ошибке
+    const errorDiv = document.createElement('div');
+    errorDiv.innerHTML = '<p style="color: #ef4444; text-align: center; padding: 20px;">График временно недоступен</p>';
+    canvas.parentElement.appendChild(errorDiv);
+  }
+}
+
+// Перерисовка при изменении размера окна
+let resizeTimer;
+window.addEventListener('resize', function() {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(function() {
+    const chart = Chart.getChart("reforkStrategyChart");
+    if (chart) {
+      chart.destroy();
+      initializeChart();
+    }
+  }, 250);
+});
+
+
+
+
+canvas.addEventListener('mousemove', e => {
+  const rect = canvas.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+  const chart = Chart.getChart('reforkStrategyChart');
+  if (chart) {
+    const activePoints = chart.getElementsAtEventForMode(e, 'nearest', { intersect: true }, true);
+    if (activePoints.length) {
+      const point = activePoints[0];
+      const dataset = chart.data.datasets[point.datasetIndex];
+      const value = dataset.data[point.index];
+      const initial = 100;
+      const roi = ((value - initial) / initial * 100).toFixed(0);
+      const label = dataset.label === '✅ ReFork' ? 'ReFork' : 'Retail';
+      tooltip.innerHTML = `${label}: $${value} (${roi > 0 ? '+' : ''}${roi}%)`;
+      tooltip.style.left = `${x + 20}px`;
+      tooltip.style.top = `${y}px`;
+      tooltip.style.display = 'block';
+    } else {
+      tooltip.style.display = 'none';
+    }
+  }
+});
+
+</script>
+
+<script>
+(function() {
+  const parallaxContainer = document.querySelector('#traffic-engine > .-z-10');
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth < 768;
+
+  // Parallax: small translate on scroll — only for desktops (and if element exists)
+  if (parallaxContainer && !prefersReduced && !isMobile) {
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
+    function onScroll() {
+      lastScrollY = window.scrollY;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const rect = parallaxContainer.parentElement.getBoundingClientRect();
+          // factor: how much to move (small, subtle)
+          const factor = 0.12;
+          const offset = -rect.top * factor;
+          parallaxContainer.style.transform = `translateY(${offset}px)`;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+    // initialize
+    window.addEventListener('scroll', onScroll, { passive: true });
+    // initial set
+    onScroll();
+  } else if (parallaxContainer) {
+    // mobile/fallback: keep static but ensure correct opacity
+    parallaxContainer.style.transform = 'translateY(0)';
+  }
+
+  // Simple AOS-like reveal (only for elements inside #traffic-engine with data-aos="fade-up")
+  const aosElems = document.querySelectorAll('#traffic-engine [data-aos="fade-up"]');
+  if (aosElems.length) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('aos-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.18 });
+    aosElems.forEach(el => io.observe(el));
+  }
+})();
+</script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // Проверяем ширину экрана
+  if (window.innerWidth < 768) {
+    // Находим все элементы с AOS внутри секции "Ответы на ключевые вопросы"
+    const faqCards = document.querySelectorAll('#faq [data-aos]');
+    faqCards.forEach(el => {
+      // Удаляем атрибуты анимации
+      el.removeAttribute('data-aos');
+      el.removeAttribute('data-aos-delay');
+      el.removeAttribute('data-aos-duration');
+    });
+  }
+});
+</script>
+
+<script>
+// Real-time Telegram validation
+document.addEventListener('DOMContentLoaded', function() {
+  const telegramInput = document.getElementById('telegram');
+  const validIcon = document.getElementById('telegram-valid-icon');
+  const invalidIcon = document.getElementById('telegram-invalid-icon');
+  
+  if (telegramInput && validIcon && invalidIcon) {
+    telegramInput.addEventListener('input', function(e) {
+      const value = e.target.value.trim();
+      
+      // Скрыть иконки если пусто
+      if (value.length === 0) {
+        validIcon.classList.add('hidden');
+        invalidIcon.classList.add('hidden');
+        e.target.classList.remove('border-green-400', 'border-red-400');
+        return;
+      }
+      
+      // Проверка паттерна
+      const pattern = /^@[A-Za-z0-9_]{5,32}$/;
+      const isValid = pattern.test(value);
+      
+      if (isValid) {
+        e.target.classList.add('border-green-400');
+        e.target.classList.remove('border-red-400');
+        validIcon.classList.remove('hidden');
+        invalidIcon.classList.add('hidden');
+      } else {
+        e.target.classList.add('border-red-400');
+        e.target.classList.remove('border-green-400');
+        validIcon.classList.add('hidden');
+        invalidIcon.classList.remove('hidden');
+      }
+    });
+  }
+});
+</script>     // Форма - улучшенная обработка для Vercel
+// Форма - финальная версия для Vercel
+const form = document.getElementById('leadForm');
+const btn = document.getElementById('leadSubmit');
+
+if (form && btn) {
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    
+    // Проверка rate limit
+    if (!ReForkUtils.formProtection.canSubmit()) {
+      const remaining = Math.ceil(ReForkUtils.formProtection.getRemainingTime() / 1000);
+      showError(`⏳ Подождите ${remaining} секунд перед повторной отправкой`);
+      return;
+    }
+    
+    const formData = new FormData(form);
+    
+    // Honeypot check
+    if (formData.get('website')) {
+      return;
+    }
+    
+    // Валидация
+    const validation = ReForkUtils.validateFormData(formData);
+    if (!validation.valid) {
+      const messages = {
+        telegram: '❌ Telegram должен начинаться с @ (например: @username)',
+        name: '❌ Имя должно содержать от 2 до 100 символов',
+        package: '❌ Пожалуйста, выберите сумму'
+      };
+      showError(messages[validation.field] || '❌ Проверьте правильность заполнения формы');
+      return;
+    }
+    
+    btn.disabled = true;
+    const buttonText = btn.querySelector('.button-text');
+    const spinner = btn.querySelector('.loading-spinner-btn');
+    buttonText.textContent = "Отправка...";
+    spinner.classList.remove('hidden');
+
+    // ✅ VERCEL ENDPOINT
+    const API_URL = 'https://re-fork-capital.vercel.app/api/telegram';
+    
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 10000);
+
+    try {
+      const jsonData = {
+        name: formData.get('name'),
+        telegram: formData.get('telegram'),
+        package: formData.get('package'),
+        lang: 'ru',
+        source: 'ReFork Capital'
+      };
+
+      console.log('📤 Отправка данных в Vercel:', jsonData);
+
+      const res = await fetch(API_URL, { 
+        method: "POST", 
+        body: JSON.stringify(jsonData),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        mode: 'cors',
+        signal: controller.signal
+      });
+
+      clearTimeout(timeout);
+
+      const responseData = await res.json();
+      console.log('📥 Ответ от Vercel:', responseData);
+
+      if (res.ok && responseData.success) {
+        ReForkUtils.formProtection.recordSubmit();
+        showToast("✅ Спасибо! Сигнал отправлен. Мы свяжемся с вами в ближайшее время.");
+        
+        // Redirect через 2 секунды
+        setTimeout(() => {
+          window.location.href = "https://lucas555-ops.github.io/ReFork-Capital/thank-you.html";
+        }, 2000);
+        
+        form.reset();
+      } else {
+        const errorMsg = responseData.error || 'Неизвестная ошибка сервера';
+        console.error('Vercel API error:', errorMsg);
+        
+        // Показываем пользователю понятное сообщение
+        if (errorMsg.includes('BOT_TOKEN') || errorMsg.includes('CHAT_ID')) {
+          showError("❌ Сервер не настроен. Свяжитесь с нами в Telegram.");
+        } else if (errorMsg.includes('Telegram')) {
+          showError("❌ Ошибка отправки в Telegram. Попробуйте позже.");
+        } else {
+          showError(`❌ Ошибка отправки: ${errorMsg}`);
+        }
+      }
+    } catch (err) {
+  clearTimeout(timeout);
+  console.error('Ошибка при отправке:', err);
+  
+  // Специальная обработка CORS ошибок
+  if (err.message && err.message.includes('CORS')) {
+    showError("🔒 Ошибка безопасности. Попробуйте обновить страницу или свяжитесь с нами в Telegram.");
+    return;
+  }
+  
+  if (err.name === 'AbortError') {
+    showError("⏱️ Превышено время ожидания. Проверьте соединение и попробуйте снова.");
+      } else if (err.name === 'TypeError' && err.message.includes('fetch')) {
+        showError("⚠️ Ошибка сети. Проверьте интернет-соединение и попробуйте снова.");
+      } else {
+        showError("⚠️ Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже или свяжитесь с нами в Telegram.");
+      }
+    } finally {
+      btn.disabled = false;
+      buttonText.textContent = "Отправить";
+      spinner.classList.add('hidden');
+    }
+  });
+}
+
+      function showToast(msg) {
+  const el = document.createElement("div");
+  el.className = "success-toast";
+  el.textContent = msg;
+  el.setAttribute('role', 'status');
+  el.setAttribute('aria-live', 'polite');
+  document.body.appendChild(el);
+        setTimeout(() => {
+          el.style.transition = "opacity 0.3s";
+          el.style.opacity = "0";
+          setTimeout(() => el.remove(), 300);
+        }, 4000);
+      }
+
+      function showError(msg) {
+  const el = document.createElement("div");
+  el.className = "error-toast";
+  el.textContent = msg;
+  el.setAttribute('role', 'alert');
+  el.setAttribute('aria-live', 'assertive');
+  document.body.appendChild(el);
+        setTimeout(() => {
+          el.style.transition = "opacity 0.3s";
+          el.style.opacity = "0";
+          setTimeout(() => el.remove(), 300);
+        }, 5000);
+      }
+    });
+
+// Real-time Telegram validation
+document.addEventListener('DOMContentLoaded', function() {
+  const telegramInput = document.getElementById('telegram');
+  const validIcon = document.getElementById('telegram-valid-icon');
+  const invalidIcon = document.getElementById('telegram-invalid-icon');
+  
+  if (telegramInput && validIcon && invalidIcon) {
+    telegramInput.addEventListener('input', function(e) {
+      const value = e.target.value.trim();
+      
+      // Скрыть иконки если пусто
+      if (value.length === 0) {
+        validIcon.classList.add('hidden');
+        invalidIcon.classList.add('hidden');
+        e.target.classList.remove('border-green-400', 'border-red-400');
+        return;
+      }
+      
+      // Проверка паттерна
+      const pattern = /^@[A-Za-z0-9_]{5,32}$/;
+      const isValid = pattern.test(value);
+      
+      if (isValid) {
+        e.target.classList.add('border-green-400');
+        e.target.classList.remove('border-red-400');
+        validIcon.classList.remove('hidden');
+        invalidIcon.classList.add('hidden');
+      } else {
+        e.target.classList.add('border-red-400');
+        e.target.classList.remove('border-green-400');
+        validIcon.classList.add('hidden');
+        invalidIcon.classList.remove('hidden');
+      }
+    });
+  }
+});
+  
     // === УТИЛИТЫ БЕЗОПАСНОСТИ ===
     const ReForkUtils = (() => {
       // 1. Защита от спама
@@ -4297,6 +5513,8 @@ let gmgnShowCount = 0;
 const MAX_SHOWS = 3; // Максимум 3 показа за сессию
 const SHOW_DURATION = 8000; // 8 секунд показа
 const SHOW_INTERVAL = 30000; // 30 секунд между показами
+
+
 
 function showGMGNPromo() {
   const socialProof = document.getElementById('socialProof');
@@ -4428,8 +5646,7 @@ setTimeout(() => {
 
 
 
-// Запускаем первый показ через 3 секунды
-setTimeout(showGMGNPromo, 3000);
+
 
 
   
@@ -5643,7 +6860,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 </main>
-  
+
+
+
 
 <script>
   // инициализация AOS после загрузки
@@ -5708,6 +6927,16 @@ document.addEventListener('scroll', () => {
     }
   });
   </script>
+
+// Дебаунс для resize событий
+let resizeTimeout;
+window.addEventListener('resize', () => {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(() => {
+    // логика ресайза
+  }, 250);
+});
+
 
 </body>
 </html>
